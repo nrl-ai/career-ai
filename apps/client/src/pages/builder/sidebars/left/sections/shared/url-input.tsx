@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { Tag } from "@phosphor-icons/react";
-import { URL, urlSchema } from "@reactive-resume/schema";
+import { URL, urlSchema } from "@career-ai/schema";
 import {
   Button,
   Input,
@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Tooltip,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import { forwardRef, useMemo } from "react";
 
 type Props = {

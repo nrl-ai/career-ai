@@ -1,4 +1,4 @@
-import { AuthProvidersDto } from "@reactive-resume/dto";
+import { AuthProvidersDto } from "@career-ai/dto";
 import { useQuery } from "@tanstack/react-query";
 
 import { AUTH_PROVIDERS_KEY } from "@/client/constants/query-keys";

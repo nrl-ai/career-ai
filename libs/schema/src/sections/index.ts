@@ -1,4 +1,4 @@
-import { FilterKeys } from "@reactive-resume/utils";
+import { FilterKeys } from "@career-ai/utils";
 import { z } from "zod";
 
 import { idSchema } from "../shared";

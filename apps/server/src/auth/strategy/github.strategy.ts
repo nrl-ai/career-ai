@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { User } from "@prisma/client";
-import { ErrorMessage, processUsername } from "@reactive-resume/utils";
+import { ErrorMessage, processUsername } from "@career-ai/utils";
 import { Profile, Strategy, StrategyOptions } from "passport-github2";
 
 import { UserService } from "@/server/user/user.service";

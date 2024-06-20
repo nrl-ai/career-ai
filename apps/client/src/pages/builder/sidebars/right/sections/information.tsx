@@ -7,8 +7,8 @@ import {
   CardDescription,
   CardFooter,
   CardTitle,
-} from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+} from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 
 import { getSectionIcon } from "../shared/section-icon";
 
@@ -31,7 +31,7 @@ const DonateCard = () => (
     </CardContent>
     <CardFooter>
       <a
-        href="https://opencollective.com/reactive-resume"
+        href="https://opencollective.com/career-ai"
         className={cn(buttonVariants({ size: "sm" }))}
         rel="noopener noreferrer nofollow"
         target="_blank"

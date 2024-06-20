@@ -1,8 +1,8 @@
 /* eslint-disable lingui/text-restrictions */
 /* eslint-disable lingui/no-unlocalized-strings */
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 
 import { useLanguages } from "@/client/services/resume/translation";
 
@@ -74,7 +74,7 @@ const Question2 = () => (
       <p>
         Alternatively, if you are in the US, or you are a part of a large educational institution or
         corporate organization, you can{" "}
-        <a href="https://opencollective.com/reactive-resume">
+        <a href="https://opencollective.com/career-ai">
           support the project through Open Collective
         </a>
         . We are fiscally hosted through Open Collective Europe, which means your donations and
@@ -145,7 +145,7 @@ const Question4 = () => {
             <a
               key={language.id}
               className="no-underline"
-              href={`https://crowdin.com/translate/reactive-resume/all/en-${language.editorCode}`}
+              href={`https://crowdin.com/translate/career-ai/all/en-${language.editorCode}`}
               target="_blank"
               rel="noreferrer"
             >
@@ -170,7 +170,7 @@ const Question4 = () => {
 
         <p>
           If you'd like to improve the translations for your language, please{" "}
-          <a href="https://crowdin.com/project/reactive-resume" rel="noreferrer" target="_blank">
+          <a href="https://crowdin.com/project/career-ai" rel="noreferrer" target="_blank">
             sign up as a translator on Crowdin
           </a>{" "}
           and join the project. You can also choose to be notified of any new phrases that get added

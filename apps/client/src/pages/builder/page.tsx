@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { ResumeDto } from "@reactive-resume/dto";
+import { ResumeDto } from "@career-ai/dto";
 import { useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { LoaderFunction, redirect } from "react-router-dom";

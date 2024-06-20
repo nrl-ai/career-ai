@@ -1,5 +1,5 @@
-import { useTheme } from "@reactive-resume/hooks";
-import { cn } from "@reactive-resume/utils";
+import { useTheme } from "@career-ai/hooks";
+import { cn } from "@career-ai/utils";
 
 type Props = {
   open?: boolean;

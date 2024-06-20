@@ -1,5 +1,5 @@
-import { resumeDataSchema } from "@reactive-resume/schema";
-import { kebabCase } from "@reactive-resume/utils";
+import { resumeDataSchema } from "@career-ai/schema";
+import { kebabCase } from "@career-ai/utils";
 import { createZodDto } from "nestjs-zod/dto";
 import { z } from "nestjs-zod/z";
 

@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { List, SquaresFour } from "@phosphor-icons/react";
-import { ScrollArea, Tabs, TabsContent, TabsList, TabsTrigger } from "@reactive-resume/ui";
+import { ScrollArea, Tabs, TabsContent, TabsList, TabsTrigger } from "@career-ai/ui";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";

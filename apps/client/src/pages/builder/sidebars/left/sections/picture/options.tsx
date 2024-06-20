@@ -7,7 +7,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
   Tooltip,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import { useMemo } from "react";
 
 import { useResumeStore } from "@/client/stores/resume";

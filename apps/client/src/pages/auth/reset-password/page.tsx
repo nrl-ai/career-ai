@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t, Trans } from "@lingui/macro";
-import { resetPasswordSchema } from "@reactive-resume/dto";
-import { usePasswordToggle } from "@reactive-resume/hooks";
+import { resetPasswordSchema } from "@career-ai/dto";
+import { usePasswordToggle } from "@career-ai/hooks";
 import {
   Button,
   Form,
@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";

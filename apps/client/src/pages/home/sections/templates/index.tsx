@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { templatesList } from "@reactive-resume/utils";
+import { templatesList } from "@career-ai/utils";
 import { motion } from "framer-motion";
 
 export const TemplatesSection = () => (

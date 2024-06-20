@@ -1,4 +1,4 @@
-import { SectionKey } from "@reactive-resume/schema";
+import { SectionKey } from "@career-ai/schema";
 
 export type TemplateProps = {
   columns: SectionKey[][];

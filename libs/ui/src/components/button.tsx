@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import type { VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 

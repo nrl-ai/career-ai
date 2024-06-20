@@ -32,7 +32,7 @@ export const SupportSection = () => (
           />
         </a>
         <a
-          href="https://opencollective.com/Reactive-Resume"
+          href="https://opencollective.com/career-ai"
           rel="noreferrer noopener nofollow"
           target="_blank"
         >

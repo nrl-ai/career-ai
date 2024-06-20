@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
-import { Button } from "@reactive-resume/ui";
+import { Button } from "@career-ai/ui";
 
 import { useAuthProviders } from "@/client/services/auth/providers";
 

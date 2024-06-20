@@ -1,6 +1,6 @@
 import { CaretUpDown, Check } from "@phosphor-icons/react";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { forwardRef } from "react";
 
 export const Select = SelectPrimitive.Root;

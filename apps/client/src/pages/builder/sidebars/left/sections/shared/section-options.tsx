@@ -10,7 +10,7 @@ import {
   Plus,
   TrashSimple,
 } from "@phosphor-icons/react";
-import { defaultSections, SectionKey, SectionWithItem } from "@reactive-resume/schema";
+import { defaultSections, SectionKey, SectionWithItem } from "@career-ai/schema";
 import {
   Button,
   DropdownMenu,
@@ -26,7 +26,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   Input,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import get from "lodash.get";
 import { useMemo } from "react";
 

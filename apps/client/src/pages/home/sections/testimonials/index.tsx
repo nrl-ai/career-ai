@@ -3,7 +3,7 @@
 
 import { t, Trans } from "@lingui/macro";
 import { Quotes } from "@phosphor-icons/react";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
 
 const email = "hello@amruthpillai.com";

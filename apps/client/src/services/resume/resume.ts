@@ -1,4 +1,4 @@
-import { ResumeDto } from "@reactive-resume/dto";
+import { ResumeDto } from "@career-ai/dto";
 
 import { axios } from "@/client/libs/axios";
 

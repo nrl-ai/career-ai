@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
-import { Avatar, AvatarFallback, AvatarImage, Tooltip } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { Avatar, AvatarFallback, AvatarImage, Tooltip } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 

@@ -16,8 +16,8 @@ import {
   Skill,
   URL,
   Volunteer,
-} from "@reactive-resume/schema";
-import { cn, isEmptyString, isUrl, linearTransform } from "@reactive-resume/utils";
+} from "@career-ai/schema";
+import { cn, isEmptyString, isUrl, linearTransform } from "@career-ai/utils";
 import get from "lodash.get";
 import React, { Fragment } from "react";
 

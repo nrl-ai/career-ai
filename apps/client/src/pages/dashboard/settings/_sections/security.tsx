@@ -13,7 +13,7 @@ import {
   FormItem,
   FormLabel,
   Input,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

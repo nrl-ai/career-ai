@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { RichInput } from "@reactive-resume/ui";
+import { RichInput } from "@career-ai/ui";
 
 import { useResumeStore } from "@/client/stores/resume";
 

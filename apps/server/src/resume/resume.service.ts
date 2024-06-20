@@ -5,10 +5,10 @@ import {
   Logger,
 } from "@nestjs/common";
 import { Prisma } from "@prisma/client";
-import { CreateResumeDto, ImportResumeDto, ResumeDto, UpdateResumeDto } from "@reactive-resume/dto";
-import { defaultResumeData, ResumeData } from "@reactive-resume/schema";
-import type { DeepPartial } from "@reactive-resume/utils";
-import { ErrorMessage, generateRandomName, kebabCase } from "@reactive-resume/utils";
+import { CreateResumeDto, ImportResumeDto, ResumeDto, UpdateResumeDto } from "@career-ai/dto";
+import { defaultResumeData, ResumeData } from "@career-ai/schema";
+import type { DeepPartial } from "@career-ai/utils";
+import { ErrorMessage, generateRandomName, kebabCase } from "@career-ai/utils";
 import deepmerge from "deepmerge";
 import { PrismaService } from "nestjs-prisma";
 

@@ -19,12 +19,12 @@
       "@/artboard/*": ["apps/artboard/src/*"],
       "@/client/*": ["apps/client/src/*"],
       "@/server/*": ["apps/server/src/*"],
-      "@reactive-resume/dto": ["libs/dto/src/index.ts"],
-      "@reactive-resume/hooks": ["libs/hooks/src/index.ts"],
-      "@reactive-resume/parser": ["libs/parser/src/index.ts"],
-      "@reactive-resume/schema": ["libs/schema/src/index.ts"],
-      "@reactive-resume/ui": ["libs/ui/src/index.ts"],
-      "@reactive-resume/utils": ["libs/utils/src/index.ts"]
+      "@career-ai/dto": ["libs/dto/src/index.ts"],
+      "@career-ai/hooks": ["libs/hooks/src/index.ts"],
+      "@career-ai/parser": ["libs/parser/src/index.ts"],
+      "@career-ai/schema": ["libs/schema/src/index.ts"],
+      "@career-ai/ui": ["libs/ui/src/index.ts"],
+      "@career-ai/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "dist", "tmp", ".nx"]

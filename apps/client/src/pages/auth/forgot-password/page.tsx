@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/macro";
 import { ArrowLeft } from "@phosphor-icons/react";
-import { forgotPasswordSchema } from "@reactive-resume/dto";
+import { forgotPasswordSchema } from "@career-ai/dto";
 import {
   Alert,
   AlertDescription,
@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";

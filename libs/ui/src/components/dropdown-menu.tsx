@@ -1,6 +1,6 @@
 import { CaretRight, Check, DotOutline } from "@phosphor-icons/react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { forwardRef } from "react";
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;

@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { Book, SignOut } from "@phosphor-icons/react";
-import { Button } from "@reactive-resume/ui";
+import { Button } from "@career-ai/ui";
 import { Link } from "react-router-dom";
 
 import { useLogout } from "@/client/services/auth";

@@ -1,5 +1,5 @@
-import { ResumeData, resumeDataSchema } from "@reactive-resume/schema";
-import { Json } from "@reactive-resume/utils";
+import { ResumeData, resumeDataSchema } from "@career-ai/schema";
+import { Json } from "@career-ai/utils";
 import { Schema } from "zod";
 
 import { Parser } from "../interfaces/parser";

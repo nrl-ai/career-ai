@@ -1,5 +1,5 @@
 import { DotsSixVertical } from "@phosphor-icons/react";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import * as PanelPrimitive from "react-resizable-panels";
 
 export const PanelGroup = PanelPrimitive.PanelGroup;

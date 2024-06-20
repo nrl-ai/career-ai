@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { Translate } from "@phosphor-icons/react";
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@reactive-resume/ui";
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@career-ai/ui";
 import { useState } from "react";
 
 import { changeLanguage } from "../providers/locale";

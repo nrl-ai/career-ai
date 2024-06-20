@@ -1,7 +1,7 @@
 import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { Language, languages } from "@reactive-resume/utils";
+import { Language, languages } from "@career-ai/utils";
 
 import { Config } from "../config/schema";
 

@@ -1,4 +1,4 @@
-import { cn, isUrl } from "@reactive-resume/utils";
+import { cn, isUrl } from "@career-ai/utils";
 
 import { useArtboardStore } from "../store/artboard";
 

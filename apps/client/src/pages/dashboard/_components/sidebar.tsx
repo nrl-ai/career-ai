@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro";
 import { FadersHorizontal, Newspaper, HouseSimple, Toolbox, CameraPlus } from "@phosphor-icons/react";
-import { Button, KeyboardShortcut, Separator } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useKeyboardShortcut from "use-keyboard-shortcut";

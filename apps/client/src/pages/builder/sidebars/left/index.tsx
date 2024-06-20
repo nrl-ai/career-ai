@@ -14,8 +14,8 @@ import {
   Reference,
   Skill,
   Volunteer,
-} from "@reactive-resume/schema";
-import { Button, ScrollArea, Separator } from "@reactive-resume/ui";
+} from "@career-ai/schema";
+import { Button, ScrollArea, Separator } from "@career-ai/ui";
 import { Fragment, useRef } from "react";
 import { Link } from "react-router-dom";
 

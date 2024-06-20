@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { Separator } from "@reactive-resume/ui";
+import { Separator } from "@career-ai/ui";
 import { Link } from "react-router-dom";
 
 import { Copyright } from "@/client/components/copyright";

@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro";
 import { createId } from "@paralleldrive/cuid2";
 import { DotsSixVertical, Envelope, Plus, X } from "@phosphor-icons/react";
-import { CustomField as ICustomField } from "@reactive-resume/schema";
+import { CustomField as ICustomField } from "@career-ai/schema";
 import {
   Button,
   Input,
@@ -9,8 +9,8 @@ import {
   PopoverContent,
   PopoverTrigger,
   Tooltip,
-} from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+} from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { AnimatePresence, Reorder, useDragControls } from "framer-motion";
 
 import { useResumeStore } from "@/client/stores/resume";

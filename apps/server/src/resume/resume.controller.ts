@@ -19,9 +19,9 @@ import {
   importResumeSchema,
   ResumeDto,
   UpdateResumeDto,
-} from "@reactive-resume/dto";
-import { resumeDataSchema } from "@reactive-resume/schema";
-import { ErrorMessage } from "@reactive-resume/utils";
+} from "@career-ai/dto";
+import { resumeDataSchema } from "@career-ai/schema";
+import { ErrorMessage } from "@career-ai/utils";
 import { zodToJsonSchema } from "zod-to-json-schema";
 
 import { User } from "@/server/user/decorators/user.decorator";

@@ -1,6 +1,6 @@
 import { X } from "@phosphor-icons/react";
 import * as ToastPrimitives from "@radix-ui/react-toast";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { type VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 

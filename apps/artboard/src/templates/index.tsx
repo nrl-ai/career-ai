@@ -1,4 +1,4 @@
-import { Template } from "@reactive-resume/utils";
+import { Template } from "@career-ai/utils";
 
 import { Azurill } from "./azurill";
 import { Bronzor } from "./bronzor";

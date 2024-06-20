@@ -25,7 +25,7 @@ import {
   TextAa,
   Translate,
 } from "@phosphor-icons/react";
-import { cn, languages, templatesList } from "@reactive-resume/utils";
+import { cn, languages, templatesList } from "@career-ai/utils";
 import { motion } from "framer-motion";
 
 type Feature = {

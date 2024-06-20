@@ -1,6 +1,6 @@
-import { useBreakpoint } from "@reactive-resume/hooks";
-import { Panel, PanelGroup, PanelResizeHandle, Sheet, SheetContent } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { useBreakpoint } from "@career-ai/hooks";
+import { Panel, PanelGroup, PanelResizeHandle, Sheet, SheetContent } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { Outlet } from "react-router-dom";
 
 import { useBuilderStore } from "@/client/stores/builder";

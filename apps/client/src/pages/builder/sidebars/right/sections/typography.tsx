@@ -1,8 +1,8 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 
 import { t } from "@lingui/macro";
-import { Button, Combobox, ComboboxOption, Label, Slider, Switch } from "@reactive-resume/ui";
-import { cn, fonts } from "@reactive-resume/utils";
+import { Button, Combobox, ComboboxOption, Label, Slider, Switch } from "@career-ai/ui";
+import { cn, fonts } from "@career-ai/utils";
 import { useCallback, useEffect, useState } from "react";
 import webfontloader from "webfontloader";
 

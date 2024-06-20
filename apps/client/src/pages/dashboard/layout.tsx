@@ -1,5 +1,5 @@
 import { SidebarSimple } from "@phosphor-icons/react";
-import { Button, Sheet, SheetClose, SheetContent, SheetTrigger } from "@reactive-resume/ui";
+import { Button, Sheet, SheetClose, SheetContent, SheetTrigger } from "@career-ai/ui";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";

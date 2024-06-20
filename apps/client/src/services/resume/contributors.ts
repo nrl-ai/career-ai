@@ -1,4 +1,4 @@
-import { ContributorDto } from "@reactive-resume/dto";
+import { ContributorDto } from "@career-ai/dto";
 import { useQuery } from "@tanstack/react-query";
 
 import { axios } from "@/client/libs/axios";

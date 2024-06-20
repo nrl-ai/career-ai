@@ -1,5 +1,5 @@
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
-import { ResumeDto } from "@reactive-resume/dto";
+import { ResumeDto } from "@career-ai/dto";
 
 export const Resume = createParamDecorator(
   (data: keyof ResumeDto | undefined, ctx: ExecutionContext) => {

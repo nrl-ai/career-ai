@@ -1,7 +1,7 @@
 import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { ContributorDto } from "@reactive-resume/dto";
+import { ContributorDto } from "@career-ai/dto";
 
 import { Config } from "../config/schema";
 

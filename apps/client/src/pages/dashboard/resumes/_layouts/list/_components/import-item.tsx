@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { DownloadSimple } from "@phosphor-icons/react";
-import { KeyboardShortcut } from "@reactive-resume/ui";
+import { KeyboardShortcut } from "@career-ai/ui";
 
 import { useDialog } from "@/client/stores/dialog";
 

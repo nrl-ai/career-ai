@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
-import { Input, Label, Popover, PopoverContent, PopoverTrigger } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { Input, Label, Popover, PopoverContent, PopoverTrigger } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { HexColorPicker } from "react-colorful";
 
 import { colors } from "@/client/constants/colors";

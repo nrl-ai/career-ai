@@ -1,4 +1,4 @@
-import { AuthResponseDto, LoginDto } from "@reactive-resume/dto";
+import { AuthResponseDto, LoginDto } from "@career-ai/dto";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";

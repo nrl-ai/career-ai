@@ -1,5 +1,5 @@
 import * as SliderPrimitive from "@radix-ui/react-slider";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { forwardRef } from "react";
 
 export const Slider = forwardRef<

@@ -1,5 +1,5 @@
-import { Card } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { Card } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import Tilt from "react-parallax-tilt";
 
 import { defaultTiltProps } from "@/client/constants/parallax-tilt";

@@ -8,8 +8,8 @@
 ### 1. Fork and Clone the Repository
 
 ```sh
-git clone https://github.com/{your-github-username}/Reactive-Resume.git
-cd Reactive-Resume
+git clone https://github.com/{your-github-username}/career-ai.git
+cd career-ai
 ```
 
 ### 2. Install dependencies
@@ -29,10 +29,10 @@ Please have a brief look over the environment variables and change them if neces
 ### 4. Fire up all the required services through Docker Compose
 
 ```sh
-docker compose -f tools/compose/development.yml --env-file .env -p reactive-resume up -d
+docker compose -f tools/compose/development.yml --env-file .env -p career-ai up -d
 ```
 
-It should take just under half a minute for all the services to be booted up correctly. You can check the status of all services by running `docker compose -p reactive-resume ps`
+It should take just under half a minute for all the services to be booted up correctly. You can check the status of all services by running `docker compose -p career-ai ps`
 
 ### 5. Run the development server
 

@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { ScrollArea, Separator } from "@reactive-resume/ui";
+import { ScrollArea, Separator } from "@career-ai/ui";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 

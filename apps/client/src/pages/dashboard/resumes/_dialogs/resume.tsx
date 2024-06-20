@@ -1,8 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/macro";
 import { CaretDown, Flask, MagicWand, Plus } from "@phosphor-icons/react";
-import { createResumeSchema, ResumeDto } from "@reactive-resume/dto";
-import { idSchema, sampleResume } from "@reactive-resume/schema";
+import { createResumeSchema, ResumeDto } from "@career-ai/dto";
+import { idSchema, sampleResume } from "@career-ai/schema";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -32,8 +32,8 @@ import {
   FormMessage,
   Input,
   Tooltip,
-} from "@reactive-resume/ui";
-import { cn, generateRandomName, kebabCase } from "@reactive-resume/utils";
+} from "@career-ai/ui";
+import { cn, generateRandomName, kebabCase } from "@career-ai/utils";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

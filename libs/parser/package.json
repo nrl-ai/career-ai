@@ -1,5 +1,5 @@
 {
-  "name": "@reactive-resume/parser",
+  "name": "@career-ai/parser",
   "version": "0.0.1",
   "private": false,
   "type": "commonjs",
@@ -9,8 +9,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@reactive-resume/schema": "*",
-    "@reactive-resume/utils": "*",
+    "@career-ai/schema": "*",
+    "@career-ai/utils": "*",
     "nestjs-zod": "^3.0.0",
     "zod": "^3.23.8",
     "@paralleldrive/cuid2": "^2.2.2",

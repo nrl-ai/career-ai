@@ -1,4 +1,4 @@
-import { BackupCodesDto, TwoFactorDto } from "@reactive-resume/dto";
+import { BackupCodesDto, TwoFactorDto } from "@career-ai/dto";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 

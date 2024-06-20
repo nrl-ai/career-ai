@@ -1,5 +1,5 @@
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { forwardRef } from "react";
 
 export const HoverCard = HoverCardPrimitive.Root;

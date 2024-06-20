@@ -27,7 +27,7 @@ import {
   TextStrikethrough,
 } from "@phosphor-icons/react";
 import { PopoverTrigger } from "@radix-ui/react-popover";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { Bold } from "@tiptap/extension-bold";
 import { BulletList } from "@tiptap/extension-bullet-list";
 import { Code } from "@tiptap/extension-code";

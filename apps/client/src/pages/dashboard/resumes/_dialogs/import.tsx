@@ -9,8 +9,8 @@ import {
   ReactiveResumeParser,
   ReactiveResumeV3,
   ReactiveResumeV3Parser,
-} from "@reactive-resume/parser";
-import { ResumeData } from "@reactive-resume/schema";
+} from "@career-ai/parser";
+import { ResumeData } from "@career-ai/schema";
 import {
   Button,
   Dialog,
@@ -34,7 +34,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -45,8 +45,8 @@ import { useImportResume } from "@/client/services/resume/import";
 import { useDialog } from "@/client/stores/dialog";
 
 enum ImportType {
-  "reactive-resume-json" = "reactive-resume-json",
-  "reactive-resume-v3-json" = "reactive-resume-v3-json",
+  "career-ai-json" = "career-ai-json",
+  "career-ai-v3-json" = "career-ai-v3-json",
   "json-resume-json" = "json-resume-json",
   "linkedin-data-export-zip" = "linkedin-data-export-zip",
 }
@@ -78,7 +78,7 @@ export const ImportDialog = () => {
 
   const form = useForm<FormValues>({
     defaultValues: {
-      type: ImportType["reactive-resume-json"],
+      type: ImportType["career-ai-json"],
     },
     resolver: zodResolver(formSchema),
   });
@@ -103,7 +103,7 @@ export const ImportDialog = () => {
     try {
       const { file, type } = formSchema.parse(form.getValues());
 
-      if (type === ImportType["reactive-resume-json"]) {
+      if (type === ImportType["career-ai-json"]) {
         const parser = new ReactiveResumeParser();
         const data = await parser.readFile(file);
         const result = parser.validate(data);
@@ -111,7 +111,7 @@ export const ImportDialog = () => {
         setValidationResult({ isValid: true, type, result });
       }
 
-      if (type === ImportType["reactive-resume-v3-json"]) {
+      if (type === ImportType["career-ai-v3-json"]) {
         const parser = new ReactiveResumeV3Parser();
         const data = await parser.readFile(file);
         const result = parser.validate(data);
@@ -155,14 +155,14 @@ export const ImportDialog = () => {
     if (!validationResult?.isValid || validationResult.type !== type) return;
 
     try {
-      if (type === ImportType["reactive-resume-json"]) {
+      if (type === ImportType["career-ai-json"]) {
         const parser = new ReactiveResumeParser();
         const data = parser.convert(validationResult.result as ResumeData);
 
         await importResume({ data });
       }
 
-      if (type === ImportType["reactive-resume-v3-json"]) {
+      if (type === ImportType["career-ai-v3-json"]) {
         const parser = new ReactiveResumeV3Parser();
         const data = parser.convert(validationResult.result as ReactiveResumeV3);
 
@@ -228,11 +228,11 @@ export const ImportDialog = () => {
                       </SelectTrigger>
                       <SelectContent>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                        <SelectItem value="reactive-resume-json">
+                        <SelectItem value="career-ai-json">
                           CareerAI (.json)
                         </SelectItem>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                        <SelectItem value="reactive-resume-v3-json">
+                        <SelectItem value="career-ai-v3-json">
                           CareerAI v3 (.json)
                         </SelectItem>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}

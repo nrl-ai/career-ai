@@ -1,8 +1,8 @@
 import { t } from "@lingui/macro";
 import { CircleNotch, FilePdf } from "@phosphor-icons/react";
-import { ResumeDto } from "@reactive-resume/dto";
-import { Button } from "@reactive-resume/ui";
-import { pageSizeMap } from "@reactive-resume/utils";
+import { ResumeDto } from "@career-ai/dto";
+import { Button } from "@career-ai/ui";
+import { pageSizeMap } from "@career-ai/utils";
 import { useCallback, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, LoaderFunction, redirect, useLoaderData } from "react-router-dom";

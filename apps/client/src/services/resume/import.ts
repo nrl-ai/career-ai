@@ -1,4 +1,4 @@
-import { ImportResumeDto, ResumeDto } from "@reactive-resume/dto";
+import { ImportResumeDto, ResumeDto } from "@career-ai/dto";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 

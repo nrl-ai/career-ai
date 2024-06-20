@@ -1,5 +1,5 @@
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { forwardRef } from "react";
 
 export const Switch = forwardRef<

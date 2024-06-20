@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t, Trans } from "@lingui/macro";
-import { useTheme } from "@reactive-resume/hooks";
+import { useTheme } from "@career-ai/hooks";
 import {
   Button,
   Combobox,
@@ -9,8 +9,8 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+} from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

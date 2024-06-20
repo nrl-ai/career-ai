@@ -20,15 +20,15 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { t, Trans } from "@lingui/macro";
 import { ArrowCounterClockwise, DotsSixVertical, Plus, TrashSimple } from "@phosphor-icons/react";
-import { defaultMetadata } from "@reactive-resume/schema";
-import { Button, Portal, Tooltip } from "@reactive-resume/ui";
+import { defaultMetadata } from "@career-ai/schema";
+import { Button, Portal, Tooltip } from "@career-ai/ui";
 import {
   cn,
   LayoutLocator,
   moveItemInLayout,
   parseLayoutLocator,
   SortablePayload,
-} from "@reactive-resume/utils";
+} from "@career-ai/utils";
 import get from "lodash.get";
 import { useState } from "react";
 

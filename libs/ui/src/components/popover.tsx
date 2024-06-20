@@ -1,5 +1,5 @@
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { cn } from "@reactive-resume/utils";
+import { cn } from "@career-ai/utils";
 import { forwardRef } from "react";
 
 export const Popover = PopoverPrimitive.Root;

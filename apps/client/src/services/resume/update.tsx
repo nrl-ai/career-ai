@@ -1,4 +1,4 @@
-import { ResumeDto, UpdateResumeDto } from "@reactive-resume/dto";
+import { ResumeDto, UpdateResumeDto } from "@career-ai/dto";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 import debounce from "lodash.debounce";

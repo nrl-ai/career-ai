@@ -1,4 +1,4 @@
-import { idSchema } from "@reactive-resume/schema";
+import { idSchema } from "@career-ai/schema";
 import { z } from "nestjs-zod/z";
 
 export const payloadSchema = z.object({

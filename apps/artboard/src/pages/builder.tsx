@@ -1,5 +1,5 @@
-import { SectionKey } from "@reactive-resume/schema";
-import { pageSizeMap, Template } from "@reactive-resume/utils";
+import { SectionKey } from "@career-ai/schema";
+import { pageSizeMap, Template } from "@career-ai/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useRef } from "react";
 import { ReactZoomPanPinchRef, TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";

@@ -1,6 +1,6 @@
 import { CloudSun, Moon, Sun } from "@phosphor-icons/react";
-import { useTheme } from "@reactive-resume/hooks";
-import { Button } from "@reactive-resume/ui";
+import { useTheme } from "@career-ai/hooks";
+import { Button } from "@career-ai/ui";
 import { motion, Variants } from "framer-motion";
 import { useMemo } from "react";
 

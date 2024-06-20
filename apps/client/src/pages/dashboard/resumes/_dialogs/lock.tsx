@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { ResumeDto } from "@reactive-resume/dto";
+import { ResumeDto } from "@career-ai/dto";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,7 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 
 import { useLockResume } from "@/client/services/resume/lock";
 import { useDialog } from "@/client/stores/dialog";

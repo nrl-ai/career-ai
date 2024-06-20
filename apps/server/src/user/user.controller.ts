@@ -12,8 +12,8 @@ import {
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
-import { UpdateUserDto, UserDto } from "@reactive-resume/dto";
-import { ErrorMessage } from "@reactive-resume/utils";
+import { UpdateUserDto, UserDto } from "@career-ai/dto";
+import { ErrorMessage } from "@career-ai/utils";
 import type { Response } from "express";
 
 import { AuthService } from "../auth/auth.service";

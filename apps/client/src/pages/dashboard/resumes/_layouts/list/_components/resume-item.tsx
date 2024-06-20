@@ -8,7 +8,7 @@ import {
   PencilSimple,
   TrashSimple,
 } from "@phosphor-icons/react";
-import { ResumeDto } from "@reactive-resume/dto";
+import { ResumeDto } from "@career-ai/dto";
 import {
   Button,
   ContextMenu,
@@ -20,7 +20,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@reactive-resume/ui";
+} from "@career-ai/ui";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 

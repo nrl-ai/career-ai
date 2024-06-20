@@ -1,4 +1,4 @@
-import { ResumeData } from "@reactive-resume/schema";
+import { ResumeData } from "@career-ai/schema";
 import { ZodDto } from "nestjs-zod/dto";
 import { Schema } from "zod";
 

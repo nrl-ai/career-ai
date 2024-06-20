@@ -1,6 +1,6 @@
-import { defaultSections } from "@reactive-resume/schema";
-import { RichInput } from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+import { defaultSections } from "@career-ai/schema";
+import { RichInput } from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 
 import { AiActions } from "@/client/components/ai-actions";
 import { useResumeStore } from "@/client/stores/resume";

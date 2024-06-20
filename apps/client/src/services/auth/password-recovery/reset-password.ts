@@ -1,4 +1,4 @@
-import { ResetPasswordDto } from "@reactive-resume/dto";
+import { ResetPasswordDto } from "@career-ai/dto";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 

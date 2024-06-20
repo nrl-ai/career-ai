@@ -11,8 +11,8 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@reactive-resume/ui";
-import { cn } from "@reactive-resume/utils";
+} from "@career-ai/ui";
+import { cn } from "@career-ai/utils";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
