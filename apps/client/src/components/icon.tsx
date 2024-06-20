@@ -2,11 +2,12 @@ import { useTheme } from "@reactive-resume/hooks";
 import { cn } from "@reactive-resume/utils";
 
 type Props = {
+  open?: boolean;
   size?: number;
   className?: string;
 };
 
-export const Icon = ({ size = 32, className }: Props) => {
+export const Icon = ({ open = false, size = 32, className }: Props) => {
   const { isDarkMode } = useTheme();
 
   let src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -31,7 +32,7 @@ export const Icon = ({ size = 32, className }: Props) => {
         alt="CareerAI"
         className={cn("rounded-sm", className)}
       /> */}
-      <span className="text-3xl font-bold">CareerAI</span>
+      {open ? <span className="text-3xl font-bold">CareerAI</span> :  <span className="text-3xl font-bold">C</span>}
     </>
   );
 };

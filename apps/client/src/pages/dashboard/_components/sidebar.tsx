@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { FadersHorizontal, ReadCvLogo } from "@phosphor-icons/react";
+import { FadersHorizontal, Newspaper, HouseSimple, Toolbox, CameraPlus } from "@phosphor-icons/react";
 import { Button, KeyboardShortcut, Separator } from "@reactive-resume/ui";
 import { cn } from "@reactive-resume/utils";
 import { motion } from "framer-motion";
@@ -63,10 +63,11 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
 };
 
 type SidebarProps = {
+  isOpen?: boolean;
   setOpen?: (open: boolean) => void;
 };
 
-export const Sidebar = ({ setOpen }: SidebarProps) => {
+export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -80,42 +81,27 @@ export const Sidebar = ({ setOpen }: SidebarProps) => {
     setOpen?.(false);
   });
 
-  const sidebarItems: SidebarItem[] = [
+  const topItems: SidebarItem[] = [
     {
       path: "/",
       name: t`Trang chủ`,
       shortcut: "⇧R",
-      icon: <ReadCvLogo />,
-    },
+      icon: <HouseSimple />
+    }
+  ];
+
+  const sidebarItems: SidebarItem[] = [
     {
       path: "/",
       name: t`Phỏng vấn với AI `,
       shortcut: "⇧R",
-      icon: <ReadCvLogo />,
+      icon: <CameraPlus />,
     },
     {
       path: "/dashboard/resumes",
       name: t`Xây dựng CV`,
       shortcut: "⇧R",
-      icon: <ReadCvLogo />,
-    },
-    {
-      path: "/dashboard/",
-      name: t`Khóa học kĩ năng`,
-      shortcut: "⇧R",
-      icon: <ReadCvLogo />,
-    },
-    {
-      path: "/dashboard/",
-      name: t`Kinh nghiệm xin việc`,
-      shortcut: "⇧R",
-      icon: <ReadCvLogo />,
-    },
-    {
-      path: "",
-      name: t`Tính lương GROSS-NET`,
-      shortcut: "⇧R",
-      icon: <ReadCvLogo />,
+      icon: <Newspaper />,
     },
     {
       path: "/dashboard/settings",
@@ -125,20 +111,55 @@ export const Sidebar = ({ setOpen }: SidebarProps) => {
     },
   ];
 
+  const libraryItems: SidebarItem[] = [
+    {
+      path: "/dashboard/",
+      name: t`Khóa học kĩ năng`,
+      shortcut: "⇧R",
+      icon: <FadersHorizontal />,
+    },
+    {
+      path: "/dashboard/",
+      name: t`Kinh nghiệm xin việc`,
+      shortcut: "⇧R",
+      icon: <FadersHorizontal />,
+    },
+  ];
+
+  const toolItems: SidebarItem[] = [
+    {
+      path: "",
+      name: t`Tính lương GROSS-NET`,
+      shortcut: "⇧R",
+      icon: <Toolbox />,
+    },
+  ];
+
   return (
     <div className="flex h-full flex-col gap-y-4">
-      <div className="ml-12 flex justify-center lg:ml-0">
-        <Button asChild size="icon" variant="ghost" className="size-10 p-0">
+      <div className="ml-12 flex lg:ml-0">
+        <Button asChild size="icon" variant="ghost" className="w-full text-left justify-start">
           <Link to="/">
-            <Icon size={24} className="mx-auto hidden lg:block" />
+            <Icon open={true} size={24} className="hidden lg:block" />
           </Link>
         </Button>
       </div>
 
       <Separator className="opacity-50" />
-
       <div className="grid gap-y-2">
+        {topItems.map((item) => (
+          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+        ))}
+        <h2 className="text-md font-normal ml-4 mt-2">Dịch vụ</h2>
         {sidebarItems.map((item) => (
+          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+        ))}
+        <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
+        {libraryItems.map((item) => (
+          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+        ))}
+        <h2 className="text-md font-normal ml-4 mt-6">Công cụ</h2>
+        {toolItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
       </div>

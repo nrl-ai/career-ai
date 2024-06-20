@@ -26,7 +26,7 @@ export const DashboardLayout = () => {
               </Button>
             </SheetClose>
 
-            <Sidebar setOpen={setOpen} />
+            <Sidebar isOpen={open} setOpen={setOpen} />
           </SheetContent>
         </Sheet>
       </div>
