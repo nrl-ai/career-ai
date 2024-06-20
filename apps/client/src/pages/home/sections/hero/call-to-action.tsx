@@ -20,7 +20,7 @@ export const HeroCTA = () => {
 
         <Button size="lg" variant="link" onClick={() => logout()}>
           <SignOut className="mr-3" />
-          {t`Đăng xuất`}
+          {t`Logout`}
         </Button>
       </>
     );

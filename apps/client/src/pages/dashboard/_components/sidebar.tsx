@@ -84,28 +84,28 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const topItems: SidebarItem[] = [
     {
       path: "/",
-      name: t`Trang chủ`,
-      shortcut: "⇧R",
+      name: `Trang chủ`,
+      shortcut: "⇧H",
       icon: <HouseSimple />
     }
   ];
 
-  const sidebarItems: SidebarItem[] = [
+  const serviceItems: SidebarItem[] = [
     {
       path: "/",
-      name: t`Phỏng vấn với AI `,
-      shortcut: "⇧R",
+      name: `Phỏng vấn với AI `,
+      shortcut: "⇧I",
       icon: <CameraPlus />,
     },
     {
       path: "/dashboard/resumes",
-      name: t`Xây dựng CV`,
-      shortcut: "⇧R",
+      name: `Xây dựng CV`,
+      shortcut: "⇧C",
       icon: <Newspaper />,
     },
     {
       path: "/dashboard/settings",
-      name: t`Thiết lập`,
+      name: `Thiết lập`,
       shortcut: "⇧S",
       icon: <FadersHorizontal />,
     },
@@ -114,14 +114,14 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const libraryItems: SidebarItem[] = [
     {
       path: "/dashboard/",
-      name: t`Khóa học kĩ năng`,
-      shortcut: "⇧R",
+      name: `Khóa học kĩ năng`,
+      shortcut: "⇧K",
       icon: <FadersHorizontal />,
     },
     {
       path: "/dashboard/",
-      name: t`Kinh nghiệm xin việc`,
-      shortcut: "⇧R",
+      name: `Kinh nghiệm xin việc`,
+      shortcut: "⇧E",
       icon: <FadersHorizontal />,
     },
   ];
@@ -129,8 +129,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const toolItems: SidebarItem[] = [
     {
       path: "",
-      name: t`Tính lương GROSS-NET`,
-      shortcut: "⇧R",
+      name: `Tính lương GROSS-NET`,
       icon: <Toolbox />,
     },
   ];
@@ -151,7 +150,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
         <h2 className="text-md font-normal ml-4 mt-2">Dịch vụ</h2>
-        {sidebarItems.map((item) => (
+        {serviceItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
         <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
