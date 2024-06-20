@@ -1,5 +1,15 @@
 # CareerAI
 
+- Run the server
+
+```
+# Build Docker:
+bash build-docker.sh
+
+# Run server
+sudo docker compose -f tools/compose/traefik-secure.yml up -d
+```
+
 ## Features
 
 - **Free, forever** and open-source

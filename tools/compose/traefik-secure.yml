@@ -1,9 +1,9 @@
 version: "3.8"
 
 # In this Docker Compose example, we use Traefik to route requests to the app and storage containers in a secure manner (HTTPS).
-# This example assumes you have a domain name (example.com) and a wildcard DNS record pointing to your server.
+# This example assumes you have a domain name (career-ai.vn) and a wildcard DNS record pointing to your server.
 # The only exposed ports here are from Traefik (80 and 443). All non-secure requests are redirected to HTTPS.
-# Note: Please change `example.com` to your domain name where necessary.
+# Note: Please change `career-ai.vn` to your domain name where necessary.
 
 services:
   # Database (Postgres)
@@ -30,11 +30,11 @@ services:
     volumes:
       - minio_data:/data
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_ROOT_USER: miniocareerai
+      MINIO_ROOT_PASSWORD: 23nmidf3434dsddsf
     labels:
       - traefik.enable=true
-      - traefik.http.routers.storage.rule=Host(`storage.example.com`)
+      - traefik.http.routers.storage.rule=Host(`storage.career-ai.vn`)
       - traefik.http.routers.storage.entrypoints=websecure
       - traefik.http.routers.storage.tls.certresolver=letsencrypt
       - traefik.http.services.storage.loadbalancer.server.port=9000
@@ -51,7 +51,7 @@ services:
       PRE_REQUEST_HEALTH_CHECK: true
     labels:
       - traefik.enable=true
-      - traefik.http.routers.printer.rule=Host(`printer.example.com`)
+      - traefik.http.routers.printer.rule=Host(`printer.career-ai.vn`)
       - traefik.http.routers.printer.entrypoints=websecure
       - traefik.http.routers.printer.tls.certresolver=letsencrypt
       - traefik.http.services.printer.loadbalancer.server.port=3000
@@ -69,22 +69,22 @@ services:
       NODE_ENV: production
 
       # -- URLs --
-      PUBLIC_URL: https://example.com
-      STORAGE_URL: https://storage.example.com
+      PUBLIC_URL: https://www.career-ai.vn
+      STORAGE_URL: https://storage.career-ai.vn
 
       # -- Printer (Chrome) --
       CHROME_TOKEN: chrome_token
-      CHROME_URL: wss://printer.example.com
+      CHROME_URL: wss://printer.career-ai.vn
 
       # -- Database (Postgres) --
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/postgres
 
       # -- Auth --
-      ACCESS_TOKEN_SECRET: access_token_secret
-      REFRESH_TOKEN_SECRET: refresh_token_secret
+      ACCESS_TOKEN_SECRET: kWl5buuWPTxjD10ty0jmvkWOvqQVyhuWs3qlUuSZWm0DpIGjw59ctl5ErRwTiERh
+      REFRESH_TOKEN_SECRET: i0q5SIwkrkyLZoMmcHxoEQ==
 
       # -- Emails --
-      MAIL_FROM: noreply@example.com
+      MAIL_FROM: noreply@career-ai.vn
       # SMTP_URL: smtp://user:pass@smtp:587 # Optional
 
       # -- Storage (Minio) --
@@ -92,8 +92,8 @@ services:
       STORAGE_PORT: 9000
       STORAGE_REGION: us-east-1 # Optional
       STORAGE_BUCKET: default
-      STORAGE_ACCESS_KEY: minioadmin
-      STORAGE_SECRET_KEY: minioadmin
+      STORAGE_ACCESS_KEY: miniocareerai
+      STORAGE_SECRET_KEY: 23nmidf3434dsddsf
       STORAGE_USE_SSL: false
       STORAGE_SKIP_BUCKET_CHECK: false
 
@@ -108,15 +108,15 @@ services:
       # -- GitHub (Optional) --
       # GITHUB_CLIENT_ID: github_client_id
       # GITHUB_CLIENT_SECRET: github_client_secret
-      # GITHUB_CALLBACK_URL: https://example.com/api/auth/github/callback
+      # GITHUB_CALLBACK_URL: https://career-ai.vn/api/auth/github/callback
 
       # -- Google (Optional) --
       # GOOGLE_CLIENT_ID: google_client_id
       # GOOGLE_CLIENT_SECRET: google_client_secret
-      # GOOGLE_CALLBACK_URL: https://example.com/api/auth/google/callback
+      # GOOGLE_CALLBACK_URL: https://career-ai.vn/api/auth/google/callback
     labels:
       - traefik.enable=true
-      - traefik.http.routers.app.rule=Host(`example.com`)
+      - traefik.http.routers.app.rule=Host(`www.career-ai.vn`)
       - traefik.http.routers.app.entrypoints=websecure
       - traefik.http.routers.app.tls.certresolver=letsencrypt
       - traefik.http.services.app.loadbalancer.server.port=3000
@@ -130,11 +130,12 @@ services:
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
       - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
-      - --certificatesresolvers.letsencrypt.acme.email=noreply@example.com
+      - --certificatesresolvers.letsencrypt.acme.email=noreply@career-ai.vn
       - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
 
       # Let's Encrypt Staging Server (for testing)
-      - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
+      # - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-v02.api.letsencrypt.org/directory
 
       # Redirect all HTTP requests to HTTPS
       - --entrypoints.web.http.redirections.entrypoint.to=websecure

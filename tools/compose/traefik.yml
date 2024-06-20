@@ -1,9 +1,9 @@
 version: "3.8"
 
 # In this Docker Compose example, we use Traefik to route requests to the app and storage containers.
-# This example assumes you have a domain name (example.com) and a wildcard DNS record pointing to your server.
+# This example assumes you have a domain name (www.career-ai.vn) and a wildcard DNS record pointing to your server.
 # The only exposed port here is from Traefik (80). If you choose to use SSL, check the Traefik docs for more info.
-# Note: Please change `example.com` to your domain name where necessary.
+# Note: Please change `www.career-ai.vn` to your domain name where necessary.
 
 services:
   # Database (Postgres)
@@ -34,7 +34,7 @@ services:
       MINIO_ROOT_PASSWORD: minioadmin
     labels:
       - traefik.enable=true
-      - traefik.http.routers.storage.rule=Host(`storage.example.com`)
+      - traefik.http.routers.storage.rule=Host(`storage.career-ai.vn`)
       - traefik.http.services.storage.loadbalancer.server.port=9000
 
   # Chrome Browser (for printing and previews)
@@ -49,11 +49,11 @@ services:
       PRE_REQUEST_HEALTH_CHECK: true
     labels:
       - traefik.enable=true
-      - traefik.http.routers.printer.rule=Host(`printer.example.com`)
+      - traefik.http.routers.printer.rule=Host(`printer.career-ai.vn`)
       - traefik.http.services.printer.loadbalancer.server.port=3000
 
   app:
-    image: vietanhdev/career-ai:latest
+    # image: vietanhdev/career-ai:latest
     restart: unless-stopped
     depends_on:
       - postgres
@@ -65,8 +65,8 @@ services:
       NODE_ENV: production
 
       # -- URLs --
-      PUBLIC_URL: http://example.com
-      STORAGE_URL: http://storage.example.com
+      PUBLIC_URL: http://www.career-ai.vn
+      STORAGE_URL: http://storage.career-ai.vn
 
       # -- Printer (Chrome) --
       CHROME_TOKEN: chrome_token
@@ -80,7 +80,7 @@ services:
       REFRESH_TOKEN_SECRET: refresh_token_secret
 
       # -- Emails --
-      MAIL_FROM: noreply@example.com
+      MAIL_FROM: noreply@career-ai.vn
       # SMTP_URL: smtp://user:pass@smtp:587 # Optional
 
       # -- Storage (Minio) --
@@ -104,15 +104,15 @@ services:
       # -- GitHub (Optional) --
       # GITHUB_CLIENT_ID: github_client_id
       # GITHUB_CLIENT_SECRET: github_client_secret
-      # GITHUB_CALLBACK_URL: http://example.com/api/auth/github/callback
+      # GITHUB_CALLBACK_URL: http://www.career-ai.vn/api/auth/github/callback
 
       # -- Google (Optional) --
       # GOOGLE_CLIENT_ID: google_client_id
       # GOOGLE_CLIENT_SECRET: google_client_secret
-      # GOOGLE_CALLBACK_URL: http://example.com/api/auth/google/callback
+      # GOOGLE_CALLBACK_URL: http://www.career-ai.vn/api/auth/google/callback
     labels:
       - traefik.enable=true
-      - traefik.http.routers.app.rule=Host(`example.com`)
+      - traefik.http.routers.app.rule=Host(`www.career-ai.vn`)
       - traefik.http.services.app.loadbalancer.server.port=3000
 
   traefik:
