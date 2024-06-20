@@ -23,6 +23,7 @@ const Question2 = () => (
     <AccordionTrigger className="text-left leading-relaxed">
       How much does it cost to run CareerAI?
     </AccordionTrigger>
+    <AccordionContent>
     </AccordionContent>
   </AccordionItem>
 );

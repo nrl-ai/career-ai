@@ -3,7 +3,7 @@ import type { LinguiConfig } from "@lingui/conf";
 const config: LinguiConfig = {
   format: "po",
   sourceLocale: "en-US",
-  fallbackLocales: { default: "vi-VN" },
+  fallbackLocales: { default: "en-US" },
   locales: [
     "vi-VN",
     "en-US",
