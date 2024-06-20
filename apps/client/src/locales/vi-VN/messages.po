@@ -212,7 +212,7 @@ msgstr "Hủy"
 #: apps/client/src/pages/home/page.tsx:24
 #: apps/client/src/pages/home/sections/hero/index.tsx:40
 msgid "CareerAI"
-msgstr "Nghề nghiệpAI"
+msgstr "CareerAI"
 
 #: apps/client/src/pages/home/sections/logo-cloud/index.tsx:39
 msgid "CareerAI has helped people land jobs at these great companies:"
@@ -1346,7 +1346,7 @@ msgstr "Hỗ trợ ứng dụng bằng cách quyên góp những gì bạn có t
 
 #: apps/client/src/pages/home/sections/support/index.tsx:9
 msgid "Supporting CareerAI"
-msgstr "Hỗ trợ nghề nghiệpAI"
+msgstr "Hỗ trợ CareerAI"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:65
 msgid "Supports A4/Letter page formats"
