@@ -15,7 +15,7 @@ sudo docker compose -f tools/compose/traefik-secure.yml up -d
 - **Free, forever** and open-source
 - No telemetry, user tracking or advertising
 - You can self-host the application in less than 30 seconds
-- **Available in multiple languages** ([help add/improve your language here](https://translate.rxresu.me/))
+- **Available in multiple languages** ([help add/improve your language here](https://translate.career-ai.vn/))
 - Use your email address (or a throw-away address, no problem) to create an account
 - You can also sign in with your GitHub or Google account, and even set up two-factor authentication for extra security
 - Create as many resumes as you like under a single account, optimising each resume for every job application based on its description for a higher ATS score

@@ -69,7 +69,7 @@ const IssuesCard = () => (
         <span className="line-clamp-1">{t`Raise an issue`}</span>
       </a>
 
-      <a className={cn(buttonVariants({ size: "sm" }))} href="mailto:hello@amruthpillai.com">
+      <a className={cn(buttonVariants({ size: "sm" }))} href="mailto:contact@career-ai.vn">
         <EnvelopeSimpleOpen size={14} weight="bold" className="mr-2" />
         <span className="line-clamp-1">{t`Send me a message`}</span>
       </a>
@@ -97,7 +97,7 @@ const DocumentationCard = () => (
     <CardFooter className="space-x-4">
       <a
         className={cn(buttonVariants({ size: "sm" }))}
-        href="https://docs.rxresu.me/"
+        href="https://www.career-ai.vn/"
         target="_blank"
         rel="noopener noreferrer nofollow"
       >

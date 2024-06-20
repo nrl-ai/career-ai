@@ -50,8 +50,8 @@ msgid "A link has been copied to your clipboard."
 msgstr "Một liên kết đã được sao chép vào clipboard của bạn."
 
 #: apps/client/src/components/copyright.tsx:29
-msgid "A passion project by <0>Amruth Pillai</0>"
-msgstr "Một dự án đam mê của <0> Amruth Pillai </0>"
+msgid "A project by <0>CareerAI</0>"
+msgstr "Một dự án của <0> CareerAI </0>"
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:57
 msgid "A password reset link should have been sent to your inbox, if an account existed with the email you provided."

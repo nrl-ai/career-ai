@@ -43,20 +43,6 @@ export const LogoCloudSection = () => (
           <Logo key={company} company={company} />
         ))}
       </div>
-      <p className="mx-auto mt-8 max-w-sm text-center leading-relaxed">
-        <Trans>
-          If this app has helped you with your job hunt, let me know by reaching out through{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            href="https://www.amruthpillai.com/#contact"
-            className={cn(buttonVariants({ variant: "link" }), "p-0")}
-          >
-            this contact form
-          </a>
-          .
-        </Trans>
-      </p>
     </div>
   </section>
 );

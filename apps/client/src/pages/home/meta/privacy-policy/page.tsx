@@ -104,7 +104,7 @@ export const PrivacyPolicyPage = () => (
           <h2 className="mb-2">Contact Us</h2>
           <p>
             If you have any questions or suggestions about our Privacy Policy, do not hesitate to
-            contact us at <code>hello[at]amruthpillai[dot]com</code>.
+            contact us at <code>contact@career-ai.vn</code>.
           </p>
         </li>
       </ol>
