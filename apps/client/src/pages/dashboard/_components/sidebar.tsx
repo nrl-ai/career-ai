@@ -103,23 +103,17 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       shortcut: "⇧C",
       icon: <Newspaper />,
     },
-    {
-      path: "/dashboard/settings",
-      name: `Thiết lập`,
-      shortcut: "⇧S",
-      icon: <FadersHorizontal />,
-    },
   ];
 
   const libraryItems: SidebarItem[] = [
     {
-      path: "/dashboard/",
+      path: "/",
       name: `Khóa học kĩ năng`,
       shortcut: "⇧K",
       icon: <FadersHorizontal />,
     },
     {
-      path: "/dashboard/",
+      path: "/",
       name: `Kinh nghiệm xin việc`,
       shortcut: "⇧E",
       icon: <FadersHorizontal />,
@@ -128,9 +122,15 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
 
   const toolItems: SidebarItem[] = [
     {
-      path: "",
+      path: "/",
       name: `Tính lương GROSS-NET`,
       icon: <Toolbox />,
+    },
+    {
+      path: "/dashboard/settings",
+      name: `Thiết lập`,
+      shortcut: "⇧S",
+      icon: <FadersHorizontal />,
     },
   ];
 
@@ -161,6 +161,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
         {toolItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
+
       </div>
 
       <div className="flex-1" />
