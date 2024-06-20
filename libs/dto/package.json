@@ -1,0 +1,17 @@
+{
+  "name": "@reactive-resume/dto",
+  "version": "0.0.1",
+  "private": false,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@reactive-resume/utils": "*",
+    "@reactive-resume/schema": "*",
+    "nestjs-zod": "^3.0.0",
+    "@swc/helpers": "~0.5.11"
+  }
+}

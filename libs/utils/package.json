@@ -1,0 +1,19 @@
+{
+  "name": "@reactive-resume/utils",
+  "version": "0.0.1",
+  "private": false,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "papaparse": "^5.4.1",
+    "dayjs": "^1.11.11",
+    "unique-names-generator": "^4.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.3.0",
+    "@swc/helpers": "~0.5.11"
+  }
+}
