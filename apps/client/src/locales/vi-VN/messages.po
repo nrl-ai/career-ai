@@ -173,12 +173,12 @@ msgstr "Mã dự phòng có thể chỉ chứa chữ thường hoặc số và p
 
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:21
 msgid "Basics"
-msgstr "Khái niệm cơ bản"
+msgstr "Thông tin cơ bản"
 
 #: apps/client/src/pages/builder/sidebars/left/index.tsx:55
 msgctxt "The basics section of a resume consists of User's Picture, Full Name, Location etc."
 msgid "Basics"
-msgstr "Khái niệm cơ bản"
+msgstr "Thông tin cơ bản"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:197
 msgid "Border"
