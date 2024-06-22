@@ -936,7 +936,7 @@ msgstr "Ghi chú"
 #: apps/client/src/pages/home/components/footer.tsx:21
 #: apps/client/src/pages/home/sections/hero/index.tsx:45
 msgid "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
-msgstr "Nâng Tầm Sự Nghiệp Với CV, Phỏng Vấn và Tìm Việc Bằng AI!"
+msgstr "Nâng tầm sự nghiệp với trợ lý AI: Sửa CV, Phỏng vấn ảo, Học kĩ năng và Hơn thế nữa!"
 
 #: apps/client/src/pages/auth/verify-otp/page.tsx:82
 msgid "One-Time Password"
