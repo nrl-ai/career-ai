@@ -39,7 +39,7 @@ services:
     environment:
       TIMEOUT: 10000
       CONCURRENT: 10
-      TOKEN: chrome_token
+      TOKEN: ${CHROME_TOKEN:-chrome_token}
       EXIT_ON_HEALTH_FAILURE: true
       PRE_REQUEST_HEALTH_CHECK: true
     labels:
