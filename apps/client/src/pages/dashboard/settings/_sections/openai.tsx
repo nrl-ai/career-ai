@@ -111,16 +111,6 @@ export const OpenAISettings = () => {
         </form>
       </Form>
 
-      <div className="prose prose-sm prose-zinc max-w-full dark:prose-invert">
-        <p>
-          <Trans>
-            Your API key is securely stored in the browser's local storage and is only utilized when
-            making requests to OpenAI via their official SDK. Rest assured that your key is not
-            transmitted to any external server except when interacting with OpenAI's services.
-          </Trans>
-        </p>
-      </div>
-
       <Alert variant="warning">
         <div className="prose prose-neutral max-w-full text-xs leading-relaxed text-primary dark:prose-invert">
           <Trans>

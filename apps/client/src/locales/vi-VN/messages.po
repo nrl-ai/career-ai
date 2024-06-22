@@ -811,7 +811,7 @@ msgstr "Được cấp phép theo <0> MIT </0>"
 
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:86
 msgid "Light"
-msgstr "Ánh sáng"
+msgstr "Sáng"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:69
 msgid "Light or dark theme"

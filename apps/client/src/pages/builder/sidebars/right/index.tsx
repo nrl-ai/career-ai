@@ -46,8 +46,8 @@ export const RightSidebar = () => {
           <ExportSection />
           <Separator />
           <NotesSection />
-          <Separator />
-          <InformationSection />
+          {/* <Separator /> */}
+          {/* <InformationSection /> */}
           <Separator />
           <Copyright className="text-center" />
         </div>
