@@ -199,8 +199,8 @@ msgstr "Bởi cộng đồng, vì cộng đồng."
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
 #: apps/client/src/pages/home/sections/hero/call-to-action.tsx:18
-msgid "Bắt đầu ngay"
-msgstr "Bắt đầu ngay"
+msgid "Build Your Resume"
+msgstr "Xây Hồ Sơ Của Bạn"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:131
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:49
@@ -770,7 +770,7 @@ msgid "Keywords"
 msgstr "Từ khóa"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:32
-msgid "Khám phá ngay"
+msgid "Expore Now"
 msgstr "Khám phá ngay"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:41
@@ -1004,7 +1004,7 @@ msgid "Personal notes for each resume"
 msgstr "Ghi chú cá nhân cho mỗi sơ yếu lý lịch"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:26
-msgid "Phiên bản mới"
+msgid "New Version"
 msgstr "Phiên bản mới"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:81
@@ -1581,7 +1581,7 @@ msgid "Website"
 msgstr "Trang web"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:38
-msgid "Xin giới thiệu"
+msgid "Welcome to"
 msgstr "Xin giới thiệu"
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:49

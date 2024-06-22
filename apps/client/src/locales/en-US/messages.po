@@ -548,8 +548,8 @@ msgid "Filetype"
 msgstr "Filetype"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:38
-msgid "Xin giới thiệu"
-msgstr "Xin giới thiệu"
+msgid "Welcome to"
+msgstr "Welcome to"
 
 #: apps/client/src/components/ai-actions.tsx:90
 msgid "Fix Spelling & Grammar"
@@ -631,8 +631,8 @@ msgstr "Give your old resume a new name."
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
 #: apps/client/src/pages/home/sections/hero/call-to-action.tsx:18
-msgid "Bắt đầu ngay"
-msgstr "Bắt đầu ngay"
+msgid "Build Your Resume"
+msgstr "Build Your Resume"
 
 #: apps/client/src/pages/auth/_components/social-auth.tsx:31
 msgid "Google"
@@ -1616,8 +1616,8 @@ msgid "Verify your email address"
 msgstr "Verify your email address"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:26
-msgid "Phiên bản mới"
-msgstr "Phiên bản mới"
+msgid "New Version"
+msgstr "New Version"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:51
 msgid "Views"
@@ -1646,8 +1646,8 @@ msgid "Website"
 msgstr "Website"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:32
-msgid "Khám phá ngay"
-msgstr "Khám phá ngay"
+msgid "Expore Now"
+msgstr "Expore Now"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:157
 #: apps/client/src/pages/builder/sidebars/left/dialogs/interests.tsx:68

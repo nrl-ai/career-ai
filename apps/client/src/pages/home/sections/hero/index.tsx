@@ -23,19 +23,19 @@ export const HeroSection = () => (
         whileInView={{ opacity: 1, x: 0 }}
       >
         <div className="hidden items-center gap-x-4 sm:flex">
-          <Badge>{t`Phiên bản mới`}</Badge>
+          <Badge>{t`New Version`}</Badge>
 
           <a
             href="/dashboard/resumes"
             className={cn(buttonVariants({ variant: "link" }), "space-x-2 text-left")}
           >
-            <p>{t`Khám phá ngay`}</p>
+            <p>{t`Expore Now`}</p>
             <ArrowRight />
           </a>
         </div>
 
         <div className="mt-10 space-y-2">
-          <h6 className="text-base font-bold tracking-wide">{t`Xin giới thiệu`}</h6>
+          <h6 className="text-base font-bold tracking-wide">{t`Welcome to`}</h6>
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
             {t`CareerAI`}
           </h1>
