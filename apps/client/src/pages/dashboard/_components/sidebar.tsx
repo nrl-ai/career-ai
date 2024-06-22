@@ -92,40 +92,40 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
 
   const serviceItems: SidebarItem[] = [
     {
-      path: "/",
-      name: `Phỏng vấn với AI `,
-      shortcut: "⇧I",
-      icon: <MdFitScreen />,
-    },
-    {
       path: "/dashboard/resumes",
       name: `Xây dựng CV`,
       shortcut: "⇧C",
       icon: <FaRegNewspaper />,
+    },
+    {
+      path: "/",
+      name: `Phỏng vấn với AI `,
+      shortcut: "⇧I",
+      icon: <MdFitScreen />,
     },
   ];
 
   const libraryItems: SidebarItem[] = [
     {
       path: "/",
-      name: `Khóa học kĩ năng`,
-      shortcut: "⇧K",
-      icon: <FaGraduationCap />,
-    },
-    {
-      path: "/",
       name: `Kinh nghiệm xin việc`,
       shortcut: "⇧E",
       icon: <FaArrowUpRightDots />,
     },
+    {
+      path: "/",
+      name: `Khóa học kĩ năng`,
+      shortcut: "⇧K",
+      icon: <FaGraduationCap />,
+    },
   ];
 
   const toolItems: SidebarItem[] = [
-    {
-      path: "/",
-      name: `Tính lương GROSS-NET`,
-      icon: <FaCalculator />,
-    },
+    // {
+    //   path: "/",
+    //   name: `Tính lương GROSS-NET`,
+    //   icon: <FaCalculator />,
+    // },
     {
       path: "/dashboard/settings",
       name: `Thiết lập`,
@@ -153,10 +153,10 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
         {serviceItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
-        <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
+        {/* <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
         {libraryItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
-        ))}
+        ))} */}
         <h2 className="text-md font-normal ml-4 mt-6">Công cụ</h2>
         {toolItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
