@@ -6,6 +6,8 @@
 
 ## 2. Build and Run
 
+- Copy `.env.production.example` to `.env`. Update the environment variables if necessary.
+
 - Run the server:
 
 ```sh

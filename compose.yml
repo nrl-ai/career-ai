@@ -58,8 +58,8 @@ services:
       - chrome
     environment:
       # -- Environment Variables --
-      PORT: 3000
-      NODE_ENV: production
+      PORT: ${PORT:-3000}
+      NODE_ENV: ${NODE_ENV:-production}
 
       # -- URLs --
       PUBLIC_URL: ${PUBLIC_URL:-https://www.career-ai.vn}
@@ -77,7 +77,7 @@ services:
       REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-secret_key}
 
       # -- Emails --
-      MAIL_FROM: noreply@career-ai.vn
+      MAIL_FROM: ${MAIL_FROM}
       # SMTP_URL: smtp://user:pass@smtp:587 # Optional
 
       # -- Storage (Minio) --
@@ -87,16 +87,16 @@ services:
       STORAGE_BUCKET: ${STORAGE_BUCKET:-default}
       STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY:-miniouser}
       STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY:-miniouser}
-      STORAGE_USE_SSL: false
-      STORAGE_SKIP_BUCKET_CHECK: false
+      STORAGE_USE_SSL: ${STORAGE_USE_SSL:-false}
+      STORAGE_SKIP_BUCKET_CHECK: ${STORAGE_SKIP_BUCKET_CHECK:-false}
 
       # -- Crowdin (Optional) --
       # CROWDIN_PROJECT_ID: ${CROWDIN_PROJECT_ID}
       # CROWDIN_PERSONAL_TOKEN: ${CROWDIN_PERSONAL_TOKEN}
 
       # -- Feature Flags (Optional) --
-      DISABLE_SIGNUPS: false
-      DISABLE_EMAIL_AUTH: false
+      DISABLE_SIGNUPS: ${DISABLE_SIGNUPS:-false}
+      DISABLE_EMAIL_AUTH: ${DISABLE_EMAIL_AUTH:-false}
 
       # -- GitHub (Optional) --
       GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-github_client_id}
