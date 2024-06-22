@@ -232,10 +232,6 @@ export const ImportDialog = () => {
                           CareerAI (.json)
                         </SelectItem>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                        <SelectItem value="career-ai-v3-json">
-                          CareerAI v3 (.json)
-                        </SelectItem>
-                        {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
                         <SelectItem value="json-resume-json">JSON Resume (.json)</SelectItem>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
                         <SelectItem value="linkedin-data-export-zip">
