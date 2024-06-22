@@ -1,5 +1,5 @@
-import { t } from "@lingui/macro";
 import { FadersHorizontal, Newspaper, HouseSimple, Toolbox, CameraPlus } from "@phosphor-icons/react";
+import { FaHouse } from "react-icons/fa6";
 import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
@@ -86,7 +86,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/",
       name: `Trang chủ`,
       shortcut: "⇧H",
-      icon: <HouseSimple />
+      icon: <FaHouse />
     }
   ];
 
