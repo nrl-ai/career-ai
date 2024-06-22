@@ -6,9 +6,9 @@ import {
   JsonResumeParser,
   LinkedIn,
   LinkedInParser,
-  ReactiveResumeParser,
-  ReactiveResumeV3,
-  ReactiveResumeV3Parser,
+  CareerAIResumeParser,
+  CareerAIResumeV3,
+  CareerAIResumeV3Parser,
 } from "@career-ai/parser";
 import { ResumeData } from "@career-ai/schema";
 import {
@@ -66,7 +66,7 @@ type ValidationResult =
   | {
       isValid: true;
       type: ImportType;
-      result: ResumeData | ReactiveResumeV3 | LinkedIn | JsonResume;
+      result: ResumeData | CareerAIResumeV3 | LinkedIn | JsonResume;
     };
 
 export const ImportDialog = () => {
@@ -104,7 +104,7 @@ export const ImportDialog = () => {
       const { file, type } = formSchema.parse(form.getValues());
 
       if (type === ImportType["career-ai-json"]) {
-        const parser = new ReactiveResumeParser();
+        const parser = new CareerAIResumeParser();
         const data = await parser.readFile(file);
         const result = parser.validate(data);
 
@@ -112,7 +112,7 @@ export const ImportDialog = () => {
       }
 
       if (type === ImportType["career-ai-v3-json"]) {
-        const parser = new ReactiveResumeV3Parser();
+        const parser = new CareerAIResumeV3Parser();
         const data = await parser.readFile(file);
         const result = parser.validate(data);
 
@@ -156,15 +156,15 @@ export const ImportDialog = () => {
 
     try {
       if (type === ImportType["career-ai-json"]) {
-        const parser = new ReactiveResumeParser();
+        const parser = new CareerAIResumeParser();
         const data = parser.convert(validationResult.result as ResumeData);
 
         await importResume({ data });
       }
 
       if (type === ImportType["career-ai-v3-json"]) {
-        const parser = new ReactiveResumeV3Parser();
-        const data = parser.convert(validationResult.result as ReactiveResumeV3);
+        const parser = new CareerAIResumeV3Parser();
+        const data = parser.convert(validationResult.result as CareerAIResumeV3);
 
         await importResume({ data });
       }

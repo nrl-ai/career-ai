@@ -19,15 +19,15 @@ import { isUrl, Json } from "@career-ai/utils";
 import { Schema } from "zod";
 
 import { Parser } from "../interfaces/parser";
-import { ReactiveResumeV3, reactiveResumeV3Schema } from "./schema";
+import { CareerAIResumeV3, CareerAIResumeV3Schema } from "./schema";
 
 export * from "./schema";
 
-export class ReactiveResumeV3Parser implements Parser<Json, ReactiveResumeV3> {
+export class CareerAIResumeV3Parser implements Parser<Json, CareerAIResumeV3> {
   schema: Schema;
 
   constructor() {
-    this.schema = reactiveResumeV3Schema;
+    this.schema = CareerAIResumeV3Schema;
   }
 
   readFile(file: File): Promise<Json> {
@@ -55,10 +55,10 @@ export class ReactiveResumeV3Parser implements Parser<Json, ReactiveResumeV3> {
   }
 
   validate(data: Json) {
-    return this.schema.parse(data) as ReactiveResumeV3;
+    return this.schema.parse(data) as CareerAIResumeV3;
   }
 
-  convert(data: ReactiveResumeV3) {
+  convert(data: CareerAIResumeV3) {
     const result = JSON.parse(JSON.stringify(defaultResumeData));
 
     // Basics

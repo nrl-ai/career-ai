@@ -11,7 +11,7 @@ import { getSectionIcon } from "../shared/section-icon";
 
 const onJsonExport = () => {
   const { resume } = useResumeStore.getState();
-  const filename = `reactive_resume-${resume.id}.json`;
+  const filename = `career_ai-${resume.id}.json`;
   const resumeJSON = JSON.stringify(resume.data, null, 2);
 
   saveAs(new Blob([resumeJSON], { type: "application/json" }), filename);

@@ -1,2 +1,2 @@
-sudo docker compose -f tools/compose/traefik-secure.yml stop
-sudo docker compose -f tools/compose/traefik-secure.yml up -d
+sudo docker compose -f tools/compose/traefik-secure.yml --env-file .env.production stop
+sudo docker compose -f tools/compose/traefik-secure.yml --env-file .env.production up -d

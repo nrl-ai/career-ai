@@ -4,7 +4,7 @@ import { Schema } from "zod";
 
 import { Parser } from "../interfaces/parser";
 
-export class ReactiveResumeParser implements Parser<Json, ResumeData> {
+export class CareerAIResumeParser implements Parser<Json, ResumeData> {
   schema: Schema;
 
   constructor() {

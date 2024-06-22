@@ -80,8 +80,8 @@ services:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/postgres
 
       # -- Auth --
-      ACCESS_TOKEN_SECRET: kWl5buuWPTxjD10ty0jmvkWOvqQVyhuWs3qlUuSZWm0DpIGjw59ctl5ErRwTiERh
-      REFRESH_TOKEN_SECRET: i0q5SIwkrkyLZoMmcHxoEQ==
+      ACCESS_TOKEN_SECRET: secret_key
+      REFRESH_TOKEN_SECRET: secret_key
 
       # -- Emails --
       MAIL_FROM: noreply@career-ai.vn
@@ -92,8 +92,8 @@ services:
       STORAGE_PORT: 9000
       STORAGE_REGION: us-east-1 # Optional
       STORAGE_BUCKET: default
-      STORAGE_ACCESS_KEY: miniocareerai
-      STORAGE_SECRET_KEY: 23nmidf3434dsddsf
+      STORAGE_ACCESS_KEY: miniouser
+      STORAGE_SECRET_KEY: password
       STORAGE_USE_SSL: false
       STORAGE_SKIP_BUCKET_CHECK: false
 
