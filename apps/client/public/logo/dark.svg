@@ -7,7 +7,7 @@
    preserveAspectRatio="xMidYMid meet"
    version="1.0"
    id="svg140"
-   sodipodi:docname="light.svg"
+   sodipodi:docname="dark.svg"
    inkscape:version="1.2 (dc2aeda, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,11 +26,11 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.472"
-     inkscape:cx="100.63559"
-     inkscape:cy="237.28814"
-     inkscape:window-width="1309"
-     inkscape:window-height="404"
-     inkscape:window-x="62"
+     inkscape:cx="-82.627119"
+     inkscape:cy="257.41525"
+     inkscape:window-width="1020"
+     inkscape:window-height="847"
+     inkscape:window-x="420"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg140" />
@@ -47,5 +47,5 @@
      fill-opacity="1"
      fill-rule="nonzero"
      id="path138"
-     style="fill:#4d4d4d" />
+     style="fill:#b3b3b3" />
 </svg>
