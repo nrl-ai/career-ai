@@ -1668,5 +1668,5 @@ msgid "{templatesCount} resume templates to choose from"
 msgstr "{templatesCount}mẫu sơ yếu lý lịch để lựa chọn"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:141
-msgid "{value, plural, one {Column} other {Columns}}"
-msgstr "{giá trị, số nhiều, một {Cột} khác {Cột}}"
+msgid "{value, plural, one {Column} other {Column}}"
+msgstr "{giá trị, số nhiều, một {Column} khác {Column}}"
