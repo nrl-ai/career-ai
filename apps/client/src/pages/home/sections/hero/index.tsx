@@ -61,7 +61,7 @@ export const HeroSection = () => (
               <img
                 width={3600}
                 height={2078}
-                src="/screenshots/careerai.png"
+                src="/assets/banner.webp"
                 alt="CareerAI - Screenshot - Builder Screen"
                 className="w-[76rem] rounded-lg bg-background/5 shadow-2xl ring-1 ring-foreground/10"
               />
