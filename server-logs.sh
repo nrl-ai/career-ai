@@ -1,0 +1,1 @@
+docker compose -f compose.yml --env-file .env logs -n 1000 -f
