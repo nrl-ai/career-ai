@@ -59,7 +59,7 @@ msgstr "Một liên kết đặt lại mật khẩu lẽ ra phải được gử
 
 #: apps/client/src/services/errors/translate-error.ts:43
 msgid "A resume with this slug already exists, please pick a different unique identifier."
-msgstr "Một sơ yếu lý lịch với con sên này đã tồn tại, vui lòng chọn một định danh duy nhất khác."
+msgstr "Một sơ yếu lý lịch với đường dẫn này đã tồn tại, vui lòng chọn một định danh duy nhất khác."
 
 #: apps/client/src/services/errors/translate-error.ts:10
 msgid "A user with this email address and/or username already exists."
@@ -67,7 +67,7 @@ msgstr "Người dùng có địa chỉ email và/hoặc tên người dùng nà
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:272
 msgid "Accepts only {accept} files"
-msgstr "Chỉ chấp nhận các {accept} tập tin"
+msgstr "Chỉ chấp nhận các tập tin {accept}"
 
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:104
 msgid "Account"
@@ -173,16 +173,16 @@ msgstr "Mã dự phòng có thể chỉ chứa chữ thường hoặc số và p
 
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:21
 msgid "Basics"
-msgstr "Thông tin cơ bản"
+msgstr "Cơ bản"
 
 #: apps/client/src/pages/builder/sidebars/left/index.tsx:55
 msgctxt "The basics section of a resume consists of User's Picture, Full Name, Location etc."
 msgid "Basics"
-msgstr "Thông tin cơ bản"
+msgstr "Cơ bản"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:197
 msgid "Border"
-msgstr "biên giới"
+msgstr "Biên"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:130
 msgid "Border Radius"
@@ -233,7 +233,7 @@ msgstr "CareerAI phát triển mạnh nhờ cộng đồng sôi động của n�
 #: apps/client/src/components/ai-actions.tsx:103
 #: apps/client/src/components/ai-actions.tsx:106
 msgid "Casual"
-msgstr "Casual"
+msgstr "Thường ngày (Casual)"
 
 #: apps/client/src/pages/builder/_components/toolbar.tsx:112
 msgid "Center Artboard"
@@ -246,7 +246,7 @@ msgstr "Đổi mật khẩu"
 
 #: apps/client/src/components/ai-actions.tsx:97
 msgid "Change Tone"
-msgstr "Thay đổi giai điệu"
+msgstr "Thay đổi Ngữ điệu"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:184
 msgid "Changed your mind about the name? Give it a new one."
@@ -258,7 +258,7 @@ msgstr "Kiểm tra email của bạn để tìm liên kết xác nhận để c�
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:150
 msgid "Circle"
-msgstr "vòng tròn"
+msgstr "Vòng tròn"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:249
 msgid "Close"
@@ -278,12 +278,12 @@ msgstr "Cột"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:39
 msgid "Company"
-msgstr "Công ty Công ty"
+msgstr "Công ty"
 
 #: apps/client/src/components/ai-actions.tsx:115
 #: apps/client/src/components/ai-actions.tsx:118
 msgid "Confident"
-msgstr "Tự tin"
+msgstr "Độ tự tin"
 
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:98
 msgid "Confirm New Password"
@@ -345,11 +345,11 @@ msgstr "Phần sơ yếu lý lịch tùy chỉnh"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:60
 msgid "Customisable colour palettes"
-msgstr "Bảng màu có thể tùy chỉnh"
+msgstr "Bảng màu tùy chỉnh"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:61
 msgid "Customisable layouts"
-msgstr "Bố cục có thể tùy chỉnh"
+msgstr "Bố cục tùy chỉnh"
 
 #: apps/client/src/pages/dashboard/settings/_sections/danger.tsx:62
 msgid "Danger Zone"
@@ -371,7 +371,7 @@ msgstr "Ngày tháng"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:80
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:67
 msgid "Date or Date Range"
-msgstr "Ngày hoặc Phạm vi ngày"
+msgstr "Ngày hoặc Khoảng ngày"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:133
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:156
@@ -415,7 +415,7 @@ msgstr "Loại bỏ"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:105
 msgid "Documentation"
-msgstr "Documentation"
+msgstr "Tài liệu"
 
 #: apps/client/src/pages/auth/login/page.tsx:62
 msgid "Don't have an account?"
@@ -525,7 +525,7 @@ msgstr "Khám phá các mẫu có sẵn trong CareerAI và xem sơ yếu lý l�
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:111
 #: apps/client/src/pages/builder/sidebars/right/sections/export.tsx:40
 msgid "Export"
-msgstr "Xuất khẩu"
+msgstr "Xuất dữ liệu"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:257
 msgid "File"
@@ -607,7 +607,7 @@ msgstr "GitHub"
 
 #: apps/client/src/pages/home/sections/statistics/index.tsx:12
 msgid "GitHub Stars"
-msgstr "Ngôi sao GitHub"
+msgstr "Sao GitHub"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:185
 msgid "Give your old resume a new name."
@@ -641,7 +641,7 @@ msgstr "Tại đây, bạn có thể cập nhật hồ sơ của mình để tù
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:92
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:186
 msgid "Hidden"
-msgstr "ẩn"
+msgstr "Ẩn"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:105
 msgid "Hide"
@@ -688,7 +688,7 @@ msgstr "Nếu bạn vô hiệu hóa xác thực hai yếu tố, bạn sẽ khôn
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:311
 msgid "Import"
-msgstr "Nhập khẩu"
+msgstr "Nhập dữ liệu"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:210
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:28
@@ -867,7 +867,7 @@ msgstr "Giấy phép MIT"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:257
 msgid "Main"
-msgstr "chủ yếu"
+msgstr "Mục chính"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:59
 msgid "Manage multiple resumes"
@@ -973,7 +973,7 @@ msgstr "Mã nguồn mở"
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:67
 #: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:168
 msgid "Options"
-msgstr "tùy chọn"
+msgstr "Tùy chọn"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:39
 msgid "Organization"
@@ -1013,7 +1013,7 @@ msgstr "Điện thoại"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:66
 msgid "Pick any font from Google Fonts"
-msgstr "Chọn bất kỳ phông chữ nào từ Google Fonds"
+msgstr "Chọn bất kỳ phông chữ nào từ Google Font."
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/section.tsx:69
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:120
@@ -1082,7 +1082,7 @@ msgstr "Nhà xuất bản"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:69
 msgid "Raise an issue"
-msgstr "Nêu vấn đề"
+msgstr "Báo cáo vấn đề"
 
 #: apps/client/src/pages/builder/_components/toolbar.tsx:79
 msgid "Redo"
@@ -1275,7 +1275,7 @@ msgstr "Kích thước (tính bằng px)"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:226
 msgid "Slug"
-msgstr "Sên"
+msgstr "Đường dẫn"
 
 #: apps/client/src/services/errors/translate-error.ts:55
 msgid "Something went wrong while grabbing a preview your resume. Please try again later or raise an issue on GitHub."
@@ -1314,7 +1314,7 @@ msgstr "Thống kê chỉ có sẵn cho sơ yếu lý lịch công khai."
 
 #: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:101
 msgid "Store Locally"
-msgstr "Lưu trữ tại địa phương"
+msgstr "Lưu trữ tại máy"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:162
 msgid "Store your backup codes securely"
@@ -1548,7 +1548,7 @@ msgstr "Xác minh rằng xác thực hai yếu tố đã được thiết lập 
 #: apps/client/src/pages/auth/verify-email/page.tsx:43
 #: apps/client/src/pages/auth/verify-email/page.tsx:48
 msgid "Verify your email address"
-msgstr "Xác minh Địa chỉ Email của bạn"
+msgstr "Xác minh Email của bạn"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:51
 msgid "Views"
@@ -1578,12 +1578,12 @@ msgstr "Trang web"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:38
 msgid "Welcome to"
-msgstr "Xin giới thiệu"
+msgstr "Chào mừng đến với"
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:49
 #: apps/client/src/pages/auth/forgot-password/page.tsx:54
 msgid "You've got mail!"
-msgstr "Bạn đã nhận được thư!"
+msgstr "Bạn đã nhận được mail!"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:157
 #: apps/client/src/pages/builder/sidebars/left/dialogs/interests.tsx:68
@@ -1651,7 +1651,7 @@ msgstr "và nhiều hơn nữa..."
 #: apps/client/src/pages/auth/register/page.tsx:122
 msgctxt "Localized version of a placeholder username. For example, max.mustermann in German or jan.kowalski in Polish."
 msgid "john.doe"
-msgstr "john doe"
+msgstr "john.doe"
 
 #: apps/client/src/pages/auth/register/page.tsx:143
 msgctxt "Localized version of a placeholder email. For example, max.mustermann@example.de in German or jan.kowalski@example.pl in Polish."
