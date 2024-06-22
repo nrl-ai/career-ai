@@ -1,15 +1,18 @@
 # CareerAI
 
-- Run the server
+## 1. Development
 
-```
-# Build Docker:
-bash build-docker.sh
+- See [DEVELOPMENT.md](DEVELOPMENT.md).
 
-# Run server
-sudo docker compose -f tools/compose/traefik-secure.yml up -d
+## 2. Build and Run
+
+- Run the server:
+
+```sh
+bash build-and-restart.sh
 ```
-## Features
+
+## 3. Features
 
 - **Free, forever** and open-source
 - No telemetry, user tracking or advertising
@@ -36,7 +39,7 @@ sudo docker compose -f tools/compose/traefik-secure.yml up -d
 - **MIT License**, so do what you like with the code as long as you credit the original author
 - And yes, there’s a dark mode too 🌓
 
-## Built With
+## 4. Built With
 
 - React (Vite), for the frontend
 - NestJS, for the backend
