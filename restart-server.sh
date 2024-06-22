@@ -1,0 +1,1 @@
+sudo docker compose -f tools/compose/traefik-secure.yml up -d
