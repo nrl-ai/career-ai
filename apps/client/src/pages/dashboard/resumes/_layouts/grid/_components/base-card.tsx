@@ -17,10 +17,13 @@ export const BaseCard = ({ children, className, onClick, template }: Props) => (
       className={cn(
         "relative flex aspect-[1/1.4142] scale-100 cursor-pointer items-center justify-center p-0 transition-transform active:scale-95",
         className,
-        template && `bg-[url(/templates/jpg/${template}.jpg)] bg-cover`,
-        "bg-secondary/50"
       )}
       onClick={onClick}
+      style={{
+        backgroundImage: template ? `url(/templates/jpg/${template}.jpg)` : undefined,
+        backgroundSize: "cover",
+        backdropFilter: "blur(8px)",
+      }}    
     >
       {children}
     </Card>
