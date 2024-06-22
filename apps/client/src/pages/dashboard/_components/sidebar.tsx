@@ -139,7 +139,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       <div className="ml-12 flex lg:ml-0">
         <Button asChild size="icon" variant="ghost" className="w-full text-left justify-start">
           <Link to="/">
-            <Icon open={true} size={24} className="hidden lg:block" />
+            <Icon open={true} size={48} className="hidden lg:block" />
           </Link>
         </Button>
       </div>
@@ -170,7 +170,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
 
       <UserOptions>
         <Button size="lg" variant="ghost" className="w-full justify-start px-3">
-          <UserAvatar size={24} className="mr-3" />
+          <UserAvatar size={34} className="mr-3" />
           <span>{user?.name}</span>
         </Button>
       </UserOptions>

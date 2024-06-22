@@ -58,7 +58,7 @@ export const ResumeCard = ({ resume }: Props) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <BaseCard className="space-y-0" onClick={onOpen}>
+        <BaseCard className="space-y-0" onClick={onOpen} template={resume.data.metadata.template}>
           <AnimatePresence>
             {resume.locked && (
               <motion.div
@@ -75,11 +75,11 @@ export const ResumeCard = ({ resume }: Props) => {
           <div
             className={cn(
               "absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end space-y-0.5 p-4 pt-12",
-              "bg-gradient-to-t from-background/80 to-transparent",
+              "bg-gradient-to-t from-gray-700`/90 to-transparent pt-10",
             )}
           >
-            <h4 className="line-clamp-2 font-medium">{resume.title}</h4>
-            <p className="line-clamp-1 text-xs opacity-75">{t`Last updated ${lastUpdated}`}</p>
+            <h4 className="line-clamp-2 font-medium text-white">{resume.title}</h4>
+            <p className="line-clamp-1 text-xs text-gray-100 opacity-75">{t`Last updated ${lastUpdated}`}</p>
           </div>
         </BaseCard>
       </ContextMenuTrigger>

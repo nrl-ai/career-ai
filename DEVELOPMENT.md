@@ -4,6 +4,11 @@
 
 - Docker (with Docker Compose)
 - Node.js 18 or higher (with pnpm)
+- Fix watch option:
+
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
 
 ### 1. Fork and Clone the Repository
 

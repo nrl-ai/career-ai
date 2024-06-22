@@ -70,7 +70,7 @@ services:
 
       # -- URLs --
       PUBLIC_URL: https://www.career-ai.vn
-      STORAGE_URL: https://storage.career-ai.vn
+      STORAGE_URL: https://storage.career-ai.vn/default
 
       # -- Printer (Chrome) --
       CHROME_TOKEN: chrome_token
