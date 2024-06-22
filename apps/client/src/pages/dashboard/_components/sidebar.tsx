@@ -1,5 +1,5 @@
-import { FadersHorizontal, Newspaper, HouseSimple, Toolbox, CameraPlus } from "@phosphor-icons/react";
-import { FaHouse } from "react-icons/fa6";
+import { FaHouse, FaRegNewspaper, FaGraduationCap, FaArrowUpRightDots, FaCalculator, FaGear } from "react-icons/fa6";
+import { MdFitScreen } from "react-icons/md";
 import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
@@ -53,7 +53,7 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
       onClick={onClick}
     >
       <Link to={path}>
-        <div className="mr-3">{icon}</div>
+        <div className="mr-3 text-xl">{icon}</div>
         <span>{name}</span>
         {!isActive && <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>}
         {isActive && <ActiveIndicator className="ml-auto" />}
@@ -95,13 +95,13 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/",
       name: `Phỏng vấn với AI `,
       shortcut: "⇧I",
-      icon: <CameraPlus />,
+      icon: <MdFitScreen />,
     },
     {
       path: "/dashboard/resumes",
       name: `Xây dựng CV`,
       shortcut: "⇧C",
-      icon: <Newspaper />,
+      icon: <FaRegNewspaper />,
     },
   ];
 
@@ -110,13 +110,13 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/",
       name: `Khóa học kĩ năng`,
       shortcut: "⇧K",
-      icon: <FadersHorizontal />,
+      icon: <FaGraduationCap />,
     },
     {
       path: "/",
       name: `Kinh nghiệm xin việc`,
       shortcut: "⇧E",
-      icon: <FadersHorizontal />,
+      icon: <FaArrowUpRightDots />,
     },
   ];
 
@@ -124,13 +124,13 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
     {
       path: "/",
       name: `Tính lương GROSS-NET`,
-      icon: <Toolbox />,
+      icon: <FaCalculator />,
     },
     {
       path: "/dashboard/settings",
       name: `Thiết lập`,
       shortcut: "⇧S",
-      icon: <FadersHorizontal />,
+      icon: <FaGear />,
     },
   ];
 
