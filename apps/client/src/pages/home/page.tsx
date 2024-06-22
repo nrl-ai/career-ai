@@ -26,7 +26,7 @@ export const HomePage = () => {
 
         <meta
           name="description"
-          content="Nền tảng luyện phỏng vấn, kĩ năng mềm, và tuyển dụng với AI."
+          content="Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
         />
       </Helmet>
 

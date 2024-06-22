@@ -42,7 +42,7 @@ export const HeroSection = () => (
         </div>
 
         <p className="prose prose-base prose-zinc mt-6 text-lg leading-8 dark:prose-invert">
-          {t`Nền tảng luyện phỏng vấn, kĩ năng mềm, và tuyển dụng với AI.`}
+          {t`Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!.`}
         </p>
 
         <div className="mt-10 flex items-center gap-x-8">

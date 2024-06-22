@@ -18,7 +18,7 @@ export const Footer = () => (
         <h2 className="text-xl font-medium">{t`CareerAI`}</h2>
 
         <p className="prose prose-sm prose-zinc leading-relaxed opacity-60 dark:prose-invert">
-          {t`Nền tảng luyện phỏng vấn, kĩ năng mềm, và tuyển dụng với AI.`}
+          {t`Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!.`}
         </p>
 
         <Copyright className="mt-6" />

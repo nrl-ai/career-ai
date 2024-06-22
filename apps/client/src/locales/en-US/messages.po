@@ -61,8 +61,8 @@ msgstr "CareerAI"
 
 #: apps/client/src/pages/home/components/footer.tsx:21
 #: apps/client/src/pages/home/sections/hero/index.tsx:45
-msgid "Nền tảng luyện phỏng vấn, kĩ năng mềm, và tuyển dụng với AI."
-msgstr "Nền tảng luyện phỏng vấn, kĩ năng mềm, và tuyển dụng với AI."
+msgid "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
+msgstr "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 
 #: apps/client/src/pages/builder/_components/toolbar.tsx:53
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:29
