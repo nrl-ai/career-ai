@@ -25,14 +25,14 @@ export const Icon = ({ open = false, size = 32, className }: Props) => {
 
   return (
     <>
-      {/* <img
+      <img
         src={src}
         width={size}
         height={size}
         alt="CareerAI"
         className={cn("rounded-sm", className)}
-      /> */}
-      {open ? <span className="text-3xl font-bold">CareerAI</span> :  <span className="text-3xl font-bold">C</span>}
+      />
+      {open ? <span className="text-3xl font-bold">CareerAI</span> :  null}
     </>
   );
 };
