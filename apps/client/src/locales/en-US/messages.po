@@ -1035,10 +1035,6 @@ msgstr "Personal notes for each resume"
 msgid "Phone"
 msgstr "Phone"
 
-#: apps/client/src/pages/auth/layout.tsx:76
-msgid "Photograph by Patrick Tomasso"
-msgstr "Photograph by Patrick Tomasso"
-
 #: apps/client/src/pages/home/sections/features/index.tsx:66
 msgid "Pick any font from Google Fonts"
 msgstr "Pick any font from Google Fonts"
@@ -1616,8 +1612,8 @@ msgid "Verify your email address"
 msgstr "Verify your email address"
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:26
-msgid "New Version"
-msgstr "New Version"
+msgid "Beta Version"
+msgstr "Beta Version"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:51
 msgid "Views"
