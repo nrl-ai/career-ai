@@ -23,7 +23,7 @@ export const InterviewPage = () => {
       </div>
 
       <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] pt-2">
-        <iframe src="https://prompt3d.netlify.app/" className="w-full h-full min-h-[600px] rounded-md" />
+        <iframe src="https://prompt3d.netlify.app/" className="w-full h-full min-h-[600px] rounded-md" allow="camera https://prompt3d.netlify.app; microphone https://prompt3d.netlify.app"/>
       </ScrollArea>
     </>
   );
