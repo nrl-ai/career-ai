@@ -490,7 +490,7 @@ msgstr "Tải xuống"
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:95
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:156
 msgid "Duplicate"
-msgstr "Bản sao"
+msgstr "Tạo bản sao"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:157
 msgid "Duplicate an existing item"
@@ -982,7 +982,7 @@ msgstr "Rất tiếc, máy chủ đã trả về một lỗi."
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:77
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:148
 msgid "Open"
-msgstr "Open"
+msgstr "Mở"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:47
 msgid "Open Source"

@@ -63,9 +63,9 @@ export const ResumeCard = ({ resume }: Props) => {
             {resume.locked && (
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1.0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 flex items-center justify-center bg-background/75 bg-opacity-60 backdrop-blur-sm"
+                className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm"
               >
                 <Lock size={42} />
               </motion.div>
