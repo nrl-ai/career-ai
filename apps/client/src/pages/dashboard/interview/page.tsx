@@ -1,0 +1,30 @@
+import { t } from "@lingui/macro";
+import { ScrollArea } from "@career-ai/ui";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+
+export const InterviewPage = () => {
+  return (
+    <>
+      <Helmet>
+        <title>
+          {t`Resumes`} - {t`CareerAI`}
+        </title>
+      </Helmet>
+
+      <div className="flex items-center justify-between">
+        <motion.h1
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="text-4xl font-bold tracking-tight"
+        >
+          {t`Interview`}
+        </motion.h1>
+      </div>
+
+      <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] pt-2">
+        <iframe src="https://prompt3d.netlify.app/" className="w-full h-full min-h-[600px] rounded-md" />
+      </ScrollArea>
+    </>
+  );
+};

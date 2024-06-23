@@ -1,8 +1,14 @@
-import { FaHouse, FaRegNewspaper, FaGraduationCap, FaArrowUpRightDots, FaCalculator, FaGear } from "react-icons/fa6";
-import { MdFitScreen } from "react-icons/md";
 import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
+import {
+  FaArrowUpRightDots,
+  FaGear,
+  FaGraduationCap,
+  FaHouse,
+  FaRegNewspaper,
+} from "react-icons/fa6";
+import { MdFitScreen } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useKeyboardShortcut from "use-keyboard-shortcut";
 
@@ -84,22 +90,22 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const topItems: SidebarItem[] = [
     {
       path: "/",
-      name: `Trang chủ`,
+      name: "Trang chủ",
       shortcut: "⇧H",
-      icon: <FaHouse />
-    }
+      icon: <FaHouse />,
+    },
   ];
 
   const serviceItems: SidebarItem[] = [
     {
       path: "/dashboard/resumes",
-      name: `Xây dựng CV`,
+      name: "Xây dựng CV",
       shortcut: "⇧C",
       icon: <FaRegNewspaper />,
     },
     {
-      path: "/",
-      name: `Phỏng vấn với AI `,
+      path: "/dashboard/interview",
+      name: "Phỏng vấn với AI",
       shortcut: "⇧I",
       icon: <MdFitScreen />,
     },
@@ -108,13 +114,13 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const libraryItems: SidebarItem[] = [
     {
       path: "/",
-      name: `Kinh nghiệm xin việc`,
+      name: "Kinh nghiệm xin việc",
       shortcut: "⇧E",
       icon: <FaArrowUpRightDots />,
     },
     {
       path: "/",
-      name: `Khóa học kĩ năng`,
+      name: "Khóa học kĩ năng",
       shortcut: "⇧K",
       icon: <FaGraduationCap />,
     },
@@ -123,12 +129,12 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const toolItems: SidebarItem[] = [
     // {
     //   path: "/",
-    //   name: `Tính lương GROSS-NET`,
+    //   name: "Tính lương GROSS-NET",
     //   icon: <FaCalculator />,
     // },
     {
       path: "/dashboard/settings",
-      name: `Thiết lập`,
+      name: "Thiết lập",
       shortcut: "⇧S",
       icon: <FaGear />,
     },
@@ -137,7 +143,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   return (
     <div className="flex h-full flex-col gap-y-4">
       <div className="ml-12 flex lg:ml-0">
-        <Button asChild size="icon" variant="ghost" className="w-full text-left justify-start">
+        <Button asChild size="icon" variant="ghost" className="w-full justify-start text-left">
           <Link to="/">
             <Icon open={true} size={48} className="hidden lg:block" />
           </Link>
@@ -149,7 +155,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
         {topItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
-        <h2 className="text-md font-normal ml-4 mt-2">Dịch vụ</h2>
+        <h2 className="text-md ml-4 mt-2 font-normal">Dịch vụ</h2>
         {serviceItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
@@ -157,11 +163,10 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
         {libraryItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))} */}
-        <h2 className="text-md font-normal ml-4 mt-6">Công cụ</h2>
+        <h2 className="text-md ml-4 mt-6 font-normal">Công cụ</h2>
         {toolItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
-
       </div>
 
       <div className="flex-1" />

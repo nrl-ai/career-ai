@@ -13,6 +13,7 @@ import { builderLoader, BuilderPage } from "../pages/builder/page";
 import { DashboardLayout } from "../pages/dashboard/layout";
 import { ResumesPage } from "../pages/dashboard/resumes/page";
 import { SettingsPage } from "../pages/dashboard/settings/page";
+import { InterviewPage } from "../pages/dashboard/interview/page";
 import { HomeLayout } from "../pages/home/layout";
 import { PrivacyPolicyPage } from "../pages/home/meta/privacy-policy/page";
 import { HomePage } from "../pages/home/page";
@@ -67,6 +68,7 @@ export const routes = createRoutesFromElements(
     <Route path="dashboard">
       <Route element={<AuthGuard />}>
         <Route element={<DashboardLayout />}>
+          <Route path="interview" element={<InterviewPage />} />
           <Route path="resumes" element={<ResumesPage />} />
           <Route path="settings" element={<SettingsPage />} />
 
