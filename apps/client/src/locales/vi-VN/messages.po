@@ -267,7 +267,7 @@ msgstr "CareerAI phát triển mạnh nhờ cộng đồng sôi động của n�
 #: apps/client/src/components/ai-actions.tsx:103
 #: apps/client/src/components/ai-actions.tsx:106
 msgid "Casual"
-msgstr "Thường ngày (Casual)"
+msgstr "Thường ngày"
 
 #: apps/client/src/pages/builder/_components/toolbar.tsx:112
 msgid "Center Artboard"
@@ -317,7 +317,7 @@ msgstr "Công ty"
 #: apps/client/src/components/ai-actions.tsx:115
 #: apps/client/src/components/ai-actions.tsx:118
 msgid "Confident"
-msgstr "Độ tự tin"
+msgstr "Tự tin"
 
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:98
 msgid "Confirm New Password"
