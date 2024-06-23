@@ -8,7 +8,7 @@ export const InterviewPage = () => {
     <>
       <Helmet>
         <title>
-          {t`Resumes`} - {t`CareerAI`}
+          {t`Interview`} - {t`CareerAI`}
         </title>
       </Helmet>
 

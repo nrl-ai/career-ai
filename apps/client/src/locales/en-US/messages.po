@@ -22,7 +22,7 @@ msgstr ""
 msgid "You have enabled two-factor authentication successfully."
 msgstr "You have enabled two-factor authentication successfully."
 
-#: apps/client/src/pages/home/sections/features/index.tsx:57
+#: apps/client/src/pages/home/sections/features/index.tsx:48
 msgid "{templatesCount} resume templates to choose from"
 msgstr "{templatesCount} resume templates to choose from"
 
@@ -119,7 +119,7 @@ msgstr "Already have an account?"
 msgid "An error occurred while validating the file."
 msgstr "An error occurred while validating the file."
 
-#: apps/client/src/pages/home/sections/features/index.tsx:134
+#: apps/client/src/pages/home/sections/features/index.tsx:121
 msgid "and many more..."
 msgstr "and many more..."
 
@@ -168,10 +168,6 @@ msgstr "Area of Study"
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:85
 msgid "Aspect Ratio"
 msgstr "Aspect Ratio"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:51
-msgid "Available in {languagesCount} languages"
-msgstr "Available in {languagesCount} languages"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:53
 msgid "Awarder"
@@ -225,10 +221,6 @@ msgstr "Build Your Resume"
 msgid "Built with"
 msgstr "Built with"
 
-#: apps/client/src/pages/home/sections/contributors/index.tsx:20
-msgid "Made with love by CareerAI team"
-msgstr "Made with love by CareerAI team"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:131
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:49
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:154
@@ -245,6 +237,7 @@ msgstr "Cancel"
 #: apps/client/src/pages/auth/verify-email/page.tsx:43
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
+#: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:20
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/home/components/footer.tsx:18
@@ -261,7 +254,7 @@ msgstr "CareerAI"
 msgid "CareerAI helps people land jobs at great companies"
 msgstr "CareerAI helps people land jobs at great companies"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:107
+#: apps/client/src/pages/home/sections/features/index.tsx:94
 msgid "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
 msgstr "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
 
@@ -374,7 +367,7 @@ msgstr "Create one now"
 msgid "Create Sample Resume"
 msgstr "Create Sample Resume"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:62
+#: apps/client/src/pages/home/sections/features/index.tsx:53
 msgid "Custom resume sections"
 msgstr "Custom resume sections"
 
@@ -382,11 +375,11 @@ msgstr "Custom resume sections"
 msgid "Custom Section"
 msgstr "Custom Section"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:60
+#: apps/client/src/pages/home/sections/features/index.tsx:51
 msgid "Customisable colour palettes"
 msgstr "Customisable colour palettes"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:61
+#: apps/client/src/pages/home/sections/features/index.tsx:52
 msgid "Customisable layouts"
 msgstr "Customisable layouts"
 
@@ -433,7 +426,7 @@ msgstr "Delete Account"
 msgid "Description"
 msgstr "Description"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:58
+#: apps/client/src/pages/home/sections/features/index.tsx:49
 msgid "Design single/multi page resumes"
 msgstr "Design single/multi page resumes"
 
@@ -624,10 +617,6 @@ msgstr "Format"
 msgid "Found a bug, or have an idea for a new feature?"
 msgstr "Found a bug, or have an idea for a new feature?"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:46
-msgid "Free, forever"
-msgstr "Free, forever"
-
 #: apps/client/src/components/ai-actions.tsx:121
 #: apps/client/src/components/ai-actions.tsx:124
 msgid "Friendly"
@@ -701,7 +690,7 @@ msgstr "Hold <0>Ctrl</0> to display your password temporarily."
 msgid "Horizontal"
 msgstr "Horizontal"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:67
+#: apps/client/src/pages/home/sections/features/index.tsx:54
 msgid "Host your resume publicly"
 msgstr "Host your resume publicly"
 
@@ -752,6 +741,11 @@ msgstr "Information"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/education.tsx:39
 msgid "Institution"
 msgstr "Institution"
+
+#: apps/client/src/pages/dashboard/interview/page.tsx:11
+#: apps/client/src/pages/dashboard/interview/page.tsx:21
+msgid "Interview"
+msgstr "Interview"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:53
 msgid "Issuer"
@@ -847,7 +841,7 @@ msgstr "Level"
 msgid "Light"
 msgstr "Light"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:69
+#: apps/client/src/pages/home/sections/features/index.tsx:56
 msgid "Light or dark theme"
 msgstr "Light or dark theme"
 
@@ -878,10 +872,6 @@ msgstr "Location"
 msgid "Lock"
 msgstr "Lock"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:64
-msgid "Lock a resume to prevent editing"
-msgstr "Lock a resume to prevent editing"
-
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:43
 msgid "Locking a resume will prevent any further changes to it. This is useful when you have already shared your resume with someone and you don't want to accidentally make any changes to it."
 msgstr "Locking a resume will prevent any further changes to it. This is useful when you have already shared your resume with someone and you don't want to accidentally make any changes to it."
@@ -895,11 +885,15 @@ msgstr "Logout"
 msgid "Lost your device?"
 msgstr "Lost your device?"
 
+#: apps/client/src/pages/home/sections/contributors/index.tsx:20
+msgid "Made with love by CareerAI team"
+msgstr "Made with love by CareerAI team"
+
 #: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:257
 msgid "Main"
 msgstr "Main"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:59
+#: apps/client/src/pages/home/sections/features/index.tsx:50
 msgid "Manage multiple resumes"
 msgstr "Manage multiple resumes"
 
@@ -921,10 +915,7 @@ msgstr "March 2023 - Present"
 msgid "Margin"
 msgstr "Margin"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:48
-msgid "MIT License"
-msgstr "MIT License"
-
+#: apps/client/src/pages/home/sections/features/index.tsx:47
 #: apps/client/src/pages/home/sections/statistics/index.tsx:12
 msgid "Mock Interviews"
 msgstr "Mock Interviews"
@@ -959,10 +950,6 @@ msgstr "New Password"
 msgid "No results found"
 msgstr "No results found"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:49
-msgid "No user tracking or advertising"
-msgstr "No user tracking or advertising"
-
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:133
 msgid "Note: This will make your account less secure."
 msgstr "Note: This will make your account less secure."
@@ -989,10 +976,6 @@ msgstr "Oops, the server returned an error."
 msgid "Open"
 msgstr "Open"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:47
-msgid "Open Source"
-msgstr "Open Source"
-
 #: apps/client/src/services/openai/change-tone.ts:30
 #: apps/client/src/services/openai/fix-grammar.ts:28
 #: apps/client/src/services/openai/improve-writing.ts:28
@@ -1000,7 +983,6 @@ msgid "OpenAI did not return any choices for your text."
 msgstr "OpenAI did not return any choices for your text."
 
 #: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:52
-#: apps/client/src/pages/home/sections/features/index.tsx:52
 msgid "OpenAI Integration"
 msgstr "OpenAI Integration"
 
@@ -1038,17 +1020,9 @@ msgstr "Password"
 msgid "PDF"
 msgstr "PDF"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:63
-msgid "Personal notes for each resume"
-msgstr "Personal notes for each resume"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:81
 msgid "Phone"
 msgstr "Phone"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:66
-msgid "Pick any font from Google Fonts"
-msgstr "Pick any font from Google Fonts"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/section.tsx:69
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:120
@@ -1080,7 +1054,7 @@ msgstr "Position"
 msgid "Position"
 msgstr "Position"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:96
+#: apps/client/src/pages/home/sections/features/index.tsx:83
 msgid "Powered by"
 msgstr "Powered by"
 
@@ -1169,7 +1143,7 @@ msgstr "Resumes"
 msgid "Resumes Generated"
 msgstr "Resumes Generated"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:105
+#: apps/client/src/pages/home/sections/features/index.tsx:92
 msgid "Rich in features, not in pricing."
 msgstr "Rich in features, not in pricing."
 
@@ -1209,17 +1183,9 @@ msgstr "Search for a font variant"
 msgid "Search for a language"
 msgstr "Search for a language"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:56
-msgid "Secure with two-factor authentication"
-msgstr "Secure with two-factor authentication"
-
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:68
 msgid "Security"
 msgstr "Security"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:50
-msgid "Self-host with Docker"
-msgstr "Self-host with Docker"
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:104
 msgid "Send Email"
@@ -1278,18 +1244,6 @@ msgstr "Sign in now"
 #: apps/client/src/pages/auth/login/page.tsx:60
 msgid "Sign in to your account"
 msgstr "Sign in to your account"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:55
-msgid "Sign in with Email"
-msgstr "Sign in with Email"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:53
-msgid "Sign in with GitHub"
-msgstr "Sign in with GitHub"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:54
-msgid "Sign in with Google"
-msgstr "Sign in with Google"
 
 #: apps/client/src/pages/auth/register/page.tsx:177
 msgid "Sign up"
@@ -1378,10 +1332,6 @@ msgstr "Support the app by donating what you can!"
 msgid "Supporting CareerAI"
 msgstr "Supporting CareerAI"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:65
-msgid "Supports A4/Letter page formats"
-msgstr "Supports A4/Letter page formats"
-
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:85
 msgid "System"
 msgstr "System"
@@ -1466,7 +1416,7 @@ msgstr "Toggle Page Break Line"
 msgid "Toggle Page Numbers"
 msgstr "Toggle Page Numbers"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:68
+#: apps/client/src/pages/home/sections/features/index.tsx:55
 msgid "Track views and downloads"
 msgstr "Track views and downloads"
 
