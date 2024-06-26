@@ -487,7 +487,7 @@ msgstr "Tạo bản sao"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:157
 msgid "Duplicate an existing item"
-msgstr "Nhân đôi một mục hiện có"
+msgstr "Tạo bản sao của một mục hiện có"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:178
 msgid "Duplicate an existing resume"
@@ -817,7 +817,7 @@ msgstr "Cập nhật lần cuối {lastUpdated}"
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:69
 #: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:207
 msgid "Layout"
-msgstr "BỐ TRÍ"
+msgstr "Bố cục"
 
 #: apps/client/src/pages/home/sections/hero/call-to-action.tsx:38
 msgid "Learn more"
@@ -908,12 +908,12 @@ msgstr "Tháng 3 2023 - Hiện tại"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:50
 msgid "Margin"
-msgstr "biên chênh lệch"
+msgstr "Biên (lề)"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:47
 #: apps/client/src/pages/home/sections/statistics/index.tsx:12
 msgid "Mock Interviews"
-msgstr "Cuộc phỏng vấn ảo "
+msgstr "Cuộc phỏng vấn ảo"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
@@ -993,7 +993,7 @@ msgstr "Hoặc tiếp tục với"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:39
 msgid "Organization"
-msgstr "Organization"
+msgstr "Tổ chức"
 
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:90
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:26
@@ -1275,7 +1275,7 @@ msgstr "Có gì đó không ổn trong khi xử lý yêu cầu của bạn. Vui 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:93
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:138
 msgid "Square"
-msgstr "Quảng trường"
+msgstr "Vuông"
 
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:33
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/create-item.tsx:23
@@ -1297,7 +1297,7 @@ msgstr "Thống kê chỉ có sẵn cho sơ yếu lý lịch công khai."
 
 #: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:101
 msgid "Store Locally"
-msgstr "Lưu trữ tại máy"
+msgstr "Lưu tại máy"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:162
 msgid "Store your backup codes securely"
@@ -1305,7 +1305,7 @@ msgstr "Lưu trữ mã dự phòng của bạn một cách an toàn"
 
 #: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:101
 msgid "Stored"
-msgstr "Được lưu trữ"
+msgstr "Đã lưu"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:101
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:95
@@ -1431,7 +1431,7 @@ msgstr "Xác thực hai yếu tố không được bật cho tài khoản này."
 
 #: apps/client/src/pages/dashboard/settings/_sections/danger.tsx:84
 msgid "Type <0>delete</0> to confirm deleting your account."
-msgstr "Nhập <0> xóa </0> để xác nhận xóa tài khoản của bạn."
+msgstr "Nhập <0>delete</0> để xác nhận xóa tài khoản của bạn."
 
 #. For example, Bachelor's Degree or Master's Degree
 #: apps/client/src/pages/builder/sidebars/left/dialogs/education.tsx:54
@@ -1519,7 +1519,7 @@ msgstr "Giá trị"
 
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:191
 msgid "Verified"
-msgstr "ĐÃ XÁC MINH"
+msgstr "Đã xác minh"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:161
 msgid "Verify that two-factor authentication has been setup correctly"
@@ -1536,7 +1536,7 @@ msgstr "Lượt xem"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:86
 msgid "Visible"
-msgstr "có thể nhìn thấy"
+msgstr "Hiện"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:61
 msgid "We verify your email address only to ensure that we can send you a password reset link in case you forget your password."
