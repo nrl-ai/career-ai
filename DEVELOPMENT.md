@@ -13,7 +13,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 ## 1. Fork and Clone the Repository
 
 ```sh
-git clone https://github.com/vietanhdev/career-ai.git
+git clone https://github.com/career-ai/career-ai.git
 cd career-ai
 ```
 
