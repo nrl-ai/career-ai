@@ -1,11 +1,11 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "inline-flex scale-100 items-center justify-center rounded-sm text-sm font-medium ring-offset-background transition-[transform,background-color] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex scale-100 items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-[transform,background-color] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        primary: "bg-primary text-primary-foreground hover:bg-primary/80",
+        primary: "bg-blue-600 text-primary-foreground hover:bg-blue-500",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         error: "bg-error text-error-foreground hover:bg-error/80",
         warning: "bg-warning text-warning-foreground hover:bg-warning/80",

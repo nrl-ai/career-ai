@@ -36,9 +36,7 @@ export const HeroSection = () => (
 
         <div className="mt-10 space-y-2">
           <h6 className="text-base font-bold tracking-wide">{t`Welcome to`}</h6>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            {t`CareerAI`}
-          </h1>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{t`CareerAI`}</h1>
         </div>
 
         <p className="prose prose-base prose-zinc mt-6 text-lg leading-8 dark:prose-invert">

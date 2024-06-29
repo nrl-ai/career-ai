@@ -4,10 +4,7 @@ const config: LinguiConfig = {
   format: "po",
   sourceLocale: "en-US",
   fallbackLocales: { default: "en-US" },
-  locales: [
-    "vi-VN",
-    "en-US",
-  ],
+  locales: ["vi-VN", "en-US"],
   catalogs: [
     {
       include: ["<rootDir>/apps/client/src"],

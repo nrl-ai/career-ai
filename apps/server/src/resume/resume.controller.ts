@@ -14,12 +14,7 @@ import {
 import { ApiTags } from "@nestjs/swagger";
 import { User as UserEntity } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
-import {
-  CreateResumeDto,
-  importResumeSchema,
-  ResumeDto,
-  UpdateResumeDto,
-} from "@career-ai/dto";
+import { CreateResumeDto, importResumeSchema, ResumeDto, UpdateResumeDto } from "@career-ai/dto";
 import { resumeDataSchema } from "@career-ai/schema";
 import { ErrorMessage } from "@career-ai/utils";
 import { zodToJsonSchema } from "zod-to-json-schema";

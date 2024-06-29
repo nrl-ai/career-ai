@@ -7,7 +7,6 @@ import {
   LinkedIn,
   LinkedInParser,
   CareerAIResumeParser,
-  CareerAIResumeV3,
 } from "@career-ai/parser";
 import { ResumeData } from "@career-ai/schema";
 import {
@@ -64,7 +63,7 @@ type ValidationResult =
   | {
       isValid: true;
       type: ImportType;
-      result: ResumeData | CareerAIResumeV3 | LinkedIn | JsonResume;
+      result: ResumeData | LinkedIn | JsonResume;
     };
 
 export const ImportDialog = () => {
@@ -211,9 +210,7 @@ export const ImportDialog = () => {
                       </SelectTrigger>
                       <SelectContent>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                        <SelectItem value="career-ai-json">
-                          CareerAI (.json)
-                        </SelectItem>
+                        <SelectItem value="career-ai-json">CareerAI (.json)</SelectItem>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
                         <SelectItem value="json-resume-json">JSON Resume (.json)</SelectItem>
                         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}

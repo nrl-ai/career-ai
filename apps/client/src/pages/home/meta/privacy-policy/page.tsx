@@ -30,8 +30,8 @@ export const PrivacyPolicyPage = () => (
           <h2 className="mb-2">Introduction</h2>
           <p>
             This privacy policy outlines how we collect, use, and protect the personal information
-            you provide when using our web application. By accessing or using CareerAI, you
-            agree to the collection and use of information in accordance with this policy.
+            you provide when using our web application. By accessing or using CareerAI, you agree to
+            the collection and use of information in accordance with this policy.
           </p>
         </li>
 

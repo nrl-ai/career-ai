@@ -32,7 +32,7 @@ export const Icon = ({ open = false, size = 64, className }: Props) => {
         alt="CareerAI"
         className={cn("rounded-sm mr-2", className)}
       />
-      {open ? <span className="text-3xl font-bold ml-1">CareerAI</span> :  null}
+      {open ? <span className="text-2xl font-bold ml-1">CareerAI</span> : null}
     </>
   );
 };

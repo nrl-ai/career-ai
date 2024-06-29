@@ -1,15 +1,18 @@
 import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
+import { FaArrowUpRightDots, FaCalculator, FaGear, FaGraduationCap } from "react-icons/fa6";
 import {
-  FaArrowUpRightDots,
-  FaGear,
-  FaGraduationCap,
-  FaHouse,
-  FaRegNewspaper,
-} from "react-icons/fa6";
-import { RiHome5Line, RiDossierLine, RiFileChart2Line} from "react-icons/ri";
-import { MdFitScreen, MdPhotoCameraFront } from "react-icons/md";
+  IoCalculatorOutline,
+  IoChatbubbleEllipsesOutline,
+  IoCheckmarkDoneCircleOutline,
+  IoHomeOutline,
+  IoNewspaperOutline,
+  IoRocketOutline,
+  IoSettingsOutline,
+  IoTodayOutline,
+} from "react-icons/io5";
+import { PiGraduationCap } from "react-icons/pi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useKeyboardShortcut from "use-keyboard-shortcut";
 
@@ -18,7 +21,6 @@ import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
 import { useUser } from "@/client/services/user";
-import { connect } from "http2";
 
 type Props = {
   className?: string;
@@ -55,8 +57,9 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
       size="lg"
       variant="ghost"
       className={cn(
-        "h-auto justify-start px-4 py-3",
+        "h-auto justify-start rounded-lg px-3 py-2.5",
         isActive && "pointer-events-none bg-secondary/50 text-secondary-foreground",
+        "font-light",
       )}
       onClick={onClick}
     >
@@ -94,7 +97,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/",
       name: "Trang chủ",
       shortcut: "⇧H",
-      icon: <FaHouse />,
+      icon: <IoHomeOutline />,
     },
   ];
 
@@ -103,19 +106,25 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/dashboard/resumes",
       name: "Xây dựng CV",
       shortcut: "⇧C",
-      icon: <RiDossierLine />,
+      icon: <IoNewspaperOutline />,
     },
     {
       path: "/dashboard/resumes-optimize",
       name: "Kiểm tra và Tối ưu CV",
       shortcut: "⇧C",
-      icon: <FaRegNewspaper />,
+      icon: <IoCheckmarkDoneCircleOutline />,
     },
     {
       path: "/dashboard/interview",
-      name: "Phỏng vấn với AI",
+      name: "Phỏng vấn ảo",
       shortcut: "⇧I",
-      icon: <MdPhotoCameraFront />,
+      icon: <IoTodayOutline />,
+    },
+    {
+      path: "/dashboard/interview",
+      name: "Tình huống công sở",
+      shortcut: "⇧I",
+      icon: <IoChatbubbleEllipsesOutline />,
     },
   ];
 
@@ -124,36 +133,36 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/",
       name: "Kinh nghiệm xin việc",
       shortcut: "⇧E",
-      icon: <FaArrowUpRightDots />,
+      icon: <IoRocketOutline />,
     },
     {
       path: "/",
       name: "Khóa học kĩ năng",
       shortcut: "⇧K",
-      icon: <FaGraduationCap />,
+      icon: <PiGraduationCap />,
     },
   ];
 
   const toolItems: SidebarItem[] = [
-    // {
-    //   path: "/",
-    //   name: "Tính lương GROSS-NET",
-    //   icon: <FaCalculator />,
-    // },
+    {
+      path: "/",
+      name: "Tính lương GROSS-NET",
+      icon: <IoCalculatorOutline />,
+    },
     {
       path: "/dashboard/settings",
       name: "Thiết lập",
       shortcut: "⇧S",
-      icon: <FaGear />,
+      icon: <IoSettingsOutline />,
     },
   ];
 
   return (
-    <div className="flex h-full flex-col gap-y-4">
-      <div className="ml-12 flex lg:ml-0">
+    <div className="flex h-full flex-col gap-y-4 md:p-4">
+      <div className="ml-12 flex lg:mb-4 lg:ml-0">
         <Button asChild size="icon" variant="ghost" className="w-full justify-start text-left">
           <Link to="/">
-            <Icon open={true} size={36} className="hidden lg:block" />
+            <Icon open={true} size={32} className="hidden lg:block" />
           </Link>
         </Button>
       </div>

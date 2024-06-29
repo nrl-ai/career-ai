@@ -26,7 +26,6 @@ export const Footer = () => (
 
       <div className="relative col-start-4 flex flex-col items-end justify-end">
         <div className="mb-14 space-y-6 text-right">
-
           <Link
             to="/meta/privacy-policy"
             className="block text-sm font-medium"

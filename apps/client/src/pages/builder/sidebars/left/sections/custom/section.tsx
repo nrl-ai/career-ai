@@ -2,14 +2,7 @@ import { t } from "@lingui/macro";
 import { createId } from "@paralleldrive/cuid2";
 import { DotsSixVertical, Envelope, Plus, X } from "@phosphor-icons/react";
 import { CustomField as ICustomField } from "@career-ai/schema";
-import {
-  Button,
-  Input,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Tooltip,
-} from "@career-ai/ui";
+import { Button, Input, Popover, PopoverContent, PopoverTrigger, Tooltip } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { AnimatePresence, Reorder, useDragControls } from "framer-motion";
 

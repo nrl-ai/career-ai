@@ -12,8 +12,7 @@ const Question1 = () => (
     <AccordionTrigger className="text-left leading-relaxed">
       Who are you, and why did you build CareerAI?
     </AccordionTrigger>
-    <AccordionContent className="prose max-w-none dark:prose-invert">
-    </AccordionContent>
+    <AccordionContent className="prose max-w-none dark:prose-invert"></AccordionContent>
   </AccordionItem>
 );
 
@@ -23,8 +22,7 @@ const Question2 = () => (
     <AccordionTrigger className="text-left leading-relaxed">
       How much does it cost to run CareerAI?
     </AccordionTrigger>
-    <AccordionContent>
-    </AccordionContent>
+    <AccordionContent></AccordionContent>
   </AccordionItem>
 );
 
@@ -34,9 +32,7 @@ const Question3 = () => (
     <AccordionTrigger className="text-left leading-relaxed">
       Other than donating, how can I support you?
     </AccordionTrigger>
-    <AccordionContent className="prose max-w-none dark:prose-invert">
-      
-    </AccordionContent>
+    <AccordionContent className="prose max-w-none dark:prose-invert"></AccordionContent>
   </AccordionItem>
 );
 
@@ -49,8 +45,7 @@ const Question4 = () => {
       <AccordionTrigger className="text-left leading-relaxed">
         What languages are supported on CareerAI?
       </AccordionTrigger>
-      <AccordionContent className="prose max-w-none dark:prose-invert">
-      </AccordionContent>
+      <AccordionContent className="prose max-w-none dark:prose-invert"></AccordionContent>
     </AccordionItem>
   );
 };
@@ -61,8 +56,7 @@ const Question5 = () => (
     <AccordionTrigger className="text-left leading-relaxed">
       How does the OpenAI Integration work?
     </AccordionTrigger>
-    <AccordionContent className="prose max-w-none dark:prose-invert">
-    </AccordionContent>
+    <AccordionContent className="prose max-w-none dark:prose-invert"></AccordionContent>
   </AccordionItem>
 );
 

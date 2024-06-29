@@ -23,7 +23,7 @@ export const BaseCard = ({ children, className, onClick, template }: Props) => (
         backgroundImage: template ? `url(/templates/jpg/${template}.jpg)` : undefined,
         backgroundSize: "cover",
         backdropFilter: "blur(8px)",
-      }}    
+      }}
     >
       {children}
     </Card>

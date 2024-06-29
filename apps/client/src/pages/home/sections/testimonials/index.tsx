@@ -17,15 +17,13 @@ const testimonials: Testimonial[][] = [
   [
     {
       name: "...",
-      quote:
-        "...",
+      quote: "...",
     },
   ],
   [
     {
       name: "...",
-      quote:
-        "...",
+      quote: "...",
     },
   ],
 ];
@@ -36,9 +34,8 @@ export const TestimonialsSection = () => (
       <h1 className="text-4xl font-bold">{t`Testimonials`}</h1>
       <p className="mx-auto max-w-2xl leading-relaxed">
         <Trans>
-          I always love to hear from the users of CareerAI with feedback or support. Here are
-          some of the messages I've received. If you have any feedback, feel free to drop me an
-          email at{" "}
+          I always love to hear from the users of CareerAI with feedback or support. Here are some
+          of the messages I've received. If you have any feedback, feel free to drop me an email at{" "}
           <a href={email} className="underline">
             {email}
           </a>
