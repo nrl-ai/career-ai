@@ -22,7 +22,7 @@ msgstr ""
 msgid "You have enabled two-factor authentication successfully."
 msgstr "You have enabled two-factor authentication successfully."
 
-#: apps/client/src/pages/home/sections/features/index.tsx:48
+#: apps/client/src/pages/home/sections/features/index.tsx:33
 msgid "{templatesCount} resume templates to choose from"
 msgstr "{templatesCount} resume templates to choose from"
 
@@ -76,7 +76,7 @@ msgid "A4"
 msgstr "A4"
 
 #. Helper text to let the user know what filetypes are accepted. {accept} can be .pdf or .json.
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:268
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:248
 msgid "Accepts only {accept} files"
 msgstr "Accepts only {accept} files"
 
@@ -84,7 +84,7 @@ msgstr "Accepts only {accept} files"
 msgid "Account"
 msgstr "Account"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:159
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:152
 msgid "Add a custom field"
 msgstr "Add a custom field"
 
@@ -115,11 +115,11 @@ msgstr "AI"
 msgid "Already have an account?"
 msgstr "Already have an account?"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:146
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:135
 msgid "An error occurred while validating the file."
 msgstr "An error occurred while validating the file."
 
-#: apps/client/src/pages/home/sections/features/index.tsx:121
+#: apps/client/src/pages/home/sections/features/index.tsx:106
 msgid "and many more..."
 msgstr "and many more..."
 
@@ -237,6 +237,7 @@ msgstr "Cancel"
 #: apps/client/src/pages/auth/verify-email/page.tsx:43
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
+#: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:20
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
@@ -244,7 +245,7 @@ msgstr "Cancel"
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
 #: apps/client/src/pages/home/page.tsx:24
 #: apps/client/src/pages/home/page.tsx:24
-#: apps/client/src/pages/home/sections/hero/index.tsx:40
+#: apps/client/src/pages/home/sections/hero/index.tsx:39
 #: apps/client/src/pages/public/page.tsx:73
 #: apps/client/src/pages/public/page.tsx:94
 msgid "CareerAI"
@@ -254,7 +255,7 @@ msgstr "CareerAI"
 msgid "CareerAI helps people land jobs at great companies"
 msgstr "CareerAI helps people land jobs at great companies"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:94
+#: apps/client/src/pages/home/sections/features/index.tsx:79
 msgid "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
 msgstr "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
 
@@ -307,6 +308,11 @@ msgstr "Code must be exactly 6 digits long."
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:135
 msgid "Columns"
 msgstr "Columns"
+
+#: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
+#: apps/client/src/pages/dashboard/coming_soon/page.tsx:20
+msgid "Coming Soon"
+msgstr "Coming Soon"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:39
 msgid "Company"
@@ -367,7 +373,7 @@ msgstr "Create one now"
 msgid "Create Sample Resume"
 msgstr "Create Sample Resume"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:53
+#: apps/client/src/pages/home/sections/features/index.tsx:38
 msgid "Custom resume sections"
 msgstr "Custom resume sections"
 
@@ -375,11 +381,11 @@ msgstr "Custom resume sections"
 msgid "Custom Section"
 msgstr "Custom Section"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:51
+#: apps/client/src/pages/home/sections/features/index.tsx:36
 msgid "Customisable colour palettes"
 msgstr "Customisable colour palettes"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:52
+#: apps/client/src/pages/home/sections/features/index.tsx:37
 msgid "Customisable layouts"
 msgstr "Customisable layouts"
 
@@ -426,7 +432,7 @@ msgstr "Delete Account"
 msgid "Description"
 msgstr "Description"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:49
+#: apps/client/src/pages/home/sections/features/index.tsx:34
 msgid "Design single/multi page resumes"
 msgstr "Design single/multi page resumes"
 
@@ -438,7 +444,7 @@ msgstr "Disable"
 msgid "Disable 2FA"
 msgstr "Disable 2FA"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:300
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:280
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:219
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:134
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:124
@@ -507,7 +513,7 @@ msgid "Effects"
 msgstr "Effects"
 
 #: apps/client/src/pages/home/components/footer.tsx:21
-#: apps/client/src/pages/home/sections/hero/index.tsx:45
+#: apps/client/src/pages/home/sections/hero/index.tsx:43
 msgid "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 msgstr "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 
@@ -531,7 +537,7 @@ msgstr "Enter a new password below, and make sure it's secure."
 msgid "Enter one of the 10 backup codes you saved when you enabled two-factor authentication."
 msgstr "Enter one of the 10 backup codes you saved when you enabled two-factor authentication."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:63
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:56
 msgid "Enter Phosphor Icon"
 msgstr "Enter Phosphor Icon"
 
@@ -547,7 +553,7 @@ msgstr "Enter the one-time password provided by your authenticator app below."
 msgid "Enter your email address and we will send you a link to reset your password if the account exists."
 msgstr "Enter your email address and we will send you a link to reset your password if the account exists."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:281
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:261
 msgid "Errors"
 msgstr "Errors"
 
@@ -564,11 +570,11 @@ msgstr "Expore Now"
 msgid "Export"
 msgstr "Export"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:253
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:233
 msgid "File"
 msgstr "File"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:223
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:205
 msgid "Filetype"
 msgstr "Filetype"
 
@@ -690,16 +696,16 @@ msgstr "Hold <0>Ctrl</0> to display your password temporarily."
 msgid "Horizontal"
 msgstr "Horizontal"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:54
+#: apps/client/src/pages/home/sections/features/index.tsx:39
 msgid "Host your resume publicly"
 msgstr "Host your resume publicly"
 
-#: apps/client/src/pages/home/sections/testimonials/index.tsx:38
+#: apps/client/src/pages/home/sections/testimonials/index.tsx:36
 msgid "I always love to hear from the users of CareerAI with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <0>{email}</0>."
 msgstr "I always love to hear from the users of CareerAI with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <0>{email}</0>."
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:94
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:53
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:46
 msgid "Icon"
 msgstr "Icon"
 
@@ -707,11 +713,11 @@ msgstr "Icon"
 msgid "If you disable two-factor authentication, you will no longer be required to enter a verification code when logging in."
 msgstr "If you disable two-factor authentication, you will no longer be required to enter a verification code when logging in."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:307
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:287
 msgid "Import"
 msgstr "Import"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:210
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:192
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:28
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
@@ -805,8 +811,8 @@ msgstr "JSON"
 msgid "Keywords"
 msgstr "Keywords"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:41
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:51
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:34
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:44
 msgid "Label"
 msgstr "Label"
 
@@ -841,7 +847,7 @@ msgstr "Level"
 msgid "Light"
 msgstr "Light"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:56
+#: apps/client/src/pages/home/sections/features/index.tsx:41
 msgid "Light or dark theme"
 msgstr "Light or dark theme"
 
@@ -893,7 +899,7 @@ msgstr "Made with love by CareerAI team"
 msgid "Main"
 msgstr "Main"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:50
+#: apps/client/src/pages/home/sections/features/index.tsx:35
 msgid "Manage multiple resumes"
 msgstr "Manage multiple resumes"
 
@@ -915,7 +921,7 @@ msgstr "March 2023 - Present"
 msgid "Margin"
 msgstr "Margin"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:47
+#: apps/client/src/pages/home/sections/features/index.tsx:32
 #: apps/client/src/pages/home/sections/statistics/index.tsx:12
 msgid "Mock Interviews"
 msgstr "Mock Interviews"
@@ -928,7 +934,7 @@ msgstr "Mock Interviews"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/publications.tsx:39
 #: apps/client/src/pages/builder/sidebars/left/dialogs/references.tsx:39
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:49
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:72
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:65
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:152
 msgid "Name"
 msgstr "Name"
@@ -965,7 +971,7 @@ msgstr "One-Time Password"
 
 #: apps/client/src/components/ai-actions.tsx:56
 #: apps/client/src/libs/axios.ts:29
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:190
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:172
 #: apps/client/src/services/resume/print.tsx:26
 msgid "Oops, the server returned an error."
 msgstr "Oops, the server returned an error."
@@ -1033,7 +1039,7 @@ msgstr "Picture"
 msgid "Please note that this step is completely optional."
 msgstr "Please note that this step is completely optional."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:227
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:209
 msgid "Please select a file type"
 msgstr "Please select a file type"
 
@@ -1054,7 +1060,7 @@ msgstr "Position"
 msgid "Position"
 msgstr "Position"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:83
+#: apps/client/src/pages/home/sections/features/index.tsx:68
 msgid "Powered by"
 msgstr "Powered by"
 
@@ -1066,7 +1072,7 @@ msgstr "Powered by <0>Simple Icons</0>"
 msgid "Primary Color"
 msgstr "Primary Color"
 
-#: apps/client/src/pages/home/components/footer.tsx:33
+#: apps/client/src/pages/home/components/footer.tsx:32
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:23
 msgid "Privacy Policy"
@@ -1143,7 +1149,7 @@ msgstr "Resumes"
 msgid "Resumes Generated"
 msgstr "Resumes Generated"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:92
+#: apps/client/src/pages/home/sections/features/index.tsx:77
 msgid "Rich in features, not in pricing."
 msgstr "Rich in features, not in pricing."
 
@@ -1345,7 +1351,7 @@ msgstr "Template"
 msgid "Templates"
 msgstr "Templates"
 
-#: apps/client/src/pages/home/sections/testimonials/index.tsx:36
+#: apps/client/src/pages/home/sections/testimonials/index.tsx:34
 msgid "Testimonials"
 msgstr "Testimonials"
 
@@ -1387,6 +1393,10 @@ msgstr "This action cannot be undone. This will permanently delete your resume a
 msgid "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 msgstr "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 
+#: apps/client/src/pages/dashboard/coming_soon/page.tsx:26
+msgid "This page is under construction. Please check back later."
+msgstr "This page is under construction. Please check back later."
+
 #: apps/client/src/pages/builder/_components/header.tsx:57
 msgid "This resume is locked, please unlock to make further changes."
 msgstr "This resume is locked, please unlock to make further changes."
@@ -1416,7 +1426,7 @@ msgstr "Toggle Page Break Line"
 msgid "Toggle Page Numbers"
 msgstr "Toggle Page Numbers"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:55
+#: apps/client/src/pages/home/sections/features/index.tsx:40
 msgid "Track views and downloads"
 msgstr "Track views and downloads"
 
@@ -1479,7 +1489,7 @@ msgstr "Update an existing item"
 msgid "Update an existing resume"
 msgstr "Update an existing resume"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:214
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:196
 msgid "Upload a file from one of the accepted sources to parse existing data and import it into CareerAI for easier editing."
 msgstr "Upload a file from one of the accepted sources to parse existing data and import it into CareerAI for easier editing."
 
@@ -1487,7 +1497,7 @@ msgstr "Upload a file from one of the accepted sources to parse existing data an
 msgid "URL"
 msgstr "URL"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:60
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:53
 msgid "URL must start with https://"
 msgstr "URL must start with https://"
 
@@ -1510,15 +1520,15 @@ msgstr "Username"
 msgid "Users Signed Up"
 msgstr "Users Signed Up"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:294
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:274
 msgid "Validate"
 msgstr "Validate"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:312
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:292
 msgid "Validated"
 msgstr "Validated"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:81
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:74
 msgid "Value"
 msgstr "Value"
 
