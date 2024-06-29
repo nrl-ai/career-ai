@@ -8,7 +8,6 @@ import {
   LinkedInParser,
   CareerAIResumeParser,
   CareerAIResumeV3,
-  CareerAIResumeV3Parser,
 } from "@career-ai/parser";
 import { ResumeData } from "@career-ai/schema";
 import {

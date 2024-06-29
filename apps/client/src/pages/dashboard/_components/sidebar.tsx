@@ -8,7 +8,8 @@ import {
   FaHouse,
   FaRegNewspaper,
 } from "react-icons/fa6";
-import { MdFitScreen } from "react-icons/md";
+import { RiHome5Line, RiDossierLine, RiFileChart2Line} from "react-icons/ri";
+import { MdFitScreen, MdPhotoCameraFront } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useKeyboardShortcut from "use-keyboard-shortcut";
 
@@ -17,6 +18,7 @@ import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
 import { useUser } from "@/client/services/user";
+import { connect } from "http2";
 
 type Props = {
   className?: string;
@@ -59,8 +61,8 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
       onClick={onClick}
     >
       <Link to={path}>
-        <div className="mr-3 text-xl">{icon}</div>
-        <span>{name}</span>
+        <div className={cn("mr-3 text-xl", isActive && "text-blue-500")}>{icon}</div>
+        <span className={cn("font-medium", isActive && "text-blue-500")}>{name}</span>
         {!isActive && <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>}
         {isActive && <ActiveIndicator className="ml-auto" />}
       </Link>
@@ -101,13 +103,19 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       path: "/dashboard/resumes",
       name: "Xây dựng CV",
       shortcut: "⇧C",
+      icon: <RiDossierLine />,
+    },
+    {
+      path: "/dashboard/resumes-optimize",
+      name: "Kiểm tra và Tối ưu CV",
+      shortcut: "⇧C",
       icon: <FaRegNewspaper />,
     },
     {
       path: "/dashboard/interview",
       name: "Phỏng vấn với AI",
       shortcut: "⇧I",
-      icon: <MdFitScreen />,
+      icon: <MdPhotoCameraFront />,
     },
   ];
 
@@ -150,19 +158,21 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
         </Button>
       </div>
 
-      <Separator className="opacity-50" />
       <div className="grid gap-y-2">
         {topItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
+
+        <Separator className="opacity-100" />
+
         <h2 className="text-md ml-4 mt-2 font-normal">Dịch vụ</h2>
         {serviceItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
-        {/* <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
+        <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
         {libraryItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
-        ))} */}
+        ))}
         <h2 className="text-md ml-4 mt-6 font-normal">Công cụ</h2>
         {toolItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
