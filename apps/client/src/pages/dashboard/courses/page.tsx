@@ -157,7 +157,7 @@ const DocumentationCard = () => (
   </Card>
 );
 
-const CourseCardInner = ({ course }) => (
+const CourseCardInner = ({ course }: { course: any }) => (
   <Card className="flex flex-col space-y-2 h-[300px] hover:shadow-lg hover:border-gray-300">
     <img
       src={course.imageUrl}
@@ -172,7 +172,7 @@ const CourseCardInner = ({ course }) => (
   </Card>
 );
 
-const CourseCard = ({ course }) => (
+const CourseCard = ({ course }: { course: any }) => (
   <a href={course.link} target="_blank" rel="noreferrer noopener">
     <CourseCardInner course={course} />
   </a>
