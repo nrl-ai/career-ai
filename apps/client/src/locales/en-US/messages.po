@@ -466,7 +466,6 @@ msgid "Don't have an account?"
 msgstr "Don't have an account?"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:83
-#: apps/client/src/pages/dashboard/courses/page.tsx:148
 msgid "Don't know where to begin? Hit the docs!"
 msgstr "Don't know where to begin? Hit the docs!"
 

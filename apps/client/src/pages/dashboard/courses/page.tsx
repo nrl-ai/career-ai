@@ -145,7 +145,7 @@ const courses = [
 const DocumentationCard = () => (
   <Card className="space-y-4">
     <CardContent className="space-y-2">
-      <CardTitle>{t`Don't know where to begin? Hit the docs!`}</CardTitle>
+      <CardTitle>Khóa học và Hướng dẫn được chọn bởi CareerAI</CardTitle>
       <CardDescription className="space-y-2">
         CareerAI là tuyển chọn và giới thiệu đến các bạn những khoá học trực tuyến hữu ích nhất tại
         trang web này. Mục tiêu của chúng tôi là giúp bạn nâng cao kiến thức và kĩ năng một cách

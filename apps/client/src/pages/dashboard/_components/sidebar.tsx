@@ -129,12 +129,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
       shortcut: "⇧I",
       icon: <IoTodayOutline />,
     },
-    {
-      path: "/dashboard/work-behavior-practice",
-      name: "Tình huống công sở",
-      shortcut: "⇧I",
-      icon: <IoChatbubbleEllipsesOutline />,
-    },
+    // {
+    //   path: "/dashboard/work-behavior-practice",
+    //   name: "Tình huống công sở",
+    //   shortcut: "⇧I",
+    //   icon: <IoChatbubbleEllipsesOutline />,
+    // },
   ];
 
   const libraryItems: SidebarItem[] = [
@@ -210,7 +210,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
         </Button>
       )}
 
-      <div className={cn("grid", !isCollapsed && "gap-y-1")}>
+      <div className={cn("grid mt-6", !isCollapsed && "gap-y-1")}>
         {topItems.map((item) => (
           <SidebarItem
             isCollapsed={isCollapsed}

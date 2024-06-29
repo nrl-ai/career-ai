@@ -461,9 +461,8 @@ msgid "Don't have an account?"
 msgstr "Bạn không có tài khoản?"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:83
-#: apps/client/src/pages/dashboard/courses/page.tsx:148
 msgid "Don't know where to begin? Hit the docs!"
-msgstr "Bạn không biết bắt đầu từ đâu? Nhấn vào tài liệu!"
+msgstr "Không biết bắt đầu từ đâu? Đọc tài liệu!"
 
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:107
 msgid "Don't see your language? <0>Help translate the app.</0>"
