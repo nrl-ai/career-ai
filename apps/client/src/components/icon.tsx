@@ -24,7 +24,7 @@ export const Icon = ({ open = false, size = 64, className }: Props) => {
   }
 
   return (
-    <>
+    <div className="flex items-center">
       <img
         src={src}
         width={size}
@@ -33,6 +33,6 @@ export const Icon = ({ open = false, size = 64, className }: Props) => {
         className={cn("rounded-sm mr-2", className)}
       />
       {open ? <span className="text-2xl font-bold ml-1">CareerAI</span> : null}
-    </>
+    </div>
   );
 };

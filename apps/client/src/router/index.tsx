@@ -10,10 +10,10 @@ import { VerifyEmailPage } from "../pages/auth/verify-email/page";
 import { VerifyOtpPage } from "../pages/auth/verify-otp/page";
 import { BuilderLayout } from "../pages/builder/layout";
 import { builderLoader, BuilderPage } from "../pages/builder/page";
+import { InterviewPage } from "../pages/dashboard/interview/page";
 import { DashboardLayout } from "../pages/dashboard/layout";
 import { ResumesPage } from "../pages/dashboard/resumes/page";
 import { SettingsPage } from "../pages/dashboard/settings/page";
-import { InterviewPage } from "../pages/dashboard/interview/page";
 import { HomeLayout } from "../pages/home/layout";
 import { PrivacyPolicyPage } from "../pages/home/meta/privacy-policy/page";
 import { HomePage } from "../pages/home/page";
@@ -22,6 +22,7 @@ import { Providers } from "../providers";
 import { AuthGuard } from "./guards/auth";
 import { GuestGuard } from "./guards/guest";
 import { authLoader } from "./loaders/auth";
+import { ComingSoonPage } from "../pages/dashboard/coming_soon/page";
 
 export const routes = createRoutesFromElements(
   <Route element={<Providers />}>
@@ -71,6 +72,11 @@ export const routes = createRoutesFromElements(
           <Route path="interview" element={<InterviewPage />} />
           <Route path="resumes" element={<ResumesPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="coming-soon" element={<ComingSoonPage />} />
+          <Route path="cv-improvement" element={<ComingSoonPage />} />
+          <Route path="work-behavior-practice" element={<ComingSoonPage />} />
+          <Route path="blog" element={<ComingSoonPage />} />
+          <Route path="courses" element={<ComingSoonPage />} />
 
           <Route index element={<Navigate replace to="/dashboard/resumes" />} />
         </Route>

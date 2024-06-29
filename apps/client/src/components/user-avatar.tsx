@@ -29,7 +29,7 @@ export const UserAvatar = ({ size = 36, className }: Props) => {
     picture = (
       <div
         style={{ width: size, height: size }}
-        className="flex items-center justify-center rounded-full bg-secondary text-center text-[10px] font-semibold text-secondary-foreground"
+        className="flex items-center justify-center rounded-full bg-secondary text-center text-[10px] font-semibold text-secondary-foreground border-2 border-blue-500"
       >
         {initials}
       </div>

@@ -23,7 +23,7 @@ export const UserOptions = ({ children }: Props) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
 
-      <DropdownMenuContent side="top" align="start" className="w-48">
+      <DropdownMenuContent side="bottom" align="start" className="w-48">
         <DropdownMenuItem
           onClick={() => {
             navigate("/dashboard/settings");

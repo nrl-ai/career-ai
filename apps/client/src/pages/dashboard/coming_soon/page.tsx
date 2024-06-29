@@ -1,14 +1,13 @@
 import { t } from "@lingui/macro";
-import { ScrollArea } from "@career-ai/ui";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 
-export const InterviewPage = () => {
+export const ComingSoonPage = () => {
   return (
     <>
       <Helmet>
         <title>
-          {t`Interview`} - {t`CareerAI`}
+          {t`Coming Soon`} - {t`CareerAI`}
         </title>
       </Helmet>
 
@@ -18,17 +17,15 @@ export const InterviewPage = () => {
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-bold tracking-tight"
         >
-          {t`Interview`}
+          {t`Coming Soon`}
         </motion.h1>
       </div>
 
-      <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] pt-2">
-        <iframe
-          src="https://prompt3d.netlify.app/"
-          className="w-full h-full min-h-[600px] rounded-md"
-          allow="camera https://prompt3d.netlify.app; microphone https://prompt3d.netlify.app"
-        />
-      </ScrollArea>
+      <div className="pt-4">
+        <p className="text-lg text-gray-500">
+          {t`This page is under construction. Please check back later.`}
+        </p>
+      </div>
     </>
   );
 };

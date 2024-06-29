@@ -34,14 +34,14 @@ export const DashboardLayout = () => {
       <motion.div
         initial={{ x: -320 }}
         animate={{ x: 0 }}
-        className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-[280px] lg:flex-col"
+        className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-[300px] lg:flex-col"
       >
         <div className="h-full rounded p-4 border-r-[2px] border-r-[#E6E6E6]">
           <Sidebar />
         </div>
       </motion.div>
 
-      <main className="mx-6 my-4 lg:mx-8 lg:pl-[280px]">
+      <main className="mx-6 my-4 lg:mx-8 lg:pl-[300px]">
         <Outlet />
       </main>
     </div>

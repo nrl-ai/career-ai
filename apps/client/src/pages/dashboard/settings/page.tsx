@@ -27,7 +27,7 @@ export const SettingsPage = () => (
       </motion.h1>
 
       <ScrollArea hideScrollbar className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)]">
-        <div className="space-y-6">
+        <div className="space-y-6 mb-16">
           <AccountSettings />
           <Separator />
           <SecuritySettings />

@@ -1,31 +1,17 @@
 import { t } from "@lingui/macro";
 import {
-  Brain,
-  Cloud,
   CloudSun,
-  CurrencyDollarSimple,
-  EnvelopeSimple,
   Eye,
-  File,
   Files,
   Folder,
-  GitBranch,
-  GithubLogo,
   GoogleChromeLogo,
-  GoogleLogo,
   IconContext,
   Layout,
-  Lock,
-  Note,
-  Prohibit,
-  Scales,
   StackSimple,
   Star,
   Swatches,
-  TextAa,
-  Translate,
 } from "@phosphor-icons/react";
-import { cn, languages, templatesList } from "@career-ai/utils";
+import { cn, templatesList } from "@career-ai/utils";
 import { motion } from "framer-motion";
 
 type Feature = {
@@ -35,11 +21,10 @@ type Feature = {
 };
 
 const featureLabel = cn(
-  "flex cursor-default items-center justify-center gap-x-2 rounded bg-secondary px-4 py-3 text-sm font-medium leading-none text-primary transition-colors hover:bg-primary hover:text-background",
+  "flex cursor-default items-center justify-center gap-x-2 rounded-xl bg-secondary px-4 py-3 text-sm font-medium leading-none text-primary transition-colors hover:bg-primary hover:text-background",
 );
 
 export const FeaturesSection = () => {
-  const languagesCount = languages.length;
   const templatesCount = templatesList.length;
 
   const features: Feature[] = [

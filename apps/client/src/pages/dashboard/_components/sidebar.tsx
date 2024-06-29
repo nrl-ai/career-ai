@@ -1,16 +1,16 @@
 import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { motion } from "framer-motion";
-import { FaArrowUpRightDots, FaCalculator, FaGear, FaGraduationCap } from "react-icons/fa6";
 import {
   IoCalculatorOutline,
   IoChatbubbleEllipsesOutline,
   IoCheckmarkDoneCircleOutline,
   IoHomeOutline,
   IoNewspaperOutline,
-  IoRocketOutline,
   IoSettingsOutline,
   IoTodayOutline,
+  IoLibraryOutline,
+  IoServerOutline,
 } from "react-icons/io5";
 import { PiGraduationCap } from "react-icons/pi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -59,13 +59,12 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
       className={cn(
         "h-auto justify-start rounded-lg px-3 py-2.5",
         isActive && "pointer-events-none bg-secondary/50 text-secondary-foreground",
-        "font-light",
       )}
       onClick={onClick}
     >
       <Link to={path}>
         <div className={cn("mr-3 text-xl", isActive && "text-blue-500")}>{icon}</div>
-        <span className={cn("font-medium", isActive && "text-blue-500")}>{name}</span>
+        <span className={cn("font-normal", isActive && "text-blue-500 font-bold")}>{name}</span>
         {!isActive && <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>}
         {isActive && <ActiveIndicator className="ml-auto" />}
       </Link>
@@ -104,24 +103,23 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   const serviceItems: SidebarItem[] = [
     {
       path: "/dashboard/resumes",
-      name: "Xây dựng CV",
+      name: "Tạo CV theo mẫu",
       shortcut: "⇧C",
       icon: <IoNewspaperOutline />,
     },
     {
-      path: "/dashboard/resumes-optimize",
+      path: "/dashboard/cv-improvement",
       name: "Kiểm tra và Tối ưu CV",
-      shortcut: "⇧C",
       icon: <IoCheckmarkDoneCircleOutline />,
     },
     {
       path: "/dashboard/interview",
-      name: "Phỏng vấn ảo",
+      name: "Phòng phỏng vấn ảo",
       shortcut: "⇧I",
       icon: <IoTodayOutline />,
     },
     {
-      path: "/dashboard/interview",
+      path: "/dashboard/work-behavior-practice",
       name: "Tình huống công sở",
       shortcut: "⇧I",
       icon: <IoChatbubbleEllipsesOutline />,
@@ -130,13 +128,13 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
 
   const libraryItems: SidebarItem[] = [
     {
-      path: "/",
-      name: "Kinh nghiệm xin việc",
+      path: "/dashboard/blog",
+      name: "Thư viện kiến thức",
       shortcut: "⇧E",
-      icon: <IoRocketOutline />,
+      icon: <IoLibraryOutline />,
     },
     {
-      path: "/",
+      path: "/dashboard/courses",
       name: "Khóa học kĩ năng",
       shortcut: "⇧K",
       icon: <PiGraduationCap />,
@@ -145,26 +143,23 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
 
   const toolItems: SidebarItem[] = [
     {
-      path: "/",
+      path: "/dashboard/coming-soon",
       name: "Tính lương GROSS-NET",
       icon: <IoCalculatorOutline />,
     },
     {
-      path: "/dashboard/settings",
-      name: "Thiết lập",
-      shortcut: "⇧S",
-      icon: <IoSettingsOutline />,
+      path: "/dashboard/coming-soon",
+      name: "Tính thuế TNCN",
+      icon: <IoServerOutline />,
     },
   ];
 
   return (
     <div className="flex h-full flex-col gap-y-4 md:p-4">
       <div className="ml-12 flex lg:mb-4 lg:ml-0">
-        <Button asChild size="icon" variant="ghost" className="w-full justify-start text-left">
-          <Link to="/">
-            <Icon open={true} size={32} className="hidden lg:block" />
-          </Link>
-        </Button>
+        <Link to="/">
+          <Icon open={true} size={32} className="hidden lg:block" />
+        </Link>
       </div>
 
       <div className="grid gap-y-2">
@@ -174,16 +169,24 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
 
         <Separator className="opacity-100" />
 
-        <h2 className="text-md ml-4 mt-2 font-normal">Dịch vụ</h2>
+        <h2 className="text-xs mt-4 mb-2 font-normal uppercase text-gray-400">Dịch vụ</h2>
         {serviceItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
-        <h2 className="text-md font-normal ml-4 mt-6">Thư viện</h2>
-        {libraryItems.map((item) => (
+
+        <Separator className="opacity-100" />
+
+        <h2 className="text-xs mt-4 mb-2 font-normal uppercase text-gray-400">Công cụ tính toán</h2>
+        {toolItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
-        <h2 className="text-md ml-4 mt-6 font-normal">Công cụ</h2>
-        {toolItems.map((item) => (
+
+        <Separator className="opacity-100" />
+
+        <h2 className="text-xs mt-4 mb-2 font-normal uppercase text-gray-400">
+          Tin tức và cộng đồng
+        </h2>
+        {libraryItems.map((item) => (
           <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
         ))}
       </div>
@@ -193,9 +196,14 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       <Separator className="opacity-50" />
 
       <UserOptions>
-        <Button size="lg" variant="ghost" className="w-full justify-start px-3">
-          <UserAvatar size={34} className="mr-3" />
-          <span>{user?.name}</span>
+        <Button size="lg" variant="ghost" className="w-full justify-start px-3 py-6">
+          <UserAvatar size={38} className="mr-3" />
+          <div className="flex flex-col text-left">
+            <span className="text-sm text-gray-500">Hồ sơ tài khoản</span>
+            <span className="font-medium">{user?.name}</span>
+          </div>
+          {/* Arrow */}
+          <IoSettingsOutline className="ml-auto text-xl" />
         </Button>
       </UserOptions>
 

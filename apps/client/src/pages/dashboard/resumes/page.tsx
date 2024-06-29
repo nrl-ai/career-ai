@@ -28,11 +28,11 @@ export const ResumesPage = () => {
           setLayout(value as Layout);
         }}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pt-4">
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-4xl font-bold tracking-tight"
+            className="text-2xl font-bold tracking-tight"
           >
             {t`Resumes`}
           </motion.h1>
