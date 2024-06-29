@@ -23,6 +23,7 @@ import { AuthGuard } from "./guards/auth";
 import { GuestGuard } from "./guards/guest";
 import { authLoader } from "./loaders/auth";
 import { ComingSoonPage } from "../pages/dashboard/coming_soon/page";
+import { CoursesPage } from "../pages/dashboard/courses/page";
 
 export const routes = createRoutesFromElements(
   <Route element={<Providers />}>
@@ -76,7 +77,7 @@ export const routes = createRoutesFromElements(
           <Route path="cv-improvement" element={<ComingSoonPage />} />
           <Route path="work-behavior-practice" element={<ComingSoonPage />} />
           <Route path="blog" element={<ComingSoonPage />} />
-          <Route path="courses" element={<ComingSoonPage />} />
+          <Route path="courses" element={<CoursesPage />} />
 
           <Route index element={<Navigate replace to="/dashboard/resumes" />} />
         </Route>

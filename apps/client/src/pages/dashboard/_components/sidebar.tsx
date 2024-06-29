@@ -139,7 +139,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
   const libraryItems: SidebarItem[] = [
     {
-      path: "/dashboard/blog",
+      path: "https://blog.career-ai.vn/",
       name: "Thư viện kiến thức",
       shortcut: "⇧E",
       icon: <IoLibraryOutline />,
@@ -241,7 +241,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
         <Separator className="opacity-100" />
 
-        <h2
+        {/* <h2
           className={cn(
             "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
             isCollapsed && "text-center",
@@ -258,7 +258,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
           />
         ))}
 
-        <Separator className="opacity-100" />
+        <Separator className="opacity-100" /> */}
 
         <h2
           className={cn(

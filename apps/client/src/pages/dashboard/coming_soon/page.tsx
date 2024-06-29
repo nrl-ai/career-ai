@@ -28,7 +28,11 @@ export const ComingSoonPage = () => {
       </div>
 
       <div className="pt-4">
-        <img src="/assets/coming-soon.webp" alt="Coming Soon" className="max-w-[400px] rounded-xl" />
+        <img
+          src="/assets/coming-soon.webp"
+          alt="Coming Soon"
+          className="max-w-[400px] rounded-xl"
+        />
       </div>
     </>
   );

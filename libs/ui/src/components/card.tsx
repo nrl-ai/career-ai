@@ -5,7 +5,7 @@ export const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEleme
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("flex flex-col space-y-3 rounded border bg-background p-6", className)}
+      className={cn("flex flex-col space-y-3 rounded-xl border bg-background p-6", className)}
       {...props}
     />
   ),
