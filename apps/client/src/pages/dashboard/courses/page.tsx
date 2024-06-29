@@ -187,17 +187,17 @@ export const CoursesPage = () => {
         </title>
       </Helmet>
 
-      <div className="flex items-center justify-between pt-4 mt-16 mb-8">
+      <div className="flex pt-4 mb-8" style={{ maxWidth: "1000px" }}>
         <motion.h1
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-4xl font-bold tracking-tight"
+          className="text-3xl font-bold tracking-tight"
         >
           {t`Courses`}
         </motion.h1>
       </div>
 
-      <main className="grid gap-y12 mt-6" style={{ maxWidth: "1000px", margin: "0 auto" }}>
+      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1000px" }}>
         <DocumentationCard />
         <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6">
           {courses.map((course) => (

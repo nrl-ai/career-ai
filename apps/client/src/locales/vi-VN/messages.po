@@ -233,6 +233,7 @@ msgstr "Hủy"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
+#: apps/client/src/pages/dashboard/courses/page.tsx:186
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:20
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
@@ -338,6 +339,11 @@ msgstr "Sao chép liên kết vào sơ yếu lý lịch"
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:78
 msgid "Copy to Clipboard"
 msgstr "Sao chép vào Clipboard"
+
+#: apps/client/src/pages/dashboard/courses/page.tsx:186
+#: apps/client/src/pages/dashboard/courses/page.tsx:196
+msgid "Courses"
+msgstr "Khóa học"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:167
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:242
@@ -455,6 +461,7 @@ msgid "Don't have an account?"
 msgstr "Bạn không có tài khoản?"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:83
+#: apps/client/src/pages/dashboard/courses/page.tsx:148
 msgid "Don't know where to begin? Hit the docs!"
 msgstr "Bạn không biết bắt đầu từ đâu? Nhấn vào tài liệu!"
 
