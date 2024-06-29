@@ -23,7 +23,7 @@ export const HeroSection = () => (
         whileInView={{ opacity: 1, x: 0 }}
       >
         <div className="hidden items-center gap-x-4 sm:flex">
-          <Badge variant={"warning"}>{t`Beta Version`}</Badge>
+          <Badge variant={"info"}>{t`Beta Version`}</Badge>
 
           <a
             href="/dashboard/resumes"

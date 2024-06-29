@@ -19,7 +19,7 @@ const fontSuggestions = [
   "Lora",
   "PT Sans",
   "PT Serif",
-  "IBM Plex Sans",
+  "Roboto",
   "IBM Plex Serif",
 ];
 

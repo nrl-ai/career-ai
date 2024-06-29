@@ -1115,7 +1115,7 @@ export const fonts: Font[] = [
     },
   },
   {
-    family: "IBM Plex Sans",
+    family: "Roboto",
     category: "sans-serif",
     subsets: ["cyrillic", "cyrillic-ext", "greek", "latin", "latin-ext", "vietnamese"],
     variants: [
@@ -3360,7 +3360,7 @@ export const fonts: Font[] = [
     },
   },
   {
-    family: "IBM Plex Sans Arabic",
+    family: "Roboto Arabic",
     category: "sans-serif",
     subsets: ["arabic", "cyrillic-ext", "latin", "latin-ext"],
     variants: ["100", "200", "300", "regular", "500", "600", "700"],
@@ -5894,7 +5894,7 @@ export const fonts: Font[] = [
     },
   },
   {
-    family: "IBM Plex Sans Condensed",
+    family: "Roboto Condensed",
     category: "sans-serif",
     subsets: ["cyrillic-ext", "latin", "latin-ext", "vietnamese"],
     variants: [

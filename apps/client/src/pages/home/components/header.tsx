@@ -16,7 +16,7 @@ export const Header = () => (
     <div className="bg-gradient-to-b from-background to-transparent py-3">
       <div className="container flex items-center justify-between">
         <Link to="/">
-          <Logo size={48} />
+          <Logo size={30} />
         </Link>
 
         <div />

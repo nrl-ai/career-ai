@@ -14,11 +14,11 @@ export const Icon = ({ open = false, size = 64, className }: Props) => {
 
   switch (isDarkMode) {
     case false: {
-      src = "/icon/light.svg";
+      src = "/logo/light.svg";
       break;
     }
     case true: {
-      src = "/icon/dark.svg";
+      src = "/logo/dark.svg";
       break;
     }
   }
@@ -30,7 +30,7 @@ export const Icon = ({ open = false, size = 64, className }: Props) => {
         width={size}
         height={size}
         alt="CareerAI"
-        className={cn("rounded-sm", className)}
+        className={cn("rounded-sm mr-2", className)}
       />
       {open ? <span className="text-3xl font-bold ml-1">CareerAI</span> :  null}
     </>

@@ -46,7 +46,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["IBM Plex Sans", "sans-serif"],
+        sans: ["Roboto", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

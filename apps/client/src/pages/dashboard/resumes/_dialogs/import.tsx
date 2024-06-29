@@ -46,7 +46,6 @@ import { useDialog } from "@/client/stores/dialog";
 
 enum ImportType {
   "career-ai-json" = "career-ai-json",
-  "career-ai-v3-json" = "career-ai-v3-json",
   "json-resume-json" = "json-resume-json",
   "linkedin-data-export-zip" = "linkedin-data-export-zip",
 }
@@ -111,14 +110,6 @@ export const ImportDialog = () => {
         setValidationResult({ isValid: true, type, result });
       }
 
-      if (type === ImportType["career-ai-v3-json"]) {
-        const parser = new CareerAIResumeV3Parser();
-        const data = await parser.readFile(file);
-        const result = parser.validate(data);
-
-        setValidationResult({ isValid: true, type, result });
-      }
-
       if (type === ImportType["json-resume-json"]) {
         const parser = new JsonResumeParser();
         const data = await parser.readFile(file);
@@ -158,13 +149,6 @@ export const ImportDialog = () => {
       if (type === ImportType["career-ai-json"]) {
         const parser = new CareerAIResumeParser();
         const data = parser.convert(validationResult.result as ResumeData);
-
-        await importResume({ data });
-      }
-
-      if (type === ImportType["career-ai-v3-json"]) {
-        const parser = new CareerAIResumeV3Parser();
-        const data = parser.convert(validationResult.result as CareerAIResumeV3);
 
         await importResume({ data });
       }

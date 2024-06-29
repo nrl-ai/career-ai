@@ -332,7 +332,7 @@
     },
     "typography": {
       "font": {
-        "family": "IBM Plex Sans",
+        "family": "Roboto",
         "subset": "latin",
         "variants": ["regular", "500"],
         "size": 13

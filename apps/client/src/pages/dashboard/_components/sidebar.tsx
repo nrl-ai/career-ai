@@ -145,7 +145,7 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       <div className="ml-12 flex lg:ml-0">
         <Button asChild size="icon" variant="ghost" className="w-full justify-start text-left">
           <Link to="/">
-            <Icon open={true} size={48} className="hidden lg:block" />
+            <Icon open={true} size={36} className="hidden lg:block" />
           </Link>
         </Button>
       </div>
