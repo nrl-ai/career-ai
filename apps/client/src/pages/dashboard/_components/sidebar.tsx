@@ -6,18 +6,17 @@ import {
   IoChatbubbleEllipsesOutline,
   IoCheckmarkDoneCircleOutline,
   IoHomeOutline,
+  IoLibraryOutline,
   IoNewspaperOutline,
+  IoServerOutline,
   IoSettingsOutline,
   IoTodayOutline,
-  IoLibraryOutline,
-  IoServerOutline,
 } from "react-icons/io5";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { PiGraduationCap } from "react-icons/pi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useKeyboardShortcut from "use-keyboard-shortcut";
 
-import { Copyright } from "@/client/components/copyright";
 import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
@@ -59,19 +58,19 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: Sideb
       size="lg"
       variant="ghost"
       className={cn(
-        "flex justify-center items-center h-auto rounded-lg py-2.5",
+        "flex h-auto items-center justify-center rounded-lg py-2.5",
         isActive && "pointer-events-none bg-secondary/50 text-secondary-foreground",
         !isCollapsed && "px-3",
         isCollapsed && "px-1",
       )}
       onClick={onClick}
     >
-      <Link to={path} className="flex items-center w-full h-full">
+      <Link to={path} className="flex size-full items-center">
         <div className={cn("text-xl", isActive && "text-blue-500", !isCollapsed && "mr-3")}>
           {icon}
         </div>
         {!isCollapsed && (
-          <span className={cn("font-normal", isActive && "text-blue-500 font-bold")}>{name}</span>
+          <span className={cn("font-normal", isActive && "font-bold text-blue-500")}>{name}</span>
         )}
         {!isActive && !isCollapsed && (
           <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>
@@ -168,7 +167,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
   return (
     <div className={cn("flex h-full flex-col gap-y-2", isCollapsed ? "md:p-2" : "md:p-4")}>
-      <div className="flex justify-between ml-12 lg:mb-4 lg:ml-0">
+      <div className="ml-12 flex justify-between lg:mb-4 lg:ml-0">
         <Link to="/" className="w-full">
           <Icon
             open={!isCollapsed}
@@ -178,10 +177,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
         </Link>
         {!isOpen && !isCollapsed && (
           <Button
-            onClick={() => setIsCollapsed((prev) => !prev)}
             size="md"
             variant="ghost"
             className="text-gray-400"
+            onClick={() => {
+              setIsCollapsed?.(!isCollapsed);
+            }}
           >
             {isCollapsed ? (
               <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
@@ -194,10 +195,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
       {!isOpen && isCollapsed && (
         <Button
-          onClick={() => setIsCollapsed((prev) => !prev)}
           size="md"
           variant="ghost"
           className="text-gray-400"
+          onClick={() => {
+            setIsCollapsed?.(!isCollapsed);
+          }}
         >
           {isCollapsed ? (
             <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
@@ -221,7 +224,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
         <h2
           className={cn(
-            "text-xs mt-4 mb-2 font-normal uppercase text-gray-400",
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
             isCollapsed && "text-center",
           )}
         >
@@ -240,7 +243,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
         <h2
           className={cn(
-            "text-xs mt-4 mb-2 font-normal uppercase text-gray-400",
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
             isCollapsed && "text-center",
           )}
         >
@@ -259,7 +262,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
         <h2
           className={cn(
-            "text-xs mt-4 mb-2 font-normal uppercase text-gray-400",
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
             isCollapsed && "text-center",
           )}
         >
@@ -283,15 +286,13 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
         <Button
           size="lg"
           variant="ghost"
-          className={cn("w-full justify-star py-6", isCollapsed ? "px-0" : "px-3")}
+          className={cn("justify-star w-full py-6", isCollapsed ? "px-0" : "px-3")}
         >
           <UserAvatar size={38} className={cn(isCollapsed ? "mr-0" : "mr-3")} />
           {!isCollapsed && (
             <div className="flex flex-col text-left">
               <span className="text-sm text-gray-500">Hồ sơ tài khoản</span>
-              <span className="font-medium overflow-hidden whitespace-nowrap overflow-ellipsis max-w-[120px]">
-                {user?.name}
-              </span>
+              <span className="max-w-[120px] truncate font-medium">{user?.name}</span>
             </div>
           )}
           {!isCollapsed && <IoSettingsOutline className="ml-auto text-xl" />}
