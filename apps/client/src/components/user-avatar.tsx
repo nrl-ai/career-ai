@@ -19,7 +19,7 @@ export const UserAvatar = ({ size = 36, className }: Props) => {
       <img
         alt={user.name}
         src={user.picture}
-        className="rounded-full"
+        className="rounded-full border-2 border-blue-500"
         style={{ width: size, height: size }}
       />
     );

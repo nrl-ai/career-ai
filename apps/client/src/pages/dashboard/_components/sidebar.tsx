@@ -12,6 +12,7 @@ import {
   IoLibraryOutline,
   IoServerOutline,
 } from "react-icons/io5";
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { PiGraduationCap } from "react-icons/pi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useKeyboardShortcut from "use-keyboard-shortcut";
@@ -42,13 +43,14 @@ type SidebarItem = {
   name: string;
   shortcut?: string;
   icon: React.ReactNode;
+  isCollapsed?: boolean;
 };
 
 type SidebarItemProps = SidebarItem & {
   onClick?: () => void;
 };
 
-const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) => {
+const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: SidebarItemProps) => {
   const isActive = useLocation().pathname === path;
 
   return (
@@ -57,16 +59,24 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
       size="lg"
       variant="ghost"
       className={cn(
-        "h-auto justify-start rounded-lg px-3 py-2.5",
+        "flex justify-center items-center h-auto rounded-lg py-2.5",
         isActive && "pointer-events-none bg-secondary/50 text-secondary-foreground",
+        !isCollapsed && "px-3",
+        isCollapsed && "px-1",
       )}
       onClick={onClick}
     >
-      <Link to={path}>
-        <div className={cn("mr-3 text-xl", isActive && "text-blue-500")}>{icon}</div>
-        <span className={cn("font-normal", isActive && "text-blue-500 font-bold")}>{name}</span>
-        {!isActive && <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>}
-        {isActive && <ActiveIndicator className="ml-auto" />}
+      <Link to={path} className="flex items-center w-full h-full">
+        <div className={cn("text-xl", isActive && "text-blue-500", !isCollapsed && "mr-3")}>
+          {icon}
+        </div>
+        {!isCollapsed && (
+          <span className={cn("font-normal", isActive && "text-blue-500 font-bold")}>{name}</span>
+        )}
+        {!isActive && !isCollapsed && (
+          <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>
+        )}
+        {isActive && !isCollapsed && <ActiveIndicator className="ml-auto" />}
       </Link>
     </Button>
   );
@@ -75,9 +85,11 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick }: SidebarItemProps) 
 type SidebarProps = {
   isOpen?: boolean;
   setOpen?: (open: boolean) => void;
+  isCollapsed?: boolean;
+  setIsCollapsed?: (collapsed: boolean) => void;
 };
 
-export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
+export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -155,39 +167,111 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
   ];
 
   return (
-    <div className="flex h-full flex-col gap-y-4 md:p-4">
-      <div className="ml-12 flex lg:mb-4 lg:ml-0">
-        <Link to="/">
-          <Icon open={true} size={32} className="hidden lg:block" />
+    <div className={cn("flex h-full flex-col gap-y-2", isCollapsed ? "md:p-2" : "md:p-4")}>
+      <div className="flex justify-between ml-12 lg:mb-4 lg:ml-0">
+        <Link to="/" className="w-full">
+          <Icon
+            open={!isCollapsed}
+            size={32}
+            className={cn("hidden lg:block", isCollapsed && "mx-auto mt-4")}
+          />
         </Link>
+        {!isOpen && !isCollapsed && (
+          <Button
+            onClick={() => setIsCollapsed((prev) => !prev)}
+            size="md"
+            variant="ghost"
+            className="text-gray-400"
+          >
+            {isCollapsed ? (
+              <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
+            ) : (
+              <MdKeyboardDoubleArrowLeft className="text-2xl font-normal" />
+            )}
+          </Button>
+        )}
       </div>
 
-      <div className="grid gap-y-2">
+      {!isOpen && isCollapsed && (
+        <Button
+          onClick={() => setIsCollapsed((prev) => !prev)}
+          size="md"
+          variant="ghost"
+          className="text-gray-400"
+        >
+          {isCollapsed ? (
+            <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
+          ) : (
+            <MdKeyboardDoubleArrowLeft className="text-2xl font-normal" />
+          )}
+        </Button>
+      )}
+
+      <div className={cn("grid", !isCollapsed && "gap-y-1")}>
         {topItems.map((item) => (
-          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
         ))}
 
         <Separator className="opacity-100" />
 
-        <h2 className="text-xs mt-4 mb-2 font-normal uppercase text-gray-400">Dịch vụ</h2>
+        <h2
+          className={cn(
+            "text-xs mt-4 mb-2 font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          Dịch vụ
+        </h2>
         {serviceItems.map((item) => (
-          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
         ))}
 
         <Separator className="opacity-100" />
 
-        <h2 className="text-xs mt-4 mb-2 font-normal uppercase text-gray-400">Công cụ tính toán</h2>
+        <h2
+          className={cn(
+            "text-xs mt-4 mb-2 font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {isCollapsed ? "Công cụ" : "Công cụ tính toán"}
+        </h2>
         {toolItems.map((item) => (
-          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
         ))}
 
         <Separator className="opacity-100" />
 
-        <h2 className="text-xs mt-4 mb-2 font-normal uppercase text-gray-400">
-          Tin tức và cộng đồng
+        <h2
+          className={cn(
+            "text-xs mt-4 mb-2 font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {isCollapsed ? "Thư viện" : "Tin tức và cộng đồng"}
         </h2>
         {libraryItems.map((item) => (
-          <SidebarItem {...item} key={item.path} onClick={() => setOpen?.(false)} />
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
         ))}
       </div>
 
@@ -196,18 +280,23 @@ export const Sidebar = ({ isOpen, setOpen }: SidebarProps) => {
       <Separator className="opacity-50" />
 
       <UserOptions>
-        <Button size="lg" variant="ghost" className="w-full justify-start px-3 py-6">
-          <UserAvatar size={38} className="mr-3" />
-          <div className="flex flex-col text-left">
-            <span className="text-sm text-gray-500">Hồ sơ tài khoản</span>
-            <span className="font-medium">{user?.name}</span>
-          </div>
-          {/* Arrow */}
-          <IoSettingsOutline className="ml-auto text-xl" />
+        <Button
+          size="lg"
+          variant="ghost"
+          className={cn("w-full justify-star py-6", isCollapsed ? "px-0" : "px-3")}
+        >
+          <UserAvatar size={38} className={cn(isCollapsed ? "mr-0" : "mr-3")} />
+          {!isCollapsed && (
+            <div className="flex flex-col text-left">
+              <span className="text-sm text-gray-500">Hồ sơ tài khoản</span>
+              <span className="font-medium overflow-hidden whitespace-nowrap overflow-ellipsis max-w-[120px]">
+                {user?.name}
+              </span>
+            </div>
+          )}
+          {!isCollapsed && <IoSettingsOutline className="ml-auto text-xl" />}
         </Button>
       </UserOptions>
-
-      <Copyright className="ml-2" />
     </div>
   );
 };

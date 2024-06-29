@@ -1,3 +1,4 @@
+import { cn } from "@career-ai/utils";
 import { SidebarSimple } from "@phosphor-icons/react";
 import { Button, Sheet, SheetClose, SheetContent, SheetTrigger } from "@career-ai/ui";
 import { motion } from "framer-motion";
@@ -8,6 +9,7 @@ import { Sidebar } from "./_components/sidebar";
 
 export const DashboardLayout = () => {
   const [open, setOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div>
@@ -26,7 +28,7 @@ export const DashboardLayout = () => {
               </Button>
             </SheetClose>
 
-            <Sidebar isOpen={open} setOpen={setOpen} />
+            <Sidebar isOpen={open} setOpen={setOpen} isCollapsed={false} />
           </SheetContent>
         </Sheet>
       </div>
@@ -34,14 +36,24 @@ export const DashboardLayout = () => {
       <motion.div
         initial={{ x: -320 }}
         animate={{ x: 0 }}
-        className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-[300px] lg:flex-col"
+        className={cn("hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col", {
+          "lg:w-[300px]": !isCollapsed,
+          "lg:w-[80px]": isCollapsed,
+        })}
       >
-        <div className="h-full rounded p-4 border-r-[2px] border-r-[#E6E6E6]">
-          <Sidebar />
+        <div
+          className={cn("h-full rounded border-r-[2px] border-r-[#E6E6E6]", !isCollapsed && "p-4")}
+        >
+          <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
         </div>
       </motion.div>
 
-      <main className="mx-6 my-4 lg:mx-8 lg:pl-[300px]">
+      <main
+        className={cn("mx-6 my-4 lg:mx-8", {
+          "lg:pl-[300px]": !isCollapsed,
+          "lg:pl-[80px]": isCollapsed,
+        })}
+      >
         <Outlet />
       </main>
     </div>
