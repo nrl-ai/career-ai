@@ -1296,8 +1296,8 @@ msgstr "Square"
 
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:33
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/create-item.tsx:23
-msgid "Start building from scratch"
-msgstr "Start building from scratch"
+msgid "Create a new resume from templates"
+msgstr "Create a new resume from templates"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:183
 msgid "Start building your resume by giving it a name."

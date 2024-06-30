@@ -158,7 +158,7 @@ const DocumentationCard = () => (
 );
 
 const CourseCardInner = ({ course }: { course: any }) => (
-  <Card className="flex flex-col space-y-2 h-[300px] hover:shadow-lg hover:border-gray-300">
+  <Card className="flex flex-col space-y-2 h-[280px] hover:shadow-lg hover:border-gray-500">
     <img
       src={course.imageUrl}
       alt={course.title}
@@ -199,7 +199,7 @@ export const CoursesPage = () => {
 
       <main className="grid gap-y12 mt-8" style={{ maxWidth: "1000px" }}>
         <DocumentationCard />
-        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
           {courses.map((course) => (
             <CourseCard key={course.title} course={course} />
           ))}

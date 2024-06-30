@@ -1,6 +1,5 @@
 import { t } from "@lingui/macro";
-import { List, SquaresFour } from "@phosphor-icons/react";
-import { ScrollArea, Tabs, TabsContent, TabsList, TabsTrigger } from "@career-ai/ui";
+import { ScrollArea, Tabs, TabsContent } from "@career-ai/ui";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -36,26 +35,14 @@ export const ResumesPage = () => {
           >
             {t`Resumes`}
           </motion.h1>
-
-          <TabsList>
-            <TabsTrigger value="grid" className="size-8 p-0 sm:h-8 sm:w-auto sm:px-4">
-              <SquaresFour />
-              <span className="ml-2 hidden sm:block">{t`Grid`}</span>
-            </TabsTrigger>
-            <TabsTrigger value="list" className="size-8 p-0 sm:h-8 sm:w-auto sm:px-4">
-              <List />
-              <span className="ml-2 hidden sm:block">{t`List`}</span>
-            </TabsTrigger>
-          </TabsList>
         </div>
 
-        <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)]">
-          <TabsContent value="grid">
-            <GridView />
-          </TabsContent>
-          <TabsContent value="list">
-            <ListView />
-          </TabsContent>
+        <div className="max-w-[500px] pb-4 text-md text-gray-500">
+          Tạo CV theo các mẫu có sẵn dễ dàng và nhanh chóng. Bạn có thể quản lý CV cho các công việc và vị trí khác nhau ngay tại đây.
+        </div>
+
+        <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] mt-4">
+          <GridView />
         </ScrollArea>
       </Tabs>
     </>
