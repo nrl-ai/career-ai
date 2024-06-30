@@ -38,7 +38,8 @@ export const ResumesPage = () => {
         </div>
 
         <div className="max-w-[500px] pb-4 text-md text-gray-500">
-          Tạo CV theo các mẫu có sẵn dễ dàng và nhanh chóng. Bạn có thể quản lý CV cho các công việc và vị trí khác nhau ngay tại đây.
+          Tạo CV theo các mẫu có sẵn dễ dàng và nhanh chóng. Bạn có thể quản lý CV cho các công việc
+          và vị trí khác nhau ngay tại đây.
         </div>
 
         <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] mt-4">
