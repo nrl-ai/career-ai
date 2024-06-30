@@ -1,10 +1,6 @@
 import { t } from "@lingui/macro";
-import { DownloadSimple } from "@phosphor-icons/react";
 import { KeyboardShortcut } from "@career-ai/ui";
-import { cn } from "@career-ai/utils";
-
 import { useDialog } from "@/client/stores/dialog";
-
 import { BaseCard } from "./base-card";
 
 export const ImportResumeCard = () => {
@@ -15,8 +11,7 @@ export const ImportResumeCard = () => {
       onClick={() => {
         open("create");
       }}
-      className="bg-blue-100 border-blue-200 text-blue-500 border-dashed border-blue-500 flex items-center justify-center"
-      style={{ height: "100%" }} // Ensure the card takes full height
+      className="bg-blue-100 border-blue-200 text-blue-500 border-dashed border-blue-500 flex items-center justify-center h-full"
     >
       <div className="flex flex-col items-center justify-center text-center">
         <img src="/icons/upload.svg" alt="Create a new resume" className="w-12 h-12 mx-auto" />

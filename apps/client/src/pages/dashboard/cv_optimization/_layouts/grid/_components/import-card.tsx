@@ -1,8 +1,5 @@
 import { t } from "@lingui/macro";
-import { DownloadSimple } from "@phosphor-icons/react";
 import { KeyboardShortcut } from "@career-ai/ui";
-import { cn } from "@career-ai/utils";
-
 import { useDialog } from "@/client/stores/dialog";
 
 import { BaseCard } from "./base-card";
