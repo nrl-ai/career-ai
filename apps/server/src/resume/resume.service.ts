@@ -20,7 +20,7 @@ const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
 });
 
-const PROMPT = `Bạn là một chuyên gia tuyển dụng. Hãy giúp nhận xét CV sau đây và đề xuất cách tối ưu hóa CV này để phù hợp với công việc.
+const PROMPT = `Bạn là một chuyên gia tuyển dụng và tư vấn việc làm. Hãy giúp nhận xét CV sau đây và đề xuất cách tối ưu hóa CV này để phù hợp với công việc.
 
 NỘI DUNG CV DẠNG JSON:
 """{cv}"""
@@ -28,17 +28,17 @@ NỘI DUNG CV DẠNG JSON:
 NỘI DUNG MÔ TẢ CÔNG VIỆC:
 """{jd}"""
 
-Kết quả trả về nên có dạng Markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10). Điểm số đánh giá toàn diện về kinh nghiệm CV, mức độ phù hợp với công việc, cách trình bày, và các yếu tố khác.
+Kết quả trả về nên có dạng Markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10). Điểm số đánh giá toàn diện về kinh nghiệm CV, mức độ phù hợp với công việc, cách trình bày, và các yếu tố khác. Sử dụng hoàn toàn Tiếng Việt trong bài viết.
 
-- **• ĐIỂM SỐ:** <Score>/10
+**I. ĐIỂM SỐ:** <Score>/10
 \n\n\n
-- **• NHẬN XÉT:** ...
+**II. NHẬN XÉT:** ...
 \n\n\n
-- **• ĐIỂM MẠNH:** ...
+**III. ĐIỂM MẠNH:** ...
 \n\n\n
-- **• ĐIỂM YẾU:** ...
+**IV. ĐIỂM YẾU:** ...
 \n\n\n
-- **• GỢI Ý TỐI ƯU:** ...
+**V. GỢI Ý TỐI ƯU:** ...
 `;
 
 export const queryCVAnalyze = async (cv: string, jd: string) => {
@@ -46,7 +46,7 @@ export const queryCVAnalyze = async (cv: string, jd: string) => {
   const prompt = PROMPT.replace("{cv}", cv).replace("{jd}", jd);
   const result = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o",
   });
   return result.choices[0].message.content ?? text;
 };
