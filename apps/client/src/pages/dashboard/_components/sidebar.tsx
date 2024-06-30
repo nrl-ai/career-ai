@@ -19,6 +19,7 @@ import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
 import { useUser } from "@/client/services/user";
+import { useToast } from "@/client/hooks/use-toast";
 
 type SidebarItem = {
   path: string;
@@ -48,8 +49,8 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: Sideb
       )}
       onClick={onClick}
     >
-      <Link to={path} className="flex size-full">
-        <div className={cn("text-xl", isActive && "text-blue-500", !isCollapsed && "mr-3")}>
+      <Link to={path} className="flex size-full my-[2px]">
+        <div className={cn("text-xl", isActive && "text-blue-500", isCollapsed ? "block mx-auto" : "mr-3")}>
           {icon}
         </div>
         {!isCollapsed && (
@@ -71,6 +72,7 @@ type SidebarProps = {
 };
 
 export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
+  const { toast } = useToast();
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -130,12 +132,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
   const toolItems: SidebarItem[] = [
     {
-      path: "/dashboard/coming-soon",
+      path: "#",
       name: "Tính lương GROSS-NET",
       icon: <IoCalculatorOutline />,
     },
     {
-      path: "/dashboard/coming-soon",
+      path: "#",
       name: "Tính thuế TNCN",
       icon: <IoServerOutline />,
     },
@@ -217,25 +219,6 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
         <Separator className="opacity-100" />
 
-        {/* <h2
-          className={cn(
-            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            isCollapsed && "text-center",
-          )}
-        >
-          {isCollapsed ? "Công cụ" : "Công cụ tính toán"}
-        </h2>
-        {toolItems.map((item) => (
-          <SidebarItem
-            isCollapsed={isCollapsed}
-            {...item}
-            key={item.path}
-            onClick={() => setOpen?.(false)}
-          />
-        ))}
-
-        <Separator className="opacity-100" /> */}
-
         <h2
           className={cn(
             "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
@@ -252,6 +235,32 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             onClick={() => setOpen?.(false)}
           />
         ))}
+
+        <Separator className="opacity-100" />
+
+        <h2
+          className={cn(
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {isCollapsed ? "Công cụ" : "Công cụ tính toán"}
+        </h2>
+        {toolItems.map((item) => (
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => {
+              toast({
+        variant: "warning",
+        title: "Chức năng đang được phát triển. ",
+        description: "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại trong thời gian sắp tới!",
+      });
+            }}
+          />
+        ))}
+
       </div>
 
       <div className="flex-1" />

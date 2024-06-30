@@ -234,7 +234,7 @@ msgstr "Hủy"
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/courses/page.tsx:185
-#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:31
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:33
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:19
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
@@ -1043,7 +1043,7 @@ msgstr "Hình ảnh"
 msgid "Please note that this step is completely optional."
 msgstr "Xin lưu ý rằng bước này là hoàn toàn tùy chọn."
 
-#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:21
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:23
 msgid "Please select a CV first."
 msgstr "Vui lòng chọn một CV trước."
 

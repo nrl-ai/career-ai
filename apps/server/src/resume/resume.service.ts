@@ -14,10 +14,10 @@ import { PrismaService } from "nestjs-prisma";
 import { PrinterService } from "@/server/printer/printer.service";
 import { StorageService } from "../storage/storage.service";
 
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
 });
 
 const PROMPT = `Bạn là một chuyên gia tuyển dụng. Hãy giúp nhận xét CV sau đây và đề xuất cách tối ưu hóa CV này để phù hợp với công việc.
@@ -41,19 +41,15 @@ Kết quả trả về nên có dạng Markdown (thay Score bằng điểm số 
 - **• GỢI Ý TỐI ƯU:** ...
 `;
 
-
-
 export const queryCVAnalyze = async (cv: string, jd: string) => {
   const text = "Chúng tôi gặp lỗi khi phân tích CV của bạn. Vui lòng thử lại.";
   const prompt = PROMPT.replace("{cv}", cv).replace("{jd}", jd);
   const result = await openai.chat.completions.create({
-    messages: [{ role: 'system', content: prompt }],
-    model: 'gpt-3.5-turbo',
+    messages: [{ role: "system", content: prompt }],
+    model: "gpt-3.5-turbo",
   });
   return result.choices[0].message.content ?? text;
 };
-
-
 
 @Injectable()
 export class ResumeService {
