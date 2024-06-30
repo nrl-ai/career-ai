@@ -143,17 +143,16 @@ const courses = [
 ];
 
 const DocumentationCard = () => (
-  <Card className="space-y-4">
+  <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100">
     <CardContent className="space-y-2">
       <CardTitle>Khóa học và Hướng dẫn được chọn bởi CareerAI</CardTitle>
-      <CardDescription className="space-y-2">
+      <div>
         CareerAI là tuyển chọn và giới thiệu đến các bạn những khoá học trực tuyến hữu ích nhất tại
         trang web này. Mục tiêu của chúng tôi là giúp bạn nâng cao kiến thức và kĩ năng một cách
         nhanh chóng và hiệu quả nhất. Hãy cùng chúng tôi khám phá những khoá học tốt nhất dành cho
         bạn!
-      </CardDescription>
+      </div>
     </CardContent>
-    <CardFooter className="space-x-4">Hãy cùng tham khảo các khoá học phía dưới.</CardFooter>
   </Card>
 );
 
