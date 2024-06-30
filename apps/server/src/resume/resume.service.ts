@@ -28,10 +28,9 @@ NỘI DUNG CV DẠNG JSON:
 NỘI DUNG MÔ TẢ CÔNG VIỆC:
 """{jd}"""
 
+Kết quả trả về nên có dạng markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10):
 
-Kết quả trả về nên có dạng markdown:
-
-- **Đánh giá:** 8.5/10
+- **Đánh giá:** <Score>/10
 
 
 - **Nhận xét chung:** ...
