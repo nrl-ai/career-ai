@@ -4,9 +4,11 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { CVSelector } from "../../../components/cv_selector";
 import { Button, RichInput } from "@career-ai/ui";
-import { Card, CardContent, CardDescription, CardTitle } from "@career-ai/ui";
+import { Card, CardContent, CardTitle } from "@career-ai/ui";
 import { useAnalyzeResume } from "@/client/services/resume/analyze";
 import { useToast } from "@/client/hooks/use-toast";
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export const CVOptimizationPage = () => {
   const { toast } = useToast();
@@ -86,9 +88,7 @@ export const CVOptimizationPage = () => {
         {result && <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-8">
           <CardContent className="space-y-2">
             <CardTitle>Kết quả phân tích: </CardTitle>
-            <div>
-              {result}
-            </div>
+            <Markdown remarkPlugins={[remarkGfm]}>{result}</Markdown>
           </CardContent>
         </Card>}
 
