@@ -13,11 +13,11 @@ export const CreateResumeCard = () => {
       onClick={() => {
         open("create");
       }}
-      className="bg-blue-100 border-blue-200 text-blue-500 border-dashed border-blue-500 flex items-center justify-center p-2"
+      className="bg-blue-100 text-blue-500 border-dashed border-blue-500 flex items-center justify-center p-2"
     >
       <div className="flex flex-col items-center justify-center text-center">
         <img src="/icons/plus.svg" alt="Create a new resume" className="w-12 h-12 mx-auto" />
-        <h4 className="font-medium text-gray-600 font-bold mt-8">{t`Create a new resume`}</h4>
+        <h4 className=" text-gray-600 font-bold mt-8">{t`Create a new resume`}</h4>
         <p className="text-xs opacity-75 text-gray-600 mt-2">
           {t`Create a new resume from templates`}
         </p>

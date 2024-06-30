@@ -9,7 +9,6 @@ import JobDescriptionForm from "./jd_form";
 export const CVOptimizationPage = () => {
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
 
-
   return (
     <>
       <Helmet>
@@ -20,7 +19,7 @@ export const CVOptimizationPage = () => {
         <motion.h1
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-3xl font-bold tracking-tight"
+          className="text-2xl font-bold tracking-tight"
         >
           Kiểm tra và Tối ưu CV
         </motion.h1>
@@ -44,7 +43,7 @@ export const CVOptimizationPage = () => {
         <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
           <span className="font-bold">2</span>
         </div>
-        <h1 className="font-bold text-xl">Mô tả công việc (khuyến khích)</h1>
+        <h1 className="font-bold text-xl">Mô tả công việc (nên có)</h1>
       </div>
 
       <JobDescriptionForm />

@@ -8,7 +8,7 @@ import { CreateResumeCard } from "./_components/create-card";
 import { ImportResumeCard } from "./_components/import-card";
 import { ResumeCard } from "./_components/resume-card";
 
-export const CVSelector =  ({ selectedCV, setSelectedCV }: { selectedCV: string, setSelectedCV: (cv: string) => void }) => {
+export const CVSelector =  ({ selectedCV, setSelectedCV }: { selectedCV: string | null, setSelectedCV: (cv: string) => void }) => {
   const { resumes, loading } = useResumes();
 
   const handleSelect = (id: string) => {

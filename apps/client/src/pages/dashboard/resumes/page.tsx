@@ -31,7 +31,7 @@ export const ResumesPage = () => {
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-3xl font-bold tracking-tight"
+            className="text-2xl font-bold tracking-tight"
           >
             {t`Resumes`}
           </motion.h1>
@@ -42,7 +42,7 @@ export const ResumesPage = () => {
           và vị trí khác nhau ngay tại đây.
         </div>
 
-        <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] mt-4">
+        <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] mt-4 overflow-visible">
           <GridView />
         </ScrollArea>
       </Tabs>

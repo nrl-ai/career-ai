@@ -157,7 +157,7 @@ const DocumentationCard = () => (
 );
 
 const CourseCardInner = ({ course }: { course: any }) => (
-  <Card className="flex flex-col space-y-2 h-[280px] shadow-md hover:shadow-lg hover:border-gray-400 hover:scale-105 transition-transform duration-200">
+  <Card className="flex flex-col space-y-2 h-[280px] shadow-md hover:shadow-lg  hover:scale-105 transition-transform duration-300 hover:border-[2px] hover:border-blue-500">
     <img
       src={course.imageUrl}
       alt={course.title}
@@ -190,7 +190,7 @@ export const CoursesPage = () => {
         <motion.h1
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-3xl font-bold tracking-tight"
+          className="text-2xl font-bold tracking-tight"
         >
           {t`Courses`}
         </motion.h1>
