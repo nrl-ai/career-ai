@@ -28,21 +28,17 @@ NỘI DUNG CV DẠNG JSON:
 NỘI DUNG MÔ TẢ CÔNG VIỆC:
 """{jd}"""
 
-Kết quả trả về nên có dạng markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10):
+Kết quả trả về nên có dạng Markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10). Điểm số đánh giá toàn diện về kinh nghiệm CV, mức độ phù hợp với công việc, cách trình bày, và các yếu tố khác.
 
-- **Đánh giá:** <Score>/10
-
-
-- **Nhận xét chung:** ...
-
-
-- **Điểm mạnh:** ...
-
-
-- **Điểm yếu:** ...
-
-
-- **Gợi ý tối ưu:** ...
+- **• ĐIỂM SỐ:** <Score>/10
+\n\n\n
+- **• NHẬN XÉT:** ...
+\n\n\n
+- **• ĐIỂM MẠNH:** ...
+\n\n\n
+- **• ĐIỂM YẾU:** ...
+\n\n\n
+- **• GỢI Ý TỐI ƯU:** ...
 `;
 
 

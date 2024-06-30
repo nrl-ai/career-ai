@@ -85,9 +85,9 @@ export const CVOptimizationPage = () => {
           </CardContent>
         </Card>}
 
-        {result && <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-8">
+        {result && <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4">
           <CardContent className="space-y-2">
-            <CardTitle>Kết quả phân tích: </CardTitle>
+            <CardTitle>KẾT QUẢ PHÂN TÍCH: </CardTitle>
             <Markdown remarkPlugins={[remarkGfm]}>{result}</Markdown>
           </CardContent>
         </Card>}
