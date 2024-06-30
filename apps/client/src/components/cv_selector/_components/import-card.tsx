@@ -14,13 +14,9 @@ export const ImportResumeCard = () => {
         open("create");
       }}
     >
-      <div className="flex flex-col items-center justify-center text-center">
+      <div className="flex flex-col items-center justify-center text-center p-2">
         <img src="/icons/upload.svg" alt="Create a new resume" className="w-12 h-12 mx-auto" />
-        <h4 className="text-gray-600 font-bold mt-8">
-          {t`Import an existing resume`}
-          {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-          <KeyboardShortcut className="ml-2">^I</KeyboardShortcut>
-        </h4>
+        <h4 className="text-gray-600 font-bold mt-8">{t`Import an existing resume`}</h4>
         <p className="text-xs opacity-75 text-gray-600 mt-2">{t`LinkedIn, JSON Resume, etc.`}</p>
       </div>
     </BaseCard>

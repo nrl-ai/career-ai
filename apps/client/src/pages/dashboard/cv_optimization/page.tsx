@@ -7,8 +7,8 @@ import { Button, RichInput } from "@career-ai/ui";
 import { Card, CardContent, CardTitle } from "@career-ai/ui";
 import { useAnalyzeResume } from "@/client/services/resume/analyze";
 import { useToast } from "@/client/hooks/use-toast";
-import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export const CVOptimizationPage = () => {
   const { toast } = useToast();
@@ -25,7 +25,7 @@ export const CVOptimizationPage = () => {
       return;
     }
     await analyzeResume({ id: selectedCV, jd: jd as string });
-  }
+  };
 
   return (
     <>
@@ -67,31 +67,35 @@ export const CVOptimizationPage = () => {
 
         <div className="space-y-4">
           <RichInput content={jd} onChange={setJD} />
-          <Button onClick={handleAnalyze} >Phân tích CV</Button>
+          <Button onClick={handleAnalyze}>Phân tích CV</Button>
         </div>
 
-        {loading && <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8">
-          <CardContent className="space-y-2">
-            <CardTitle>Đang phân tích CV...</CardTitle>
-          </CardContent>
-        </Card>}
+        {loading && (
+          <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8">
+            <CardContent className="space-y-2">
+              <CardTitle>Đang phân tích CV</CardTitle>
+              <div>Vui lòng chờ một chút. CV của bạn đang được phân tích...</div>
+            </CardContent>
+          </Card>
+        )}
 
-        {error && <Card className="space-y-4 border-red-500 border-dashed border-[1px] p-4 bg-red-100 mt-8">
-          <CardContent className="space-y-2">
-            <CardTitle>Lỗi khi phân tích CV: </CardTitle>
-            <div>
-              {error.message}
-            </div>
-          </CardContent>
-        </Card>}
+        {error && (
+          <Card className="space-y-4 border-red-500 border-dashed border-[1px] p-4 bg-red-100 mt-8">
+            <CardContent className="space-y-2">
+              <CardTitle>Lỗi khi phân tích CV: </CardTitle>
+              <div>{error.message}</div>
+            </CardContent>
+          </Card>
+        )}
 
-        {result && <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4">
-          <CardContent className="space-y-2">
-            <CardTitle>KẾT QUẢ PHÂN TÍCH: </CardTitle>
-            <Markdown remarkPlugins={[remarkGfm]}>{result}</Markdown>
-          </CardContent>
-        </Card>}
-
+        {result && (
+          <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4">
+            <CardContent className="space-y-2">
+              <CardTitle>KẾT QUẢ PHÂN TÍCH: </CardTitle>
+              <Markdown remarkPlugins={[remarkGfm]}>{result}</Markdown>
+            </CardContent>
+          </Card>
+        )}
       </main>
     </>
   );

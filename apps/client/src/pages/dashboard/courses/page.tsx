@@ -143,7 +143,7 @@ const courses = [
 ];
 
 const DocumentationCard = () => (
-  <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100">
+  <Card className="space-y-4 border-blue-500 border-dashed border p-4 bg-blue-100">
     <CardContent className="space-y-2">
       <CardTitle>Khóa học và Hướng dẫn được chọn bởi CareerAI</CardTitle>
       <div>
@@ -157,14 +157,9 @@ const DocumentationCard = () => (
 );
 
 const CourseCardInner = ({ course }: { course: any }) => (
-  <Card className="flex flex-col space-y-2 h-[280px] shadow-md hover:shadow-lg  hover:scale-105 transition-transform duration-300 hover:border-[2px] hover:border-blue-500">
-    <img
-      src={course.imageUrl}
-      alt={course.title}
-      className="rounded-md"
-      style={{ aspectRatio: "16/9" }}
-    />
-    <CardContent className="space-y-1">
+  <Card className="flex flex-col space-y-2 h-[300px] shadow-md hover:shadow-lg  hover:scale-105 transition-transform duration-300 hover:border-[2px] hover:border-blue-500 p-0 rounded-xl overflow-hidden">
+    <img src={course.imageUrl} alt={course.title} style={{ aspectRatio: "16/9" }} />
+    <CardContent className="space-y-1 px-4 py-2">
       <CardTitle>{course.title}</CardTitle>
       <CardDescription>{course.description}</CardDescription>
     </CardContent>

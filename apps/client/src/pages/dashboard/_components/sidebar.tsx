@@ -50,7 +50,13 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: Sideb
       onClick={onClick}
     >
       <Link to={path} className="flex size-full my-[2px]">
-        <div className={cn("text-xl", isActive && "text-blue-500", isCollapsed ? "block mx-auto" : "mr-3")}>
+        <div
+          className={cn(
+            "text-xl",
+            isActive && "text-blue-500",
+            isCollapsed ? "block mx-auto" : "mr-3",
+          )}
+        >
           {icon}
         </div>
         {!isCollapsed && (
@@ -253,14 +259,14 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             key={item.path}
             onClick={() => {
               toast({
-        variant: "warning",
-        title: "Chức năng đang được phát triển. ",
-        description: "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại trong thời gian sắp tới!",
-      });
+                variant: "warning",
+                title: "Chức năng đang được phát triển. ",
+                description:
+                  "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại trong thời gian sắp tới!",
+              });
             }}
           />
         ))}
-
       </div>
 
       <div className="flex-1" />

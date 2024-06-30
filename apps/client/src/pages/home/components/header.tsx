@@ -14,7 +14,7 @@ export const Header = () => (
     {/* <DonationBanner /> */}
 
     <div className="bg-gradient-to-b from-background to-transparent py-3">
-      <div className="container flex items-center justify-between">
+      <div className="container flex items-center justify-between pt-4">
         <Link to="/">
           <Logo size={30} />
         </Link>
