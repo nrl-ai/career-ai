@@ -144,8 +144,8 @@ export class ResumeController {
     }
   }
 
-  @Patch(":id/analyze")
-  @UseGuards(ResumeGuard)
+  @Post(":id/analyze")
+  @UseGuards(TwoFactorGuard, ResumeGuard)
   ai_analyze(@User() user: UserEntity, @Param("id") id: string, @Body() analyzeResumeDto: unknown) {
     return this.resumeService.analyze(user.id, id, analyzeResumeDto);
   }

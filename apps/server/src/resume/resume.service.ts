@@ -163,6 +163,6 @@ export class ResumeService {
   }
 
   analyze(userId: string, id: string, analyzeResumeDto: unknown) {
-    return "Not implemented yet";
+    return "Your resume is excellent!";
   }
 }

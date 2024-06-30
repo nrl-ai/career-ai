@@ -4,10 +4,26 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { CVSelector } from "../../../components/cv_selector";
 import { Button, RichInput } from "@career-ai/ui";
+import { Card, CardContent, CardDescription, CardTitle } from "@career-ai/ui";
+import { useAnalyzeResume } from "@/client/services/resume/analyze";
+import { useToast } from "@/client/hooks/use-toast";
 
 export const CVOptimizationPage = () => {
+  const { toast } = useToast();
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
-  const [content, setContent] = useState("");
+  const [jd, setJD] = useState<string | undefined>("");
+  const { analyzeResume, loading, error, result } = useAnalyzeResume();
+
+  const handleAnalyze = async () => {
+    if (!selectedCV) {
+      toast({
+        variant: "warning",
+        title: t`Please select a CV first.`,
+      });
+      return;
+    }
+    await analyzeResume({ id: selectedCV, jd: jd as string });
+  }
 
   return (
     <>
@@ -25,7 +41,7 @@ export const CVOptimizationPage = () => {
         </motion.h1>
       </div>
 
-      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1200px" }}>
+      <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
         <div className="max-w-[500px] pt-4 mb-8 text-md text-gray-500">
           Công cụ Kiểm Tra CV Toàn Diện giúp bạn tăng cơ hội được mời phỏng vấn bằng cách đánh giá
           từ khóa và định dạng CV của bạn.
@@ -47,10 +63,35 @@ export const CVOptimizationPage = () => {
           <h1 className="font-bold text-xl">Mô tả công việc (nên có)</h1>
         </div>
 
-        <form className="space-y-4">
-          <RichInput content={content} onChange={setContent} />
-          <Button type="submit">Phân tích CV</Button>
-        </form>
+        <div className="space-y-4">
+          <RichInput content={jd} onChange={setJD} />
+          <Button onClick={handleAnalyze} >Phân tích CV</Button>
+        </div>
+
+        {loading && <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8">
+          <CardContent className="space-y-2">
+            <CardTitle>Đang phân tích CV...</CardTitle>
+          </CardContent>
+        </Card>}
+
+        {error && <Card className="space-y-4 border-red-500 border-dashed border-[1px] p-4 bg-red-100 mt-8">
+          <CardContent className="space-y-2">
+            <CardTitle>Lỗi khi phân tích CV: </CardTitle>
+            <div>
+              {error.message}
+            </div>
+          </CardContent>
+        </Card>}
+
+        {result && <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-8">
+          <CardContent className="space-y-2">
+            <CardTitle>Kết quả phân tích: </CardTitle>
+            <div>
+              {result}
+            </div>
+          </CardContent>
+        </Card>}
+
       </main>
     </>
   );

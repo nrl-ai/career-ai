@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { t, Trans } from "@lingui/macro";
-import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@career-ai/ui";
+import { t } from "@lingui/macro";
+import { Card, CardContent, CardDescription, CardTitle } from "@career-ai/ui";
 
 const courses = [
   {
@@ -196,7 +196,7 @@ export const CoursesPage = () => {
         </motion.h1>
       </div>
 
-      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1200px" }}>
+      <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
         <DocumentationCard />
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 4xl:grid-cols-6 mt-6">
           {courses.map((course) => (

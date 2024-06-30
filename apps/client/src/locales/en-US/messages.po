@@ -238,14 +238,15 @@ msgstr "Cancel"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
-#: apps/client/src/pages/dashboard/courses/page.tsx:186
+#: apps/client/src/pages/dashboard/courses/page.tsx:185
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:31
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
-#: apps/client/src/pages/dashboard/resumes/page.tsx:20
+#: apps/client/src/pages/dashboard/resumes/page.tsx:19
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/home/components/footer.tsx:18
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
-#: apps/client/src/pages/home/page.tsx:24
-#: apps/client/src/pages/home/page.tsx:24
+#: apps/client/src/pages/home/page.tsx:20
+#: apps/client/src/pages/home/page.tsx:20
 #: apps/client/src/pages/home/sections/hero/index.tsx:39
 #: apps/client/src/pages/public/page.tsx:73
 #: apps/client/src/pages/public/page.tsx:94
@@ -345,8 +346,8 @@ msgstr "Copy Link to Resume"
 msgid "Copy to Clipboard"
 msgstr "Copy to Clipboard"
 
-#: apps/client/src/pages/dashboard/courses/page.tsx:186
-#: apps/client/src/pages/dashboard/courses/page.tsx:196
+#: apps/client/src/pages/dashboard/courses/page.tsx:185
+#: apps/client/src/pages/dashboard/courses/page.tsx:195
 msgid "Courses"
 msgstr "Courses"
 
@@ -364,11 +365,18 @@ msgstr "Create a new account"
 msgid "Create a new item"
 msgstr "Create a new item"
 
+#: apps/client/src/components/cv_selector/_components/create-card.tsx:20
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:176
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:28
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:20
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/create-item.tsx:18
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/create-item.tsx:23
 msgid "Create a new resume"
 msgstr "Create a new resume"
+
+#: apps/client/src/components/cv_selector/_components/create-card.tsx:22
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:22
+msgid "Create a new resume from templates"
+msgstr "Create a new resume from templates"
 
 #: apps/client/src/pages/auth/login/page.tsx:65
 msgctxt "This is a link to create a new account"
@@ -419,7 +427,7 @@ msgstr "Date or Date Range"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:133
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:156
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:114
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:118
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:127
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:172
 msgid "Delete"
@@ -496,7 +504,7 @@ msgstr "Downloads"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:169
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:244
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:98
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:102
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:95
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:156
 msgid "Duplicate"
@@ -662,10 +670,6 @@ msgstr "Google"
 msgid "Grayscale"
 msgstr "Grayscale"
 
-#: apps/client/src/pages/dashboard/resumes/page.tsx:43
-msgid "Grid"
-msgstr "Grid"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:43
 msgid "Headline"
 msgstr "Headline"
@@ -723,8 +727,9 @@ msgstr "If you disable two-factor authentication, you will no longer be required
 msgid "Import"
 msgstr "Import"
 
+#: apps/client/src/components/cv_selector/_components/import-card.tsx:20
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:192
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:28
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
 msgstr "Import an existing resume"
@@ -755,7 +760,7 @@ msgid "Institution"
 msgstr "Institution"
 
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
-#: apps/client/src/pages/dashboard/interview/page.tsx:21
+#: apps/client/src/pages/dashboard/interview/page.tsx:22
 msgid "Interview"
 msgstr "Interview"
 
@@ -826,7 +831,8 @@ msgstr "Label"
 msgid "Language"
 msgstr "Language"
 
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:82
+#: apps/client/src/components/cv_selector/_components/resume-card.tsx:33
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:86
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:139
 msgid "Last updated {lastUpdated}"
 msgstr "Last updated {lastUpdated}"
@@ -861,14 +867,11 @@ msgstr "Light or dark theme"
 msgid "Line Height"
 msgstr "Line Height"
 
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:33
+#: apps/client/src/components/cv_selector/_components/import-card.tsx:24
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:23
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:22
 msgid "LinkedIn, JSON Resume, etc."
 msgstr "LinkedIn, JSON Resume, etc."
-
-#: apps/client/src/pages/dashboard/resumes/page.tsx:47
-msgid "List"
-msgstr "List"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:100
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:86
@@ -878,7 +881,7 @@ msgid "Location"
 msgstr "Location"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:51
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:108
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:112
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:115
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:166
 msgid "Lock"
@@ -982,7 +985,7 @@ msgstr "One-Time Password"
 msgid "Oops, the server returned an error."
 msgstr "Oops, the server returned an error."
 
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:90
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:94
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:77
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:148
 msgid "Open"
@@ -1044,6 +1047,10 @@ msgstr "Picture"
 #: apps/client/src/pages/auth/verify-email/page.tsx:59
 msgid "Please note that this step is completely optional."
 msgstr "Please note that this step is completely optional."
+
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:21
+msgid "Please select a CV first."
+msgstr "Please select a CV first."
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:209
 msgid "Please select a file type"
@@ -1119,7 +1126,7 @@ msgid "Remove Page"
 msgstr "Remove Page"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:110
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:94
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:98
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:86
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:152
 msgid "Rename"
@@ -1146,8 +1153,8 @@ msgstr "Reset your password"
 msgid "Reset Zoom"
 msgstr "Reset Zoom"
 
-#: apps/client/src/pages/dashboard/resumes/page.tsx:20
-#: apps/client/src/pages/dashboard/resumes/page.tsx:37
+#: apps/client/src/pages/dashboard/resumes/page.tsx:19
+#: apps/client/src/pages/dashboard/resumes/page.tsx:36
 msgid "Resumes"
 msgstr "Resumes"
 
@@ -1293,11 +1300,6 @@ msgstr "Something went wrong while processing your request. Please try again lat
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:138
 msgid "Square"
 msgstr "Square"
-
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:33
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/create-item.tsx:23
-msgid "Create a new resume from templates"
-msgstr "Create a new resume from templates"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:183
 msgid "Start building your resume by giving it a name."
@@ -1473,7 +1475,7 @@ msgid "Undo"
 msgstr "Undo"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:52
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:103
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:107
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:105
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:161
 msgid "Unlock"

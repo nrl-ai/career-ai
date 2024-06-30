@@ -12,7 +12,7 @@ export const InterviewPage = () => {
         </title>
       </Helmet>
 
-      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1200px" }}>
+      <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
         <div className="flex items-center justify-between pt-4">
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
@@ -23,7 +23,11 @@ export const InterviewPage = () => {
           </motion.h1>
         </div>
 
-        <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] pt-6">
+        <div className="max-w-[600px] pt-4 mb-8 text-md text-gray-500">
+          Công cụ Phỏng Vấn 3D giúp bạn tập phỏng vấn một cách hiệu quả và chân thực nhất đang được chúng tôi phát triển. Vui lòng chờ đợi trải nghiệm trong thời gian sắp tới.
+        </div>
+
+        <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)]">
           <iframe
             src="https://prompt3d.netlify.app/"
             className="w-full h-full min-h-[600px] rounded-md"
