@@ -161,4 +161,8 @@ export class ResumeService {
   printPreview(resume: ResumeDto) {
     return this.printerService.printPreview(resume);
   }
+
+  analyze(userId: string, id: string, analyzeResumeDto: unknown) {
+    return "Not implemented yet";
+  }
 }

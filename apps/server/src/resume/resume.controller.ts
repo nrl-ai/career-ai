@@ -143,4 +143,10 @@ export class ResumeController {
       throw new InternalServerErrorException(error);
     }
   }
+
+  @Patch(":id/analyze")
+  @UseGuards(ResumeGuard)
+  ai_analyze(@User() user: UserEntity, @Param("id") id: string, @Body() analyzeResumeDto: unknown) {
+    return this.resumeService.analyze(user.id, id, analyzeResumeDto);
+  }
 }

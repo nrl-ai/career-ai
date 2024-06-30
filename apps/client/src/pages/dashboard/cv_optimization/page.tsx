@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { CVSelector } from "../../../components/cv_selector";
-
-import JobDescriptionForm from "./jd_form";
+import { Button, RichInput } from "@career-ai/ui";
 
 export const CVOptimizationPage = () => {
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
+  const [content, setContent] = useState("");
 
   return (
     <>
@@ -47,7 +47,10 @@ export const CVOptimizationPage = () => {
           <h1 className="font-bold text-xl">Mô tả công việc (nên có)</h1>
         </div>
 
-        <JobDescriptionForm />
+        <form className="space-y-4">
+          <RichInput content={content} onChange={setContent} />
+          <Button type="submit">Phân tích CV</Button>
+        </form>
       </main>
     </>
   );
