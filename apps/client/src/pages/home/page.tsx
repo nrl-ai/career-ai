@@ -17,7 +17,7 @@ export const HomePage = () => {
         <html lang={i18n.locale} />
 
         <title>
-          {t`CareerAI`} - {t`CareerAI`}
+          {t`Homepage`} - {t`CareerAI`}
         </title>
 
         <meta

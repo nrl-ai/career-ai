@@ -106,6 +106,10 @@ msgstr "Thêm trang mới"
 msgid "AI"
 msgstr "AI"
 
+#: apps/client/src/pages/home/sections/features/index.tsx:77
+msgid "AI for your career!"
+msgstr "AI cho sự nghiệp của bạn!"
+
 #: apps/client/src/pages/auth/register/page.tsx:71
 msgid "Already have an account?"
 msgstr "Bạn đã có tài khoản chưa?"
@@ -233,7 +237,7 @@ msgstr "Hủy"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
-#: apps/client/src/pages/dashboard/courses/page.tsx:185
+#: apps/client/src/pages/dashboard/courses/page.tsx:180
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:33
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:19
@@ -241,20 +245,19 @@ msgstr "Hủy"
 #: apps/client/src/pages/home/components/footer.tsx:18
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
 #: apps/client/src/pages/home/page.tsx:20
-#: apps/client/src/pages/home/page.tsx:20
 #: apps/client/src/pages/home/sections/hero/index.tsx:39
 #: apps/client/src/pages/public/page.tsx:73
 #: apps/client/src/pages/public/page.tsx:94
 msgid "CareerAI"
 msgstr "CareerAI"
 
+#: apps/client/src/pages/home/sections/features/index.tsx:79
+msgid "CareerAI aspires to be the AI for your career, contributing to your success with a wide range of AI features and support tools."
+msgstr "CareerAI là mong muốn trở thành AI cho sự nghiệp của bạn, góp phần vào thành công của bạn, với hàng loạt tính năng AI và công cụ hỗ trợ."
+
 #: apps/client/src/pages/home/sections/logo-cloud/index.tsx:39
 msgid "CareerAI helps people land jobs at great companies"
-msgstr "CareerAI giúp mọi người có công việc tại những công ty tuyệt vời"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:79
-msgid "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
-msgstr "CareerAI là một dự án đầy đam mê với hơn 3 năm làm việc chăm chỉ, và cùng với đó là một số ý tưởng và tính năng được lặp lại đã được xây dựng để (gần như) hoàn hảo."
+msgstr "CareerAI có thể giúp mọi người có công việc tại những công ty tuyệt vời"
 
 #: apps/client/src/pages/home/sections/contributors/index.tsx:22
 msgid "CareerAI thrives thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills. Below, we celebrate the coders who've enhanced its features on GitHub and the linguists whose translations on Crowdin have made it accessible to a broader audience."
@@ -341,8 +344,8 @@ msgstr "Sao chép liên kết vào sơ yếu lý lịch"
 msgid "Copy to Clipboard"
 msgstr "Sao chép vào Clipboard"
 
-#: apps/client/src/pages/dashboard/courses/page.tsx:185
-#: apps/client/src/pages/dashboard/courses/page.tsx:195
+#: apps/client/src/pages/dashboard/courses/page.tsx:180
+#: apps/client/src/pages/dashboard/courses/page.tsx:190
 msgid "Courses"
 msgstr "Khóa học"
 
@@ -568,7 +571,7 @@ msgstr "Lỗi"
 
 #: apps/client/src/pages/home/sections/templates/index.tsx:12
 msgid "Explore the templates available in CareerAI and view the resumes crafted with them. They could also serve as examples to help guide the creation of your next resume."
-msgstr "Khám phá các mẫu có sẵn trong CareerAI và xem sơ yếu lý lịch được tạo ra với chúng. Chúng cũng có thể đóng vai trò là ví dụ để giúp hướng dẫn việc tạo sơ yếu lý lịch tiếp theo của bạn."
+msgstr "Khám phá các mẫu CV có sẵn trong CareerAI và xem sơ yếu lý lịch, CV được tạo ra với chúng. Bạn cũng có thể dựa vào đó để tạo CV tiếp theo của mình."
 
 #: apps/client/src/pages/home/sections/hero/index.tsx:32
 msgid "Expore Now"
@@ -697,6 +700,10 @@ msgstr "Ẩn biểu tượng"
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
 msgstr "Giữ <0> Ctrl </0> để hiển thị mật khẩu của bạn tạm thời."
 
+#: apps/client/src/pages/home/page.tsx:20
+msgid "Homepage"
+msgstr "Trang chủ"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:99
 msgid "Horizontal"
 msgstr "Ngang"
@@ -722,9 +729,9 @@ msgstr "Nếu bạn vô hiệu hóa xác thực hai yếu tố, bạn sẽ khôn
 msgid "Import"
 msgstr "Nhập dữ liệu"
 
-#: apps/client/src/components/cv_selector/_components/import-card.tsx:20
+#: apps/client/src/components/cv_selector/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:192
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:18
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
 msgstr "Đăng tệp sẵn có"
@@ -862,8 +869,8 @@ msgstr "Chủ đề sáng hoặc tối"
 msgid "Line Height"
 msgstr "Chiều cao dòng"
 
-#: apps/client/src/components/cv_selector/_components/import-card.tsx:24
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:23
+#: apps/client/src/components/cv_selector/_components/import-card.tsx:20
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:22
 msgid "LinkedIn, JSON Resume, etc."
 msgstr "Tải lên tệp CV sẵn có, tài khoản LinkedIn,..."
@@ -1070,7 +1077,7 @@ msgstr "Chức vụ"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:68
 msgid "Powered by"
-msgstr "Được hỗ trợ bởi"
+msgstr "Được tạo ra bởi những công nghệ tuyệt vời"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:113
 msgid "Powered by <0>Simple Icons</0>"
@@ -1156,10 +1163,6 @@ msgstr "Tạo CV theo mẫu"
 #: apps/client/src/pages/home/sections/statistics/index.tsx:14
 msgid "Resumes Generated"
 msgstr "Sơ yếu lý lịch được tạo"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:77
-msgid "Rich in features, not in pricing."
-msgstr "Giàu tính năng, không lo về giá cả."
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:144
 msgid "Rounded"

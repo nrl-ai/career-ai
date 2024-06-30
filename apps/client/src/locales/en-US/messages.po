@@ -111,6 +111,10 @@ msgstr "Add New Page"
 msgid "AI"
 msgstr "AI"
 
+#: apps/client/src/pages/home/sections/features/index.tsx:77
+msgid "AI for your career!"
+msgstr "AI for your career!"
+
 #: apps/client/src/pages/auth/register/page.tsx:71
 msgid "Already have an account?"
 msgstr "Already have an account?"
@@ -238,7 +242,7 @@ msgstr "Cancel"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
-#: apps/client/src/pages/dashboard/courses/page.tsx:185
+#: apps/client/src/pages/dashboard/courses/page.tsx:180
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:33
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:19
@@ -246,20 +250,19 @@ msgstr "Cancel"
 #: apps/client/src/pages/home/components/footer.tsx:18
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
 #: apps/client/src/pages/home/page.tsx:20
-#: apps/client/src/pages/home/page.tsx:20
 #: apps/client/src/pages/home/sections/hero/index.tsx:39
 #: apps/client/src/pages/public/page.tsx:73
 #: apps/client/src/pages/public/page.tsx:94
 msgid "CareerAI"
 msgstr "CareerAI"
 
+#: apps/client/src/pages/home/sections/features/index.tsx:79
+msgid "CareerAI aspires to be the AI for your career, contributing to your success with a wide range of AI features and support tools."
+msgstr "CareerAI aspires to be the AI for your career, contributing to your success with a wide range of AI features and support tools."
+
 #: apps/client/src/pages/home/sections/logo-cloud/index.tsx:39
 msgid "CareerAI helps people land jobs at great companies"
 msgstr "CareerAI helps people land jobs at great companies"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:79
-msgid "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
-msgstr "CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection."
 
 #: apps/client/src/pages/home/sections/contributors/index.tsx:22
 msgid "CareerAI thrives thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills. Below, we celebrate the coders who've enhanced its features on GitHub and the linguists whose translations on Crowdin have made it accessible to a broader audience."
@@ -346,8 +349,8 @@ msgstr "Copy Link to Resume"
 msgid "Copy to Clipboard"
 msgstr "Copy to Clipboard"
 
-#: apps/client/src/pages/dashboard/courses/page.tsx:185
-#: apps/client/src/pages/dashboard/courses/page.tsx:195
+#: apps/client/src/pages/dashboard/courses/page.tsx:180
+#: apps/client/src/pages/dashboard/courses/page.tsx:190
 msgid "Courses"
 msgstr "Courses"
 
@@ -702,6 +705,10 @@ msgstr "Hide Icons"
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
 msgstr "Hold <0>Ctrl</0> to display your password temporarily."
 
+#: apps/client/src/pages/home/page.tsx:20
+msgid "Homepage"
+msgstr "Homepage"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:99
 msgid "Horizontal"
 msgstr "Horizontal"
@@ -727,9 +734,9 @@ msgstr "If you disable two-factor authentication, you will no longer be required
 msgid "Import"
 msgstr "Import"
 
-#: apps/client/src/components/cv_selector/_components/import-card.tsx:20
+#: apps/client/src/components/cv_selector/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:192
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:18
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
 msgstr "Import an existing resume"
@@ -867,8 +874,8 @@ msgstr "Light or dark theme"
 msgid "Line Height"
 msgstr "Line Height"
 
-#: apps/client/src/components/cv_selector/_components/import-card.tsx:24
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:23
+#: apps/client/src/components/cv_selector/_components/import-card.tsx:20
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:22
 msgid "LinkedIn, JSON Resume, etc."
 msgstr "LinkedIn, JSON Resume, etc."
@@ -1161,10 +1168,6 @@ msgstr "Resumes"
 #: apps/client/src/pages/home/sections/statistics/index.tsx:14
 msgid "Resumes Generated"
 msgstr "Resumes Generated"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:77
-msgid "Rich in features, not in pricing."
-msgstr "Rich in features, not in pricing."
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:144
 msgid "Rounded"
