@@ -58,7 +58,11 @@ export const ResumeCard = ({ resume }: Props) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <BaseCard className="space-y-0 overflow-hidden" onClick={onOpen} template={resume.data.metadata.template}>
+        <BaseCard
+          className="space-y-0 overflow-hidden"
+          onClick={onOpen}
+          template={resume.data.metadata.template}
+        >
           <AnimatePresence>
             {resume.locked && (
               <motion.div

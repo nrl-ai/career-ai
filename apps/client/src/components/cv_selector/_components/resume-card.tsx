@@ -15,7 +15,14 @@ export const ResumeCard = ({ resume, selected, onClick }: Props) => {
 
   return (
     <div className="relative">
-      <BaseCard onClick={onClick} className={cn("space-y-0 overflow-hidden p-2 hover:border-[3px] border-blue-200", selected && "border-[3px] border-blue-500 shadow-lg shadow-blue-300/60")} template={resume.data.metadata.template}>
+      <BaseCard
+        onClick={onClick}
+        className={cn(
+          "space-y-0 overflow-hidden p-2 hover:border-[3px] border-blue-200",
+          selected && "border-[3px] border-blue-500 shadow-lg shadow-blue-300/60",
+        )}
+        template={resume.data.metadata.template}
+      >
         <div
           className={cn(
             "absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end space-y-0.5 p-4 pt-12",

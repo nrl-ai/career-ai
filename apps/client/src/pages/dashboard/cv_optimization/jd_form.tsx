@@ -1,14 +1,9 @@
-
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/macro";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-  Button,
-  Form,
-  RichInput
-} from "@career-ai/ui";
+import { Button, Form, RichInput } from "@career-ai/ui";
 
 const schema = z.object({
   jobTitle: z.string().min(1, "Job title is required"),
@@ -30,9 +25,7 @@ const JobDescriptionForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <RichInput content={content} onChange={setContent} />
-        <Button type="submit">
-          {t`Phân tích CV`}
-        </Button>
+        <Button type="submit">{t`Phân tích CV`}</Button>
       </form>
     </Form>
   );

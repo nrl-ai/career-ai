@@ -8,12 +8,18 @@ import { CreateResumeCard } from "./_components/create-card";
 import { ImportResumeCard } from "./_components/import-card";
 import { ResumeCard } from "./_components/resume-card";
 
-export const CVSelector =  ({ selectedCV, setSelectedCV }: { selectedCV: string | null, setSelectedCV: (cv: string) => void }) => {
+export const CVSelector = ({
+  selectedCV,
+  setSelectedCV,
+}: {
+  selectedCV: string | null;
+  setSelectedCV: (cv: string) => void;
+}) => {
   const { resumes, loading } = useResumes();
 
   const handleSelect = (id: string) => {
     setSelectedCV(id);
-  }
+  };
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
@@ -40,9 +46,13 @@ export const CVSelector =  ({ selectedCV, setSelectedCV }: { selectedCV: string 
                 animate={{ opacity: 1, x: 0, transition: { delay: (index + 2) * 0.1 } }}
                 exit={{ opacity: 0, filter: "blur(8px)", transition: { duration: 0.5 } }}
               >
-                <ResumeCard onClick={() => {
-                  handleSelect(resume.id)
-                }} selected={resume.id == selectedCV} resume={resume} />
+                <ResumeCard
+                  onClick={() => {
+                    handleSelect(resume.id);
+                  }}
+                  selected={resume.id == selectedCV}
+                  resume={resume}
+                />
               </motion.div>
             ))}
         </AnimatePresence>
