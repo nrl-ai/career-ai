@@ -1,10 +1,15 @@
 import { t } from "@lingui/macro";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ScrollArea } from "@career-ai/ui";
-import { GridView } from "./_layouts/grid";
+import { useState } from "react";
+import { CVSelector } from "../../../components/cv_selector";
+
+import JobDescriptionForm from "./jd_form";
 
 export const CVOptimizationPage = () => {
+  const [selectedCV, setSelectedCV] = useState<string | null>(null);
+
+
   return (
     <>
       <Helmet>
@@ -21,14 +26,29 @@ export const CVOptimizationPage = () => {
         </motion.h1>
       </div>
 
-      <div className="max-w-[500px] pt-4 pb-4 text-md text-gray-500">
+      <div className="max-w-[500px] pt-4 mb-8 text-md text-gray-500">
         Công cụ Kiểm Tra CV Toàn Diện giúp bạn tăng cơ hội được mời phỏng vấn bằng cách đánh giá từ
         khóa và định dạng CV của bạn.
       </div>
 
-      <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] mt-4">
-        <GridView />
-      </ScrollArea>
+      <div className="flex items-center space-x-4">
+        <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+          <span className="font-bold">1</span>
+        </div>
+        <h1 className="font-bold text-xl">Chọn CV</h1>
+      </div>
+
+      <CVSelector selectedCV={selectedCV} setSelectedCV={setSelectedCV} />
+
+      <div className="flex items-center space-x-4 mb-4 mt-8">
+        <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+          <span className="font-bold">2</span>
+        </div>
+        <h1 className="font-bold text-xl">Mô tả công việc (khuyến khích)</h1>
+      </div>
+
+      <JobDescriptionForm />
+
     </>
   );
 };

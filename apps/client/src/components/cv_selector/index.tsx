@@ -8,22 +8,15 @@ import { CreateResumeCard } from "./_components/create-card";
 import { ImportResumeCard } from "./_components/import-card";
 import { ResumeCard } from "./_components/resume-card";
 
-export const GridView = () => {
+export const CVSelector =  ({ selectedCV, setSelectedCV }: { selectedCV: string, setSelectedCV: (cv: string) => void }) => {
   const { resumes, loading } = useResumes();
 
+  const handleSelect = (id: string) => {
+    setSelectedCV(id);
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
-      <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
-        <CreateResumeCard />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0, transition: { delay: 0.1 } }}
-      >
-        <ImportResumeCard />
-      </motion.div>
-
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
       {loading &&
         Array.from({ length: 4 }).map((_, i) => (
           <div
@@ -47,11 +40,24 @@ export const GridView = () => {
                 animate={{ opacity: 1, x: 0, transition: { delay: (index + 2) * 0.1 } }}
                 exit={{ opacity: 0, filter: "blur(8px)", transition: { duration: 0.5 } }}
               >
-                <ResumeCard resume={resume} />
+                <ResumeCard onClick={() => {
+                  handleSelect(resume.id)
+                }} selected={resume.id == selectedCV} resume={resume} />
               </motion.div>
             ))}
         </AnimatePresence>
       )}
+
+      <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
+        <CreateResumeCard />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0, transition: { delay: 0.1 } }}
+      >
+        <ImportResumeCard />
+      </motion.div>
     </div>
   );
 };

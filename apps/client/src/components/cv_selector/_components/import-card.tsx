@@ -16,7 +16,7 @@ export const ImportResumeCard = () => {
     >
       <div className="flex flex-col items-center justify-center text-center">
         <img src="/icons/upload.svg" alt="Create a new resume" className="w-12 h-12 mx-auto" />
-        <h4 className="font-medium text-gray-600 font-bold mt-8">
+        <h4 className="text-gray-600 font-bold mt-8">
           {t`Import an existing resume`}
           {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
           <KeyboardShortcut className="ml-2">^I</KeyboardShortcut>

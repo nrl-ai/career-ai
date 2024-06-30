@@ -157,7 +157,7 @@ const DocumentationCard = () => (
 );
 
 const CourseCardInner = ({ course }: { course: any }) => (
-  <Card className="flex flex-col space-y-2 h-[280px] hover:shadow-lg hover:border-gray-500">
+  <Card className="flex flex-col space-y-2 h-[280px] shadow-md hover:shadow-lg hover:border-gray-400 hover:scale-105 transition-transform duration-200">
     <img
       src={course.imageUrl}
       alt={course.title}
@@ -186,7 +186,7 @@ export const CoursesPage = () => {
         </title>
       </Helmet>
 
-      <div className="flex pt-4 mb-8" style={{ maxWidth: "1000px" }}>
+      <div className="flex pt-4 mb-8" style={{ maxWidth: "1200px" }}>
         <motion.h1
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -196,9 +196,9 @@ export const CoursesPage = () => {
         </motion.h1>
       </div>
 
-      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1000px" }}>
+      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1200px" }}>
         <DocumentationCard />
-        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 4xl:grid-cols-6 mt-6">
           {courses.map((course) => (
             <CourseCard key={course.title} course={course} />
           ))}
