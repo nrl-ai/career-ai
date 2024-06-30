@@ -11,10 +11,6 @@ type AnalyzeResumeArgs = {
 
 export const analyzeResume = async ({ id, jd }: AnalyzeResumeArgs) => {
   const response = await axios.post(`/resume/${id}/analyze`, { jd });
-
-  // Add a delay of 3 seconds before returning the response
-  await new Promise(resolve => setTimeout(resolve, 3000));
-
   return response.data;
 };
 
