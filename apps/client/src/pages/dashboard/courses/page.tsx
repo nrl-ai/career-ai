@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { t, Trans } from "@lingui/macro";
-import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@career-ai/ui";
+import { t } from "@lingui/macro";
+import { Card, CardContent, CardDescription, CardTitle } from "@career-ai/ui";
 
 const courses = [
   {
@@ -143,29 +143,23 @@ const courses = [
 ];
 
 const DocumentationCard = () => (
-  <Card className="space-y-4">
+  <Card className="space-y-4 border-blue-500 border-dashed border p-4 bg-blue-100">
     <CardContent className="space-y-2">
       <CardTitle>Khóa học và Hướng dẫn được chọn bởi CareerAI</CardTitle>
-      <CardDescription className="space-y-2">
+      <div>
         CareerAI là tuyển chọn và giới thiệu đến các bạn những khoá học trực tuyến hữu ích nhất tại
         trang web này. Mục tiêu của chúng tôi là giúp bạn nâng cao kiến thức và kĩ năng một cách
         nhanh chóng và hiệu quả nhất. Hãy cùng chúng tôi khám phá những khoá học tốt nhất dành cho
         bạn!
-      </CardDescription>
+      </div>
     </CardContent>
-    <CardFooter className="space-x-4">Hãy cùng tham khảo các khoá học phía dưới.</CardFooter>
   </Card>
 );
 
 const CourseCardInner = ({ course }: { course: any }) => (
-  <Card className="flex flex-col space-y-2 h-[300px] hover:shadow-lg hover:border-gray-300">
-    <img
-      src={course.imageUrl}
-      alt={course.title}
-      className="rounded-md"
-      style={{ aspectRatio: "16/9" }}
-    />
-    <CardContent className="space-y-1">
+  <Card className="flex flex-col space-y-2 h-[300px] shadow-md hover:shadow-lg  hover:scale-105 transition-transform duration-300 hover:border-[2px] hover:border-blue-500 p-0 rounded-xl overflow-hidden">
+    <img src={course.imageUrl} alt={course.title} style={{ aspectRatio: "16/9" }} />
+    <CardContent className="space-y-1 px-4 py-2">
       <CardTitle>{course.title}</CardTitle>
       <CardDescription>{course.description}</CardDescription>
     </CardContent>
@@ -187,19 +181,19 @@ export const CoursesPage = () => {
         </title>
       </Helmet>
 
-      <div className="flex pt-4 mb-8" style={{ maxWidth: "1000px" }}>
+      <div className="flex pt-4 mb-8" style={{ maxWidth: "1200px" }}>
         <motion.h1
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-3xl font-bold tracking-tight"
+          className="text-2xl font-bold tracking-tight"
         >
           {t`Courses`}
         </motion.h1>
       </div>
 
-      <main className="grid gap-y12 mt-8" style={{ maxWidth: "1000px" }}>
+      <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
         <DocumentationCard />
-        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 4xl:grid-cols-6 mt-6">
           {courses.map((course) => (
             <CourseCard key={course.title} course={course} />
           ))}

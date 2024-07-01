@@ -11,10 +11,45 @@ import type { DeepPartial } from "@career-ai/utils";
 import { ErrorMessage, generateRandomName, kebabCase } from "@career-ai/utils";
 import deepmerge from "deepmerge";
 import { PrismaService } from "nestjs-prisma";
-
 import { PrinterService } from "@/server/printer/printer.service";
-
 import { StorageService } from "../storage/storage.service";
+
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
+});
+
+const PROMPT = `Bạn là một chuyên gia tuyển dụng và tư vấn việc làm. Hãy giúp nhận xét CV sau đây và đề xuất cách tối ưu hóa CV này để phù hợp với công việc.
+
+NỘI DUNG CV DẠNG JSON:
+"""{cv}"""
+
+NỘI DUNG MÔ TẢ CÔNG VIỆC:
+"""{jd}"""
+
+Kết quả trả về nên có dạng Markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10). Điểm số đánh giá toàn diện về kinh nghiệm CV, mức độ phù hợp với công việc, cách trình bày, và các yếu tố khác. Sử dụng hoàn toàn Tiếng Việt trong bài viết.
+
+**I. ĐIỂM SỐ:** <Score>/10
+\n\n\n
+**II. NHẬN XÉT:** ...
+\n\n\n
+**III. ĐIỂM MẠNH:** ...
+\n\n\n
+**IV. ĐIỂM YẾU:** ...
+\n\n\n
+**V. GỢI Ý TỐI ƯU:** ...
+`;
+
+export const queryCVAnalyze = async (cv: string, jd: string) => {
+  const text = "Chúng tôi gặp lỗi khi phân tích CV của bạn. Vui lòng thử lại.";
+  const prompt = PROMPT.replace("{cv}", cv).replace("{jd}", jd);
+  const result = await openai.chat.completions.create({
+    messages: [{ role: "system", content: prompt }],
+    model: "gpt-4o",
+  });
+  return result.choices[0].message.content ?? text;
+};
 
 @Injectable()
 export class ResumeService {
@@ -160,5 +195,11 @@ export class ResumeService {
 
   printPreview(resume: ResumeDto) {
     return this.printerService.printPreview(resume);
+  }
+
+  analyze(userId: string, resume: ResumeDto, analyzeResumeDto: any) {
+    const cv = JSON.stringify(resume.data);
+    const jd = analyzeResumeDto?.jd || "";
+    return queryCVAnalyze(cv, jd);
   }
 }

@@ -6,3 +6,15 @@
 * {
   @apply border-border/50;
 }
+
+.cv-review-result ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  list-style: disc outside none;
+}
+
+.cv-review-result ul li {
+  margin-left: 2em;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}

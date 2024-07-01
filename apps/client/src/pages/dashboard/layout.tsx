@@ -34,7 +34,7 @@ export const DashboardLayout = () => {
       </div>
 
       <motion.div
-        initial={{ x: -320 }}
+        initial={{ x: -300 }}
         animate={{ x: 0 }}
         className={cn("hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col", {
           "lg:w-[300px]": !isCollapsed,

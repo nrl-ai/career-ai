@@ -24,6 +24,7 @@ import { GuestGuard } from "./guards/guest";
 import { authLoader } from "./loaders/auth";
 import { ComingSoonPage } from "../pages/dashboard/coming_soon/page";
 import { CoursesPage } from "../pages/dashboard/courses/page";
+import { CVOptimizationPage } from "../pages/dashboard/cv_optimization/page";
 
 export const routes = createRoutesFromElements(
   <Route element={<Providers />}>
@@ -74,8 +75,7 @@ export const routes = createRoutesFromElements(
           <Route path="resumes" element={<ResumesPage />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="coming-soon" element={<ComingSoonPage />} />
-          <Route path="cv-improvement" element={<ComingSoonPage />} />
-          <Route path="work-behavior-practice" element={<ComingSoonPage />} />
+          <Route path="cv-optimization" element={<CVOptimizationPage />} />
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="courses" element={<CoursesPage />} />
 

@@ -143,4 +143,15 @@ export class ResumeController {
       throw new InternalServerErrorException(error);
     }
   }
+
+  @Post(":id/analyze")
+  @UseGuards(TwoFactorGuard, ResumeGuard)
+  ai_analyze(
+    @User() user: UserEntity,
+    @Param("id") id: string,
+    @Body() analyzeResumeDto: unknown,
+    @Resume() resume: ResumeDto,
+  ) {
+    return this.resumeService.analyze(user.id, resume, analyzeResumeDto);
+  }
 }

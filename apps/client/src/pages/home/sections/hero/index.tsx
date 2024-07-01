@@ -59,9 +59,9 @@ export const HeroSection = () => (
               <img
                 width={3600}
                 height={2078}
-                src="/assets/banner.webp"
+                src="/assets/banner.svg"
                 alt="CareerAI - Screenshot - Builder Screen"
-                className="w-[76rem] rounded-[3rem] bg-background/5 shadow-2xl ring-1 ring-foreground/10"
+                className="w-[76rem] rounded-[2rem] bg-background/5 shadow-2xl ring-1 ring-foreground/10"
               />
             </Tilt>
           </motion.div>

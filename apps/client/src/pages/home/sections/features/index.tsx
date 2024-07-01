@@ -74,9 +74,9 @@ export const FeaturesSection = () => {
     <section id="features" className="relative bg-secondary-accent py-24 sm:py-32">
       <div className="container">
         <div className="space-y-6 leading-loose">
-          <h2 className="text-4xl font-bold">{t`Rich in features, not in pricing.`}</h2>
+          <h2 className="text-4xl font-bold">{t`AI for your career!`}</h2>
           <p className="max-w-4xl text-base leading-relaxed">
-            {t`CareerAI is a passion project of over 3 years of hard work, and with that comes a number of re-iterated ideas and features that have been built to (near) perfection.`}
+            {t`CareerAI aspires to be the AI for your career, contributing to your success with a wide range of AI features and support tools.`}
           </p>
 
           <IconContext.Provider value={{ size: 14, weight: "bold" }}>

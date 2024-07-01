@@ -1,9 +1,7 @@
 import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
-import { motion } from "framer-motion";
 import {
   IoCalculatorOutline,
-  IoChatbubbleEllipsesOutline,
   IoCheckmarkDoneCircleOutline,
   IoHomeOutline,
   IoLibraryOutline,
@@ -21,21 +19,7 @@ import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
 import { useUser } from "@/client/services/user";
-
-type Props = {
-  className?: string;
-};
-
-const ActiveIndicator = ({ className }: Props) => (
-  <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    className={cn(
-      "size-1.5 animate-pulse rounded-full bg-info shadow-[0_0_12px] shadow-info",
-      className,
-    )}
-  />
-);
+import { useToast } from "@/client/hooks/use-toast";
 
 type SidebarItem = {
   path: string;
@@ -58,15 +42,21 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: Sideb
       size="lg"
       variant="ghost"
       className={cn(
-        "flex h-auto items-center justify-center rounded-lg py-2.5",
-        isActive && "pointer-events-none bg-secondary/50 text-secondary-foreground",
+        "flex h-auto items-start justify-start rounded-lg py-2.5",
+        isActive && "pointer-events-none bg-blue-100 text-secondary-foreground",
         !isCollapsed && "px-3",
         isCollapsed && "px-1",
       )}
       onClick={onClick}
     >
-      <Link to={path} className="flex size-full items-center">
-        <div className={cn("text-xl", isActive && "text-blue-500", !isCollapsed && "mr-3")}>
+      <Link to={path} className="flex size-full my-[2px]">
+        <div
+          className={cn(
+            "text-xl",
+            isActive && "text-blue-500",
+            isCollapsed ? "block mx-auto" : "mr-3",
+          )}
+        >
           {icon}
         </div>
         {!isCollapsed && (
@@ -75,7 +65,6 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: Sideb
         {!isActive && !isCollapsed && (
           <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>
         )}
-        {isActive && !isCollapsed && <ActiveIndicator className="ml-auto" />}
       </Link>
     </Button>
   );
@@ -89,6 +78,7 @@ type SidebarProps = {
 };
 
 export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
+  const { toast } = useToast();
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -114,12 +104,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
   const serviceItems: SidebarItem[] = [
     {
       path: "/dashboard/resumes",
-      name: "Tạo CV theo mẫu",
+      name: "Tạo CV chuẩn theo mẫu",
       shortcut: "⇧C",
       icon: <IoNewspaperOutline />,
     },
     {
-      path: "/dashboard/cv-improvement",
+      path: "/dashboard/cv-optimization",
       name: "Kiểm tra và Tối ưu CV",
       icon: <IoCheckmarkDoneCircleOutline />,
     },
@@ -129,37 +119,31 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
       shortcut: "⇧I",
       icon: <IoTodayOutline />,
     },
-    // {
-    //   path: "/dashboard/work-behavior-practice",
-    //   name: "Tình huống công sở",
-    //   shortcut: "⇧I",
-    //   icon: <IoChatbubbleEllipsesOutline />,
-    // },
   ];
 
   const libraryItems: SidebarItem[] = [
-    {
-      path: "https://blog.career-ai.vn/",
-      name: "Thư viện kiến thức",
-      shortcut: "⇧E",
-      icon: <IoLibraryOutline />,
-    },
     {
       path: "/dashboard/courses",
       name: "Khóa học kĩ năng",
       shortcut: "⇧K",
       icon: <PiGraduationCap />,
     },
+    {
+      path: "https://blog.career-ai.vn/",
+      name: "Thư viện kiến thức",
+      shortcut: "⇧E",
+      icon: <IoLibraryOutline />,
+    },
   ];
 
   const toolItems: SidebarItem[] = [
     {
-      path: "/dashboard/coming-soon",
+      path: "#",
       name: "Tính lương GROSS-NET",
       icon: <IoCalculatorOutline />,
     },
     {
-      path: "/dashboard/coming-soon",
+      path: "#",
       name: "Tính thuế TNCN",
       icon: <IoServerOutline />,
     },
@@ -241,25 +225,6 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
         <Separator className="opacity-100" />
 
-        {/* <h2
-          className={cn(
-            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            isCollapsed && "text-center",
-          )}
-        >
-          {isCollapsed ? "Công cụ" : "Công cụ tính toán"}
-        </h2>
-        {toolItems.map((item) => (
-          <SidebarItem
-            isCollapsed={isCollapsed}
-            {...item}
-            key={item.path}
-            onClick={() => setOpen?.(false)}
-          />
-        ))}
-
-        <Separator className="opacity-100" /> */}
-
         <h2
           className={cn(
             "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
@@ -274,6 +239,32 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             {...item}
             key={item.path}
             onClick={() => setOpen?.(false)}
+          />
+        ))}
+
+        <Separator className="opacity-100" />
+
+        <h2
+          className={cn(
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {isCollapsed ? "Công cụ" : "Công cụ tính toán"}
+        </h2>
+        {toolItems.map((item) => (
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => {
+              toast({
+                variant: "warning",
+                title: "Chức năng đang được phát triển. ",
+                description:
+                  "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại trong thời gian sắp tới!",
+              });
+            }}
           />
         ))}
       </div>

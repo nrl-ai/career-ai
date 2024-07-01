@@ -107,6 +107,9 @@ services:
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-google_client_id}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-google_client_secret}
       GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-https://career-ai.vn/api/auth/google/callback}
+
+      # OpenAI API Key
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-openai_api_key}
     labels:
       - traefik.enable=true
       - traefik.http.routers.app.rule=Host(`www.career-ai.vn`)
