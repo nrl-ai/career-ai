@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const InterviewPage = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/dashboard/interviewInformation');
+  };
+
   return (
     <div className="h-screen flex items-center">
       <div className="grid size-fit grid-cols-3 gap-x-12">
@@ -10,14 +15,13 @@ export const InterviewPage = () => {
             <span className="text-lg">
               Tự tin phỏng vấn và chinh phục nhà <br /> tuyển dụng!{" "}
             </span>
-            <Link to="/dashboard/interviewInformation">
-              <button
-                type="button"
-                className="h-[50px] w-[262px] rounded-[10px] bg-[#3d6cf5] text-white font-bold text-base"
-              >
-                Bắt đầu phỏng vấn
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="h-[50px] w-[262px] rounded-[10px] bg-[#3d6cf5] text-white font-bold text-base"
+              onClick={handleClick}
+            > 
+              Bắt đầu phỏng vấn
+            </button>
           </div>
 
           <div className="pb-10">
