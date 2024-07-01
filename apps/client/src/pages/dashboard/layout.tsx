@@ -49,7 +49,7 @@ export const DashboardLayout = () => {
       </motion.div>
 
       <main
-        className={cn("mx-6 my-4 lg:mx-8", {
+        className={cn("", {
           "lg:pl-[300px]": !isCollapsed,
           "lg:pl-[80px]": isCollapsed,
         })}
