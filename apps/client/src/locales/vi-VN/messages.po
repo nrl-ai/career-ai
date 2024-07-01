@@ -238,7 +238,7 @@ msgstr "Hủy"
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/courses/page.tsx:180
-#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:33
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:42
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:19
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
@@ -271,6 +271,10 @@ msgstr "Thường ngày"
 #: apps/client/src/pages/builder/_components/toolbar.tsx:112
 msgid "Center Artboard"
 msgstr "Bảng vẽ trung tâm"
+
+#: apps/client/src/components/cv_selector/index.tsx:46
+msgid "Change"
+msgstr "Thay đổi"
 
 #: apps/client/src/pages/auth/reset-password/page.tsx:99
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:121
@@ -834,6 +838,7 @@ msgid "Language"
 msgstr "Ngôn ngữ"
 
 #: apps/client/src/components/cv_selector/_components/resume-card.tsx:33
+#: apps/client/src/components/cv_selector/index.tsx:42
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:86
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:139
 msgid "Last updated {lastUpdated}"
