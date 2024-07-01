@@ -194,7 +194,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
         </Button>
       )}
 
-      <div className={cn("grid mt-6", !isCollapsed && "gap-y-1")}>
+      <div className={cn("grid mt-2", !isCollapsed && "gap-y-1")}>
         {topItems.map((item) => (
           <SidebarItem
             isCollapsed={isCollapsed}

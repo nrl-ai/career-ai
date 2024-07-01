@@ -24,6 +24,15 @@ export const CVOptimizationPage = () => {
       });
       return;
     }
+
+    // Scroll to the bottom of the page
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      }, i * 1000);
+    }
+
+    // Analyze the resume
     await analyzeResume({ id: selectedCV, jd: jd as string });
   };
 
@@ -43,7 +52,7 @@ export const CVOptimizationPage = () => {
         </motion.h1>
       </div>
 
-      <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
+      <main className="grid gap-y12 mb-16" style={{ maxWidth: "1200px" }}>
         <div className="max-w-[500px] pt-4 mb-8 text-md text-gray-500">
           Công cụ Kiểm Tra CV Toàn Diện giúp bạn tăng cơ hội được mời phỏng vấn bằng cách đánh giá
           từ khóa và định dạng CV của bạn.

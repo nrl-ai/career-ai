@@ -46,7 +46,7 @@ export const queryCVAnalyze = async (cv: string, jd: string) => {
   const prompt = PROMPT.replace("{cv}", cv).replace("{jd}", jd);
   const result = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
-    model: "gpt-4o",
+    model: "gpt-3.5-turbo",
   });
   return result.choices[0].message.content ?? text;
 };

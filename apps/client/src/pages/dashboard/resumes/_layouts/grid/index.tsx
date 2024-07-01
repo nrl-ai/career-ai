@@ -12,7 +12,7 @@ export const GridView = () => {
   const { resumes, loading } = useResumes();
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 p-3">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 p-3">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
         <CreateResumeCard />
       </motion.div>
