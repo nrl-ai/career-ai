@@ -52,7 +52,7 @@ export const CVSelector = ({
 
 
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
       {loading &&
         Array.from({ length: 4 }).map((_, i) => (
           <div
