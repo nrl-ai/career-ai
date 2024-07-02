@@ -36,7 +36,7 @@ export const InterviewInformationPage = () => {
                 </span>
             </div>
 
-            <div className="inline-flex justify-between">
+            <div className="inline-flex justify-between z-20">
                 <InformationButton/>
                 <AutoGenJDButton/>
             </div>

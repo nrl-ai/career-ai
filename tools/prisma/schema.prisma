@@ -18,6 +18,21 @@ enum Visibility {
   private
 }
 
+enum Type {
+  technical
+  behavioral
+  mixed
+}
+
+enum Level {
+  intern
+  fresher 
+  mid_junior
+  junior 
+  mid_senior
+  senior
+}
+
 model User {
   id               String   @id @default(cuid())
   name             String
@@ -32,6 +47,7 @@ model User {
   provider         Provider
   secrets          Secrets?
   resumes          Resume[]
+  interviews       Interviews[]
 }
 
 model Secrets {
@@ -77,4 +93,24 @@ model Statistics {
   updatedAt DateTime @updatedAt
 
   @@unique([resumeId, id])
+}
+
+model Interviews {
+  id        String   @id @default(cuid())
+  position  String 
+  level     Level    
+  type      Type     @default(mixed)
+  jd        String
+  content   String
+  year      Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  score     Decimal  @db.Decimal(10, 1)
+  model     String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cv        Json
+
+  @@unique([userId, id])
+  @@index(fields: [userId])
 }
