@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { CVSelector } from "../../../components/cv_selector";
 import { Button, RichInput } from "@career-ai/ui";
 import { Card, CardContent, CardTitle } from "@career-ai/ui";
@@ -15,6 +15,7 @@ export const CVOptimizationPage = () => {
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
   const [jd, setJD] = useState<string | undefined>("");
   const { analyzeResume, loading, error, result } = useAnalyzeResume();
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const handleAnalyze = async () => {
     if (!selectedCV) {
@@ -29,11 +30,16 @@ export const CVOptimizationPage = () => {
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-      }, i * 1000);
+      }, i * 500);
     }
 
     // Analyze the resume
     await analyzeResume({ id: selectedCV, jd: jd as string });
+
+    // Scroll to the result
+    setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   return (
@@ -79,7 +85,7 @@ export const CVOptimizationPage = () => {
           <Button onClick={handleAnalyze}>Phân tích CV</Button>
         </div>
 
-        {loading && (
+        {selectedCV && loading && (
           <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8">
             <CardContent className="space-y-2">
               <CardTitle>Đang phân tích CV</CardTitle>
@@ -88,7 +94,7 @@ export const CVOptimizationPage = () => {
           </Card>
         )}
 
-        {error && (
+        {selectedCV && error && (
           <Card className="space-y-4 border-red-500 border-dashed border-[1px] p-4 bg-red-100 mt-8">
             <CardContent className="space-y-2">
               <CardTitle>Lỗi khi phân tích CV: </CardTitle>
@@ -97,8 +103,8 @@ export const CVOptimizationPage = () => {
           </Card>
         )}
 
-        {result && (
-          <Card className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result">
+        {selectedCV && result && (
+          <Card ref={resultRef} className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result">
             <CardContent className="space-y-2 list-disc">
               <CardTitle>KẾT QUẢ PHÂN TÍCH: </CardTitle>
               <Markdown remarkPlugins={[remarkGfm]}>{result}</Markdown>

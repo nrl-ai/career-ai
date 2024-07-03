@@ -36,10 +36,11 @@ export const CVSelector = ({
           exit={{ opacity: 0, x: -50 }}
           className="flex flex-row items-start w-full gap-2"
         >
-          <Card className="w-full max-w-[400px] border-2 border-blue-500 hover:border-blue-400">
+          <Card className="w-full flex flex-row max-w-[400px] border-2 border-blue-500  p-2 bg-whit rounded-2xl bg-blue-500">
+            <img className="h-24 m-2 rounded-lg shadow-md border-2 border-blue-200" src={`/templates/jpg/${selectedCVDetailed.data.metadata.template}.jpg`} />
             <CardContent>
-              <div className="text-lg font-semibold">{selectedCVDetailed.title}</div>
-              <div className="line-clamp-1 text-xs text-gray-600 opacity-75">{t`Last updated ${lastUpdated}`}</div>
+              <div className="text-lg font-semibold text-white">{selectedCVDetailed.title}</div>
+              <div className="line-clamp-1 text-xs text-gray-100 opacity-75">{t`Last updated ${lastUpdated}`}</div>
             </CardContent>
           </Card>
           <Button className="mt-0" variant={"secondary"} onClick={() => setSelectedCV("")}>
