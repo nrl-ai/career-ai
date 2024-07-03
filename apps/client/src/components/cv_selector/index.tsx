@@ -36,9 +36,9 @@ export const CVSelector = ({
           exit={{ opacity: 0, x: -50 }}
           className="flex flex-row items-start w-full gap-2"
         >
-          <Card className="w-full flex flex-row max-w-[400px] shadow-md p-2 bg-white rounded-2xl border-gray-200 gap-2">
+          <Card className="w-full flex flex-row max-w-[360px] shadow-md p-2 bg-white gap-2">
             <img
-              className="h-24 rounded-lg shadow-md"
+              className="h-24 rounded-lg shadow-md border-2 border-blue-400"
               src={`/templates/jpg/${selectedCVDetailed.data.metadata.template}.jpg`}
             />
             <CardContent>
