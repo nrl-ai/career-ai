@@ -205,11 +205,11 @@ msgstr "Phiên bản Beta"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:197
 msgid "Border"
-msgstr "Biên"
+msgstr "Khung bao"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:130
 msgid "Border Radius"
-msgstr "Bán kính biên giới"
+msgstr "Độ bo góc"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
 #: apps/client/src/pages/home/sections/hero/call-to-action.tsx:18
@@ -670,7 +670,7 @@ msgstr "Google"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:208
 msgid "Grayscale"
-msgstr "Thang độ xám"
+msgstr "Màu xám"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:43
 msgid "Headline"
