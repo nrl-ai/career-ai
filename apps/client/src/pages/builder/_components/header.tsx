@@ -3,9 +3,7 @@ import { Lock, SidebarSimple } from "@phosphor-icons/react";
 import { Button, Tooltip } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { Link } from "react-router-dom";
-import {
-  IoHomeOutline,
-} from "react-icons/io5";
+import { IoHomeOutline } from "react-icons/io5";
 
 import { useBuilderStore } from "@/client/stores/builder";
 import { useResumeStore } from "@/client/stores/resume";

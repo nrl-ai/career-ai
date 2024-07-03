@@ -48,7 +48,7 @@ export const CVOptimizationPage = () => {
   const handleSelectCV = (id: string) => {
     setSelectedCV(id);
     setHasResult(false);
-  }
+  };
 
   return (
     <>
@@ -112,7 +112,10 @@ export const CVOptimizationPage = () => {
         )}
 
         {hasResult && selectedCV && result && (
-          <Card ref={resultRef} className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result">
+          <Card
+            ref={resultRef}
+            className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result"
+          >
             <CardContent className="space-y-2 list-disc">
               <CardTitle>KẾT QUẢ PHÂN TÍCH: </CardTitle>
               <Markdown remarkPlugins={[remarkGfm]}>{result}</Markdown>

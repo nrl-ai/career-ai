@@ -37,22 +37,28 @@ export const CVSelector = ({
           className="flex flex-row items-start w-full gap-2"
         >
           <Card className="w-full flex flex-row max-w-[400px] shadow-md p-2 bg-white rounded-2xl border-gray-200 gap-2">
-            <img className="h-24 rounded-lg shadow-md" src={`/templates/jpg/${selectedCVDetailed.data.metadata.template}.jpg`} />
+            <img
+              className="h-24 rounded-lg shadow-md"
+              src={`/templates/jpg/${selectedCVDetailed.data.metadata.template}.jpg`}
+            />
             <CardContent>
               <div className="text-lg font-semibold text-gray-600">{selectedCVDetailed.title}</div>
               <div className="line-clamp-1 text-xs text-gray-500 opacity-75">{t`Last updated ${lastUpdated}`}</div>
             </CardContent>
           </Card>
-          <Button className="mt-0" variant={"secondary"} onClick={() => {
-            setSelectedCV("");
-            }}>
+          <Button
+            className="mt-0"
+            variant={"secondary"}
+            onClick={() => {
+              setSelectedCV("");
+            }}
+          >
             {t`Change`}
           </Button>
         </motion.div>
       </div>
     );
   }
-
 
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
