@@ -9,6 +9,7 @@ import { useAnalyzeResume } from "@/client/services/resume/analyze";
 import { useToast } from "@/client/hooks/use-toast";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import set from "lodash.set";
 
 export const CVOptimizationPage = () => {
   const { toast } = useToast();
@@ -16,6 +17,7 @@ export const CVOptimizationPage = () => {
   const [jd, setJD] = useState<string | undefined>("");
   const { analyzeResume, loading, error, result } = useAnalyzeResume();
   const resultRef = useRef<HTMLDivElement>(null);
+  const [hasResult, setHasResult] = useState(false);
 
   const handleAnalyze = async () => {
     if (!selectedCV) {
@@ -35,12 +37,18 @@ export const CVOptimizationPage = () => {
 
     // Analyze the resume
     await analyzeResume({ id: selectedCV, jd: jd as string });
+    setHasResult(true);
 
     // Scroll to the result
     setTimeout(() => {
       resultRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    }, 500);
   };
+
+  const handleSelectCV = (id: string) => {
+    setSelectedCV(id);
+    setHasResult(false);
+  }
 
   return (
     <>
@@ -71,7 +79,7 @@ export const CVOptimizationPage = () => {
           <h1 className="font-bold text-xl">Chọn CV</h1>
         </div>
 
-        <CVSelector selectedCV={selectedCV} setSelectedCV={setSelectedCV} />
+        <CVSelector selectedCV={selectedCV} setSelectedCV={handleSelectCV} />
 
         <div className="flex items-center space-x-4 mb-4 mt-8">
           <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
@@ -103,7 +111,7 @@ export const CVOptimizationPage = () => {
           </Card>
         )}
 
-        {selectedCV && result && (
+        {hasResult && selectedCV && result && (
           <Card ref={resultRef} className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result">
             <CardContent className="space-y-2 list-disc">
               <CardTitle>KẾT QUẢ PHÂN TÍCH: </CardTitle>
