@@ -1,7 +1,7 @@
 export const AutoGenJDButton = () => {
     return (
         <>
-            <button id="autogenbutton" className="text-[#6B94F9] outline outline-1 outline-[#6B94F9] bg-[#F4F9FF] focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[300px]" type="button">
+            <button id="autogenbutton" className="text-[#6B94F9] outline outline-1 outline-[#6B94F9] bg-[#F4F9FF] focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[250px]" type="button">
                 Tạo tự động
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.8842 22.7208L8.2124 23.1257L8.61729 18.4539L18.3346 8.79886C18.4797 8.65054 18.6529 8.53269 18.8441 8.45223C19.0352 8.37176 19.2406 8.33032 19.4481 8.33032C19.6555 8.33032 19.8609 8.37176 20.0521 8.45223C20.2434 8.53269 20.4165 8.65054 20.5615 8.79886L22.5392 10.7922C22.6851 10.9369 22.801 11.1092 22.8801 11.2989C22.9592 11.4887 22.9999 11.6922 22.9999 11.8978C22.9999 12.1034 22.9592 12.3069 22.8801 12.4967C22.801 12.6865 22.6851 12.8587 22.5392 13.0035L12.8842 22.7208Z" stroke="#6B94F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

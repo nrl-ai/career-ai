@@ -1,21 +1,22 @@
-import { InformationButton } from "../_components/informationButton";
+import { InformationButton } from "./_components/informationButton";
 import { RichInput } from "@career-ai/ui";
 import { useState } from "react";
-import { AutoGenJDButton } from "../_components/autogen";
+import { AutoGenJDButton } from "./_components/autogen";
 import { CVSelector } from "@/client/components/cv_selector";
 import { useNavigate } from "react-router-dom";
+import { useFindInterviewsByUserId } from "@/client/services/interview/interview";
 
 export const InterviewInformationPage = () => {
   const [jd, setJD] = useState<string | undefined>("");
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const handleOnClick = () => { 
     navigate('/dashboard/interview');
   }
   return (
-    <div className="flex h-fit pt-9 pl-9">
-      <div className="gap-y flex h-fit w-fit flex-col gap-y-5">
+    <div className="h-screen p-9">
+      <div className="gap-y flex h flex-col gap-y-5">
         <div className="flex items-center gap-x-5">
             <button onClick={handleOnClick}>
                 <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">

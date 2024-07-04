@@ -20,4 +20,4 @@ export const interviewSchema = z.object({
     cv: resumeDataSchema.default(defaultResumeData),
 });
 
-export class InterviewsDto extends createZodDto(interviewSchema) {}
+export class InterviewDto extends createZodDto(interviewSchema) {}

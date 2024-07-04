@@ -1,16 +1,28 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useFindInterviewsByUserId } from "@/client/services/interview/interview";
+import { Found } from "./_components/found";
+import { NotFound } from "./_components/notfound";
 
 export const InterviewPage = () => {
   const navigate = useNavigate();
+
+  const [interviews, setInterviews] = useState<boolean | undefined>(false);
+  const { result, loading, error } = useFindInterviewsByUserId(0, 10);
+  
+  // if (result?.length !== 0) {
+  //   setInterviews(true);
+  // }
+
   const handleClick = () => {
     navigate('/dashboard/interviewInformation');
   };
 
   return (
-    <div className="h-screen flex items-center">
-      <div className="grid size-fit grid-cols-3 gap-x-12">
-        <div className="col-span-1 flex flex-col" id="ai-interview-content">
-          <div className="flex flex-col gap-y-4 justify-between pb-10">
+    <div className="h-screen p-9">
+      <div className="grid grid-cols-3 gap-x-12 h-full">
+        <div className="col-span-1 min-[1024px]:flex flex-col hidden justify-between" id="ai-interview-content">
+          <div className="flex flex-col gap-y-4">
             <span className="text-2xl font-bold">Phòng phỏng vấn ảo</span>
             <span className="text-lg">
               Tự tin phỏng vấn và chinh phục nhà <br /> tuyển dụng!{" "}
@@ -24,7 +36,7 @@ export const InterviewPage = () => {
             </button>
           </div>
 
-          <div className="pb-10">
+          <div className="">
             <svg
               width="288"
               height="261"
@@ -340,19 +352,19 @@ export const InterviewPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-2 flex flex-col" id="ai-interview-management">
-          <div className="flex justify-between">
-            <span className="">Quản lý phỏng vấn</span>
+        <div className="col-span-2 flex flex-col gap-y-4" id="ai-interview-management">
+          <div className="flex justify-between items-center">
+            <span className="text-lg font-bold">Quản lý phỏng vấn</span>
 
-            <div className="flex gap-3">
-              <form className="flex items-center">
+            <div className="flex">
+              <form className="flex items-center w-[20rem]">
                 <label
                   htmlFor="default-search"
-                  class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Search
+                  Tìm kiếm
                 </label>
-                <div className="relative">
+                <div className="relative w-full">
                   <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                     <svg
                       className="size-4 text-gray-500 dark:text-gray-400"
@@ -374,13 +386,15 @@ export const InterviewPage = () => {
                     required
                     type="search"
                     id="default-search"
-                    className="block rounded-lg border border-gray-300 bg-gray-50 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    className="block rounded-lg border border-gray-300 bg-gray-50 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 w-full"
                     placeholder="Tìm kiếm"
                   />
                 </div>
               </form>
             </div>
           </div>
+
+          {interviews ? <Found/> : <NotFound/>}
         </div>
       </div>
       {/* <Helmet>
