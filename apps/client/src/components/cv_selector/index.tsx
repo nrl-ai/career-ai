@@ -1,12 +1,15 @@
 import { sortByDate } from "@career-ai/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { t } from "@lingui/macro";
 
 import { useResumes } from "@/client/services/resume";
 
+import { Card, CardContent, Button } from "@career-ai/ui";
 import { BaseCard } from "./_components/base-card";
 import { CreateResumeCard } from "./_components/create-card";
 import { ImportResumeCard } from "./_components/import-card";
 import { ResumeCard } from "./_components/resume-card";
+import dayjs from "dayjs";
 
 export const CVSelector = ({
   selectedCV,
@@ -16,13 +19,49 @@ export const CVSelector = ({
   setSelectedCV: (cv: string) => void;
 }) => {
   const { resumes, loading } = useResumes();
+  const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
 
   const handleSelect = (id: string) => {
     setSelectedCV(id);
   };
 
+  // Collapse when CV is selected
+  if (selectedCV && selectedCVDetailed) {
+    const lastUpdated = dayjs().to(selectedCVDetailed.updatedAt);
+    return (
+      <div className="w-full pt-6">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
+          className="flex flex-row items-start w-full gap-2"
+        >
+          <Card className="w-full flex flex-row max-w-[360px] shadow-md p-2 bg-white gap-2">
+            <img
+              className="h-24 rounded-lg shadow-md border-2 border-blue-400"
+              src={`/templates/jpg/${selectedCVDetailed.data.metadata.template}.jpg`}
+            />
+            <CardContent>
+              <div className="text-lg font-semibold text-gray-600">{selectedCVDetailed.title}</div>
+              <div className="line-clamp-1 text-xs text-gray-500 opacity-75">{t`Last updated ${lastUpdated}`}</div>
+            </CardContent>
+          </Card>
+          <Button
+            className="mt-0"
+            variant={"secondary"}
+            onClick={() => {
+              setSelectedCV("");
+            }}
+          >
+            {t`Change`}
+          </Button>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 4xl:grid-cols-8 6xl:grid-cols-9 mt-6">
       {loading &&
         Array.from({ length: 4 }).map((_, i) => (
           <div
