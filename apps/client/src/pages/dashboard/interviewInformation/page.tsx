@@ -4,7 +4,6 @@ import { useState } from "react";
 import { AutoGenJDButton } from "./_components/autogen";
 import { CVSelector } from "@/client/components/cv_selector";
 import { useNavigate } from "react-router-dom";
-import { useFindInterviewsByUserId } from "@/client/services/interview/interview";
 
 export const InterviewInformationPage = () => {
   const [jd, setJD] = useState<string | undefined>("");
