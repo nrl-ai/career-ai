@@ -2,6 +2,7 @@
 @import url("./_colors.css");
 @import url("./_theme.css");
 @import url("./_fonts.css");
+@import url("./_navbar.scss");
 
 * {
   @apply border-border/50;
