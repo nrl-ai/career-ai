@@ -33,18 +33,6 @@ export const DashboardPage = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-bold tracking-tight"
           >
-            {t`Dashboard`}
-          </motion.h1>
-        </div>
-
-        <hr className="border-t border-gray-400" />
-
-        <div className="flex items-center justify-between pt-4">
-          <motion.h1
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-xl font-bold tracking-tight"
-          >
             {t`Resumes`}
           </motion.h1>
         </div>
@@ -63,7 +51,7 @@ export const DashboardPage = () => {
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-xl font-bold tracking-tight"
+            className="text-2xl font-bold tracking-tight"
           >
             {t`Job Application Tracker`}
           </motion.h1>
