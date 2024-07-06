@@ -88,7 +88,7 @@ export const VerifyOtpPage = () => {
               )}
             />
 
-            <Button type="submit" disabled={loading} className="mt-4 w-full">
+            <Button type="submit" disabled={loading} className="mt-4 w-full text-white">
               {t`Sign in`}
             </Button>
           </form>
