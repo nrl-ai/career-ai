@@ -5,7 +5,7 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-blue-600 text-primary-foreground hover:bg-blue-500",
+        primary: "bg-blue-600 text-white hover:bg-blue-500",
         secondary: "bg-gray-200 text-gray-700 hover:bg-secondary/80",
         error: "bg-error text-error-foreground hover:bg-error/80",
         warning: "bg-warning text-warning-foreground hover:bg-warning/80",

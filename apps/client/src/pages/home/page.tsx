@@ -47,7 +47,7 @@ export const HomePage = () => {
                 className="hs-collapse overflow-hidden transition-all duration-300 lg:basis-auto basis-full grow hidden lg:flex items-center justify-center mx-auto mt-2 lg:mt-0"
               >
                 <ul id="navbar-navlist" className="navbar-nav">
-                  <li className="nav-item">
+                  <li className="nav-item active">
                     <a className="nav-link" href="/">
                       Home
                     </a>
@@ -69,16 +69,22 @@ export const HomePage = () => {
                   </li>
                 </ul>
                 <div className="lg:hidden flex items-center pt-4 mt-4 lg:pt-0 lg:mt-0 border-t border-gray-200 lg:border-none">
-                  <a href="/dashboard/resumes" className="nav-btn font-bold">
+                  <a
+                    href="/dashboard/resumes"
+                    className="nav-btn font-bold text-white bg-orange-400 rounded-2xl"
+                  >
                     <MdNavigateNext className="h-5 w-5 me-2" />
-                    Try now!
+                    Register
                   </a>
                 </div>
               </div>
               <div className="hidden lg:flex items-center">
-                <a href="/dashboard/resumes" className="nav-btn">
+                <a
+                  href="/dashboard/resumes"
+                  className="nav-btn text-white bg-orange-400 rounded-2xl"
+                >
                   <MdNavigateNext className="h-5 w-5 me-2" />
-                  Try now!
+                  Register
                 </a>
               </div>
             </nav>
@@ -105,7 +111,7 @@ export const HomePage = () => {
               <div>
                 <a
                   href="/dashboard/resumes"
-                  className="w-[16rem] relative flex items-center justify-center rounded-full text-base font-medium py-3.5 px-6 mt-10 mx-auto bg-primary text-white"
+                  className="w-[16rem] relative flex items-center justify-center rounded-full text-base font-medium py-3.5 px-6 mt-10 mx-auto bg-blue-500 text-white"
                 >
                   <CiPlay1 className="h-6 w-6 me-2" />
                   Build Your Resume Now
@@ -138,7 +144,7 @@ export const HomePage = () => {
             <div className="flex items-center justify-center mb-14">
               <div className="max-w-2xl text-center">
                 <h5 className="capitalize text-lg text-gray-800 font-medium mb-2">
-                  Career <span className="font-semibold text-primary">Services</span>
+                  Career <span className="font-semibold text-blue-500">Services</span>
                 </h5>
                 <h2 className="text-3xl/snug font-bold capitalize text-gray-800 mb-1">
                   Choose the Right Tool for Your Career Journey
@@ -325,7 +331,7 @@ export const HomePage = () => {
               <div className="flex items-center justify-center mb-14">
                 <div className="max-w-2xl text-center">
                   <h5 className="capitalize text-lg text-gray-800 font-medium mb-2">
-                    Our <span className="font-semibold text-primary">Features</span>
+                    Our <span className="font-semibold text-blue-500">Features</span>
                   </h5>
                   <h2 className="text-3xl/snug font-bold text-gray-800 mb-1">
                     Powerful Tools for Career Advancement
@@ -354,12 +360,12 @@ export const HomePage = () => {
                     <div className="flex items-center gap-5">
                       <div>
                         <span
-                          className="inline-flex relative z-0 bg-primary/10 h-8 w-8"
+                          className="inline-flex relative z-0 bg-blue-500/10 h-8 w-8"
                           style={{ borderRadius: "30% 70% 70% 30%/30% 30% 70% 70%" }}
                         >
                           <div className="absolute -z-20 top-4 left-4 right-0 bottom-0">
                             <svg
-                              className="w-5 h-5 text-primary"
+                              className="w-5 h-5 text-blue-500"
                               viewBox="0 0 24 24"
                               version="1.1"
                               xmlns="http://www.w3.org/2000/svg"
@@ -389,12 +395,12 @@ export const HomePage = () => {
                     <div className="flex items-center gap-5">
                       <div>
                         <span
-                          className="inline-flex relative z-0 bg-primary/10 h-8 w-8"
+                          className="inline-flex relative z-0 bg-blue-500/10 h-8 w-8"
                           style={{ borderRadius: "30% 70% 70% 30%/30% 30% 70% 70%" }}
                         >
                           <div className="absolute -z-20 top-4 left-4 right-0 bottom-0">
                             <svg
-                              className="w-5 h-5 text-primary"
+                              className="w-5 h-5 text-blue-500"
                               viewBox="0 0 24 24"
                               version="1.1"
                               xmlns="http://www.w3.org/2000/svg"
@@ -427,12 +433,12 @@ export const HomePage = () => {
                     <div className="flex items-center gap-5">
                       <div>
                         <span
-                          className="inline-flex relative z-0 bg-primary/10 h-8 w-8"
+                          className="inline-flex relative z-0 bg-blue-500/10 h-8 w-8"
                           style={{ borderRadius: "30% 70% 70% 30%/30% 30% 70% 70%" }}
                         >
                           <div className="absolute -z-20 top-4 left-4 right-0 bottom-0">
                             <svg
-                              className="w-5 h-5 text-primary"
+                              className="w-5 h-5 text-blue-500"
                               viewBox="0 0 24 24"
                               version="1.1"
                               xmlns="http://www.w3.org/2000/svg"
@@ -465,12 +471,12 @@ export const HomePage = () => {
                     <div className="flex items-center gap-5">
                       <div>
                         <span
-                          className="inline-flex relative z-0 bg-primary/10 h-8 w-8"
+                          className="inline-flex relative z-0 bg-blue-500/10 h-8 w-8"
                           style={{ borderRadius: "30% 70% 70% 30%/30% 30% 70% 70%" }}
                         >
                           <div className="absolute -z-20 top-4 left-4 right-0 bottom-0">
                             <svg
-                              className="w-5 h-5 text-primary"
+                              className="w-5 h-5 text-blue-500"
                               viewBox="0 0 24 24"
                               version="1.1"
                               xmlns="http://www.w3.org/2000/svg"

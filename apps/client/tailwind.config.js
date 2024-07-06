@@ -20,16 +20,9 @@ module.exports = {
         "2xl": "10rem",
       },
     },
-
     fontFamily: {
       nunito: ['"Nunito"', "sans-serif"],
       maven: ['"Maven Pro"', "sans-serif"],
-    },
-
-    extend: {
-      colors: {
-        primary: "#007bff",
-      },
     },
   },
 };
