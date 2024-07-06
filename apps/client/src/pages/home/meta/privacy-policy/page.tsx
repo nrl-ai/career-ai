@@ -18,10 +18,10 @@ export const PrivacyPolicyPage = () => (
 
     <section
       id="privacy-policy"
-      className="container prose prose-zinc relative max-w-4xl py-32 dark:prose-invert"
+      className="container prose prose-zinc relative max-w-4xl py-32 dark:prose-invert mt-8"
     >
       <h1 className="mb-4">{t`Privacy Policy`}</h1>
-      <h6 className="text-sm">Last updated on 3rd May 2024</h6>
+      <h6 className="text-sm">Last updated on 8th July 2024</h6>
 
       <hr className="my-6" />
 
