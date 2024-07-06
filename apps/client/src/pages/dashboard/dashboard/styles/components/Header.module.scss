@@ -1,0 +1,60 @@
+@use "../../styles/abstracts/index" as *;
+
+.Header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-radius: 1rem;
+  min-height: 64px;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+
+  .Wrapper {
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: $wrap;
+    margin-inline: auto;
+    align-self: stretch;
+
+    .Start {
+      flex: 1;
+      justify-content: flex-start;
+    }
+
+    .Start,
+    .End {
+      gap: $size-400;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+    }
+
+    .End.Disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+
+    .SpanText {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  .Header {
+    border-bottom: solid 1px var(--lines);
+    .Wrapper {
+      min-height: auto;
+      padding-inline: 1.5rem;
+      width: 100%;
+
+      .SpanText {
+        line-height: 0;
+        font-size: 0.9rem;
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+$fw-medium: 500;
+$fw-bold: 700;
+$line-height-s: 1.5rem;
+$line-height-m: 1.875rem;
+$line-height-l: 2.5rem;
+$letter-spacing-wide: 2.4px;
+
+$fs-200: 0.688rem; // approx. 11.008px
+$fs-300: 0.75rem; // 12px
+$fs-400: 0.8125rem; // approx. 13px
+$fs-500: 0.9375rem; // approx. 15px
+$fs-600: 1rem; // 16px
+$fs-700: 1.125rem; // 18px
+$fs-800: 1.5rem; // 24px
+$fs-900: 2rem; // 32px
+
+$fs-res-s: clamp($fs-200, 4vw, $fs-300);
+$fs-res-m: clamp($fs-400, 4vw, $fs-500);
+$fs-res-l: clamp($fs-500, 3vw, $fs-700);
+$fs-res-xl: clamp($fs-700, 4vw, $fs-800);
+
+@mixin font-stack($size, $weight, $line-height) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin ts-heading-xl {
+  @include font-stack($fs-res-xl, $fw-bold, $line-height-l);
+}
+
+@mixin ts-heading-l {
+  @include font-stack($fs-res-l, $fw-bold, $line-height-m);
+}
+
+@mixin ts-heading-m {
+  @include font-stack($fs-res-m, $fw-bold, $line-height-s);
+}
+
+@mixin ts-heading-s {
+  @include font-stack($fs-300, $fw-bold, $line-height-s);
+  letter-spacing: $letter-spacing-wide;
+}
+
+@mixin ts-body-l {
+  @include font-stack($fs-400, $fw-medium, $line-height-m);
+}
+
+@mixin ts-body-m {
+  @include font-stack($fs-300, $fw-bold, $line-height-s);
+}

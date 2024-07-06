@@ -1,0 +1,72 @@
+@use "../../styles/abstracts/index" as *;
+
+@mixin colorFontAndIcon($color) {
+  color: $color;
+  svg {
+    path {
+      fill: $color;
+    }
+  }
+}
+
+.DialogOverlay {
+  background-color: $black;
+  opacity: 0.3;
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogContent {
+  background-color: #fff;
+  color: $mediumGrey;
+  border-radius: 6px;
+  box-shadow:
+    -3px 7px 16px -9px transparentColor(0.2, $mainColor),
+    1px 1px 6px -1px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 19%;
+  left: 50%;
+  transform: translate(-50%, -19%);
+  width: 80vw;
+  max-width: 450px;
+  max-height: 85vh;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.BoardTitle {
+  max-width: 150px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.CurrentBoard {
+  display: flex;
+  align-items: center;
+
+  .ChevronIcon {
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: $size-200;
+    height: 13px;
+    width: 13px;
+  }
+}
+
+@media (min-width: $screen-xsm) {
+  .BoardTitle {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .ChevronIcon {
+    display: none;
+  }
+}

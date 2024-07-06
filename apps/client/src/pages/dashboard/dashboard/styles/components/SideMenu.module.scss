@@ -1,0 +1,62 @@
+@use "../abstracts/index" as *;
+
+.SideMenuContainer,
+.PopButton {
+  display: none;
+}
+
+@media (min-width: $screen-md) {
+  .SideMenuContainer,
+  .Placeholder {
+    min-width: 261px;
+    width: 30vw;
+    max-width: 300px;
+    height: 100vh;
+  }
+
+  .SideMenuContainer {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-right: var(--lines) solid 1px;
+  }
+
+  .Placeholder {
+    background-color: transparent;
+  }
+
+  .PopButton {
+    position: absolute;
+    top: 82%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $mainColor;
+    height: 48px;
+    width: 56px;
+    color: white;
+    border-radius: 0 999px 999px 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $mainColorHover;
+    }
+
+    .ShowMenuIcon {
+      height: 18px;
+      width: 18px;
+      margin-right: 6px;
+    }
+
+    .HideMenuIcon {
+      svg {
+        path {
+          fill: $mainColor;
+        }
+      }
+    }
+  }
+}

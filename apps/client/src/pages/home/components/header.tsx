@@ -37,18 +37,18 @@ export const Header = () => (
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="https://blog.career-ai.vn/">
-                Blog
+              <a className="nav-link" href="/dashboard">
+                Dashboard
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/dashboard/resumes">
-                Resume Buider
+                Resume Builder
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/dashboard/cv-optimization">
-                Resume Optimizer
+              <a className="nav-link" href="https://blog.career-ai.vn/">
+                Blog
               </a>
             </li>
           </ul>

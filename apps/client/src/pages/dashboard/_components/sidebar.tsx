@@ -4,6 +4,7 @@ import { cn } from "@career-ai/utils";
 import {
   IoCalculatorOutline,
   IoCheckmarkDoneCircleOutline,
+  IoAppsSharp,
   IoHomeOutline,
   IoLibraryOutline,
   IoNewspaperOutline,
@@ -79,9 +80,9 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
 
   const topItems: SidebarItem[] = [
     {
-      path: "/",
-      name: t`Homepage`,
-      icon: <IoHomeOutline />,
+      path: "/dashboard",
+      name: t`Dashboard`,
+      icon: <IoAppsSharp />,
     },
   ];
 

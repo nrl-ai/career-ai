@@ -25,6 +25,7 @@ import { authLoader } from "./loaders/auth";
 import { ComingSoonPage } from "../pages/dashboard/coming_soon/page";
 import { CoursesPage } from "../pages/dashboard/courses/page";
 import { CVOptimizationPage } from "../pages/dashboard/cv_optimization/page";
+import { DashboardPage } from "../pages/dashboard/dashboard/page";
 
 export const routes = createRoutesFromElements(
   <Route element={<Providers />}>
@@ -78,8 +79,7 @@ export const routes = createRoutesFromElements(
           <Route path="cv-optimization" element={<CVOptimizationPage />} />
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="courses" element={<CoursesPage />} />
-
-          <Route index element={<Navigate replace to="/dashboard/resumes" />} />
+          <Route index element={<DashboardPage />} />
         </Route>
       </Route>
     </Route>
