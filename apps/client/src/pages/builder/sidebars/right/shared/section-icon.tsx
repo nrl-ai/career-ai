@@ -31,37 +31,37 @@ export const getSectionIcon = (id: MetadataKey, props: IconProps = {}) => {
   switch (id) {
     // Left Sidebar
     case "notes": {
-      return <Note size={18} {...props} />;
+      return <Note size={22} {...props} />;
     }
     case "template": {
-      return <DiamondsFour size={18} {...props} />;
+      return <DiamondsFour size={22} {...props} />;
     }
     case "layout": {
-      return <Layout size={18} {...props} />;
+      return <Layout size={22} {...props} />;
     }
     case "typography": {
-      return <TextT size={18} {...props} />;
+      return <TextT size={22} {...props} />;
     }
     case "theme": {
-      return <Palette size={18} {...props} />;
+      return <Palette size={22} {...props} />;
     }
     case "page": {
-      return <ReadCvLogo size={18} {...props} />;
+      return <ReadCvLogo size={22} {...props} />;
     }
     case "locale": {
-      return <Translate size={18} {...props} />;
+      return <Translate size={22} {...props} />;
     }
     case "sharing": {
-      return <ShareFat size={18} {...props} />;
+      return <ShareFat size={22} {...props} />;
     }
     case "statistics": {
-      return <TrendUp size={18} {...props} />;
+      return <TrendUp size={22} {...props} />;
     }
     case "export": {
-      return <DownloadSimple size={18} {...props} />;
+      return <DownloadSimple size={22} {...props} />;
     }
     case "information": {
-      return <Info size={18} {...props} />;
+      return <Info size={22} {...props} />;
     }
 
     default: {
@@ -79,7 +79,7 @@ type SectionIconProps = ButtonProps & {
 export const SectionIcon = ({ id, name, icon, ...props }: SectionIconProps) => (
   <Tooltip side="left" content={name}>
     <Button size="icon" variant="ghost" className="size-8 rounded-full" {...props}>
-      {icon ?? getSectionIcon(id, { size: 14 })}
+      {icon ?? getSectionIcon(id, { size: 20 })}
     </Button>
   </Tooltip>
 );

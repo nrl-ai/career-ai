@@ -105,7 +105,7 @@ export const ContextMenuCheckboxItem = forwardRef<
   >
     <span className="absolute left-2 flex size-4 items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <Check size={14} />
+        <Check size={20} />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -128,7 +128,7 @@ export const ContextMenuRadioItem = forwardRef<
   >
     <span className="absolute left-2 flex size-4 items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <Check size={14} className="fill-current" />
+        <Check size={20} className="fill-current" />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}

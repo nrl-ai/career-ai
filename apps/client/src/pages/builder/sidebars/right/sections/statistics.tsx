@@ -34,7 +34,7 @@ export const StatisticsSection = () => {
               exit={{ opacity: 0, y: -50, filter: "blur(10px)" }}
             >
               <Alert variant="info">
-                <Info size={18} />
+                <Info size={22} />
                 <AlertTitle>{t`Statistics are available only for public resumes.`}</AlertTitle>
                 <AlertDescription className="text-xs leading-relaxed">
                   {t`You can track the number of views your resume has received, or how many people have downloaded the resume by enabling public sharing.`}

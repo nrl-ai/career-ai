@@ -144,7 +144,7 @@ export const LeftSidebar = () => {
             id="custom"
             variant="outline"
             name={t`Add a new section`}
-            icon={<Plus size={14} />}
+            icon={<Plus size={20} />}
             onClick={() => {
               addSection();
               // eslint-disable-next-line lingui/no-unlocalized-strings
@@ -259,7 +259,7 @@ export const LeftSidebar = () => {
           <Separator />
 
           <Button size="lg" variant="outline" onClick={addSection}>
-            <PlusCircle />
+            <PlusCircle size={20} />
             <span className="ml-2">{t`Add a new section`}</span>
           </Button>
         </div>

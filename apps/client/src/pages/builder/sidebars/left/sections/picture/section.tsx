@@ -56,11 +56,11 @@ export const PictureSection = () => {
 
         {isValidUrl ? (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-full bg-background/30 opacity-0 transition-opacity group-hover:opacity-100">
-            <Trash size={16} weight="bold" />
+            <Trash size={20} weight="bold" />
           </div>
         ) : (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-full bg-background/30 opacity-0 transition-opacity group-hover:opacity-100">
-            <UploadSimple size={16} weight="bold" />
+            <UploadSimple size={20} weight="bold" />
           </div>
         )}
       </div>

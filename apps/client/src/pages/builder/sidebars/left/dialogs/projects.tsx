@@ -156,7 +156,7 @@ export const ProjectsDialog = () => {
                         }}
                       >
                         <span className="mr-1">{item}</span>
-                        <X size={12} weight="bold" />
+                        <X size={20} weight="bold" />
                       </Badge>
                     </motion.div>
                   ))}

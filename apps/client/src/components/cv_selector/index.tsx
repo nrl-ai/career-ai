@@ -47,8 +47,8 @@ export const CVSelector = ({
             </CardContent>
           </Card>
           <Button
-            className="mt-0"
-            variant={"secondary"}
+            className="mt-2"
+            variant={"primary"}
             onClick={() => {
               setSelectedCV("");
             }}
