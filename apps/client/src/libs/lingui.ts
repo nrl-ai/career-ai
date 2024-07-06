@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 
 import { dayjsLocales } from "./dayjs";
 
-export const defaultLocale = "vi-VN";
+export const defaultLocale = "en-US";
 
 export async function dynamicActivate(locale: string) {
   try {

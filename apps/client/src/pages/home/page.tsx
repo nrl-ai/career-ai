@@ -2,6 +2,7 @@ import { t } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Helmet } from "react-helmet-async";
 import { CiPlay1 } from "react-icons/ci";
+import { HiBars3 } from "react-icons/hi2";
 import { MdNavigateNext } from "react-icons/md";
 import { Icon } from "@/client/components/icon";
 
@@ -38,7 +39,7 @@ export const HomePage = () => {
                   data-hs-collapse="#mobileMenu"
                   data-hs-type="collapse"
                 >
-                  <i className="uil uil-bars text-2xl" />
+                  <HiBars3 className="h-6 w-6 text-gray-800" />
                 </button>
               </div>
               <div
@@ -129,7 +130,7 @@ export const HomePage = () => {
               <div className="h-24 w-24 absolute -top-10 -end-5 -z-[1] bg-[url('/other/dot.svg')]" />
               <div className="h-24 w-24 absolute -bottom-10 -start-5 -z-[1] bg-[url('/other/dot2.svg')]" />
             </div>
-            <img src="/assets/banner.svg" alt="" className="rounded-2xl w-full h-full shadow-lg" />
+            <img src="/assets/banner.svg" className="rounded-2xl w-full h-full shadow-lg" />
           </div>
         </div>
         <section id="service" className="py-24">

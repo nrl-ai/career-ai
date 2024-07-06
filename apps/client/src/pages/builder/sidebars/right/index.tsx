@@ -3,10 +3,9 @@ import { ScrollArea, Separator } from "@career-ai/ui";
 import { useRef } from "react";
 
 import { Copyright } from "@/client/components/copyright";
-import { ThemeSwitch } from "@/client/components/theme-switch";
+// import { ThemeSwitch } from "@/client/components/theme-switch";
 
 import { ExportSection } from "./sections/export";
-import { InformationSection } from "./sections/information";
 import { LayoutSection } from "./sections/layout";
 import { NotesSection } from "./sections/notes";
 import { PageSection } from "./sections/page";
@@ -46,8 +45,6 @@ export const RightSidebar = () => {
           <ExportSection />
           <Separator />
           <NotesSection />
-          {/* <Separator /> */}
-          {/* <InformationSection /> */}
           <Separator />
           <Copyright className="text-center" />
         </div>
@@ -129,7 +126,7 @@ export const RightSidebar = () => {
           />
         </div>
 
-        <ThemeSwitch size={20} />
+        {/* <ThemeSwitch size={20} /> */}
       </div>
     </div>
   );
