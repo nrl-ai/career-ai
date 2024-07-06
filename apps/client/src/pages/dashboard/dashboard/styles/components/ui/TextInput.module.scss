@@ -1,0 +1,39 @@
+@use "../../abstracts/index" as *;
+
+.TextInput,
+.TextArea {
+  font-weight: $fw-bold;
+  font-size: $fs-res-s;
+  background: none;
+  border: 1px solid transparentColor(0.25, $mediumGrey);
+  border-radius: 4px;
+  padding: 10px 10px 10px 5px;
+  &:hover {
+    border: 1px solid transparentColor(0.25, $mainPurple);
+  }
+  &:focus-visible {
+    outline: 1px solid transparentColor(0.25, $mainPurple);
+  }
+}
+
+.TextArea {
+  min-height: 112px;
+}
+
+.InputDragContainer {
+  left: auto !important;
+  top: auto !important;
+  display: flex;
+  padding: 5px 0;
+
+  align-items: center;
+  gap: 10px;
+
+  .TextInput {
+    flex-grow: 1;
+  }
+}
+
+.TextInput.Error {
+  border-color: $red;
+}

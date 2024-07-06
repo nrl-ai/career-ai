@@ -1,5 +1,4 @@
 import { t } from "@lingui/macro";
-import { KeyboardShortcut } from "@career-ai/ui";
 import { useDialog } from "@/client/stores/dialog";
 import { BaseCard } from "./base-card";
 

@@ -532,7 +532,7 @@ msgstr "Bật 2FA"
 
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:88
 msgid "Enter a job description (optional)"
-msgstr ""
+msgstr "Nhập mô tả công việc (tùy chọn)"
 
 #: apps/client/src/pages/auth/reset-password/page.tsx:67
 msgid "Enter a new password below, and make sure it's secure."

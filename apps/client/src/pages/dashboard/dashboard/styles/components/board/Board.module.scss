@@ -1,0 +1,52 @@
+@use "../../abstracts/index" as *;
+
+.EmptyBoard {
+  width: 80%;
+  margin-inline: auto;
+  text-align: center;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ColumnsContainer {
+  min-height: 300px;
+  display: inline-flex;
+  height: 100%;
+}
+
+.BoardWrapper {
+  padding-left: calc(4% - 15px);
+  min-height: 300px;
+  min-width: 100%;
+  display: inline-flex;
+  display: flex;
+  overflow: auto;
+  height: calc(100vh - 65px);
+
+  .NewColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include ts-heading-xl;
+    color: $mediumGrey;
+    border-radius: 6px;
+    margin: 48px 14px;
+    max-height: calc(100vh - 162px);
+    min-width: 280px;
+    background: var(--gradient);
+    &:hover {
+      color: $mediumGreyHover;
+      background: var(--gradientHover);
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  .BoardWrapper {
+    padding-left: 9px;
+  }
+}

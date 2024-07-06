@@ -1,0 +1,113 @@
+@use "../../abstracts/index" as *;
+
+@mixin colorFontAndIcon($color) {
+  color: $color;
+  svg {
+    path {
+      fill: $color;
+    }
+  }
+}
+
+.DialogTitle {
+  color: $mediumGrey;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  padding-left: 25px;
+  margin: 0;
+  text-transform: uppercase;
+  @include ts-heading-s;
+}
+
+.BoardsList {
+  color: $mediumGrey;
+  padding-bottom: 20px;
+
+  .BoardIcon {
+    flex-shrink: 0;
+  }
+
+  .CreateNewBoard {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-right: 25px;
+    padding-left: 25px;
+    @include colorFontAndIcon($mainPurple);
+
+    &:hover {
+      @include colorFontAndIcon($mainPurpleHover);
+    }
+  }
+
+  .ActiveBoard {
+    @include colorFontAndIcon($white);
+    background-color: $mainPurple;
+  }
+
+  .BoardItem {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    height: 48px;
+    margin-right: 25px;
+    padding-left: 25px;
+
+    h2 {
+      line-height: 1;
+    }
+
+    &:hover:not(.CreateNewBoard, .ActiveBoard) {
+      @include colorFontAndIcon($mainPurple);
+      background-color: $white;
+    }
+  }
+}
+
+.BottomSection {
+  color: $mediumGrey;
+  .ThemeSwitchWrapper {
+    padding-inline: 25px;
+    padding-bottom: 20px;
+  }
+
+  .HideSideMenu {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .BoardsListWrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 40px 0;
+
+    .BoardItem {
+      margin-bottom: 5px;
+    }
+  }
+
+  .BottomSection {
+    margin-bottom: 10px;
+    .HideSideMenu {
+      cursor: pointer;
+      font-weight: 600;
+      padding-left: 25px;
+      gap: 10px;
+      align-items: center;
+      display: flex;
+      &:hover {
+        color: $mediumGreyHover;
+
+        svg path {
+          fill: $mediumGreyHover;
+        }
+      }
+    }
+  }
+}

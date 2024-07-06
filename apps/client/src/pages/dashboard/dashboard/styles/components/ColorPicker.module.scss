@@ -1,0 +1,81 @@
+@use "../../styles/abstracts/index" as *;
+@use "../../styles/abstracts/fonts" as *;
+
+@mixin colorFontAndIcon($color) {
+  color: $color;
+  svg {
+    path {
+      fill: $color;
+    }
+  }
+}
+
+.PickerContent {
+  gap: 1rem;
+  background-color: var(--foreground);
+  color: $mediumGrey;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 250px;
+  max-height: 85vh;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  box-shadow: 0px 4px 6px 0px rgba(54, 78, 126, 0.3);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  padding: 1rem;
+
+  .ModalItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+
+    button {
+      width: 15px;
+      height: 15px;
+    }
+
+    .CrossIcon {
+      height: 12px;
+      width: 12px;
+    }
+  }
+
+  label {
+    font-size: clamp($fs-200, 2vw, $fs-400);
+    color: var(--color);
+    font-weight: $fw-bold;
+    margin-bottom: 10px;
+  }
+
+  button {
+    @include ts-heading-m;
+  }
+
+  p {
+    @include ts-body-l;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .DialogTitle {
+    max-width: 90%;
+    overflow: hidden;
+    margin: 0;
+    color: var(--color);
+    @include ts-heading-xl;
+  }
+
+  .DialogTitle.Warn {
+    color: $red;
+  }
+}

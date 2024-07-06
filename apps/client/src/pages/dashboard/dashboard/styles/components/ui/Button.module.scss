@@ -1,0 +1,80 @@
+@use "../../abstracts/index" as *;
+
+.Button {
+  box-sizing: border-box;
+  display: inline-flex;
+  cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  border-radius: 9999px;
+  line-height: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: $mainPurple;
+  color: $white;
+
+  font-weight: $fw-bold;
+}
+
+.Button.Text {
+  padding: 0.5rem 0;
+}
+
+.Button.Welcome {
+  padding: 0.8rem 1rem;
+}
+
+.Button.Add {
+  align-items: center;
+  font-size: 16px;
+  min-width: 47px;
+  min-height: 32px;
+  padding-inline: 10px;
+}
+
+.Primary {
+  background-color: $mainPurple;
+  color: $white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $mainPurpleHover;
+  }
+}
+
+.Secondary {
+  background-color: $white;
+  color: $mainPurple;
+  &:hover,
+  &:focus-visible {
+    background-color: $secondaryHover;
+  }
+}
+
+.Destructive {
+  background-color: $red;
+  color: $white;
+  &:hover,
+  &:focus-visible {
+    background-color: $redHover;
+  }
+}
+
+.Disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (min-width: $screen-md) {
+  .Button.Add {
+    align-items: center;
+    font-size: 16px;
+    min-width: 44px;
+    min-height: 22px;
+    padding: 10px 13px;
+
+    svg {
+      height: 13px;
+    }
+  }
+}
