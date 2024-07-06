@@ -24,8 +24,7 @@ export const InterviewPage = () => {
         </div>
 
         <div className="max-w-[600px] pt-4 mb-8 text-md text-gray-500">
-          Công cụ Phỏng Vấn 3D giúp bạn tập phỏng vấn một cách hiệu quả và chân thực nhất đang được
-          chúng tôi phát triển. Vui lòng chờ đợi trải nghiệm trong thời gian sắp tới.
+          {t`The Mock Interview tool helps you practice interviews effectively and authentically, and is currently under development. Please wait for the experience in the near future.`}
         </div>
 
         <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)]">

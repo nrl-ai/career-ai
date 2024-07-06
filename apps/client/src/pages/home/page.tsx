@@ -32,9 +32,8 @@ export const HomePage = () => {
                   Enhance Your Career with AI-Powered Solutions
                 </h1>
                 <p className="text-base text-gray-700 lg:max-w-md mx-auto">
-                  Take your career to the next level with our comprehensive suite of AI-driven
-                  tools including CV reviews, virtual interviews, skill courses, and career
-                  planning.
+                  Take your career to the next level with our comprehensive suite of AI-driven tools
+                  including CV reviews, virtual interviews, skill courses, and career planning.
                 </p>
               </div>
             </div>
@@ -80,8 +79,7 @@ export const HomePage = () => {
                 Choose the Right Tool for Your Career Journey
               </h2>
               <p className="text-base text-gray-600">
-                Empower your career with our comprehensive suite of services tailored to your
-                needs.
+                Empower your career with our comprehensive suite of services tailored to your needs.
               </p>
             </div>
           </div>
@@ -393,9 +391,7 @@ export const HomePage = () => {
                       </span>
                     </div>
                     <div>
-                      <p className="text-lg font-medium text-gray-600">
-                        Job Application Planning
-                      </p>
+                      <p className="text-lg font-medium text-gray-600">Job Application Planning</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-5">

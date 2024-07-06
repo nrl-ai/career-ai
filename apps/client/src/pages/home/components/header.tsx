@@ -63,10 +63,7 @@ export const Header = () => (
           </div>
         </div>
         <div className="hidden lg:flex items-center">
-          <a
-            href="/dashboard/resumes"
-            className="nav-btn text-white bg-orange-400 rounded-2xl"
-          >
+          <a href="/dashboard/resumes" className="nav-btn text-white bg-orange-400 rounded-2xl">
             <MdNavigateNext className="h-5 w-5 me-2" />
             Register
           </a>

@@ -11,8 +11,6 @@ export const Copyright = ({ className }: Props) => (
       className,
     )}
   >
-    <span className="mt-4">
-     © 2024 CareerAI. All rights reserved.
-    </span>
+    <span className="mt-4">© 2024 CareerAI. All rights reserved.</span>
   </div>
 );

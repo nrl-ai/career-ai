@@ -145,12 +145,9 @@ const courses = [
 const DocumentationCard = () => (
   <Card className="space-y-4 border-blue-500 border-dashed border p-4 bg-blue-100">
     <CardContent className="space-y-2">
-      <CardTitle>Khóa học và Hướng dẫn được chọn bởi CareerAI</CardTitle>
+      <CardTitle>{t`Courses and Guides selected by CareerAI`}</CardTitle>
       <div>
-        CareerAI là tuyển chọn và giới thiệu đến các bạn những khoá học trực tuyến hữu ích nhất tại
-        trang web này. Mục tiêu của chúng tôi là giúp bạn nâng cao kiến thức và kĩ năng một cách
-        nhanh chóng và hiệu quả nhất. Hãy cùng chúng tôi khám phá những khoá học tốt nhất dành cho
-        bạn!
+        {t`CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!`}
       </div>
     </CardContent>
   </Card>

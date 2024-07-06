@@ -22,10 +22,6 @@ msgstr ""
 msgid "You have enabled two-factor authentication successfully."
 msgstr "You have enabled two-factor authentication successfully."
 
-#: apps/client/src/pages/home/sections/features/index.tsx:33
-msgid "{templatesCount} resume templates to choose from"
-msgstr "{templatesCount} resume templates to choose from"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:141
 msgid "{value, plural, one {Column} other {Columns}}"
 msgstr "{value, plural, one {Column} other {Columns}}"
@@ -111,9 +107,9 @@ msgstr "Add New Page"
 msgid "AI"
 msgstr "AI"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:77
-msgid "AI for your career!"
-msgstr "AI for your career!"
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:101
+msgid "AI Mock Interview"
+msgstr "AI Mock Interview"
 
 #: apps/client/src/pages/auth/register/page.tsx:71
 msgid "Already have an account?"
@@ -123,9 +119,17 @@ msgstr "Already have an account?"
 msgid "An error occurred while validating the file."
 msgstr "An error occurred while validating the file."
 
-#: apps/client/src/pages/home/sections/features/index.tsx:106
-msgid "and many more..."
-msgstr "and many more..."
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:120
+msgid "ANALYSIS RESULT:"
+msgstr "ANALYSIS RESULT:"
+
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:93
+msgid "Analyze Resume"
+msgstr "Analyze Resume"
+
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:99
+msgid "Analyzing CV"
+msgstr "Analyzing CV"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:57
 msgid "Anyone with the link can view and download the resume."
@@ -204,10 +208,6 @@ msgstr "Basics"
 msgid "Basics"
 msgstr "Basics"
 
-#: apps/client/src/pages/home/sections/hero/index.tsx:26
-msgid "Beta Version"
-msgstr "Beta Version"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:197
 msgid "Border"
 msgstr "Border"
@@ -217,7 +217,7 @@ msgid "Border Radius"
 msgstr "Border Radius"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
-#: apps/client/src/pages/home/sections/hero/call-to-action.tsx:18
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:91
 msgid "Build Your Resume"
 msgstr "Build Your Resume"
 
@@ -232,7 +232,6 @@ msgstr "Built with"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: apps/client/src/components/copyright.tsx:16
 #: apps/client/src/pages/auth/backup-otp/page.tsx:52
 #: apps/client/src/pages/auth/forgot-password/page.tsx:49
 #: apps/client/src/pages/auth/login/page.tsx:55
@@ -242,31 +241,22 @@ msgstr "Cancel"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
-#: apps/client/src/pages/dashboard/courses/page.tsx:180
-#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:42
+#: apps/client/src/pages/dashboard/courses/page.tsx:177
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:56
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
-#: apps/client/src/pages/dashboard/resumes/page.tsx:19
+#: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/home/components/footer.tsx:18
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
-#: apps/client/src/pages/home/page.tsx:20
-#: apps/client/src/pages/home/sections/hero/index.tsx:39
+#: apps/client/src/pages/home/page.tsx:15
 #: apps/client/src/pages/public/page.tsx:73
 #: apps/client/src/pages/public/page.tsx:94
 msgid "CareerAI"
 msgstr "CareerAI"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:79
-msgid "CareerAI aspires to be the AI for your career, contributing to your success with a wide range of AI features and support tools."
-msgstr "CareerAI aspires to be the AI for your career, contributing to your success with a wide range of AI features and support tools."
-
-#: apps/client/src/pages/home/sections/logo-cloud/index.tsx:39
-msgid "CareerAI helps people land jobs at great companies"
-msgstr "CareerAI helps people land jobs at great companies"
-
-#: apps/client/src/pages/home/sections/contributors/index.tsx:22
-msgid "CareerAI thrives thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills. Below, we celebrate the coders who've enhanced its features on GitHub and the linguists whose translations on Crowdin have made it accessible to a broader audience."
-msgstr "CareerAI thrives thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills. Below, we celebrate the coders who've enhanced its features on GitHub and the linguists whose translations on Crowdin have made it accessible to a broader audience."
+#: apps/client/src/pages/dashboard/courses/page.tsx:150
+msgid "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
+msgstr "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
 
 #: apps/client/src/components/ai-actions.tsx:103
 #: apps/client/src/components/ai-actions.tsx:106
@@ -277,7 +267,7 @@ msgstr "Casual"
 msgid "Center Artboard"
 msgstr "Center Artboard"
 
-#: apps/client/src/components/cv_selector/index.tsx:46
+#: apps/client/src/components/cv_selector/index.tsx:56
 msgid "Change"
 msgstr "Change"
 
@@ -293,6 +283,10 @@ msgstr "Change Tone"
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:184
 msgid "Changed your mind about the name? Give it a new one."
 msgstr "Changed your mind about the name? Give it a new one."
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:96
+msgid "Check & Optimize Resume"
+msgstr "Check & Optimize Resume"
 
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:69
 msgid "Check your email for the confirmation link to update your email address."
@@ -353,10 +347,14 @@ msgstr "Copy Link to Resume"
 msgid "Copy to Clipboard"
 msgstr "Copy to Clipboard"
 
-#: apps/client/src/pages/dashboard/courses/page.tsx:180
-#: apps/client/src/pages/dashboard/courses/page.tsx:190
+#: apps/client/src/pages/dashboard/courses/page.tsx:177
+#: apps/client/src/pages/dashboard/courses/page.tsx:187
 msgid "Courses"
 msgstr "Courses"
+
+#: apps/client/src/pages/dashboard/courses/page.tsx:148
+msgid "Courses and Guides selected by CareerAI"
+msgstr "Courses and Guides selected by CareerAI"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:167
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:242
@@ -385,6 +383,10 @@ msgstr "Create a new resume"
 msgid "Create a new resume from templates"
 msgstr "Create a new resume from templates"
 
+#: apps/client/src/pages/dashboard/resumes/page.tsx:41
+msgid "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
+msgstr "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
+
 #: apps/client/src/pages/auth/login/page.tsx:65
 msgctxt "This is a link to create a new account"
 msgid "Create one now"
@@ -394,21 +396,9 @@ msgstr "Create one now"
 msgid "Create Sample Resume"
 msgstr "Create Sample Resume"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:38
-msgid "Custom resume sections"
-msgstr "Custom resume sections"
-
 #: apps/client/src/stores/resume.ts:45
 msgid "Custom Section"
 msgstr "Custom Section"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:36
-msgid "Customisable colour palettes"
-msgstr "Customisable colour palettes"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:37
-msgid "Customisable layouts"
-msgstr "Customisable layouts"
 
 #: apps/client/src/pages/dashboard/settings/_sections/danger.tsx:62
 msgid "Danger Zone"
@@ -452,10 +442,6 @@ msgstr "Delete Account"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:63
 msgid "Description"
 msgstr "Description"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:34
-msgid "Design single/multi page resumes"
-msgstr "Design single/multi page resumes"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:139
 msgid "Disable"
@@ -534,7 +520,6 @@ msgid "Effects"
 msgstr "Effects"
 
 #: apps/client/src/pages/home/components/footer.tsx:21
-#: apps/client/src/pages/home/sections/hero/index.tsx:43
 msgid "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 msgstr "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 
@@ -549,6 +534,10 @@ msgstr "Email"
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:169
 msgid "Enable 2FA"
 msgstr "Enable 2FA"
+
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:88
+msgid "Enter a job description (optional)"
+msgstr "Enter a job description (optional)"
 
 #: apps/client/src/pages/auth/reset-password/page.tsx:67
 msgid "Enter a new password below, and make sure it's secure."
@@ -574,19 +563,15 @@ msgstr "Enter the one-time password provided by your authenticator app below."
 msgid "Enter your email address and we will send you a link to reset your password if the account exists."
 msgstr "Enter your email address and we will send you a link to reset your password if the account exists."
 
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:108
+msgid "Error when analyzing CV:"
+msgstr "Error when analyzing CV:"
+
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:261
 msgid "Errors"
 msgstr "Errors"
 
-#: apps/client/src/pages/home/sections/templates/index.tsx:12
-msgid "Explore the templates available in CareerAI and view the resumes crafted with them. They could also serve as examples to help guide the creation of your next resume."
-msgstr "Explore the templates available in CareerAI and view the resumes crafted with them. They could also serve as examples to help guide the creation of your next resume."
-
-#: apps/client/src/pages/home/sections/hero/index.tsx:32
-msgid "Expore Now"
-msgstr "Expore Now"
-
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:111
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:108
 #: apps/client/src/pages/builder/sidebars/right/sections/export.tsx:40
 msgid "Export"
 msgstr "Export"
@@ -657,10 +642,6 @@ msgstr "Full Name"
 msgid "Generate a random title for your resume"
 msgstr "Generate a random title for your resume"
 
-#: apps/client/src/pages/home/sections/hero/call-to-action.tsx:32
-msgid "Get Started"
-msgstr "Get Started"
-
 #: apps/client/src/pages/auth/_components/social-auth.tsx:18
 msgid "GitHub"
 msgstr "GitHub"
@@ -676,6 +657,10 @@ msgstr "Google"
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:208
 msgid "Grayscale"
 msgstr "Grayscale"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:122
+msgid "Gross-Net Salary Calculator"
+msgstr "Gross-Net Salary Calculator"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:43
 msgid "Headline"
@@ -709,21 +694,14 @@ msgstr "Hide Icons"
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
 msgstr "Hold <0>Ctrl</0> to display your password temporarily."
 
-#: apps/client/src/pages/home/page.tsx:20
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:83
+#: apps/client/src/pages/home/page.tsx:15
 msgid "Homepage"
 msgstr "Homepage"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:99
 msgid "Horizontal"
 msgstr "Horizontal"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:39
-msgid "Host your resume publicly"
-msgstr "Host your resume publicly"
-
-#: apps/client/src/pages/home/sections/testimonials/index.tsx:36
-msgid "I always love to hear from the users of CareerAI with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <0>{email}</0>."
-msgstr "I always love to hear from the users of CareerAI with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <0>{email}</0>."
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:94
 #: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:46
@@ -761,7 +739,7 @@ msgstr "In this section, you can change your password and enable/disable two-fac
 msgid "In this section, you can delete your account and all the data associated to your user, but please keep in mind that <0>this action is irreversible</0>."
 msgstr "In this section, you can delete your account and all the data associated to your user, but please keep in mind that <0>this action is irreversible</0>."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:125
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:122
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:117
 msgid "Information"
 msgstr "Information"
@@ -833,6 +811,10 @@ msgstr "JSON"
 msgid "Keywords"
 msgstr "Keywords"
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:114
+msgid "Knowledge Library"
+msgstr "Knowledge Library"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:34
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:44
 msgid "Label"
@@ -843,20 +825,16 @@ msgid "Language"
 msgstr "Language"
 
 #: apps/client/src/components/cv_selector/_components/resume-card.tsx:33
-#: apps/client/src/components/cv_selector/index.tsx:42
+#: apps/client/src/components/cv_selector/index.tsx:46
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:86
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:139
 msgid "Last updated {lastUpdated}"
 msgstr "Last updated {lastUpdated}"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:69
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:66
 #: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:207
 msgid "Layout"
 msgstr "Layout"
-
-#: apps/client/src/pages/home/sections/hero/call-to-action.tsx:38
-msgid "Learn more"
-msgstr "Learn more"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:44
 msgid "Letter"
@@ -870,10 +848,6 @@ msgstr "Level"
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:86
 msgid "Light"
 msgstr "Light"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:41
-msgid "Light or dark theme"
-msgstr "Light or dark theme"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:151
 msgid "Line Height"
@@ -904,7 +878,6 @@ msgid "Locking a resume will prevent any further changes to it. This is useful w
 msgstr "Locking a resume will prevent any further changes to it. This is useful when you have already shared your resume with someone and you don't want to accidentally make any changes to it."
 
 #: apps/client/src/components/user-options.tsx:38
-#: apps/client/src/pages/home/sections/hero/call-to-action.tsx:23
 msgid "Logout"
 msgstr "Logout"
 
@@ -912,17 +885,9 @@ msgstr "Logout"
 msgid "Lost your device?"
 msgstr "Lost your device?"
 
-#: apps/client/src/pages/home/sections/contributors/index.tsx:20
-msgid "Made with love by CareerAI team"
-msgstr "Made with love by CareerAI team"
-
 #: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:257
 msgid "Main"
 msgstr "Main"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:35
-msgid "Manage multiple resumes"
-msgstr "Manage multiple resumes"
 
 #. The month and year should be uniform across all languages.
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:71
@@ -941,11 +906,6 @@ msgstr "March 2023 - Present"
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:50
 msgid "Margin"
 msgstr "Margin"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:32
-#: apps/client/src/pages/home/sections/statistics/index.tsx:12
-msgid "Mock Interviews"
-msgstr "Mock Interviews"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
@@ -981,7 +941,7 @@ msgstr "No results found"
 msgid "Note: This will make your account less secure."
 msgstr "Note: This will make your account less secure."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:118
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:115
 #: apps/client/src/pages/builder/sidebars/right/sections/notes.tsx:17
 msgid "Notes"
 msgstr "Notes"
@@ -1027,7 +987,7 @@ msgstr "or continue with"
 msgid "Organization"
 msgstr "Organization"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:90
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:87
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:26
 msgid "Page"
 msgstr "Page"
@@ -1047,6 +1007,10 @@ msgstr "Password"
 msgid "PDF"
 msgstr "PDF"
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:127
+msgid "Personal Income Tax Calculator"
+msgstr "Personal Income Tax Calculator"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:81
 msgid "Phone"
 msgstr "Phone"
@@ -1060,7 +1024,7 @@ msgstr "Picture"
 msgid "Please note that this step is completely optional."
 msgstr "Please note that this step is completely optional."
 
-#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:23
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:25
 msgid "Please select a CV first."
 msgstr "Please select a CV first."
 
@@ -1071,6 +1035,10 @@ msgstr "Please select a file type"
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:228
 msgid "Please store your backup codes in a secure location. You can use one of these one-time use codes to login in case you lose access to your authenticator app."
 msgstr "Please store your backup codes in a secure location. You can use one of these one-time use codes to login in case you lose access to your authenticator app."
+
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:100
+msgid "Please wait a moment. Your CV is being analyzed..."
+msgstr "Please wait a moment. Your CV is being analyzed..."
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:105
 msgid "Portrait"
@@ -1084,10 +1052,6 @@ msgstr "Position"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:53
 msgid "Position"
 msgstr "Position"
-
-#: apps/client/src/pages/home/sections/features/index.tsx:68
-msgid "Powered by"
-msgstr "Powered by"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:113
 msgid "Powered by <0>Simple Icons</0>"
@@ -1165,14 +1129,15 @@ msgstr "Reset your password"
 msgid "Reset Zoom"
 msgstr "Reset Zoom"
 
-#: apps/client/src/pages/dashboard/resumes/page.tsx:19
-#: apps/client/src/pages/dashboard/resumes/page.tsx:36
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:56
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:66
+msgid "Resume Checker and Optimizer"
+msgstr "Resume Checker and Optimizer"
+
+#: apps/client/src/pages/dashboard/resumes/page.tsx:18
+#: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
 msgstr "Resumes"
-
-#: apps/client/src/pages/home/sections/statistics/index.tsx:14
-msgid "Resumes Generated"
-msgstr "Resumes Generated"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:144
 msgid "Rounded"
@@ -1214,6 +1179,10 @@ msgstr "Search for a language"
 msgid "Security"
 msgstr "Security"
 
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:79
+msgid "Select a resume"
+msgstr "Select a resume"
+
 #: apps/client/src/pages/auth/forgot-password/page.tsx:104
 msgid "Send Email"
 msgstr "Send Email"
@@ -1226,6 +1195,10 @@ msgstr "Send me a message"
 msgid "Separate Links"
 msgstr "Separate Links"
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:195
+msgid "Services"
+msgstr "Services"
+
 #: apps/client/src/components/user-options.tsx:32
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/dashboard/settings/page.tsx:26
@@ -1236,7 +1209,7 @@ msgstr "Settings"
 msgid "Setup two-factor authentication on your account"
 msgstr "Setup two-factor authentication on your account"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:97
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:94
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:39
 msgid "Sharing"
 msgstr "Sharing"
@@ -1288,6 +1261,10 @@ msgstr "Signups are currently disabled by the administrator."
 msgid "Size (in px)"
 msgstr "Size (in px)"
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
+msgid "Skill Courses"
+msgstr "Skill Courses"
+
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:226
 msgid "Slug"
 msgstr "Slug"
@@ -1313,7 +1290,7 @@ msgstr "Square"
 msgid "Start building your resume by giving it a name."
 msgstr "Start building your resume by giving it a name."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:104
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:101
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:23
 msgid "Statistics"
 msgstr "Statistics"
@@ -1350,26 +1327,14 @@ msgstr "Summary"
 msgid "Support the app by donating what you can!"
 msgstr "Support the app by donating what you can!"
 
-#: apps/client/src/pages/home/sections/support/index.tsx:9
-msgid "Supporting CareerAI"
-msgstr "Supporting CareerAI"
-
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:85
 msgid "System"
 msgstr "System"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:62
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:59
 #: apps/client/src/pages/builder/sidebars/right/sections/template.tsx:19
 msgid "Template"
 msgstr "Template"
-
-#: apps/client/src/pages/home/sections/templates/index.tsx:9
-msgid "Templates"
-msgstr "Templates"
-
-#: apps/client/src/pages/home/sections/testimonials/index.tsx:34
-msgid "Testimonials"
-msgstr "Testimonials"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/theme.tsx:103
 msgid "Text Color"
@@ -1379,6 +1344,14 @@ msgstr "Text Color"
 msgid "That doesn't look like a valid OpenAI API key."
 msgstr "That doesn't look like a valid OpenAI API key."
 
+#: apps/client/src/pages/dashboard/cv_optimization/page.tsx:72
+msgid "The comprehensive resume optimizer tool helps you increase your chances of being invited to an interview by evaluating the keywords and formatting of your CV."
+msgstr "The comprehensive resume optimizer tool helps you increase your chances of being invited to an interview by evaluating the keywords and formatting of your CV."
+
+#: apps/client/src/pages/dashboard/interview/page.tsx:27
+msgid "The Mock Interview tool helps you practice interviews effectively and authentically, and is currently under development. Please wait for the experience in the near future."
+msgstr "The Mock Interview tool helps you practice interviews effectively and authentically, and is currently under development. Please wait for the experience in the near future."
+
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:34
 msgid "The passwords you entered do not match."
 msgstr "The passwords you entered do not match."
@@ -1387,7 +1360,7 @@ msgstr "The passwords you entered do not match."
 msgid "The resume you want to update is locked, please unlock if you wish to make any changes to it."
 msgstr "The resume you want to update is locked, please unlock if you wish to make any changes to it."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:83
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:80
 #: apps/client/src/pages/builder/sidebars/right/sections/theme.tsx:20
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:79
 msgid "Theme"
@@ -1409,11 +1382,15 @@ msgstr "This action cannot be undone. This will permanently delete your resume a
 msgid "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 msgstr "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:243
+msgid "This feature is under development."
+msgstr "This feature is under development."
+
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:26
 msgid "This page is under construction. Please check back later."
 msgstr "This page is under construction. Please check back later."
 
-#: apps/client/src/pages/builder/_components/header.tsx:57
+#: apps/client/src/pages/builder/_components/header.tsx:58
 msgid "This resume is locked, please unlock to make further changes."
 msgstr "This resume is locked, please unlock to make further changes."
 
@@ -1442,10 +1419,6 @@ msgstr "Toggle Page Break Line"
 msgid "Toggle Page Numbers"
 msgstr "Toggle Page Numbers"
 
-#: apps/client/src/pages/home/sections/features/index.tsx:40
-msgid "Track views and downloads"
-msgstr "Track views and downloads"
-
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/auth/verify-otp/page.tsx:57
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:135
@@ -1469,7 +1442,7 @@ msgstr "Type <0>delete</0> to confirm deleting your account."
 msgid "Type of Study"
 msgstr "Type of Study"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:76
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:73
 #: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:65
 msgid "Typography"
 msgstr "Typography"
@@ -1526,15 +1499,15 @@ msgstr "Use your backup code"
 msgid "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 msgstr "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:264
+msgid "User Profile"
+msgstr "User Profile"
+
 #: apps/client/src/pages/auth/register/page.tsx:119
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:66
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:166
 msgid "Username"
 msgstr "Username"
-
-#: apps/client/src/pages/home/sections/statistics/index.tsx:13
-msgid "Users Signed Up"
-msgstr "Users Signed Up"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:274
 msgid "Validate"
@@ -1569,6 +1542,10 @@ msgstr "Views"
 msgid "Visible"
 msgstr "Visible"
 
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
+msgid "We are developing this feature. Please come back soon!"
+msgstr "We are developing this feature. Please come back soon!"
+
 #: apps/client/src/pages/auth/verify-email/page.tsx:61
 msgid "We verify your email address only to ensure that we can send you a password reset link in case you forget your password."
 msgstr "We verify your email address only to ensure that we can send you a password reset link in case you forget your password."
@@ -1586,10 +1563,6 @@ msgstr "We verify your email address only to ensure that we can send you a passw
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:69
 msgid "Website"
 msgstr "Website"
-
-#: apps/client/src/pages/home/sections/hero/index.tsx:38
-msgid "Welcome to"
-msgstr "Welcome to"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:157
 #: apps/client/src/pages/builder/sidebars/left/dialogs/interests.tsx:68

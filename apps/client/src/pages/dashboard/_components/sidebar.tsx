@@ -1,4 +1,5 @@
-import { Button, KeyboardShortcut, Separator } from "@career-ai/ui";
+import { t } from "@lingui/macro";
+import { Button, Separator } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import {
   IoCalculatorOutline,
@@ -12,19 +13,17 @@ import {
 } from "react-icons/io5";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { PiGraduationCap } from "react-icons/pi";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import useKeyboardShortcut from "use-keyboard-shortcut";
 
 import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
 import { useUser } from "@/client/services/user";
 import { useToast } from "@/client/hooks/use-toast";
+import { Link, useLocation } from "react-router-dom";
 
 type SidebarItem = {
   path: string;
   name: string;
-  shortcut?: string;
   icon: React.ReactNode;
   isCollapsed?: boolean;
 };
@@ -33,7 +32,7 @@ type SidebarItemProps = SidebarItem & {
   onClick?: () => void;
 };
 
-const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: SidebarItemProps) => {
+const SidebarItem = ({ path, name, icon, onClick, isCollapsed }: SidebarItemProps) => {
   const isActive = useLocation().pathname === path;
 
   return (
@@ -62,9 +61,6 @@ const SidebarItem = ({ path, name, shortcut, icon, onClick, isCollapsed }: Sideb
         {!isCollapsed && (
           <span className={cn("font-normal", isActive && "font-bold text-blue-500")}>{name}</span>
         )}
-        {!isActive && !isCollapsed && (
-          <KeyboardShortcut className="ml-auto">{shortcut}</KeyboardShortcut>
-        )}
       </Link>
     </Button>
   );
@@ -80,23 +76,11 @@ type SidebarProps = {
 export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
   const { toast } = useToast();
   const { user } = useUser();
-  const navigate = useNavigate();
-
-  useKeyboardShortcut(["shift", "r"], () => {
-    navigate("/dashboard/resumes");
-    setOpen?.(false);
-  });
-
-  useKeyboardShortcut(["shift", "s"], () => {
-    navigate("/dashboard/settings");
-    setOpen?.(false);
-  });
 
   const topItems: SidebarItem[] = [
     {
       path: "/",
-      name: "Trang chủ",
-      shortcut: "⇧H",
+      name: t`Homepage`,
       icon: <IoHomeOutline />,
     },
   ];
@@ -104,19 +88,17 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
   const serviceItems: SidebarItem[] = [
     {
       path: "/dashboard/resumes",
-      name: "Tạo CV chuẩn theo mẫu",
-      shortcut: "⇧C",
+      name: t`Build Your Resume`,
       icon: <IoNewspaperOutline />,
     },
     {
       path: "/dashboard/cv-optimization",
-      name: "Kiểm tra và Tối ưu CV",
+      name: t`Check & Optimize Resume`,
       icon: <IoCheckmarkDoneCircleOutline />,
     },
     {
       path: "/dashboard/interview",
-      name: "Phòng phỏng vấn ảo",
-      shortcut: "⇧I",
+      name: t`AI Mock Interview`,
       icon: <IoTodayOutline />,
     },
   ];
@@ -124,14 +106,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
   const libraryItems: SidebarItem[] = [
     {
       path: "/dashboard/courses",
-      name: "Khóa học kĩ năng",
-      shortcut: "⇧K",
+      name: t`Skill Courses`,
       icon: <PiGraduationCap />,
     },
     {
       path: "https://blog.career-ai.vn/",
-      name: "Thư viện kiến thức",
-      shortcut: "⇧E",
+      name: t`Knowledge Library`,
       icon: <IoLibraryOutline />,
     },
   ];
@@ -139,12 +119,12 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
   const toolItems: SidebarItem[] = [
     {
       path: "#",
-      name: "Tính lương GROSS-NET",
+      name: t`Gross-Net Salary Calculator`,
       icon: <IoCalculatorOutline />,
     },
     {
       path: "#",
-      name: "Tính thuế TNCN",
+      name: t`Personal Income Tax Calculator`,
       icon: <IoServerOutline />,
     },
   ];
@@ -212,7 +192,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             isCollapsed && "text-center",
           )}
         >
-          Dịch vụ
+          {t`Services`}
         </h2>
         {serviceItems.map((item) => (
           <SidebarItem
@@ -231,7 +211,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             isCollapsed && "text-center",
           )}
         >
-          {isCollapsed ? "Thư viện" : "Tin tức và cộng đồng"}
+          {isCollapsed ? "Library" : "News & Community"}
         </h2>
         {libraryItems.map((item) => (
           <SidebarItem
@@ -250,7 +230,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             isCollapsed && "text-center",
           )}
         >
-          {isCollapsed ? "Công cụ" : "Công cụ tính toán"}
+          {isCollapsed ? "Tools" : "Calculators"}
         </h2>
         {toolItems.map((item) => (
           <SidebarItem
@@ -260,9 +240,8 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             onClick={() => {
               toast({
                 variant: "warning",
-                title: "Chức năng đang được phát triển. ",
-                description:
-                  "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại trong thời gian sắp tới!",
+                title: t`This feature is under development.`,
+                description: t`We are developing this feature. Please come back soon!`,
               });
             }}
           />
@@ -282,7 +261,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
           <UserAvatar size={38} className={cn(isCollapsed ? "mr-0" : "mr-3")} />
           {!isCollapsed && (
             <div className="flex flex-col text-left">
-              <span className="text-sm text-gray-500">Hồ sơ tài khoản</span>
+              <span className="text-sm text-gray-500">{t`User Profile`}</span>{" "}
               <span className="max-w-[120px] truncate font-medium">{user?.name}</span>
             </div>
           )}
