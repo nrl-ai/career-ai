@@ -1,3 +1,36 @@
+export const sampleEmptyData = [
+  {
+    id: "430224fb-29f5-466a-a309-693f9344333b",
+    title: "My Job Board",
+    columns: [
+      {
+        title: "Shortlist",
+        id: "126b20e0-f1e8-4785-abb3-939bb6b86b98",
+        ovalColor: "#49c4e5",
+        tasks: [],
+      },
+      {
+        title: "Applied",
+        id: "91a3765a-2302-4a7b-b9bc-fc154332a9d9",
+        ovalColor: "#8471F2",
+        tasks: [],
+      },
+      {
+        title: "Interviewing",
+        id: "69b52385-ca1f-40c9-991c-2fea5089102d",
+        ovalColor: "#3D6CF5",
+        tasks: [],
+      },
+      {
+        title: "Done",
+        id: "69b52385-ca1f-40c9-991c-2fea5989102d",
+        ovalColor: "#67E2AE",
+        tasks: [],
+      },
+    ],
+  },
+];
+
 export const sampleData = [
   {
     id: "430224fb-29f5-466a-a309-693f9344333b",

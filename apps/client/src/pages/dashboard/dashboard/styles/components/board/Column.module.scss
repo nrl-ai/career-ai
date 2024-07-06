@@ -2,7 +2,7 @@
 
 .ColumnContainer {
   margin: 10px;
-  width: 285px;
+  width: 200px;
   border-radius: 15px;
   padding: 5px;
   background-color: none;
@@ -17,7 +17,7 @@
 
 .IsDragging {
   border-radius: 15px;
-  width: 290px;
+  width: 200px;
   padding: 5px;
 
   background-color: transparentColor(0.01, $darkGrey);
@@ -29,7 +29,7 @@
 .ColumnHeader {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   text-transform: uppercase;
 
   &:hover {

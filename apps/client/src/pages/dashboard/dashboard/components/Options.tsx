@@ -9,7 +9,7 @@ import { BoardTypes, ColumnTypes, KanbanTypes, TaskTypes } from "../types";
 import WarnModal from "./WarnModal";
 import EditTaskModal from "./EditTaskModal";
 import { updateJobApplications } from "@/client/services/job-applications";
-import { sampleData } from "../store/boards";
+import { sampleData, sampleEmptyData } from "../store/boards";
 
 interface OptionsProps {
   activeBoard: BoardTypes;
@@ -24,6 +24,10 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
     await updateJobApplications(sampleData);
     window.location.reload();
   };
+  const fillBoardWithEmpty = async () => {
+    await updateJobApplications(sampleEmptyData);
+    window.location.reload();
+  };
 
   return (
     <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
@@ -34,7 +38,7 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content className={styles.PopoverContent} sideOffset={20} align="end">
+        <Popover.Content className={styles.PopoverContent} sideOffset={10} align="end">
           {optionsType === KanbanTypes.Board ? (
             <>
               <EditBoardModal activeBoard={activeBoard!} hideBoardOptions={setIsOpen}>
@@ -42,7 +46,10 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
                   <h3 className={styles.Edit}>Edit {optionsType}</h3>
                 </button>
               </EditBoardModal>
-              <button className="text-orange-500 font-bold pt-2" onClick={fillBoardWithExamples}>
+              <button className="text-gray-500 pt-2" onClick={fillBoardWithEmpty}>
+                <span className={styles.SpanText}>Clear board</span>
+              </button>
+              <button className="text-blue-500 pt-2" onClick={fillBoardWithExamples}>
                 <span className={styles.SpanText}>Fill board with examples</span>
               </button>
               {/* <WarnModal type={optionsType} activeBoard={activeBoard}>

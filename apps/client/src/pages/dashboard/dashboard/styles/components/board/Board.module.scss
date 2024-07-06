@@ -1,7 +1,7 @@
 @use "../../abstracts/index" as *;
 
 .EmptyBoard {
-  width: 80%;
+  width: 100%;
   margin-inline: auto;
   text-align: center;
   height: 600px;
@@ -9,7 +9,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .ColumnsContainer {
@@ -31,16 +31,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include ts-heading-xl;
+    font-size: 1.2rem;
     color: $mediumGrey;
     border-radius: 6px;
-    margin: 48px 14px;
+    margin: 24px 14px;
     max-height: 600px;
-    min-width: 280px;
-    background: var(--gradient);
+    min-width: 200px;
+    background: #f0f0f0;
     &:hover {
       color: $mediumGreyHover;
-      background: var(--gradientHover);
+      background: #f5f5f5;
     }
   }
 }
