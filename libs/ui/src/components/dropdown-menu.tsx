@@ -134,7 +134,7 @@ export const DropdownMenuRadioItem = forwardRef<
   >
     <span className="absolute left-2 flex size-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <DotOutline size={18} weight="fill" className="fill-current" />
+        <DotOutline size={22} weight="fill" className="fill-current" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

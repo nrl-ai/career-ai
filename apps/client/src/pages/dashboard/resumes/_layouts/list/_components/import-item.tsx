@@ -11,7 +11,7 @@ export const ImportResumeListItem = () => {
 
   return (
     <BaseListItem
-      start={<DownloadSimple size={18} />}
+      start={<DownloadSimple size={22} />}
       title={
         <>
           <span>{t`Import an existing resume`}</span>

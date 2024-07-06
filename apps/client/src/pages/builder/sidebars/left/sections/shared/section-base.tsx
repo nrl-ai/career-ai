@@ -112,7 +112,7 @@ export const SectionBase = <T extends SectionItem>({ id, title, description }: P
             className="gap-x-2 border-dashed py-6 leading-relaxed hover:bg-secondary-accent"
             onClick={onCreate}
           >
-            <Plus size={14} />
+            <Plus size={20} />
             <span className="font-medium">
               {t({
                 message: "Add a new item",

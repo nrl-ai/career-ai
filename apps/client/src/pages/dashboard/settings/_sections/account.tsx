@@ -187,7 +187,7 @@ export const AccountSettings = () => {
                     user.emailVerified ? "text-success-accent" : "text-warning-accent",
                   )}
                 >
-                  {user.emailVerified ? <Check size={12} /> : <Warning size={12} />}
+                  {user.emailVerified ? <Check size={20} /> : <Warning size={20} />}
                   {user.emailVerified ? t`Verified` : t`Unverified`}
                   {!user.emailVerified && (
                     <Button

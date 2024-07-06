@@ -90,7 +90,7 @@ export const PublicResumePage = () => {
         <Link to="/">
           <Button size="sm" variant="ghost" className="space-x-1.5 text-xs font-normal">
             <span>{t`Built with`}</span>
-            <Icon size={12} />
+            <Icon size={20} />
             <span>{t`CareerAI`}</span>
           </Button>
         </Link>
@@ -99,7 +99,7 @@ export const PublicResumePage = () => {
       <div className="fixed bottom-5 right-5 print:hidden">
         <div className="flex items-center gap-x-4">
           <Button variant="outline" className="gap-x-2 rounded-full" onClick={onDownloadPdf}>
-            {loading ? <CircleNotch size={16} className="animate-spin" /> : <FilePdf size={16} />}
+            {loading ? <CircleNotch size={20} className="animate-spin" /> : <FilePdf size={20} />}
             {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
             <span>{t`Download PDF`}</span>
           </Button>

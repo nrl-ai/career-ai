@@ -25,46 +25,46 @@ export const getSectionIcon = (id: SectionKey, props: IconProps = {}) => {
   switch (id) {
     // Left Sidebar
     case "basics": {
-      return <User size={18} {...props} />;
+      return <User size={22} {...props} />;
     }
     case "summary": {
-      return <Article size={18} {...props} />;
+      return <Article size={22} {...props} />;
     }
     case "awards": {
-      return <Medal size={18} {...props} />;
+      return <Medal size={22} {...props} />;
     }
     case "profiles": {
-      return <ShareNetwork size={18} {...props} />;
+      return <ShareNetwork size={22} {...props} />;
     }
     case "experience": {
-      return <Briefcase size={18} {...props} />;
+      return <Briefcase size={22} {...props} />;
     }
     case "education": {
-      return <GraduationCap size={18} {...props} />;
+      return <GraduationCap size={22} {...props} />;
     }
     case "certifications": {
-      return <Certificate size={18} {...props} />;
+      return <Certificate size={22} {...props} />;
     }
     case "interests": {
-      return <GameController size={18} {...props} />;
+      return <GameController size={22} {...props} />;
     }
     case "languages": {
-      return <Translate size={18} {...props} />;
+      return <Translate size={22} {...props} />;
     }
     case "volunteer": {
-      return <HandHeart size={18} {...props} />;
+      return <HandHeart size={22} {...props} />;
     }
     case "projects": {
-      return <PuzzlePiece size={18} {...props} />;
+      return <PuzzlePiece size={22} {...props} />;
     }
     case "publications": {
-      return <Books size={18} {...props} />;
+      return <Books size={22} {...props} />;
     }
     case "skills": {
-      return <CompassTool size={18} {...props} />;
+      return <CompassTool size={22} {...props} />;
     }
     case "references": {
-      return <Users size={18} {...props} />;
+      return <Users size={22} {...props} />;
     }
 
     default: {
@@ -87,7 +87,7 @@ export const SectionIcon = ({ id, name, icon, ...props }: SectionIconProps) => {
   return (
     <Tooltip side="right" content={name ?? section.name}>
       <Button size="icon" variant="ghost" className="size-8 rounded-full" {...props}>
-        {icon ?? getSectionIcon(id, { size: 14 })}
+        {icon ?? getSectionIcon(id, { size: 20 })}
       </Button>
     </Tooltip>
   );

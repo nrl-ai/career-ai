@@ -129,7 +129,7 @@ export const RightSidebar = () => {
           />
         </div>
 
-        <ThemeSwitch size={14} />
+        <ThemeSwitch size={20} />
       </div>
     </div>
   );

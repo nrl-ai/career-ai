@@ -104,7 +104,7 @@ const Section = ({ id, isDragging = false }: SectionProps) => {
       )}
     >
       <div className="flex items-center gap-x-2">
-        <DotsSixVertical size={12} weight="bold" />
+        <DotsSixVertical size={20} weight="bold" />
         <p className="flex-1 truncate text-xs font-medium">{name}</p>
       </div>
     </div>
@@ -247,7 +247,7 @@ export const LayoutSection = () => {
                           onRemovePage(pageIndex);
                         }}
                       >
-                        <TrashSimple size={12} className="text-error" />
+                        <TrashSimple size={20} className="text-error" />
                       </Button>
                     </Tooltip>
                   )}

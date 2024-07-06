@@ -56,7 +56,7 @@ export const BuilderHeader = () => {
 
           {locked && (
             <Tooltip content={t`This resume is locked, please unlock to make further changes.`}>
-              <Lock size={14} className="ml-2 opacity-75" />
+              <Lock size={20} className="ml-2 opacity-75" />
             </Tooltip>
           )}
         </div>

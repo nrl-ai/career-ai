@@ -24,7 +24,7 @@ export const VerifyEmailPage = () => {
 
       toast({
         variant: "success",
-        icon: <SealCheck size={16} weight="bold" />,
+        icon: <SealCheck size={20} weight="bold" />,
         title: t`Your email address has been verified successfully.`,
       });
 
@@ -55,7 +55,7 @@ export const VerifyEmailPage = () => {
       </div>
 
       <Alert variant="info">
-        <Info size={18} />
+        <Info size={22} />
         <AlertTitle>{t`Please note that this step is completely optional.`}</AlertTitle>
         <AlertDescription>
           {t`We verify your email address only to ensure that we can send you a password reset link in case you forget your password.`}

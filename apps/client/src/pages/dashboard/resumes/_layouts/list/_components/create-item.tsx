@@ -12,7 +12,7 @@ export const CreateResumeListItem = () => {
 
   return (
     <BaseListItem
-      start={<Plus size={18} />}
+      start={<Plus size={22} />}
       title={
         <>
           <span>{t`Create a new resume`}</span>
