@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Copyright } from "@/client/components/copyright";
 import { LocaleSwitch } from "@/client/components/locale-switch";
 import { Logo } from "@/client/components/logo";
-import { ThemeSwitch } from "@/client/components/theme-switch";
+// import { ThemeSwitch } from "@/client/components/theme-switch";
 
 export const Footer = () => (
   <footer className="bg-background">
@@ -34,7 +34,7 @@ export const Footer = () => (
 
         <div className="absolute bottom-0 right-0 lg:space-x-2">
           <LocaleSwitch />
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
         </div>
       </div>
     </div>

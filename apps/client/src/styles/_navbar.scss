@@ -14,25 +14,25 @@
 
       .nav-item {
         .nav-link {
-          @apply inline-block relative tracking-wide py-1 px-3.5 rounded-md text-base capitalize font-semibold cursor-pointer transition-all duration-300 bg-transparent;
+          @apply inline-block relative tracking-wide py-1 px-3.5 rounded-md text-base capitalize font-medium cursor-pointer transition-all duration-300 bg-transparent;
 
           &:active,
           &:focus,
           &:hover {
-            @apply text-primary bg-gray-400/10;
+            @apply text-blue-500 bg-gray-400/10;
           }
         }
       }
 
       .active {
         .nav-link {
-          @apply text-primary bg-gray-400/10;
+          @apply text-blue-500 bg-gray-400/10;
         }
       }
     }
 
     .nav-btn {
-      @apply py-2 px-4 rounded-lg inline-flex items-center justify-center text-base font-medium transition-all;
+      @apply py-2 px-4 rounded-xl inline-flex items-center justify-center text-base font-bold transition-all;
     }
   }
 
@@ -55,14 +55,10 @@
 
         &.active {
           .nav-link {
-            @apply text-primary lg:bg-white/10 bg-gray-400/10;
+            @apply text-white lg:bg-white/10 bg-gray-400/10;
           }
         }
       }
-    }
-
-    .nav-btn {
-      @apply bg-primary text-white lg:bg-white lg:text-primary;
     }
   }
 
@@ -87,14 +83,10 @@
 
         &.active {
           .nav-link {
-            @apply text-primary bg-gray-400/10;
+            @apply text-blue-500 bg-gray-400/10;
           }
         }
       }
-    }
-
-    .nav-btn {
-      @apply bg-primary text-white;
     }
   }
 
@@ -122,20 +114,20 @@
             &:active,
             &:focus,
             &:hover {
-              @apply text-primary bg-gray-400/10;
+              @apply text-blue-500 bg-gray-400/10;
             }
           }
 
           &.active {
             .nav-link {
-              @apply text-primary bg-slate-400/10;
+              @apply text-blue-500 bg-slate-400/10;
             }
           }
         }
       }
 
       .nav-btn {
-        @apply bg-primary text-white;
+        @apply bg-blue-500 text-white;
       }
     }
   }

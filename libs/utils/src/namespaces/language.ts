@@ -9,15 +9,15 @@ export type Language = {
 
 export const languages: Language[] = [
   {
-    id: "vi",
-    name: "Vietnamese",
-    editorCode: "vi",
-    locale: "vi-VN",
-  },
-  {
     id: "en-US",
     name: "English",
     editorCode: "en",
     locale: "en-US",
+  },
+  {
+    id: "vi",
+    name: "Vietnamese",
+    editorCode: "vi",
+    locale: "vi-VN",
   },
 ];

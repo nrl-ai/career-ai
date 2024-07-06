@@ -98,7 +98,7 @@ export const BackupOtpPage = () => {
                 <span>{t`Back`}</span>
               </Button>
 
-              <Button type="submit" disabled={loading} className="flex-1">
+              <Button type="submit" disabled={loading} className="flex-1 text-white">
                 {t`Sign in`}
               </Button>
             </div>
