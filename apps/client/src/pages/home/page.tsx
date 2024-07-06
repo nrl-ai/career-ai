@@ -25,7 +25,7 @@ export const HomePage = () => {
       </Helmet>
       <div>
         <header id="navbar-sticky" className="navbar nav-dark">
-          <div className="container bg-gradient-to-b from-white to-white/30 rounded-b-3xl">
+          <div className="container bg-gradient-to-b from-white to-white/50 rounded-b-3xl">
             <nav>
               <a href="/" className="flex flex-row">
                 <Icon open={true} size={38} />
