@@ -69,7 +69,7 @@ export const DashboardPage = () => {
           </motion.h1>
         </div>
 
-        <main className="grid gap-y12" style={{ maxWidth: "800px", maxHeight: "600px" }}>
+        <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
           <BoardView />
         </main>
       </Tabs>
