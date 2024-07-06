@@ -6,7 +6,6 @@ import { Header } from "./components/header";
 
 export const HomeLayout = () => (
   <ScrollArea orientation="vertical" className="h-screen">
-    <Header />
     <Outlet />
     <Footer />
   </ScrollArea>
