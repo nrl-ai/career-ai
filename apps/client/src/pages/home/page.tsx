@@ -65,7 +65,7 @@ export const HomePage = () => {
             <div className="h-24 w-24 absolute -top-10 -end-5 -z-[1] bg-[url('/other/dot.svg')]" />
             <div className="h-24 w-24 absolute -bottom-10 -start-5 -z-[1] bg-[url('/other/dot2.svg')]" />
           </div>
-          <img src="/assets/banner.svg" className="rounded-2xl w-full h-full shadow-lg" />
+          <img src="/screenshots/careerai.png" className="rounded-2xl w-full h-full shadow-lg" />
         </div>
       </div>
       <section id="service" className="py-24">
@@ -272,7 +272,7 @@ export const HomePage = () => {
             <div className="grid md:grid-cols-2 grid-cols-1 gap-6 mt-14 items-center">
               <div>
                 <img
-                  src="/assets/banner.svg"
+                  src="/screenshots/careerai.png"
                   className="max-w-full max-h-full rounded-md"
                   alt="CareerAI Features"
                 />
