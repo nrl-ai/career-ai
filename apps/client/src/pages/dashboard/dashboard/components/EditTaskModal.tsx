@@ -113,7 +113,7 @@ const EditTaskModal: FC<EditTaskModalProps> = ({
             <label htmlFor="Task Name">Title</label>
             <TextInput
               onChange={handleTaskNameChange}
-              placeholder="Machine Learning Engineer at Google"
+              placeholder=""
               defaultValue={taskName}
             />
           </div>
@@ -121,7 +121,7 @@ const EditTaskModal: FC<EditTaskModalProps> = ({
           <div className={styles.ModalItem}>
             <label htmlFor="Task Description">Description</label>
             <TextArea
-              placeholder="e.g. Work on the new machine learning model"
+              placeholder=""
               onChange={handleDescriptionChange}
               defaultValue={description}
             />

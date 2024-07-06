@@ -86,19 +86,19 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({ children, activeBoard }) =>
           <Dialog.Title className={styles.DialogTitle}>Add New Job</Dialog.Title>
           <div className={styles.ModalItem}>
             <label htmlFor="Task Name">Title</label>
-            <TextInput onChange={handleTaskNameChange} placeholder="Machine Learning Engineer at Google" />
+            <TextInput onChange={handleTaskNameChange} placeholder="" />
           </div>
 
           <div className={styles.ModalItem}>
             <label htmlFor="Task Description">Description</label>
             <TextArea
-              placeholder="e.g. Develop machine learning models for recommendation systems"
+              placeholder=""
               onChange={handleDescriptionChange}
             />
           </div>
 
           <div className={styles.ModalItem}>
-            <label htmlFor="Subtasks">Subtasks</label>
+            <label htmlFor="Subtasks">Tasks</label>
 
             <div className={styles.ItemsList}>
               {subtasks.map((subtask) => (
