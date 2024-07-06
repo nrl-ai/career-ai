@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import styles from "../styles/components/BoardOptions.module.scss";
 import { VerticalEllipsisIcon } from "./icons";
@@ -32,15 +32,15 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
           {optionsType === KanbanTypes.Board ? (
             <>
               <EditBoardModal activeBoard={activeBoard!} hideBoardOptions={setIsOpen}>
-                <button>
+                <button className="w-full px-2">
                   <h3 className={styles.Edit}>Edit {optionsType}</h3>
                 </button>
               </EditBoardModal>
-              <WarnModal type={optionsType} activeBoard={activeBoard}>
-                <button>
+              {/* <WarnModal type={optionsType} activeBoard={activeBoard}>
+                <button className="w-full px-2">
                   <h3 className={styles.Delete}>Delete {optionsType}</h3>
                 </button>
-              </WarnModal>
+              </WarnModal> */}
             </>
           ) : (
             <>
@@ -50,12 +50,12 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
                 activeTask={activeTask!}
                 hideBoardOptions={setIsOpen}
               >
-                <button>
+                <button className="w-full px-2">
                   <h3 className={styles.Edit}>Edit {optionsType}</h3>
                 </button>
               </EditTaskModal>
               <WarnModal type={optionsType} activeColumn={activeColumn} activeTask={activeTask}>
-                <button>
+                <button className="w-full px-2">
                   <h3 className={styles.Delete}>Delete {optionsType}</h3>
                 </button>
               </WarnModal>

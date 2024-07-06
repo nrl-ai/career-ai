@@ -102,7 +102,7 @@ msgstr "Thêm trang mới"
 msgid "AI"
 msgstr "AI"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:101
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:102
 msgid "AI Mock Interview"
 msgstr "Phỏng vấn ảo AI"
 
@@ -212,7 +212,7 @@ msgid "Border Radius"
 msgstr "Độ bo góc"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:91
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:92
 msgid "Build Your Resume"
 msgstr "Tạo CV theo mẫu"
 
@@ -238,6 +238,7 @@ msgstr "Hủy"
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/courses/page.tsx:177
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:56
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:19
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
@@ -279,7 +280,7 @@ msgstr "Thay đổi Ngữ điệu"
 msgid "Changed your mind about the name? Give it a new one."
 msgstr "Bạn đã thay đổi ý kiến về cái tên? Cho nó một cái mới."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:96
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:97
 msgid "Check & Optimize Resume"
 msgstr "Kiểm tra và Tối ưu CV"
 
@@ -378,6 +379,7 @@ msgstr "Tạo CV mới"
 msgid "Create a new resume from templates"
 msgstr "Tạo CV nhanh chóng từ bộ mẫu CV chuyên nghiệp"
 
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:54
 #: apps/client/src/pages/dashboard/resumes/page.tsx:41
 msgid "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
 msgstr "Tạo CV nhanh chóng và dễ dàng bằng cách sử dụng các mẫu của chúng tôi. Quản lý CV cho các công việc và vị trí khác nhau ở đây."
@@ -402,6 +404,12 @@ msgstr "Vùng nguy hiểm"
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:87
 msgid "Dark"
 msgstr "Tối"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:84
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:19
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
+msgid "Dashboard"
+msgstr "Bảng trung tâm"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:67
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:67
@@ -653,7 +661,7 @@ msgstr "Google"
 msgid "Grayscale"
 msgstr "Màu xám"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:122
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:123
 msgid "Gross-Net Salary Calculator"
 msgstr "Tính lương Gross-Net"
 
@@ -689,7 +697,6 @@ msgstr "Ẩn biểu tượng"
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
 msgstr "Giữ <0> Ctrl </0> để hiển thị mật khẩu của bạn tạm thời."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:83
 #: apps/client/src/pages/home/page.tsx:15
 msgid "Homepage"
 msgstr "Trang chủ"
@@ -713,7 +720,7 @@ msgstr "Nhập dữ liệu"
 
 #: apps/client/src/components/cv_selector/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:192
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:18
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:17
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
 msgstr "Đăng tệp sẵn có"
@@ -780,6 +787,10 @@ msgstr "Có vẻ như mã thông báo xác minh bạn cung cấp không hợp l�
 msgid "It looks like your email address has already been verified."
 msgstr "Có vẻ như địa chỉ email của bạn đã được xác minh."
 
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:68
+msgid "Job Application Tracker"
+msgstr "Bảng theo dõi ứng tuyển"
+
 #: apps/client/src/pages/auth/register/page.tsx:101
 msgctxt "Localized version of a placeholder name. For example, Max Mustermann in German or Jan Kowalski in Polish."
 msgid "John Doe"
@@ -806,7 +817,7 @@ msgstr "JSON"
 msgid "Keywords"
 msgstr "Từ khóa"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:114
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:115
 msgid "Knowledge Library"
 msgstr "Thư viện kiến thức"
 
@@ -849,7 +860,7 @@ msgid "Line Height"
 msgstr "Chiều cao dòng"
 
 #: apps/client/src/components/cv_selector/_components/import-card.tsx:20
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:18
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:22
 msgid "LinkedIn, JSON Resume, etc."
 msgstr "Tải lên tệp CV sẵn có, tài khoản LinkedIn,..."
@@ -1002,7 +1013,7 @@ msgstr "Mật khẩu"
 msgid "PDF"
 msgstr "PDF"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:127
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:128
 msgid "Personal Income Tax Calculator"
 msgstr "Tính toán thuế thu nhập cá nhân"
 
@@ -1129,6 +1140,7 @@ msgstr "Đặt lại Zoom"
 msgid "Resume Checker and Optimizer"
 msgstr "Kiểm tra và Tối ưu CV"
 
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:48
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
@@ -1190,7 +1202,7 @@ msgstr "Gửi tin nhắn"
 msgid "Separate Links"
 msgstr "Liên kết riêng biệt"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:195
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:196
 msgid "Services"
 msgstr "Dịch vụ"
 
@@ -1256,7 +1268,7 @@ msgstr "Đăng ký hiện đang bị vô hiệu hóa bởi quản trị viên."
 msgid "Size (in px)"
 msgstr "Kích thước (tính bằng px)"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:110
 msgid "Skill Courses"
 msgstr "Khóa học kỹ năng"
 
@@ -1377,7 +1389,7 @@ msgstr "Hành động này không thể hoàn tác. Điều này sẽ xóa vĩnh
 msgid "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 msgstr "Địa chỉ email này được liên kết với tài khoản OAuth. Vui lòng đăng nhập với nhà cung cấp OAuth của bạn."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:243
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
 msgid "This feature is under development."
 msgstr "Tính năng này đang được phát triển."
 
@@ -1494,7 +1506,7 @@ msgstr "Sử dụng mã dự phòng của bạn"
 msgid "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 msgstr "Người dùng không có bản ghi 'bí mật' liên quan. Vui lòng báo cáo vấn đề này trên GitHub."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:264
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:265
 msgid "User Profile"
 msgstr "Hồ sơ người dùng"
 
@@ -1537,7 +1549,7 @@ msgstr "Lượt xem"
 msgid "Visible"
 msgstr "Hiện"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:245
 msgid "We are developing this feature. Please come back soon!"
 msgstr "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại sớm!"
 

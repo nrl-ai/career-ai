@@ -34,7 +34,7 @@ export class JobApplicationsController {
   async update(@User() user: UserDto, @Body() updateJobApplicationDto: any) {
     try {
       return await this.userService.updateByEmail(user.email, {
-        jobApplications: updateJobApplicationDto
+        jobApplications: updateJobApplicationDto,
       });
     } catch (error) {
       Logger.error(error);

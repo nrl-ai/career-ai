@@ -107,7 +107,7 @@ msgstr "Add New Page"
 msgid "AI"
 msgstr "AI"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:101
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:102
 msgid "AI Mock Interview"
 msgstr "AI Mock Interview"
 
@@ -217,7 +217,7 @@ msgid "Border Radius"
 msgstr "Border Radius"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:91
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:92
 msgid "Build Your Resume"
 msgstr "Build Your Resume"
 
@@ -243,6 +243,7 @@ msgstr "Cancel"
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/courses/page.tsx:177
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:56
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:19
 #: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
@@ -284,7 +285,7 @@ msgstr "Change Tone"
 msgid "Changed your mind about the name? Give it a new one."
 msgstr "Changed your mind about the name? Give it a new one."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:96
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:97
 msgid "Check & Optimize Resume"
 msgstr "Check & Optimize Resume"
 
@@ -383,6 +384,7 @@ msgstr "Create a new resume"
 msgid "Create a new resume from templates"
 msgstr "Create a new resume from templates"
 
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:54
 #: apps/client/src/pages/dashboard/resumes/page.tsx:41
 msgid "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
 msgstr "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
@@ -407,6 +409,12 @@ msgstr "Danger Zone"
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:87
 msgid "Dark"
 msgstr "Dark"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:84
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:19
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
+msgid "Dashboard"
+msgstr "Dashboard"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:67
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:67
@@ -658,7 +666,7 @@ msgstr "Google"
 msgid "Grayscale"
 msgstr "Grayscale"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:122
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:123
 msgid "Gross-Net Salary Calculator"
 msgstr "Gross-Net Salary Calculator"
 
@@ -694,7 +702,6 @@ msgstr "Hide Icons"
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
 msgstr "Hold <0>Ctrl</0> to display your password temporarily."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:83
 #: apps/client/src/pages/home/page.tsx:15
 msgid "Homepage"
 msgstr "Homepage"
@@ -718,7 +725,7 @@ msgstr "Import"
 
 #: apps/client/src/components/cv_selector/_components/import-card.tsx:19
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:192
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:18
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:17
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
 msgstr "Import an existing resume"
@@ -785,6 +792,10 @@ msgstr "It looks like the verification token you provided is invalid. Please try
 msgid "It looks like your email address has already been verified."
 msgstr "It looks like your email address has already been verified."
 
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:68
+msgid "Job Application Tracker"
+msgstr "Job Application Tracker"
+
 #: apps/client/src/pages/auth/register/page.tsx:101
 msgctxt "Localized version of a placeholder name. For example, Max Mustermann in German or Jan Kowalski in Polish."
 msgid "John Doe"
@@ -811,7 +822,7 @@ msgstr "JSON"
 msgid "Keywords"
 msgstr "Keywords"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:114
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:115
 msgid "Knowledge Library"
 msgstr "Knowledge Library"
 
@@ -854,7 +865,7 @@ msgid "Line Height"
 msgstr "Line Height"
 
 #: apps/client/src/components/cv_selector/_components/import-card.tsx:20
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:19
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:18
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:22
 msgid "LinkedIn, JSON Resume, etc."
 msgstr "LinkedIn, JSON Resume, etc."
@@ -1007,7 +1018,7 @@ msgstr "Password"
 msgid "PDF"
 msgstr "PDF"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:127
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:128
 msgid "Personal Income Tax Calculator"
 msgstr "Personal Income Tax Calculator"
 
@@ -1134,6 +1145,7 @@ msgstr "Reset Zoom"
 msgid "Resume Checker and Optimizer"
 msgstr "Resume Checker and Optimizer"
 
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:48
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
@@ -1195,7 +1207,7 @@ msgstr "Send me a message"
 msgid "Separate Links"
 msgstr "Separate Links"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:195
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:196
 msgid "Services"
 msgstr "Services"
 
@@ -1261,7 +1273,7 @@ msgstr "Signups are currently disabled by the administrator."
 msgid "Size (in px)"
 msgstr "Size (in px)"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:110
 msgid "Skill Courses"
 msgstr "Skill Courses"
 
@@ -1382,7 +1394,7 @@ msgstr "This action cannot be undone. This will permanently delete your resume a
 msgid "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 msgstr "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:243
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
 msgid "This feature is under development."
 msgstr "This feature is under development."
 
@@ -1499,7 +1511,7 @@ msgstr "Use your backup code"
 msgid "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 msgstr "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:264
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:265
 msgid "User Profile"
 msgstr "User Profile"
 
@@ -1542,7 +1554,7 @@ msgstr "Views"
 msgid "Visible"
 msgstr "Visible"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:245
 msgid "We are developing this feature. Please come back soon!"
 msgstr "We are developing this feature. Please come back soon!"
 

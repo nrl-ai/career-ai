@@ -1,7 +1,7 @@
 export const sampleData = [
   {
     id: "430224fb-29f5-466a-a309-693f9344333b",
-    title: "Main Job Board",
+    title: "My Job Board",
     columns: [
       {
         title: "Shortlist",
@@ -87,10 +87,5 @@ export const sampleData = [
         tasks: [],
       },
     ],
-  },
-  {
-    id: "240224fb-29f5-466a-a309-693f4312333b",
-    title: "Board B",
-    columns: [],
   },
 ];

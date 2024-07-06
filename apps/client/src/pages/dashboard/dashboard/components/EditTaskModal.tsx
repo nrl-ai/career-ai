@@ -111,11 +111,7 @@ const EditTaskModal: FC<EditTaskModalProps> = ({
           <Dialog.Title className={styles.DialogTitle}>Edit Task</Dialog.Title>
           <div className={styles.ModalItem}>
             <label htmlFor="Task Name">Title</label>
-            <TextInput
-              onChange={handleTaskNameChange}
-              placeholder=""
-              defaultValue={taskName}
-            />
+            <TextInput onChange={handleTaskNameChange} placeholder="" defaultValue={taskName} />
           </div>
 
           <div className={styles.ModalItem}>

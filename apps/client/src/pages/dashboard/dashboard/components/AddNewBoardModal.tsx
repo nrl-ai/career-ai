@@ -66,7 +66,7 @@ const AddNewBoardModal: FC<AddNewBoardModalProps> = ({ children }) => {
           <div className={styles.ModalItem}>
             <label htmlFor="Board Name">Board Name</label>
             <TextInput
-              placeholder="e.g. Web Design"
+              placeholder=""
               value={boardName}
               onChange={(event) => setBoardName(event.target.value)}
             />

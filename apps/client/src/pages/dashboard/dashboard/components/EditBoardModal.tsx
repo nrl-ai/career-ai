@@ -67,7 +67,7 @@ const EditBoardModal: FC<EditBoardModalProps> = ({ children, activeBoard, hideBo
           <div className={styles.ModalItem}>
             <label htmlFor="Board Name">Board Name</label>
             <TextInput
-              placeholder="e.g. Web Design"
+              placeholder=""
               defaultValue={activeBoard.title}
               onChange={(event) => setBoardName(event.target.value)}
             />

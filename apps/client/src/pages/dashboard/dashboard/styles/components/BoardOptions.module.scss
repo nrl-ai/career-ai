@@ -39,6 +39,7 @@
   h3 {
     cursor: pointer;
     padding: 4px 0;
+    text-align: center;
   }
 }
 
@@ -52,6 +53,7 @@
 
 .Delete {
   color: $red;
+  text-align: center;
 
   &:hover {
     color: $redHover;

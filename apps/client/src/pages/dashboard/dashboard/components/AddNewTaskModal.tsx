@@ -91,10 +91,7 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({ children, activeBoard }) =>
 
           <div className={styles.ModalItem}>
             <label htmlFor="Task Description">Description</label>
-            <TextArea
-              placeholder=""
-              onChange={handleDescriptionChange}
-            />
+            <TextArea placeholder="" onChange={handleDescriptionChange} />
           </div>
 
           <div className={styles.ModalItem}>
