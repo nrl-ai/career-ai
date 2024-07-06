@@ -9,13 +9,11 @@ interface TaskProps extends TaskTypes {
 }
 
 const Task: FC<TaskProps> = ({ task, index }) => {
-  const completedSubtasks = task.subtasks.filter(
-    (subtask) => subtask.completed
-  ).length;
+  const completedSubtasks = task.subtasks.filter((subtask) => subtask.completed).length;
 
   return (
-    <Draggable draggableId={task.id} index={index}>
-      {(provided: any, snapshot:any) => {
+    <Draggable draggableId={task.id.toString()} index={index}>
+      {(provided: any, snapshot: any) => {
         return (
           <div
             ref={provided.innerRef}
@@ -23,12 +21,12 @@ const Task: FC<TaskProps> = ({ task, index }) => {
             {...provided.dragHandleProps}
             className={classNames(
               styles.Task,
-              snapshot.isDragging ? styles.IsDragging : styles.IsSleeping
+              snapshot.isDragging ? styles.IsDragging : styles.IsSleeping,
             )}
           >
             <h3 className={styles.Title}>{task.title}</h3>
             <p className={styles.SubtaskNumber}>
-              {completedSubtasks} of {task.subtasks.length} subtasks
+              {completedSubtasks} of {task.subtasks.length} tasks
             </p>
           </div>
         );

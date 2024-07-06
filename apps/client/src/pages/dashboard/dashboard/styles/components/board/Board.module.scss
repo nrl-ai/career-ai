@@ -4,7 +4,7 @@
   width: 80%;
   margin-inline: auto;
   text-align: center;
-  height: calc(100vh - 80px);
+  height: 600px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -25,7 +25,7 @@
   display: inline-flex;
   display: flex;
   overflow: auto;
-  height: calc(100vh - 65px);
+  height: 600px;
 
   .NewColumn {
     display: flex;
@@ -35,7 +35,7 @@
     color: $mediumGrey;
     border-radius: 6px;
     margin: 48px 14px;
-    max-height: calc(100vh - 162px);
+    max-height: 600px;
     min-width: 280px;
     background: var(--gradient);
     &:hover {

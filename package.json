@@ -246,7 +246,7 @@
     "use-breakpoint": "^4.0.1",
     "use-keyboard-shortcut": "^1.1.6",
     "usehooks-ts": "^3.1.0",
-    "uuid": "^10.0.0",
+    "uuid": "9.0.0",
     "webfontloader": "^1.6.28",
     "zod": "^3.23.8",
     "zod-to-json-schema": "^3.23.0",

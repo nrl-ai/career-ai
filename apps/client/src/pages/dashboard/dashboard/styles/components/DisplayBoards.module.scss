@@ -18,10 +18,11 @@
 }
 
 .DialogContent {
-  background-color: var(--foreground);
+  background-color: #fff;
   color: $mediumGrey;
   border-radius: 6px;
-  box-shadow: -3px 7px 16px -9px transparentColor(0.2, $mainPurple),
+  box-shadow:
+    -3px 7px 16px -9px transparentColor(0.2, $mainColor),
     1px 1px 6px -1px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 19%;

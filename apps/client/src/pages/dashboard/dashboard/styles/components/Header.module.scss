@@ -3,7 +3,8 @@
 .Header {
   position: sticky;
   top: 0;
-  background-color: var(--foreground);
+  background-color: #fff;
+  border-radius: 1rem;
   min-height: 64px;
   min-width: 100%;
   display: flex;

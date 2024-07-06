@@ -24,9 +24,10 @@
   padding: 20px;
   margin-inline: auto;
   width: clamp(160px, 4vw, 180px);
-  background-color: var(--background);
+  background-color: #fff;
   border-radius: 6px;
-  box-shadow: -3px 7px 16px -9px transparentColor(0.02, $mainPurple),
+  box-shadow:
+    -3px 7px 16px -9px transparentColor(0.02, $mainColor),
     1px 1px 6px -1px rgba(0, 0, 0, 0.1);
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);

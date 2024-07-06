@@ -65,7 +65,7 @@ export const SelectItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
         <Select.ItemText>{children}</Select.ItemText>
       </Select.Item>
     );
-  }
+  },
 );
 
 SelectItem.displayName = "SelectItem";

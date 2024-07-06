@@ -19,32 +19,31 @@ const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
   return (
     <header className={styles.Header}>
       <nav className={styles.Wrapper}>
-        <div className={styles.Start}>
-          <DisplayBoards showIcon />
-        </div>
-
         {activeBoard && activeBoard.columns.length ? (
           <div className={styles.End}>
             <AddNewTaskModal activeBoard={activeBoard}>
               <Button btnType="Add">
                 <PlusIcon />
-                <span className={styles.SpanText}>Add New Task</span>
+                <span className={styles.SpanText}>Add New Job</span>
               </Button>
             </AddNewTaskModal>
-            <Options
+            {/* <Options
               activeBoard={activeBoard}
               optionsType={KanbanTypes.Board}
-            />
+            /> */}
           </div>
         ) : (
           <div className={classNames(styles.End, styles.Disabled)}>
             <Button variant={ButtonVariant.Disabled} btnType="Add">
               <PlusIcon />
-              <span className={styles.SpanText}>Add New Task</span>
+              <span className={styles.SpanText}>Add New Job</span>
             </Button>
             <VerticalEllipsisIcon />
           </div>
         )}
+        <div className={styles.Start + " ml-8"}>
+          <DisplayBoards showIcon />
+        </div>
       </nav>
     </header>
   );

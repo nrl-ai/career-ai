@@ -19,7 +19,7 @@ interface ColorPickerProps {
 const ColorPicker: FC<ColorPickerProps> = ({ columnId }) => {
   const { setOvalColor, activeBoardId, boards } = useBoardStore();
   const activeBoard = boards.find((board: any) => board.id === activeBoardId);
-  const column = activeBoard?.columns.find((col:any) => col.id === columnId);
+  const column = activeBoard?.columns.find((col: any) => col.id === columnId);
   const currentColor = column?.ovalColor || "#49c4e5";
 
   const setNewColor = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,21 +33,13 @@ const ColorPicker: FC<ColorPickerProps> = ({ columnId }) => {
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content
-          className={styles.PickerContent}
-          sideOffset={110}
-          side="right"
-        >
+        <Popover.Content className={styles.PickerContent} sideOffset={110} side="right">
           <div className={styles.ModalItem}>
             <label htmlFor="Set Color">Set Color</label>
           </div>
 
           <div className={styles.ModalItem}>
-            <TextInput
-              placeholder="#49c4e5"
-              onChange={setNewColor}
-              defaultValue={currentColor}
-            />
+            <TextInput placeholder="#49c4e5" onChange={setNewColor} defaultValue={currentColor} />
           </div>
         </Popover.Content>
       </Popover.Portal>

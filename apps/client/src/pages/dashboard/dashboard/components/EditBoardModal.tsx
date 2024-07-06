@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  Dispatch,
-  FC,
-  ReactNode,
-  SetStateAction,
-  useState,
-} from "react";
+import React, { Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
 import styles from "../styles/components/ui/Modal.module.scss";
 
 import * as Dialog from "@radix-ui/react-dialog";
@@ -25,11 +19,7 @@ interface EditBoardModalProps {
   hideBoardOptions?: Dispatch<SetStateAction<boolean>>;
 }
 
-const EditBoardModal: FC<EditBoardModalProps> = ({
-  children,
-  activeBoard,
-  hideBoardOptions,
-}) => {
+const EditBoardModal: FC<EditBoardModalProps> = ({ children, activeBoard, hideBoardOptions }) => {
   const { updateBoard } = useBoardStore();
 
   const [changedBoardName, setBoardName] = useState("");
@@ -58,13 +48,12 @@ const EditBoardModal: FC<EditBoardModalProps> = ({
     setColumns(columns.filter((column) => column.id !== columnId));
   };
 
-  const handleColumnNameChange =
-    (columnId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      const updatedColumns = columns.map((column) =>
-        column.id === columnId ? { ...column, title: e.target.value } : column
-      );
-      setColumns(updatedColumns);
-    };
+  const handleColumnNameChange = (columnId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedColumns = columns.map((column) =>
+      column.id === columnId ? { ...column, title: e.target.value } : column,
+    );
+    setColumns(updatedColumns);
+  };
 
   return (
     <Dialog.Root onOpenChange={hideBoardOptions}>
@@ -91,9 +80,7 @@ const EditBoardModal: FC<EditBoardModalProps> = ({
               {columns.map((column) => (
                 <TextInputDrag
                   key={column.id}
-                  placeholder={
-                    column.title ? `e.g. ${column.title}` : "e.g. Column Name"
-                  }
+                  placeholder={column.title ? `e.g. ${column.title}` : "e.g. Column Name"}
                   defaultValue={column.title}
                   onChange={handleColumnNameChange(column.id)}
                   remove={() => handleRemoveColumn(column.id)}

@@ -7,10 +7,10 @@
   width: 100%;
   padding: 1rem 0;
   border-radius: 7px;
-  background-color: var(--background);
+  background-color: #fff;
 
   &:hover {
-    background-color: transparentColor(0.25, $mainPurple);
+    background-color: transparentColor(0.25, $mainColor);
   }
 
   .CheckboxRoot {
@@ -47,8 +47,8 @@
 
 .SubtaskCheckbox:has(.CheckboxRoot[data-state="checked"]) {
   .CheckboxRoot {
-    background-color: $mainPurple;
-    border: solid $mainPurple 1px;
+    background-color: $mainColor;
+    border: solid $mainColor 1px;
   }
 
   .Label {

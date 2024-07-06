@@ -16,12 +16,7 @@ interface OptionsProps {
   optionsType: string;
 }
 
-const Options: FC<OptionsProps> = ({
-  activeBoard,
-  optionsType,
-  activeColumn,
-  activeTask,
-}) => {
+const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, activeTask }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -33,17 +28,10 @@ const Options: FC<OptionsProps> = ({
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content
-          className={styles.PopoverContent}
-          sideOffset={20}
-          align="end"
-        >
+        <Popover.Content className={styles.PopoverContent} sideOffset={20} align="end">
           {optionsType === KanbanTypes.Board ? (
             <>
-              <EditBoardModal
-                activeBoard={activeBoard!}
-                hideBoardOptions={setIsOpen}
-              >
+              <EditBoardModal activeBoard={activeBoard!} hideBoardOptions={setIsOpen}>
                 <button>
                   <h3 className={styles.Edit}>Edit {optionsType}</h3>
                 </button>
@@ -66,11 +54,7 @@ const Options: FC<OptionsProps> = ({
                   <h3 className={styles.Edit}>Edit {optionsType}</h3>
                 </button>
               </EditTaskModal>
-              <WarnModal
-                type={optionsType}
-                activeColumn={activeColumn}
-                activeTask={activeTask}
-              >
+              <WarnModal type={optionsType} activeColumn={activeColumn} activeTask={activeTask}>
                 <button>
                   <h3 className={styles.Delete}>Delete {optionsType}</h3>
                 </button>

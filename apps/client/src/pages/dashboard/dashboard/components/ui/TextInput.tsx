@@ -15,12 +15,7 @@ interface TextInputDragProps extends TextInputProps {
   remove: () => void;
 }
 
-export const TextInput: FC<TextInputProps> = ({
-  placeholder,
-  value,
-  defaultValue,
-  onChange,
-}) => {
+export const TextInput: FC<TextInputProps> = ({ placeholder, value, defaultValue, onChange }) => {
   return (
     <input
       className={styles.TextInput}
@@ -33,12 +28,7 @@ export const TextInput: FC<TextInputProps> = ({
   );
 };
 
-export const TextArea: FC<TextInputProps> = ({
-  placeholder,
-  value,
-  defaultValue,
-  onChange,
-}) => {
+export const TextArea: FC<TextInputProps> = ({ placeholder, value, defaultValue, onChange }) => {
   return (
     <textarea
       className={styles.TextArea}

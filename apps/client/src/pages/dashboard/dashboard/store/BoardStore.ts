@@ -15,13 +15,9 @@ interface BoardStore {
     sourceColumnId: string,
     destinationColumnId: string,
     sourceIndex: number,
-    destinationIndex: number
+    destinationIndex: number,
   ) => void;
-  moveColumn: (
-    boardId: string,
-    sourceIndex: number,
-    destinationIndex: number
-  ) => void;
+  moveColumn: (boardId: string, sourceIndex: number, destinationIndex: number) => void;
   setOvalColor: (columnId: string, color: string) => void;
   updateBoard: (updatedBoard: BoardTypes) => void;
   removeBoard: (removedBoardId: string) => void;
@@ -34,14 +30,11 @@ export const useBoardStore = create<BoardStore>((set) => ({
   boards: sampleData,
   activeBoardId: "430224fb-29f5-466a-a309-693f9344333b",
   addBoard: (board) => set((state) => ({ boards: [...state.boards, board] })),
-  setActiveBoard: (activeBoardId) =>
-    set(() => ({ activeBoardId: activeBoardId })),
+  setActiveBoard: (activeBoardId) => set(() => ({ activeBoardId: activeBoardId })),
   addColumn: (boardId, column) =>
     set((state) => {
       const updatedBoards = state.boards.map((board) =>
-        board.id === boardId
-          ? { ...board, columns: [...board.columns, column] }
-          : board
+        board.id === boardId ? { ...board, columns: [...board.columns, column] } : board,
       );
       return { boards: updatedBoards };
     }),
@@ -50,9 +43,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
       const updatedBoards = state.boards.map((board) => {
         if (board.id === boardId) {
           const updatedColumns = board.columns.map((column) =>
-            column.id === columnId
-              ? { ...column, tasks: [...column.tasks, task] }
-              : column
+            column.id === columnId ? { ...column, tasks: [...column.tasks, task] } : column,
           );
           return { ...board, columns: updatedColumns };
         }
@@ -60,21 +51,11 @@ export const useBoardStore = create<BoardStore>((set) => ({
       });
       return { boards: updatedBoards };
     }),
-  moveTask: (
-    boardId,
-    sourceColumnId,
-    destinationColumnId,
-    sourceIndex,
-    destinationIndex
-  ) => {
+  moveTask: (boardId, sourceColumnId, destinationColumnId, sourceIndex, destinationIndex) => {
     set((state) => {
       const board = state.boards.find((board) => board.id === boardId);
-      const sourceColumn = board?.columns.find(
-        (column) => column.id === sourceColumnId
-      );
-      const destinationColumn = board?.columns.find(
-        (column) => column.id === destinationColumnId
-      );
+      const sourceColumn = board?.columns.find((column) => column.id === sourceColumnId);
+      const destinationColumn = board?.columns.find((column) => column.id === destinationColumnId);
       const taskToMove = sourceColumn?.tasks.splice(sourceIndex, 1)[0] ?? null;
 
       if (taskToMove) {
@@ -99,22 +80,18 @@ export const useBoardStore = create<BoardStore>((set) => ({
   updateBoard: (updatedBoard) =>
     set((state) => {
       const updatedBoards = state.boards.map((board) =>
-        board.id === updatedBoard.id ? updatedBoard : board
+        board.id === updatedBoard.id ? updatedBoard : board,
       );
       return { boards: updatedBoards };
     }),
   removeBoard: (boardIdToRemove) =>
     set((state) => {
-      const updatedBoards = state.boards.filter(
-        (board) => board.id !== boardIdToRemove
-      );
+      const updatedBoards = state.boards.filter((board) => board.id !== boardIdToRemove);
       return { boards: updatedBoards };
     }),
   removeTask: (columnId, taskId) =>
     set((state) => {
-      const activeBoard = state.boards.find(
-        (board) => board.id === state.activeBoardId
-      );
+      const activeBoard = state.boards.find((board) => board.id === state.activeBoardId);
       if (!activeBoard) return {};
 
       const updatedColumns = activeBoard.columns.map((column) =>
@@ -123,27 +100,25 @@ export const useBoardStore = create<BoardStore>((set) => ({
               ...column,
               tasks: column.tasks.filter((task) => task.id !== taskId),
             }
-          : column
+          : column,
       );
 
       const updatedBoard = { ...activeBoard, columns: updatedColumns };
       const updatedBoards = state.boards.map((board) =>
-        board.id === state.activeBoardId ? updatedBoard : board
+        board.id === state.activeBoardId ? updatedBoard : board,
       );
 
       return { boards: updatedBoards };
     }),
   updateTask: (columnId, updatedTask) =>
     set((state) => {
-      const activeBoard = state.boards.find(
-        (board) => board.id === state.activeBoardId
-      );
+      const activeBoard = state.boards.find((board) => board.id === state.activeBoardId);
       if (!activeBoard) return {};
 
       const updatedColumns = activeBoard.columns.map((column) => {
         if (column.id === columnId) {
           const updatedTasks = column.tasks.map((task) =>
-            task.id === updatedTask.id ? updatedTask : task
+            task.id === updatedTask.id ? updatedTask : task,
           );
           return { ...column, tasks: updatedTasks };
         }
@@ -152,7 +127,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
 
       const updatedBoard = { ...activeBoard, columns: updatedColumns };
       const updatedBoards = state.boards.map((board) =>
-        board.id === state.activeBoardId ? updatedBoard : board
+        board.id === state.activeBoardId ? updatedBoard : board,
       );
 
       return { boards: updatedBoards };
@@ -164,9 +139,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
           const updatedTasks = column.tasks.map((task) => {
             if (task.id === taskId) {
               const updatedSubtasks = task.subtasks.map((subtask) =>
-                subtask.id === subtaskId
-                  ? { ...subtask, completed: !subtask.completed }
-                  : subtask
+                subtask.id === subtaskId ? { ...subtask, completed: !subtask.completed } : subtask,
               );
               return { ...task, subtasks: updatedSubtasks };
             }
@@ -185,7 +158,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
       const updatedBoards = state.boards.map((board) => {
         if (board.id === activeBoardId) {
           const updatedColumns = board.columns.map((column) =>
-            column.id === columnId ? { ...column, ovalColor: color } : column
+            column.id === columnId ? { ...column, ovalColor: color } : column,
           );
           return { ...board, columns: updatedColumns };
         }

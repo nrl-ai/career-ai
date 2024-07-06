@@ -19,7 +19,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: var(--foreground);
+    background-color: #fff;
     border-right: var(--lines) solid 1px;
   }
 
@@ -34,7 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $mainPurple;
+    background-color: $mainColor;
     height: 48px;
     width: 56px;
     color: white;
@@ -42,7 +42,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $mainPurpleHover;
+      background-color: $mainColorHover;
     }
 
     .ShowMenuIcon {
@@ -54,7 +54,7 @@
     .HideMenuIcon {
       svg {
         path {
-          fill: $mainPurple;
+          fill: $mainColor;
         }
       }
     }

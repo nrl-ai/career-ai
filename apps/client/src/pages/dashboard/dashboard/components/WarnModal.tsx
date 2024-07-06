@@ -52,9 +52,7 @@ const WarnModal: FC<WarnModalProps> = ({
           <div className={styles.ModalItem}>
             <p>
               {` Are you sure you want to delete the '${
-                type == KanbanTypes.Board
-                  ? activeBoard?.title
-                  : activeTask?.title
+                type == KanbanTypes.Board ? activeBoard?.title : activeTask?.title
               }' ${type}?
               This action will remove all columns and tasks and cannot be
               reversed.`}

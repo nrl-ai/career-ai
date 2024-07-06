@@ -9,10 +9,10 @@
   border-radius: 4px;
   padding: 10px 10px 10px 5px;
   &:hover {
-    border: 1px solid transparentColor(0.25, $mainPurple);
+    border: 1px solid transparentColor(0.25, $mainColor);
   }
   &:focus-visible {
-    outline: 1px solid transparentColor(0.25, $mainPurple);
+    outline: 1px solid transparentColor(0.25, $mainColor);
   }
 }
 

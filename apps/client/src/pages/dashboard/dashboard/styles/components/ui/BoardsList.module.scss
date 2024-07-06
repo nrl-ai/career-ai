@@ -33,16 +33,16 @@
     gap: 10px;
     margin-right: 25px;
     padding-left: 25px;
-    @include colorFontAndIcon($mainPurple);
+    @include colorFontAndIcon($mainColor);
 
     &:hover {
-      @include colorFontAndIcon($mainPurpleHover);
+      @include colorFontAndIcon($mainColorHover);
     }
   }
 
   .ActiveBoard {
     @include colorFontAndIcon($white);
-    background-color: $mainPurple;
+    background-color: $mainColor;
   }
 
   .BoardItem {
@@ -61,7 +61,7 @@
     }
 
     &:hover:not(.CreateNewBoard, .ActiveBoard) {
-      @include colorFontAndIcon($mainPurple);
+      @include colorFontAndIcon($mainColor);
       background-color: $white;
     }
   }

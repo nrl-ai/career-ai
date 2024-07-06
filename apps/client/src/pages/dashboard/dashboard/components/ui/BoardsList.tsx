@@ -25,7 +25,7 @@ const BoardsList: FC<BoardsListProps> = ({ hideSideMenu }) => {
               key={board.id}
               className={classNames(
                 styles.BoardItem,
-                board.id === activeBoardId ? styles.ActiveBoard : ""
+                board.id === activeBoardId ? styles.ActiveBoard : "",
               )}
               onClick={() => setActiveBoard(board.id)}
             >

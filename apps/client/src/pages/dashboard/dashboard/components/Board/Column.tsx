@@ -25,17 +25,11 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
           {...provided.draggableProps}
           className={styles.ColumnContainer}
         >
-          <div
-            className={
-              snapshot.isDragging ? styles.IsDragging : styles.isSleeping
-            }
-          >
+          <div className={snapshot.isDragging ? styles.IsDragging : styles.isSleeping}>
             <div className={styles.ColumnHeader}>
               <ColorPicker key={column.id} columnId={column.id} />
               <h4
-                className={
-                  snapshot.isDragging ? styles.IsDragging : styles.isSleeping
-                }
+                className={snapshot.isDragging ? styles.IsDragging : styles.isSleeping}
                 {...provided.dragHandleProps}
                 aria-label={`${column.title} tasks list`}
               >
@@ -51,26 +45,15 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                   {...provided.droppableProps}
                 >
                   {column.tasks.map((task, index) => (
-                    <ViewTaskModal
-                      key={task.id}
-                      activeTask={task}
-                      activeColumn={column}
-                    >
+                    <ViewTaskModal key={task.id} activeTask={task} activeColumn={column}>
                       <button>
-                        <Task
-                          key={task.id}
-                          task={task}
-                          index={index}
-                          {...task}
-                        />
+                        <Task key={task.id} task={task} index={index} {...task} />
                       </button>
                     </ViewTaskModal>
                   ))}
                   {provided.placeholder}
                   {activeBoard && (
-                    <AddNewTaskModal activeBoard={activeBoard}>
-                      + task
-                    </AddNewTaskModal>
+                    <AddNewTaskModal activeBoard={activeBoard}>+ New Job</AddNewTaskModal>
                   )}
                 </div>
               )}

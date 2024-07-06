@@ -4,7 +4,7 @@ import { BoardTypes, ColumnTypes, SubtaskTypes, TaskTypes } from "../types";
 export const createBoard = (
   title: string,
   columns: ColumnTypes[] = [],
-  passedId?: string
+  passedId?: string,
 ): BoardTypes => {
   const id = passedId || uuidv4();
   return { id, title, columns };
@@ -20,7 +20,7 @@ export const createColumn = (title: string): ColumnTypes => {
 export const createTask = (
   title: string,
   description: string,
-  subtasks: SubtaskTypes[] = []
+  subtasks: SubtaskTypes[] = [],
 ): TaskTypes => {
   const id = uuidv4();
 

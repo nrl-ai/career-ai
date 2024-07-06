@@ -32,6 +32,6 @@ export interface BoardTypes {
 export enum KanbanTypes {
   Board = "Board",
   Column = "Column",
-  Task = "Task",
-  Subtask = "Subtask",
+  Task = "Job",
+  Subtask = "Task",
 }

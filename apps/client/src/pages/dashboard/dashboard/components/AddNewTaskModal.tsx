@@ -19,19 +19,14 @@ interface AddNewTaskModalProps {
   activeBoard: BoardTypes;
 }
 
-const AddNewTaskModal: FC<AddNewTaskModalProps> = ({
-  children,
-  activeBoard,
-}) => {
+const AddNewTaskModal: FC<AddNewTaskModalProps> = ({ children, activeBoard }) => {
   const [taskName, setTaskName] = useState("");
   const [subtaskName, setSubtaskName] = useState("");
   const [description, setDescription] = useState("");
   const { addTask, activeBoardId } = useBoardStore();
 
   const { columns } = activeBoard;
-  const [selectedDropdownValue, setSelectedDropdownValue] = useState(
-    columns[0].title
-  );
+  const [selectedDropdownValue, setSelectedDropdownValue] = useState(columns[0].title);
 
   const [subtasks, setSubtasks] = useState([createSubtask("")]);
 
@@ -41,7 +36,7 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({
     const validSubtasks = subtasks.filter((subtask) => subtask.title !== "");
 
     const selectedColumn = columns.find(
-      (column: ColumnTypes) => column.title === selectedDropdownValue
+      (column: ColumnTypes) => column.title === selectedDropdownValue,
     );
     const newTask = createTask(taskName, description, validSubtasks);
 
@@ -64,9 +59,7 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({
     setSelectedDropdownValue(value);
   };
 
-  const handleDescriptionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
   };
 
@@ -77,30 +70,23 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({
   const handleSubtaskNameChange =
     (subtaskId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const updatedSubtasks = subtasks.map((subtask) =>
-        subtask.id === subtaskId
-          ? { ...subtask, title: event.target.value }
-          : subtask
+        subtask.id === subtaskId ? { ...subtask, title: event.target.value } : subtask,
       );
       setSubtasks(updatedSubtasks);
     };
 
   return (
     <Dialog.Root>
-      <Dialog.Trigger asChild aria-label="Add New Task">
+      <Dialog.Trigger asChild aria-label="Add New Job">
         <div className={styles.CurrentBoard}>{children}</div>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
-          <Dialog.Title className={styles.DialogTitle}>
-            Add New Task
-          </Dialog.Title>
+          <Dialog.Title className={styles.DialogTitle}>Add New Job</Dialog.Title>
           <div className={styles.ModalItem}>
             <label htmlFor="Task Name">Title</label>
-            <TextInput
-              onChange={handleTaskNameChange}
-              placeholder="e.g. Take coffee break"
-            />
+            <TextInput onChange={handleTaskNameChange} placeholder="e.g. Take coffee break" />
           </div>
 
           <div className={styles.ModalItem}>
@@ -120,9 +106,7 @@ a little."
               {subtasks.map((subtask) => (
                 <TextInputDrag
                   key={subtask.id}
-                  placeholder={
-                    subtask.title ? `e.g. ${subtask.title}` : "e.g. Make coffee"
-                  }
+                  placeholder={subtask.title ? `e.g. ${subtask.title}` : "e.g. Make coffee"}
                   defaultValue={subtask.title}
                   onChange={handleSubtaskNameChange(subtask.id)}
                   remove={() => handleRemoveSubtask(subtask.id)}
@@ -131,7 +115,7 @@ a little."
             </div>
           </div>
           <Button variant={ButtonVariant.Secondary} onClick={handleAddSubtask}>
-            + Add New Subtask
+            + Add New Task
           </Button>
           <Dialog.Close asChild>
             <Button onClick={handleAddTask}>Create Task</Button>

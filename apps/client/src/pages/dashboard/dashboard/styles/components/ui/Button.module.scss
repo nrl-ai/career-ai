@@ -10,7 +10,7 @@
   line-height: 1;
   justify-content: center;
   align-items: center;
-  background-color: $mainPurple;
+  background-color: $mainColor;
   color: $white;
 
   font-weight: $fw-bold;
@@ -33,18 +33,18 @@
 }
 
 .Primary {
-  background-color: $mainPurple;
+  background-color: $mainColor;
   color: $white;
 
   &:hover,
   &:focus-visible {
-    background-color: $mainPurpleHover;
+    background-color: $mainColorHover;
   }
 }
 
 .Secondary {
   background-color: $white;
-  color: $mainPurple;
+  color: $mainColor;
   &:hover,
   &:focus-visible {
     background-color: $secondaryHover;

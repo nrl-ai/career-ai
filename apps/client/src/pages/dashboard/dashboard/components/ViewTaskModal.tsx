@@ -19,38 +19,23 @@ interface ViewTaskModalProps {
   activeColumn: ColumnTypes;
 }
 
-const ViewTaskModal: FC<ViewTaskModalProps> = ({
-  children,
-  activeTask,
-  activeColumn,
-}) => {
-  const { boards, activeBoardId, moveTask, toggleSubtaskCompletion } =
-    useBoardStore();
+const ViewTaskModal: FC<ViewTaskModalProps> = ({ children, activeTask, activeColumn }) => {
+  const { boards, activeBoardId, moveTask, toggleSubtaskCompletion } = useBoardStore();
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [selectedDropdownValue, setSelectedDropdownValue] = useState(
-    activeColumn.title
-  );
+  const [selectedDropdownValue, setSelectedDropdownValue] = useState(activeColumn.title);
 
   useEffect(() => {
     if (!isOpen && selectedDropdownValue !== activeColumn.title) {
       const selectedColumn = activeBoard?.columns.find(
-        (column) => column.title === selectedDropdownValue
+        (column) => column.title === selectedDropdownValue,
       );
 
       if (selectedColumn && activeBoard) {
-        const taskIndex = activeColumn.tasks.findIndex(
-          (task) => task.id === activeTask.id
-        );
+        const taskIndex = activeColumn.tasks.findIndex((task) => task.id === activeTask.id);
 
-        moveTask(
-          activeBoard.id,
-          activeColumn.id,
-          selectedColumn.id,
-          taskIndex,
-          0
-        );
+        moveTask(activeBoard.id, activeColumn.id, selectedColumn.id, taskIndex, 0);
       }
     }
   }, [isOpen]);
@@ -68,9 +53,7 @@ const ViewTaskModal: FC<ViewTaskModalProps> = ({
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
           <div className={styles.TitleWithIcon}>
-            <Dialog.Title className={styles.DialogTitle}>
-              {activeTask.title}
-            </Dialog.Title>
+            <Dialog.Title className={styles.DialogTitle}>{activeTask.title}</Dialog.Title>
 
             <Options
               activeBoard={activeBoard!}
@@ -82,7 +65,7 @@ const ViewTaskModal: FC<ViewTaskModalProps> = ({
 
           <Dialog.Description>{activeTask.description}</Dialog.Description>
           <div className={styles.ModalItem}>
-            <label htmlFor="Subtask Number">Subtask</label>
+            <label htmlFor="Subtask Number">Tasks</label>
             {activeTask.subtasks.map((subtask) => (
               <SubtaskCheckbox
                 key={subtask.id}

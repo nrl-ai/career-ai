@@ -25,8 +25,7 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
 
     if (
       !destination ||
-      (source.droppableId === destination.droppableId &&
-        source.index === destination.index)
+      (source.droppableId === destination.droppableId && source.index === destination.index)
     ) {
       return;
     }
@@ -37,7 +36,7 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
         source.droppableId,
         destination.droppableId,
         source.index,
-        destination.index
+        destination.index,
       );
     } else if (type === KanbanTypes.Column) {
       moveColumn(activeBoardId, source.index, destination.index);
@@ -49,11 +48,7 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
       {activeBoard.columns.length > 0 ? (
         <>
           <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable
-              droppableId="board"
-              direction="horizontal"
-              type={KanbanTypes.Column}
-            >
+            <Droppable droppableId="board" direction="horizontal" type={KanbanTypes.Column}>
               {(provided) => (
                 <div
                   className={styles.ColumnsContainer}
@@ -89,12 +84,8 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
       <h1>
         {boards.length ? (
           <span>
-            {!displayedSideMenu ? (
-              <DisplayBoards showIcon={true} />
-            ) : (
-              "Select existing board"
-            )}{" "}
-            or create a new one.
+            {!displayedSideMenu ? <DisplayBoards showIcon={true} /> : "Select existing board"} or
+            create a new one.
           </span>
         ) : (
           "There are no boards. Create a new board to get started."

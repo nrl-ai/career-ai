@@ -47,13 +47,12 @@ const AddNewBoardModal: FC<AddNewBoardModalProps> = ({ children }) => {
     setColumns(columns.filter((column) => column.id !== columnId));
   };
 
-  const handleColumnNameChange =
-    (columnId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      const updatedColumns = columns.map((column) =>
-        column.id === columnId ? { ...column, title: e.target.value } : column
-      );
-      setColumns(updatedColumns);
-    };
+  const handleColumnNameChange = (columnId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedColumns = columns.map((column) =>
+      column.id === columnId ? { ...column, title: e.target.value } : column,
+    );
+    setColumns(updatedColumns);
+  };
 
   return (
     <Dialog.Root>
@@ -63,9 +62,7 @@ const AddNewBoardModal: FC<AddNewBoardModalProps> = ({ children }) => {
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
-          <Dialog.Title className={styles.DialogTitle}>
-            Add New Board
-          </Dialog.Title>
+          <Dialog.Title className={styles.DialogTitle}>Add New Board</Dialog.Title>
           <div className={styles.ModalItem}>
             <label htmlFor="Board Name">Board Name</label>
             <TextInput
@@ -82,9 +79,7 @@ const AddNewBoardModal: FC<AddNewBoardModalProps> = ({ children }) => {
               {columns.map((column) => (
                 <TextInputDrag
                   key={column.id}
-                  placeholder={
-                    column.title ? `e.g. ${column.title}` : "e.g. Column Name"
-                  }
+                  placeholder={column.title ? `e.g. ${column.title}` : "e.g. Column Name"}
                   defaultValue={column.title}
                   onChange={handleColumnNameChange(column.id)}
                   remove={() => handleRemoveColumn(column.id)}
