@@ -6,7 +6,7 @@
   font-size: $fs-res-s;
   background: none;
   border: 1px solid transparentColor(0.25, $mediumGrey);
-  border-radius: 4px;
+  border-radius: 0.5rem;
   padding: 10px 10px 10px 5px;
   &:hover {
     border: 1px solid transparentColor(0.25, $mainColor);

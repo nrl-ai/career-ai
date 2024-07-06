@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+import { updateJobApplications } from "@/client/services/job-applications";
 import { BoardTypes, ColumnTypes, TaskTypes, SubtaskTypes } from "../types";
 import { sampleData } from "./boards";
 
@@ -8,6 +9,7 @@ interface BoardStore {
   activeBoardId: string;
   addColumn: (boardId: string, column: ColumnTypes) => void;
   addBoard: (board: BoardTypes) => void;
+  setBoardData: (boards: BoardTypes[]) => void;
   setActiveBoard: (activeBoardId: string) => void;
   addTask: (boardId: string, columnId: string, task: TaskTypes) => void;
   moveTask: (
@@ -31,11 +33,13 @@ export const useBoardStore = create<BoardStore>((set) => ({
   activeBoardId: "430224fb-29f5-466a-a309-693f9344333b",
   addBoard: (board) => set((state) => ({ boards: [...state.boards, board] })),
   setActiveBoard: (activeBoardId) => set(() => ({ activeBoardId: activeBoardId })),
+  setBoardData: (boards) => set(() => ({ boards })),
   addColumn: (boardId, column) =>
     set((state) => {
       const updatedBoards = state.boards.map((board) =>
         board.id === boardId ? { ...board, columns: [...board.columns, column] } : board,
       );
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
   addTask: (boardId, columnId, task) =>
@@ -49,6 +53,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         }
         return board;
       });
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
   moveTask: (boardId, sourceColumnId, destinationColumnId, sourceIndex, destinationIndex) => {
@@ -62,6 +67,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         destinationColumn?.tasks.splice(destinationIndex, 0, taskToMove);
       }
 
+      updateJobApplications(state.boards);
       return { boards: state.boards };
     });
   },
@@ -74,6 +80,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         board?.columns.splice(destinationIndex, 0, columnToMove);
       }
 
+      updateJobApplications(state.boards);
       return { boards: state.boards };
     });
   },
@@ -82,11 +89,13 @@ export const useBoardStore = create<BoardStore>((set) => ({
       const updatedBoards = state.boards.map((board) =>
         board.id === updatedBoard.id ? updatedBoard : board,
       );
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
   removeBoard: (boardIdToRemove) =>
     set((state) => {
       const updatedBoards = state.boards.filter((board) => board.id !== boardIdToRemove);
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
   removeTask: (columnId, taskId) =>
@@ -108,6 +117,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         board.id === state.activeBoardId ? updatedBoard : board,
       );
 
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
   updateTask: (columnId, updatedTask) =>
@@ -130,6 +140,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         board.id === state.activeBoardId ? updatedBoard : board,
       );
 
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
   toggleSubtaskCompletion: (taskId, subtaskId) => {
@@ -149,6 +160,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         });
         return { ...board, columns: updatedColumns };
       });
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     });
   },
@@ -164,6 +176,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         }
         return board;
       });
+      updateJobApplications(updatedBoards);
       return { boards: updatedBoards };
     }),
 }));

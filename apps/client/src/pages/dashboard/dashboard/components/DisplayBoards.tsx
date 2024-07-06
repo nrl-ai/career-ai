@@ -4,7 +4,6 @@ import React, { FC } from "react";
 import { BoardIcon, ChevronDownIcon } from "./icons";
 import styles from "../styles/components/DisplayBoards.module.scss";
 import * as Dialog from "@radix-ui/react-dialog";
-import ThemeSwitch from "./ui/ThemeSwitch";
 import { useBoardStore } from "../store/BoardStore";
 import AddNewBoardModal from "./AddNewBoardModal";
 import classNames from "classnames";

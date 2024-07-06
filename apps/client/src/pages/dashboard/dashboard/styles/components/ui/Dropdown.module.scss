@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 4px;
+  border-radius: 0.5rem;
   border: solid $mainColor 1px;
   padding: 4px 15px;
   font-size: 13px;
@@ -22,7 +22,7 @@
   width: var(--radix-select-trigger-width);
   overflow: hidden;
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   box-shadow:
     0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);

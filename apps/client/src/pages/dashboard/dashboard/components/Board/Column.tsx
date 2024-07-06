@@ -53,7 +53,9 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                   ))}
                   {provided.placeholder}
                   {activeBoard && (
-                    <AddNewTaskModal activeBoard={activeBoard}>+ New Job</AddNewTaskModal>
+                     <div className="mt-4 cursor-pointer">
+                      <AddNewTaskModal activeBoard={activeBoard}>+ New Job</AddNewTaskModal>
+                  </div>
                   )}
                 </div>
               )}

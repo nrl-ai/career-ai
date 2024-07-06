@@ -9,8 +9,8 @@ import { PlusIcon, VerticalEllipsisIcon } from "./icons";
 import { useBoardStore } from "../store/BoardStore";
 import AddNewTaskModal from "./AddNewTaskModal";
 import classNames from "classnames";
-import Options from "./Options";
-import { KanbanTypes } from "../types";
+// import Options from "./Options";
+// import { KanbanTypes } from "../types";
 
 const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
   const { boards, activeBoardId } = useBoardStore();

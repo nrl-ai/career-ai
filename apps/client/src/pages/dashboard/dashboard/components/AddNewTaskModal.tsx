@@ -104,7 +104,7 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({ children, activeBoard }) =>
               {subtasks.map((subtask) => (
                 <TextInputDrag
                   key={subtask.id}
-                  placeholder={subtask.title ? `e.g. ${subtask.title}` : "e.g. Make coffee"}
+                  placeholder=""
                   defaultValue={subtask.title}
                   onChange={handleSubtaskNameChange(subtask.id)}
                   remove={() => handleRemoveSubtask(subtask.id)}

@@ -18,6 +18,7 @@ import { ResumeModule } from "./resume/resume.module";
 import { StorageModule } from "./storage/storage.module";
 import { TranslationModule } from "./translation/translation.module";
 import { UserModule } from "./user/user.module";
+import { JobApplicationsModule } from "./job_applications/job_applications.module";
 
 @Module({
   imports: [
@@ -35,8 +36,11 @@ import { UserModule } from "./user/user.module";
     StorageModule,
     PrinterModule,
     FeatureModule,
-    TranslationModule,
-    ContributorsModule,
+    JobApplicationsModule,
+
+    // Not needed in production
+    // TranslationModule,
+    // ContributorsModule,
 
     // Static Assets
     ServeStaticModule.forRoot({
