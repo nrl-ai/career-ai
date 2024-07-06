@@ -47,13 +47,13 @@ export const HomePage = () => {
               >
                 <ul id="navbar-navlist" className="navbar-nav">
                   <li className="nav-item">
-                    <a className="nav-link" href="#home">
+                    <a className="nav-link" href="/">
                       Home
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#service">
-                      Service
+                    <a className="nav-link" href="https://blog.career-ai.vn/">
+                      Blog
                     </a>
                   </li>
                   <li className="nav-item">
