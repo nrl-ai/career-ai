@@ -10,17 +10,10 @@ import AddNewTaskModal from "./AddNewTaskModal";
 import classNames from "classnames";
 import Options from "./Options";
 import { KanbanTypes } from "../types";
-import { updateJobApplications } from "@/client/services/job-applications";
-import { sampleData } from "../store/boards";
 
 const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
   const { boards, activeBoardId } = useBoardStore();
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
-
-  const fillBoardWithExamples = async () => {
-    await updateJobApplications(sampleData);
-    window.location.reload();
-  };
 
   return (
     <header className={styles.Header}>
@@ -33,9 +26,6 @@ const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
                 <span className={styles.SpanText}>Add New Job</span>
               </Button>
             </AddNewTaskModal>
-            <button className="text-blue-500 font-bold" onClick={fillBoardWithExamples}>
-              <span className={styles.SpanText}>Fill board with examples</span>
-            </button>
             <Options activeBoard={activeBoard} optionsType={KanbanTypes.Board} />
           </div>
         ) : (

@@ -37,9 +37,9 @@ import { JobApplicationsModule } from "./job_applications/job_applications.modul
     PrinterModule,
     FeatureModule,
     JobApplicationsModule,
+    TranslationModule,
 
     // Not needed in production
-    // TranslationModule,
     // ContributorsModule,
 
     // Static Assets
