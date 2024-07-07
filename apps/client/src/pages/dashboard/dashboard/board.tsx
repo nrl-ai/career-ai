@@ -15,15 +15,18 @@ export function BoardView() {
     // Set sample data if no job applications
     if (
       !loading &&
-      typeof jobApplications === "object" &&
+      ((typeof jobApplications === "object" &&
       !Array.isArray(jobApplications) &&
-      jobApplications !== null
+      jobApplications !== null) || 
+      (typeof jobApplications === "object" &&
+      Array.isArray(jobApplications) &&
+      jobApplications?.length === 0))
     ) {
       setBoardData(sampleData);
-      setActiveBoard(sampleData[0].id);
+      setActiveBoard(sampleData[0]?.id);
     } else if (!loading && Array.isArray(jobApplications)) {
       setBoardData(jobApplications);
-      setActiveBoard(jobApplications[0].id);
+      setActiveBoard(jobApplications[0]?.id);
     }
   }, [jobApplications, setBoardData, setActiveBoard]);
 
