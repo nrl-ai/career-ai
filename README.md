@@ -6,9 +6,21 @@
 
 - See [DEVELOPMENT.md](DEVELOPMENT.md).
 
-## II. Build and Run
+## II. Production Deployment
 
-- Copy `.env.production.example` to `.env`. Update the environment variables if necessary.
+- Install Docker.
+
+- Install NodeJS with [nvm](https://github.com/nvm-sh/nvm).
+
+- Install pnpm, NodeJS environment and build the UI:
+
+```
+npm install -g pnpm
+pnpm install
+pnpm run build
+```
+
+- Copy `.env.example` to `.env`. Update the environment variables if necessary.
 
 - Run the server:
 
