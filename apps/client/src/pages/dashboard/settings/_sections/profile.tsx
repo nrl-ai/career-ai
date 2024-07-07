@@ -109,7 +109,7 @@ export const ProfileSettings = () => {
                       <a
                         target="_blank"
                         rel="noopener noreferrer nofollow"
-                        href="https://translate.career-ai.vn/"
+                        href="https://translate.careerai.me/"
                         className="font-medium underline underline-offset-2"
                       >
                         Help translate the app.
