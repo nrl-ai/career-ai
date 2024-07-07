@@ -28,13 +28,11 @@ pnpm run build
 bash build-and-restart.sh
 ```
 
-## III. Built With
+## III. Technologies
 
-- React (Vite), for the frontend
-- NestJS, for the backend
-- Postgres (primary database)
-- Prisma ORM, for database access
-- Minio (for object storage: to store avatars, resume PDFs and previews)
-- Browserless (for headless chrome, to print PDFs and generate previews)
-- SMTP Server (to send password recovery emails)
-- GitHub/Google OAuth (for authentication)
+- Frontend: React, Vite, TailwindCSS, Zustand, React Query, React Router.
+- Backend: NestJS, Prisma, Postgres, Minio, Chrome (Browserless), SMTP Server.
+- Authentication: GitHub OAuth, Google OAuth.
+- AI: Google Gemini, ChatGPT, Azure APIs.
+- Deployment: Docker, Docker Compose.
+

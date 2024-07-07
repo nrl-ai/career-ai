@@ -14,6 +14,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - careerai_network
 
   # Storage (for image uploads)
   minio:
@@ -31,23 +33,30 @@ services:
       - traefik.http.routers.storage.entrypoints=websecure
       - traefik.http.routers.storage.tls.certresolver=letsencrypt
       - traefik.http.services.storage.loadbalancer.server.port=9000
+    networks:
+      - careerai_network
 
   # Chrome Browser (for printing and previews)
   chrome:
-    image: browserless/chrome@sha256:57d19e414d9fe4ae9d2ab12ba768c97f38d51246c5b31af55a009205c136012f
+    image: browserless/chrome:latest
     restart: unless-stopped
     environment:
-      TIMEOUT: 10000
+      TIMEOUT: 30000
       CONCURRENT: 10
       TOKEN: ${CHROME_TOKEN:-chrome_token}
       EXIT_ON_HEALTH_FAILURE: true
       PRE_REQUEST_HEALTH_CHECK: true
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.printer.rule=Host(`printer.careerai.me`)
-      - traefik.http.routers.printer.entrypoints=websecure
-      - traefik.http.routers.printer.tls.certresolver=letsencrypt
-      - traefik.http.services.printer.loadbalancer.server.port=3000
+
+      # -- URLs --
+      PUBLIC_URL: ${PUBLIC_URL:-https://www.careerai.me}
+      STORAGE_URL: ${STORAGE_URL:-https://storage.careerai.me/default}
+
+      # -- Printer (Chrome) --
+      CHROME_TOKEN: ${CHROME_TOKEN:-chrome_token}
+      CHROME_URL: ${CHROME_URL:-ws://chrome:3000}
+
+    networks:
+      - careerai_network
 
   app:
     image: vietanhdev/career-ai:latest
@@ -67,7 +76,7 @@ services:
 
       # -- Printer (Chrome) --
       CHROME_TOKEN: ${CHROME_TOKEN:-chrome_token}
-      CHROME_URL: ${CHROME_URL:-https://printer.careerai.me}
+      CHROME_URL: ${CHROME_URL:-ws://chrome:3000}
 
       # -- Database (Postgres) --
       DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/postgres}
@@ -116,6 +125,8 @@ services:
       - traefik.http.routers.app.entrypoints=websecure
       - traefik.http.routers.app.tls.certresolver=letsencrypt
       - traefik.http.services.app.loadbalancer.server.port=3000
+    networks:
+      - careerai_network
 
   traefik:
     image: traefik:latest
@@ -142,8 +153,13 @@ services:
     volumes:
       - letsencrypt_data:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - careerai_network
 
 volumes:
   minio_data:
   postgres_data:
   letsencrypt_data:
+
+networks:
+  careerai_network:
