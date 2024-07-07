@@ -1,11 +1,10 @@
 import { t } from "@lingui/macro";
-import { ScrollArea, Tabs, TabsContent } from "@career-ai/ui";
+import { ScrollArea, Tabs } from "@career-ai/ui";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 import { GridView } from "./_layouts/grid";
-import { ListView } from "./_layouts/list";
 
 type Layout = "grid" | "list";
 
@@ -39,8 +38,7 @@ export const ResumesPage = () => {
 
         <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
           <div className="max-w-[500px] pb-4 text-md text-gray-500">
-            Tạo CV theo các mẫu có sẵn dễ dàng và nhanh chóng. Bạn có thể quản lý CV cho các công
-            việc và vị trí khác nhau ngay tại đây.
+            {t`Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here.`}
           </div>
 
           <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)] mt-4 overflow-visible">

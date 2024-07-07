@@ -19,6 +19,7 @@ import { StorageModule } from "./storage/storage.module";
 import { TranslationModule } from "./translation/translation.module";
 import { UserModule } from "./user/user.module";
 import { InterviewsModule } from "./interview/interview.module";
+import { JobApplicationsModule } from "./job_applications/job_applications.module";
 
 @Module({
   imports: [
@@ -36,8 +37,12 @@ import { InterviewsModule } from "./interview/interview.module";
     StorageModule,
     PrinterModule,
     FeatureModule,
+    JobApplicationsModule,
     TranslationModule,
-    ContributorsModule,
+
+    // Not needed in production
+    // ContributorsModule,
+
     InterviewsModule,
     
     // Static Assets

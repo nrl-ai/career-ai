@@ -8,7 +8,9 @@ type AnalyzeResumeArgs = {
 };
 
 export const analyzeResume = async ({ id, jd }: AnalyzeResumeArgs) => {
-  const response = await axios.post(`/resume/${id}/analyze`, { jd });
+  const locale = localStorage.getItem("locale") ?? "en-US";
+  const language = locale.split("-")[0];
+  const response = await axios.post(`/resume/${id}/analyze`, { language, jd });
   return response.data;
 };
 

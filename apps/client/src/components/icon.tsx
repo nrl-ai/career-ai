@@ -5,9 +5,10 @@ type Props = {
   open?: boolean;
   size?: number;
   className?: string;
+  textClassName?: string;
 };
 
-export const Icon = ({ open = false, size = 64, className }: Props) => {
+export const Icon = ({ open = false, size = 64, className, textClassName }: Props) => {
   const { isDarkMode } = useTheme();
 
   let src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -32,7 +33,7 @@ export const Icon = ({ open = false, size = 64, className }: Props) => {
         alt="CareerAI"
         className={cn("rounded-sm mr-2", className)}
       />
-      {open ? <span className="text-2xl font-bold ml-1">CareerAI</span> : null}
+      {open ? <span className={cn("text-2xl font-bold ml-1", textClassName)}>CareerAI</span> : null}
     </div>
   );
 };

@@ -13,7 +13,7 @@ export const DashboardLayout = () => {
 
   return (
     <div>
-      <div className="sticky top-0 z-50 flex items-center justify-between p-4 pb-0 lg:hidden">
+      <div className="sticky top-0 z-50 flex items-center justify-between p-4 pb-0 lg:hidden bg-white">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button size="icon" variant="ghost" className="bg-background">
@@ -42,7 +42,10 @@ export const DashboardLayout = () => {
         })}
       >
         <div
-          className={cn("h-full rounded border-r-[2px] border-r-[#E6E6E6]", !isCollapsed && "p-4")}
+          className={cn(
+            "h-full rounded border-r-[2px] border-r-[#E6E6E6] bg-white",
+            !isCollapsed && "p-4",
+          )}
         >
           <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
         </div>

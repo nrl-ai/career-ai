@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { Link, matchRoutes, Outlet, useLocation } from "react-router-dom";
 
 import { LocaleSwitch } from "@/client/components/locale-switch";
-import { Logo } from "@/client/components/logo";
+import { Icon } from "@/client/components/icon";
 // import { ThemeSwitch } from "@/client/components/theme-switch";
 import { useAuthProviders } from "@/client/services/auth/providers";
 
@@ -27,8 +27,8 @@ export const AuthLayout = () => {
     <div className="flex h-screen w-screen">
       <div className="relative flex w-full flex-col justify-center gap-y-8 px-12 sm:mx-auto sm:basis-[420px] sm:px-0 lg:basis-[480px] lg:px-12">
         <div className="flex items-center justify-between">
-          <Link to="/" className="size-24">
-            <Logo className="-ml-3" size={96} />
+          <Link to="/" className="size-24 mt-3">
+            <Icon className="mt-2" size={48} open={true} textClassName="text-3xl mt-3" />
           </Link>
 
           <div className="right-0 space-x-2 text-right lg:absolute lg:p-12 lg:text-center">

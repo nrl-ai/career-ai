@@ -93,7 +93,7 @@ export const ProjectsDialog = () => {
             <FormItem>
               <FormLabel>{t`Website`}</FormLabel>
               <FormControl>
-                <URLInput {...field} placeholder="https://career-ai.vn" />
+                <URLInput {...field} placeholder="https://careerai.me" />
               </FormControl>
               <FormMessage />
             </FormItem>

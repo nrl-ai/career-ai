@@ -25,6 +25,7 @@ import { authLoader } from "./loaders/auth";
 import { ComingSoonPage } from "../pages/dashboard/coming_soon/page";
 import { CoursesPage } from "../pages/dashboard/courses/page";
 import { CVOptimizationPage } from "../pages/dashboard/cv_optimization/page";
+import { DashboardPage } from "../pages/dashboard/dashboard/page";
 import { InterviewInformationPage } from "../pages/dashboard/interviewInformation/page";
 
 export const routes = createRoutesFromElements(

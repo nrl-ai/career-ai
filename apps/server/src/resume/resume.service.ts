@@ -20,12 +20,57 @@ const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
 });
 
-const PROMPT = `s
-`;
+type CVReviewPrompt = {
+  vi: string;
+  en: string;
+};
 
-export const queryCVAnalyze = async (cv: string, jd: string) => {
+const PROMPT: CVReviewPrompt = {
+  vi: `Bạn là một chuyên gia tuyển dụng và tư vấn việc làm. Hãy giúp nhận xét CV sau đây và đề xuất cách tối ưu hóa CV này để phù hợp với công việc.
+
+NỘI DUNG CV DẠNG JSON:
+"""{cv}"""
+
+NỘI DUNG MÔ TẢ CÔNG VIỆC:
+"""{jd}"""
+
+Kết quả trả về nên có dạng Markdown (thay Score bằng điểm số từ 0 đến 10, ví dụ 7.5/10). Điểm số đánh giá toàn diện về kinh nghiệm CV, mức độ phù hợp với công việc, cách trình bày, và các yếu tố khác. Sử dụng hoàn toàn Tiếng Việt trong bài viết.
+
+**I. ĐIỂM SỐ:** <Score>/10
+\n\n\n
+**II. NHẬN XÉT:** ...
+\n\n\n
+**III. ĐIỂM MẠNH:** ...
+\n\n\n
+**IV. ĐIỂM YẾU:** ...
+\n\n\n
+**V. GỢI Ý TỐI ƯU:** ...
+`,
+  en: `You are a recruitment expert and career advisor. Please help review the following CV and suggest ways to optimize it to fit the job.
+
+CV CONTENT IN JSON FORMAT:
+"""{cv}"""
+
+JOB DESCRIPTION CONTENT:
+"""{jd}"""
+
+The result should be in Markdown format (replace Score with a score from 0 to 10, e.g., 7.5/10). The score should comprehensively evaluate the CV's experience, job fit, presentation, and other factors. Use English entirely in the write-up.
+
+**I. SCORE:** <Score>/10
+\n\n\n
+**II. COMMENTS:** ...
+\n\n\n
+**III. STRENGTHS:** ...
+\n\n\n
+**IV. WEAKNESSES:** ...
+\n\n\n
+**V. OPTIMIZATION SUGGESTIONS:** ...
+`,
+};
+
+export const queryCVAnalyze = async (language: keyof CVReviewPrompt, cv: string, jd: string) => {
   const text = "Chúng tôi gặp lỗi khi phân tích CV của bạn. Vui lòng thử lại.";
-  const prompt = PROMPT.replace("{cv}", cv).replace("{jd}", jd);
+  const prompt = PROMPT[language].replace("{cv}", cv).replace("{jd}", jd);
   const result = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
     model: "gpt-3.5-turbo",
@@ -180,8 +225,12 @@ export class ResumeService {
   }
 
   analyze(userId: string, resume: ResumeDto, analyzeResumeDto: any) {
+    let language = analyzeResumeDto?.language || "en";
+    if (!["vi", "en"].includes(language)) {
+      language = "en";
+    }
     const cv = JSON.stringify(resume.data);
     const jd = analyzeResumeDto?.jd || "";
-    return queryCVAnalyze(cv, jd);
+    return queryCVAnalyze(language as keyof CVReviewPrompt, cv, jd);
   }
 }

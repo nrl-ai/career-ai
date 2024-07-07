@@ -1,4 +1,3 @@
-import { t, Trans } from "@lingui/macro";
 import { cn } from "@career-ai/utils";
 
 type Props = {
@@ -12,8 +11,6 @@ export const Copyright = ({ className }: Props) => (
       className,
     )}
   >
-    <span className="mt-4">
-      {t`CareerAI`} {"v" + appVersion} - 2024
-    </span>
+    <span className="mt-4">© 2024 CareerAI. All rights reserved.</span>
   </div>
 );

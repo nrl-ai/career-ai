@@ -48,6 +48,7 @@ model User {
   secrets          Secrets?
   resumes          Resume[]
   interviews       Interviews[]
+  jobApplications Json @default("[]")
 }
 
 model Secrets {

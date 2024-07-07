@@ -18,10 +18,10 @@ export const PrivacyPolicyPage = () => (
 
     <section
       id="privacy-policy"
-      className="container prose prose-zinc relative max-w-4xl py-32 dark:prose-invert"
+      className="container prose prose-zinc relative max-w-4xl py-32 dark:prose-invert mt-8"
     >
       <h1 className="mb-4">{t`Privacy Policy`}</h1>
-      <h6 className="text-sm">Last updated on 3rd May 2024</h6>
+      <h6 className="text-sm">Last updated on 8th July 2024</h6>
 
       <hr className="my-6" />
 
@@ -67,9 +67,8 @@ export const PrivacyPolicyPage = () => (
           <h2 className="mb-2">Data Security</h2>
           <p>
             CareerAI is committed to ensuring the security of your data. Our application and
-            database are hosted on a secure server from DigitalOcean, which has both SOC 2 and SOC 3
-            compliance, ensuring that your data is protected with industry-standard security
-            measures.
+            database are hosted on a secure server, ensuring that your data is protected with
+            industry-standard security measures.
           </p>
         </li>
 
@@ -104,7 +103,7 @@ export const PrivacyPolicyPage = () => (
           <h2 className="mb-2">Contact Us</h2>
           <p>
             If you have any questions or suggestions about our Privacy Policy, do not hesitate to
-            contact us at <code>contact@career-ai.vn</code>.
+            contact us at <code>contact@careerai.me</code>.
           </p>
         </li>
       </ol>

@@ -1,0 +1,45 @@
+@use "../../abstracts/index" as *;
+
+.ColumnContainer {
+  margin: 10px;
+  width: 200px;
+  border-radius: 15px;
+  padding: 5px;
+  background-color: none;
+  color: $mediumGrey;
+  display: flex;
+  flex-direction: column;
+
+  .TasksList {
+    height: calc(100vh - 155px);
+  }
+}
+
+.IsDragging {
+  border-radius: 15px;
+  width: 200px;
+  padding: 5px;
+
+  background-color: transparentColor(0.01, $darkGrey);
+  .ColumnHeader {
+    color: $mainColor;
+  }
+}
+
+.ColumnHeader {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $mediumGreyHover;
+  }
+
+  .Oval {
+    width: 15px;
+    height: 15px;
+    border-radius: 999px;
+    background-color: #49c4e5;
+  }
+}
