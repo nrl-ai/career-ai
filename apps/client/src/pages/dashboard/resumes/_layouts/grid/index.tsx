@@ -9,7 +9,7 @@ import { ResumeCard } from "./_components/resume-card";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-export const GridView = ({ maxSize }: { maxSize: number | null }) => {
+export const GridView = ({ maxSize }: { maxSize?: number | undefined }) => {
   const { resumes, loading } = useResumes();
   const filteredResumes = resumes && maxSize ? resumes.slice(0, maxSize) : resumes;
 

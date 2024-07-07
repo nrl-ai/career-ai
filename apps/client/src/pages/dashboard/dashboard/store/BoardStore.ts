@@ -107,7 +107,7 @@ export const useBoardStore = create<BoardStore>((set) => ({
         column.id === columnId
           ? {
               ...column,
-              tasks: column.tasks.filter((task) => task.id !== taskId),
+              tasks: column.tasks.filter((task: any) => task.id !== taskId),
             }
           : column,
       );
