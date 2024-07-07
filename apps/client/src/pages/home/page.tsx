@@ -39,7 +39,7 @@ export const HomePage = () => {
             </div>
             <div>
               <a
-                href="/dashboard/resumes"
+                href="/dashboard"
                 className="w-[16rem] relative flex items-center justify-center rounded-full text-base font-medium py-3.5 px-6 mt-10 mx-auto bg-blue-500 text-white"
               >
                 <CiPlay1 className="h-6 w-6 me-2" />

@@ -43,7 +43,7 @@ export const DashboardPage = () => {
           </div>
 
           {/* <ScrollArea className="h-[300px] overflow-visible"> */}
-            <GridView maxSize={2} />
+          <GridView maxSize={2} />
           {/* </ScrollArea> */}
         </main>
 

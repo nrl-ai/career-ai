@@ -379,7 +379,7 @@ msgstr "Tạo CV mới"
 msgid "Create a new resume from templates"
 msgstr "Tạo CV nhanh chóng từ bộ mẫu CV chuyên nghiệp"
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:54
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:42
 #: apps/client/src/pages/dashboard/resumes/page.tsx:41
 msgid "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
 msgstr "Tạo CV nhanh chóng và dễ dàng bằng cách sử dụng các mẫu của chúng tôi. Quản lý CV cho các công việc và vị trí khác nhau ở đây."
@@ -407,7 +407,6 @@ msgstr "Tối"
 
 #: apps/client/src/pages/dashboard/_components/sidebar.tsx:84
 #: apps/client/src/pages/dashboard/dashboard/page.tsx:19
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 msgid "Dashboard"
 msgstr "Bảng trung tâm"
 
@@ -787,7 +786,7 @@ msgstr "Có vẻ như mã thông báo xác minh bạn cung cấp không hợp l�
 msgid "It looks like your email address has already been verified."
 msgstr "Có vẻ như địa chỉ email của bạn đã được xác minh."
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:68
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:56
 msgid "Job Application Tracker"
 msgstr "Bảng theo dõi ứng tuyển"
 
@@ -1140,7 +1139,7 @@ msgstr "Đặt lại Zoom"
 msgid "Resume Checker and Optimizer"
 msgstr "Kiểm tra và Tối ưu CV"
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:48
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
@@ -1540,6 +1539,10 @@ msgstr "Xác minh rằng xác thực hai yếu tố đã được thiết lập 
 #: apps/client/src/pages/auth/verify-email/page.tsx:48
 msgid "Verify your email address"
 msgstr "Xác minh Email của bạn"
+
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/index.tsx:72
+msgid "View {0} more"
+msgstr "Xem thêm {0}"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:51
 msgid "Views"

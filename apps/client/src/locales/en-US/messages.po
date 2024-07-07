@@ -384,7 +384,7 @@ msgstr "Create a new resume"
 msgid "Create a new resume from templates"
 msgstr "Create a new resume from templates"
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:54
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:42
 #: apps/client/src/pages/dashboard/resumes/page.tsx:41
 msgid "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
 msgstr "Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here."
@@ -412,7 +412,6 @@ msgstr "Dark"
 
 #: apps/client/src/pages/dashboard/_components/sidebar.tsx:84
 #: apps/client/src/pages/dashboard/dashboard/page.tsx:19
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -792,7 +791,7 @@ msgstr "It looks like the verification token you provided is invalid. Please try
 msgid "It looks like your email address has already been verified."
 msgstr "It looks like your email address has already been verified."
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:68
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:56
 msgid "Job Application Tracker"
 msgstr "Job Application Tracker"
 
@@ -1145,7 +1144,7 @@ msgstr "Reset Zoom"
 msgid "Resume Checker and Optimizer"
 msgstr "Resume Checker and Optimizer"
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:48
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
@@ -1545,6 +1544,10 @@ msgstr "Verify that two-factor authentication has been setup correctly"
 #: apps/client/src/pages/auth/verify-email/page.tsx:48
 msgid "Verify your email address"
 msgstr "Verify your email address"
+
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/index.tsx:72
+msgid "View {0} more"
+msgstr "View {0} more"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:51
 msgid "Views"
