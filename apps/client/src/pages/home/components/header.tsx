@@ -9,7 +9,7 @@ export const Header = () => (
     initial={{ opacity: 0, y: -50 }}
     animate={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.3 } }}
   >
-    <div className="container bg-gradient-to-b from-white to-[#ECF3FE]/90 rounded-b-3xl">
+    <div className="container lg:bg-gradient-to-b lg:from-white lg:to-[#ECF3FE]/90 lg:rounded-b-3xl">
       <nav>
         <a href="/" className="flex flex-row">
           <Icon open={true} size={38} />

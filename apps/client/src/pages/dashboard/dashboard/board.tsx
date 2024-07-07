@@ -16,11 +16,11 @@ export function BoardView() {
     if (
       !loading &&
       ((typeof jobApplications === "object" &&
-      !Array.isArray(jobApplications) &&
-      jobApplications !== null) || 
-      (typeof jobApplications === "object" &&
-      Array.isArray(jobApplications) &&
-      jobApplications?.length === 0))
+        !Array.isArray(jobApplications) &&
+        jobApplications !== null) ||
+        (typeof jobApplications === "object" &&
+          Array.isArray(jobApplications) &&
+          jobApplications?.length === 0))
     ) {
       setBoardData(sampleData);
       setActiveBoard(sampleData[0]?.id);

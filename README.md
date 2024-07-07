@@ -36,7 +36,6 @@ bash build-and-restart.sh
 - AI: Google Gemini, ChatGPT, Azure APIs.
 - Deployment: Docker, Docker Compose.
 
-
 ## IV. Known Issues
 
 ### 1. Could not download resume as PDF
