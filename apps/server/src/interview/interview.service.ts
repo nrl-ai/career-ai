@@ -35,6 +35,19 @@ export class InterviewsService {
         return this.prisma.interviews.delete({where: {id: id}});
     }
 
+    create(userId: string, createInterViewDto: CreateInterviewDto) {
+        return this.prisma.interviews.create({
+            data: {
+                userId,
+                position: createInterViewDto.position,
+                type: createInterViewDto.type,
+                yearOfExp: createInterViewDto.yearOfExp,
+                jd: createInterViewDto.jd,
+                content: "",
+                score: 0.0,
+            }
+        })
+    }
     // async create(userId: string, createResumeDto: CreateInterviewDto) {
     //     const { name, email, picture } = await this.prisma.user.findUniqueOrThrow({
     //       where: { id: userId },

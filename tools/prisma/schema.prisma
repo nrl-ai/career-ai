@@ -97,19 +97,18 @@ model Statistics {
 
 model Interviews {
   id        String   @id @default(cuid())
-  position  String 
-  level     Level    
+  position  String    
   type      Type     @default(mixed)
   jd        String
   content   String
-  year      Int      @default(0)
+  yearOfExp Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  score     Decimal  @db.Decimal(10, 1)
-  model     String
+  score     Decimal  @db.Decimal(10, 1) @default(0.0)
+  model     String   @default("gpt-3.5")
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  cv        Json
+  cv        Json     @default("{}")
 
   @@unique([userId, id])
   @@index(fields: [userId])
