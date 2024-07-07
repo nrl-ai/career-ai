@@ -45,6 +45,7 @@ export class InterviewsService {
                 jd: createInterViewDto.jd,
                 content: "",
                 score: 0.0,
+                cv: createInterViewDto.cv,
             }
         })
     }
