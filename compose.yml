@@ -38,23 +38,19 @@ services:
 
   # Chrome Browser (for printing and previews)
   chrome:
-    image: browserless/chrome:latest
+    image: ghcr.io/browserless/chromium
     restart: unless-stopped
     environment:
-      TIMEOUT: 30000
       CONCURRENT: 10
       TOKEN: ${CHROME_TOKEN:-chrome_token}
       EXIT_ON_HEALTH_FAILURE: true
       PRE_REQUEST_HEALTH_CHECK: true
-
-      # -- URLs --
-      PUBLIC_URL: ${PUBLIC_URL:-https://www.careerai.me}
-      STORAGE_URL: ${STORAGE_URL:-https://storage.careerai.me/default}
-
-      # -- Printer (Chrome) --
-      CHROME_TOKEN: ${CHROME_TOKEN:-chrome_token}
-      CHROME_URL: ${CHROME_URL:-ws://chrome:3000}
-
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.printer.rule=Host(`printer.careerai.me`)
+      - traefik.http.routers.printer.entrypoints=websecure
+      - traefik.http.routers.printer.tls.certresolver=letsencrypt
+      - traefik.http.services.printer.loadbalancer.server.port=3000
     networks:
       - careerai_network
 
@@ -76,7 +72,7 @@ services:
 
       # -- Printer (Chrome) --
       CHROME_TOKEN: ${CHROME_TOKEN:-chrome_token}
-      CHROME_URL: ${CHROME_URL:-ws://chrome:3000}
+      CHROME_URL: ${CHROME_URL:-wss://printer.careerai.me}
 
       # -- Database (Postgres) --
       DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/postgres}

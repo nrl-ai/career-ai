@@ -27,7 +27,10 @@ export class PrinterService {
     const chromeUrl = this.configService.getOrThrow<string>("CHROME_URL");
     const chromeToken = this.configService.getOrThrow<string>("CHROME_TOKEN");
 
-    this.browserURL = `${chromeUrl}?token=${chromeToken}`;
+    const launchArgs = JSON.stringify({
+      headless: "new",
+    });
+    this.browserURL = `${chromeUrl}?token=${chromeToken}&launch=${launchArgs}`;
     this.ignoreHTTPSErrors = this.configService.getOrThrow<boolean>("CHROME_IGNORE_HTTPS_ERRORS");
   }
 
