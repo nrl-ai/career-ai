@@ -45,12 +45,13 @@ const list_experience = [
     "10+ năm",
 ]
 
-type Props = {
-    name: string;
-    isOpen?: boolean;
-};
+type ActiveProps = {
+    positionIsActive: string;
+    typeIsActive: string;
+    experienceIsActive: string;
+}
 
-export const InformationButton = () => {
+export const InformationButton = ({positionIsActive, typeIsActive, experienceIsActive} : ActiveProps) => {
     const [type, setType] = useState("Loại phỏng vấn");
     const [position, setPosition] = useState("Chức vụ");
     const [level, setLevel] = useState("Cấp độ");
@@ -68,7 +69,7 @@ export const InformationButton = () => {
         <>
             <DropdownMenu.Root open={open} onOpenChange={setOpen}>
                 <DropdownMenu.Trigger asChild>
-                    <button className={`outline outline-1 ${position != "Chức vụ" ? 'outline-[#6B94F9]' : 'outline-[#B3B3B3] text-[#B3B3B3]'} focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[30rem]`}
+                    <button id="position-button" className={`outline outline-1 ${position != "Chức vụ" ? 'outline-[#6B94F9]' : `outline-${positionIsActive} text-[#B3B3B3]`} focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[30rem]`}
                             type="button"
                     >
                         {position}
@@ -114,7 +115,7 @@ export const InformationButton = () => {
             
             <DropdownMenu.Root>
                 <DropdownMenu.Trigger asChild>
-                    <button className={`outline outline-1 ${level != 'Cấp độ' ? 'outline-[#6B94F9]' : 'outline-[#B3B3B3] text-[#B3B3B3]'} focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[15rem]`}
+                    <button id="level-button" className={`outline outline-1 ${level != 'Cấp độ' ? 'outline-[#6B94F9]' : 'outline-[#B3B3B3] text-[#B3B3B3]'} focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[15rem]`}
                             type="button"
                     >
                         {level}
@@ -160,7 +161,7 @@ export const InformationButton = () => {
 
             <DropdownMenu.Root>
                 <DropdownMenu.Trigger asChild>
-                    <button className={`outline outline-1 ${experience != 'Số năm kinh nghiệm' ? 'outline-[#6B94F9]' : 'outline-[#B3B3B3] text-[#B3B3B3]'}  focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[15rem]`}
+                    <button id="yearOfExp-button" className={`outline outline-1 ${experience != 'Số năm kinh nghiệm' ? 'outline-[#6B94F9]' : `outline-${experienceIsActive} text-[#B3B3B3]`}  focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[15rem]`}
                             type="button"
                     >
                         {experience}
@@ -198,7 +199,7 @@ export const InformationButton = () => {
 
             <DropdownMenu.Root>
                 <DropdownMenu.Trigger asChild>
-                    <button className={`outline outline-1 ${type != 'Loại phỏng vấn' ? 'outline-[#6B94F9]' : 'text-[#B3B3B3] outline-[#B3B3B3]'} focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[15rem]`}
+                    <button id="type-button" className={`outline outline-1 ${type != 'Loại phỏng vấn' ? 'outline-[#6B94F9]' : `outline-${typeIsActive} text-[#B3B3B3]`} focus:outline-[#6B94F9] font-normal text-base rounded-lg px-2.5 py-2.5 inline-flex items-center justify-between w-[15rem]`}
                             type="button"
                     >
                         {type}

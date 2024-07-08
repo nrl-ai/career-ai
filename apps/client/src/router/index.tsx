@@ -27,6 +27,7 @@ import { CoursesPage } from "../pages/dashboard/courses/page";
 import { CVOptimizationPage } from "../pages/dashboard/cv_optimization/page";
 import { DashboardPage } from "../pages/dashboard/dashboard/page";
 import { InterviewInformationPage } from "../pages/dashboard/interviewInformation/page";
+import { InterviewRoomPage } from "../pages/dashboard/interviewRoom/page";
 
 export const routes = createRoutesFromElements(
   <Route element={<Providers />}>
@@ -81,6 +82,7 @@ export const routes = createRoutesFromElements(
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="courses" element={<CoursesPage />} />
           <Route path="interviewInformation" element={<InterviewInformationPage/>} />
+          <Route path="interviewRoom" element={<InterviewRoomPage/>} />
           <Route index element={<Navigate replace to="/dashboard/resumes" />} />
         </Route>
       </Route>

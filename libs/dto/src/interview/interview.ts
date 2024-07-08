@@ -6,10 +6,10 @@ import { z } from "nestjs-zod/z";
 export const interviewSchema = z.object({
     id: idSchema,
     position: z.string(),
-    type: z.enum(["intern", "fresher", "mid-junior", "junior", "mid-senior", "senior"]),
+    type: z.enum(["techincal", "behavioral", "mixed"]).default("mixed"),
     jd: z.string(),
     content: z.string().default(""),
-    yearOfExp: z.number().int().default(0),
+    yearOfExp: z.string().default(""),
     createdAt: z.date().or(z.dateString()),
     updatedAt: z.date().or(z.dateString()),
     score: z.number().default(0.0),

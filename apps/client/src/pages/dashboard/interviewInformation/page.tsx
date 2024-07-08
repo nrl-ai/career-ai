@@ -4,15 +4,73 @@ import { useState } from "react";
 import { AutoGenJDButton } from "./_components/autogen";
 import { CVSelector } from "@/client/components/cv_selector";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/client/hooks/use-toast";
+import { t } from "@lingui/macro";
+import { useCreateInterview } from "@/client/services/interview/create";
+import { useResumes } from "@/client/services/resume";
+import { ResumeDto } from "@career-ai/dto";
+
+type typeEnum = "behavioral" | "mixed" | "technical";
 
 export const InterviewInformationPage = () => {
   const [jd, setJD] = useState<string | undefined>("");
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
+  const {resumes, loading} = useResumes();
+
+  const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
+
+  const { toast } = useToast();
+  const [positionIsActive, setPositionIsActive] = useState<string>("[#B3B3B3]");
+  const [typeIsActive, setTypeIsActive] = useState<string>("[#B3B3B3]");
+  const [experienceIsActive, setExperienceIsActive] = useState<string>("[#B3B3B3]");
+  const {createInterview, loading: createLoading} = useCreateInterview();
 
   const navigate = useNavigate();
+
   const handleOnClick = () => { 
     navigate('/dashboard/interview');
   }
+
+  const handleCreateInterviewRoom = () => {
+    navigate('/dashboard/interviewRoom');
+  }
+
+  const StartInterview = async () => {
+    var positionButtonElementValue = document.getElementById("position-button")?.textContent as string;
+    // var levelButtonElement = document.getElementById("level-button");
+    var yearOfExpButtonElementValue = document.getElementById("yearOfExp-button")?.textContent as string;
+    var typeButtonElementValue = document.getElementById("type-button")?.textContent;
+
+    if (positionButtonElementValue === "Chức vụ") {
+        setPositionIsActive("error")
+    }
+
+    if (typeButtonElementValue === "Loại phỏng vấn") {
+        setTypeIsActive("error")
+    }
+
+    if (yearOfExpButtonElementValue === "Số năm kinh nghiệm") {
+        setExperienceIsActive("error")
+    }
+
+    if (jd === "") {}
+
+    if (selectedCV === null) {}
+
+    if (positionButtonElementValue === "Chức vụ" || yearOfExpButtonElementValue === "Số năm kinh nghiệm" || typeButtonElementValue === "Loại phỏng vấn" || jd === "" || selectedCV === null) {
+        toast({
+            variant: "error",
+            title: t`Incomplete submission`,
+            description: t`Please make sure you have selected all required fields!`,
+        });
+    } 
+    else {
+        const cvData = selectedCVDetailed?.data as ResumeDto["data"]
+        await createInterview({position: positionButtonElementValue, type: typeButtonElementValue?.toLowerCase() as typeEnum, yearOfExp: yearOfExpButtonElementValue, jd: jd as string, cv: cvData})
+        handleCreateInterviewRoom();
+    }
+  }
+
   return (
     <div className="h-screen p-9">
       <div className="gap-y flex h flex-col gap-y-5">
@@ -37,10 +95,10 @@ export const InterviewInformationPage = () => {
             </div>
 
             <div className="inline-flex justify-between z-20">
-                <InformationButton/>
+                <InformationButton positionIsActive={positionIsActive} typeIsActive={typeIsActive} experienceIsActive={experienceIsActive}/>
                 <AutoGenJDButton/>
             </div>
-            <RichInput content={jd} onChange={setJD} />
+            <RichInput id="jd-input-field" content={jd} onChange={setJD} />
         </div>
         <div className="flex flex-col gap-y-5">
             <div className="flex gap-x-4 items-center">
@@ -59,6 +117,7 @@ export const InterviewInformationPage = () => {
             <button
                 type="button"
                 className="h-[50px] w-[262px] rounded-[10px] bg-[#3d6cf5] text-white font-bold text-base"
+                onClick={StartInterview}
                 > 
                 Bắt đầu phỏng vấn
             </button>

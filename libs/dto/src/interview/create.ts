@@ -5,7 +5,7 @@ import { defaultResumeData, resumeDataSchema } from "@career-ai/schema";
 export const createInterviewSchema = z.object({
     position: z.string().min(1),
     type: z.enum(["technical", "behavioral", "mixed"]).default("mixed"),
-    yearOfExp: z.number().int().default(0),
+    yearOfExp: z.string(),
     jd: z.string(),
     cv: resumeDataSchema.default(defaultResumeData),
 });

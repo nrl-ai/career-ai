@@ -102,7 +102,7 @@ model Interviews {
   type      Type     @default(mixed)
   jd        String
   content   String
-  yearOfExp Int      @default(0)
+  yearOfExp String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   score     Decimal  @db.Decimal(10, 1) @default(0.0)
