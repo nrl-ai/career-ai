@@ -10,8 +10,8 @@ const root = ReactDOM.createRoot(document.querySelector("#root")!);
 
 root.render(
     <PrimeReactProvider value={{unstyled: true, pt: Tailwind}}>
-        <Theme>
+        {/* <Theme> */}
             <RouterProvider router={router} />
-        </Theme>
+        {/* </Theme> */}
     </PrimeReactProvider>
 );

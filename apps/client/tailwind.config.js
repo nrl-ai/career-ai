@@ -9,6 +9,7 @@ module.exports = {
     join(__dirname, "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}"),
     ...createGlobPatternsForDependencies(__dirname),
     "./node_modules/primereact/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     container: {
@@ -26,4 +27,7 @@ module.exports = {
       maven: ['"Maven Pro"', "sans-serif"],
     },
   },
+  plugins: [
+    require('flowbite/plugin')
+  ]
 };

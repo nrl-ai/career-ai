@@ -83,7 +83,7 @@ LƯU Ý : BẠN CHỈ TRẢ VỀ PHẦN MÔ TẢ CÔNG VIỆC
 ####
 `,
 en: `
-You are a recruiter for any company (you may choose freely  ), please introduce your company 
+You are a recruiter for any company (you may choose freely), please introduce your company 
 (e.g., company name, the industry your company operates in, company location), 
 the benefits this job brings, then use the following conditions to create a job description:
 
@@ -147,9 +147,10 @@ export class InterviewsService {
     }
 
     createJd(position: string, language: string) {
+        console.log(language.toLowerCase());
         if (!["vi", "en"].includes(language.toLowerCase())) {
             language="en";
-        }
+        }   
         return ai_createJd(language as keyof CreateJDPrompt, position);
     }
     // async create(userId: string, createResumeDto: CreateInterviewDto) {
