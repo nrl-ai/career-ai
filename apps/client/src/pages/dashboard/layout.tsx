@@ -28,7 +28,7 @@ export const DashboardLayout = () => {
               </Button>
             </SheetClose>
 
-            <Sidebar isOpen={open} setOpen={setOpen} isCollapsed={false} />
+            <Sidebar />
           </SheetContent>
         </Sheet>
       </div>
@@ -47,7 +47,7 @@ export const DashboardLayout = () => {
             !isCollapsed && "p-4",
           )}
         >
-          <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+          <Sidebar />
         </div>
       </motion.div>
 

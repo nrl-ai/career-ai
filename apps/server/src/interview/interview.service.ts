@@ -10,6 +10,102 @@ const openai = new OpenAI({
     apiKey: process.env["OPENAI_API_KEY"],
 });
 
+type InterviewPrompt = {
+vi: string;
+en: string;
+};
+
+const PROMPT: InterviewPrompt = {
+vi: `Bạn là một nhà tuyển dụng của công ty được ghi trong phần mô tả công việc dưới đây:
+
+NỘI DUNG MÔ TẢ CÔNG VIỆC:
+"""{jd}"""
+
+Nhiệm vụ của bạn là phỏng vấn ứng viên dựa trên những thông tin sau:
+
+CV CỦA ỨNG VIÊN DẠNG JSON:
+"""{cv}"""
+\n\n\n
+VỊ TRÍ ỨNG TUYỂN CỦA ỨNG VIÊN:
+"""{position}"""
+\n\n\n
+CẤP BẬC CỦA ỨNG VIÊN:
+"""{level}"""
+\n\n\n
+SỐ NĂM KINH NGHIỆM CỦA ỨNG VIÊN:
+"""{yearOfExp}"""
+\n\n\n
+HÌNH THỨC PHỎNG VẤN: 
+"""{type}"""
+\n\n\n
+`,
+en: `You are a recruiter for the company described in the job description below:
+
+JOB DESCRIPTION:
+"""{jd}"""
+
+Your task is to interview the candidate based on the following information:
+
+CANDIDATE'S CV IN JSON FORMAT:
+"""{cv}"""
+\n\n\n
+POSITION APPLIED FOR BY THE CANDIDATE:
+"""{position}"""
+\n\n\n
+CANDIDATE'S LEVEL:
+"""{level}"""
+\n\n\n
+CANDIDATE'S YEARS OF EXPERIENCE:
+"""{yearOfExp}"""
+\n\n\n
+INTERVIEW FORMAT:
+"""{type}"""
+\n\n\n
+`
+}
+  
+type CreateJDPrompt = {
+    vi: string;
+    en: string;
+};
+
+const CREATEJDPROMPT: CreateJDPrompt = {
+vi: `
+Bạn là một nhà tuyển dụng của một công ty bất kỳ (bạn có thể tự do lựa chọn), hãy giới thiệu về công ty của bạn (ví dụ:
+tên công ty, lĩnh vực mà công ty bạn đang làm, vị trí của công ty), những lợi ích
+mà công việc này đem lại, rồi dựa vào các điều kiện sau để tạo ra phần mô tả công việc:
+
+VỊ TRÍ ỨNG TUYỂN CỦA ỨNG VIÊN:
+"""{position}"""
+
+####
+LƯU Ý : BẠN CHỈ TRẢ VỀ PHẦN MÔ TẢ CÔNG VIỆC
+####
+`,
+en: `
+You are a recruiter for any company (you may choose freely  ), please introduce your company 
+(e.g., company name, the industry your company operates in, company location), 
+the benefits this job brings, then use the following conditions to create a job description:
+
+POSITION THE CANDIDATE IS APPLYING FOR:
+""" {position} """
+
+####
+ONLY RETURN THE JOB DESCRIPTION
+####
+`
+};
+
+export const ai_createJd = async (language: keyof CreateJDPrompt, position: string) => {
+    const text = "Chúng tôi gặp lỗi tạo JD. Vui lòng thử lại.";
+    const prompt = CREATEJDPROMPT[language].replace("{position}", position);
+    const result = await openai.chat.completions.create({
+        messages: [{role: "system", content: prompt}], 
+        model: "gpt-3.5-turbo",
+    });
+    return result.choices[0].message.content ?? text;
+};
+
 @Injectable()
 export class InterviewsService {
     constructor(
@@ -41,13 +137,20 @@ export class InterviewsService {
                 userId,
                 position: createInterViewDto.position,
                 type: createInterViewDto.type,
-                yearOfExp: createInterViewDto.yearOfExp,
+                // yearOfExp: createInterViewDto.yearOfExp,
                 jd: createInterViewDto.jd,
                 content: "",
                 score: 0.0,
                 cv: createInterViewDto.cv,
             }
         })
+    }
+
+    createJd(position: string, language: string) {
+        if (!["vi", "en"].includes(language.toLowerCase())) {
+            language="en";
+        }
+        return ai_createJd(language as keyof CreateJDPrompt, position);
     }
     // async create(userId: string, createResumeDto: CreateInterviewDto) {
     //     const { name, email, picture } = await this.prisma.user.findUniqueOrThrow({

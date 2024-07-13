@@ -6,7 +6,7 @@ import { User } from "../user/decorators/user.decorator";
 import { User as UserEntity } from "@prisma/client";
 import { CreateInterviewDto } from "@career-ai/dto";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
-import { ErrorMessage } from "@career-ai/utils";
+import { ErrorMessage } from "@career-ai/utils";  
 
 @ApiTags("Interview")
 @Controller("interview")
@@ -43,6 +43,14 @@ export class InterviewsController {
       return this.interviewsService.remove(id);
     }
 
+    @Post(":position/:language/createJd")
+    @UseGuards(TwoFactorGuard)
+    ai_createJd(
+      @Param("position") position: string,
+      @Param("language") language: string,
+    ) {
+      return this.interviewsService.createJd(position, language);
+    }
     // @Patch(":id/retake")
     // // Retake interview
     // @UseGuards(TwoFactorGuard)

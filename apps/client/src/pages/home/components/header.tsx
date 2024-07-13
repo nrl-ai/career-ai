@@ -12,7 +12,7 @@ export const Header = () => (
     <div className="container lg:bg-gradient-to-b lg:from-white lg:to-[#ECF3FE]/90 lg:rounded-b-3xl">
       <nav>
         <a href="/" className="flex flex-row">
-          <Icon open={true} size={38} />
+          <Icon size={38} />
         </a>
         {/* Moblie Menu Toggle Button (Offcanvas Button) */}
         <div className="lg:hidden flex items-center ms-auto px-2.5">

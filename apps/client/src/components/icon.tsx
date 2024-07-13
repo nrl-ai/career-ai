@@ -2,13 +2,13 @@ import { useTheme } from "@career-ai/hooks";
 import { cn } from "@career-ai/utils";
 
 type Props = {
-  open?: boolean;
+  // open?: boolean;
   size?: number;
   className?: string;
   textClassName?: string;
 };
 
-export const Icon = ({ open = false, size = 64, className, textClassName }: Props) => {
+export const Icon = ({ size = 64, className, textClassName }: Props) => {
   const { isDarkMode } = useTheme();
 
   let src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -33,7 +33,7 @@ export const Icon = ({ open = false, size = 64, className, textClassName }: Prop
         alt="CareerAI"
         className={cn("rounded-sm mr-2", className)}
       />
-      {open ? <span className={cn("text-2xl font-bold ml-1", textClassName)}>CareerAI</span> : null}
+      <span className={cn("text-3xl font-bold ml-1", textClassName)}>CareerAI</span>
     </div>
   );
 };

@@ -82,7 +82,7 @@ export const routes = createRoutesFromElements(
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="courses" element={<CoursesPage />} />
           <Route path="interviewInformation" element={<InterviewInformationPage/>} />
-          <Route path="interviewRoom" element={<InterviewRoomPage/>} />
+          {/* <Route path="/interview/interviewRoom" element={<InterviewRoomPage/>} /> */}
           <Route index element={<Navigate replace to="/dashboard/resumes" />} />
         </Route>
       </Route>
