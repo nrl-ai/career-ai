@@ -6,14 +6,14 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-blue-600 text-white hover:bg-blue-500",
-        secondary: "bg-gray-200 text-gray-700 hover:bg-secondary/80",
+        secondary: "bg-gray-200 text-gray-700 hover:bg-white/80",
         error: "bg-error text-error-foreground hover:bg-error/80",
         warning: "bg-warning text-warning-foreground hover:bg-warning/80",
         info: "bg-info text-info-foreground hover:bg-info/80",
         success: "bg-success text-success-foreground hover:bg-success/80",
         outline:
-          "border border-secondary bg-transparent hover:bg-secondary hover:text-secondary-foreground",
-        ghost: "hover:bg-secondary hover:text-secondary-foreground",
+          "border border-secondary bg-white hover:bg-white hover:text-secondary-foreground",
+        ghost: "hover:bg-white hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

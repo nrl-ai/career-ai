@@ -33,7 +33,7 @@ export const DashboardPage = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-bold tracking-tight"
           >
-            {t`Resumes`}
+            {t`Dashboard`}
           </motion.h1>
         </div>
 

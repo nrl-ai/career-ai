@@ -215,7 +215,7 @@ export const TwoFactorDialog = () => {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <div className="mx-auto grid max-w-xs grid-cols-2 rounded-sm bg-secondary/50 p-4 text-center font-mono leading-loose">
+                      <div className="mx-auto grid max-w-xs grid-cols-2 rounded-sm bg-white/50 p-4 text-center font-mono leading-loose">
                         {field.value.map((code) => (
                           <p key={code}>{code}</p>
                         ))}

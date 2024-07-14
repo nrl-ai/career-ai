@@ -7,7 +7,7 @@ export const toastVariants = cva(
       variant: {
         default: "border bg-background text-foreground",
         primary: "group/primary border-primary bg-primary text-primary-foreground",
-        secondary: "group/secondary border-secondary bg-secondary text-secondary-foreground",
+        secondary: "group/secondary border-secondary bg-white text-secondary-foreground",
         error: "group/error border-error bg-error text-error-foreground",
         warning: "group/warning border-warning bg-warning text-warning-foreground",
         info: "group/info border-info bg-info text-info-foreground",

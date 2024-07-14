@@ -96,7 +96,7 @@ export const CVOptimizationPage = () => {
         {selectedCV && loading && (
           <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8">
             <CardContent className="space-y-2">
-              <CardTitle>{t`Analyzing CV`}</CardTitle>√
+              <CardTitle>{t`Analyzing CV`}</CardTitle>
               <div>{t`Please wait a moment. Your CV is being analyzed...`}</div>
             </CardContent>
           </Card>

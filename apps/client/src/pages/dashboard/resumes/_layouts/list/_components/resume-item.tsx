@@ -132,7 +132,7 @@ export const ResumeListItem = ({ resume }: Props) => {
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="even:bg-secondary/20">
+      <ContextMenuTrigger className="even:bg-white/20">
         <BaseListItem
           className="group"
           title={resume.title}

@@ -25,7 +25,7 @@ export const RightSidebar = () => {
   };
 
   return (
-    <div className="flex bg-secondary-accent/30">
+    <div className="flex bg-white-accent/30">
       <ScrollArea orientation="vertical" className="h-screen flex-1 pb-16 lg:pb-0">
         <div ref={containterRef} className="grid gap-y-6 p-6 @container/right">
           <TemplateSection />
@@ -50,7 +50,7 @@ export const RightSidebar = () => {
         </div>
       </ScrollArea>
 
-      <div className="hidden basis-12 flex-col items-center justify-between bg-secondary-accent/30 py-4 sm:flex">
+      <div className="hidden basis-12 flex-col items-center justify-between bg-white-accent/30 py-4 sm:flex">
         <div />
 
         <div className="flex flex-col items-center justify-center gap-y-2">

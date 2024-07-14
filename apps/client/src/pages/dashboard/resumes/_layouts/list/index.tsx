@@ -31,7 +31,7 @@ export const ListView = () => {
             className="duration-300 animate-in fade-in"
             style={{ animationFillMode: "backwards", animationDelay: `${i * 300}ms` }}
           >
-            <BaseListItem className="bg-secondary/40" />
+            <BaseListItem className="bg-white/40" />
           </div>
         ))}
 
