@@ -1,7 +1,7 @@
-import { InformationButton } from "./_components/informationButton";
+// import { InformationButton } from "./_components/informationButton";
 import { JDInput } from "@career-ai/ui";
 import { useState, useEffect } from "react";
-import { AutoGenJDButton } from "./_components/autogen";
+// import { AutoGenJDButton } from "./_components/autogen";
 import { CVSelector } from "@/client/components/cv_selector";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/client/hooks/use-toast";
@@ -78,6 +78,9 @@ export const InterviewInformationPage = () => {
   ]
 
   // END  
+
+  const startInterviewButtonActive = (language != '' && position != '' && type != '' && jd != '' && selectedCV != '');
+
   return (
     <div className="h-screen w-full p-6 flex flex-col justify-between bg-[#f2f2f7]">
         {/** TODO: Back to the previous router */}
@@ -192,16 +195,16 @@ export const InterviewInformationPage = () => {
             </div>
 
             <div className="col-span-1 rounded-[10px] bg-white p-6">
-                
+                <span className="font-semibold text-2xl">Applied resume</span>
             </div>
         </div>
         <div className="flex justify-between">
-            <button type="button" className="py-3.5 px-[72px] bg-white rounded-[6px] outline outline-1 outline-[#8E8E93]" onClick={handleCancel}>
-                <span className="font-medium text-base text-[#8E8E93]">Cancel</span>
+            <button type="button" className="py-3.5 px-[72px] bg-white rounded-[6px] outline outline-1 outline-[#191919] transition-all duration-200 ease-in-out transform hover:bg-[#F2F2F7]" onClick={handleCancel}>
+                <span className="font-medium text-base text-[#191919]">Cancel</span>
             </button>
 
-            <button type="button" className={`py-3.5 px-[60px] rounded-[6px]  ${(language != '' && position != '' && type != '' && jd != '' && selectedCV != '') === false ? 'bg-[#AEAEB2]' : 'bg-[#007AFF]'}`} 
-                disabled={(language != '' && position != '' && type != '' && jd != '' && selectedCV != '') === false ? true : false}
+            <button type="button" className={`py-3.5 px-[60px] rounded-[6px]  ${startInterviewButtonActive === false ? 'bg-[#AEAEB2] cursor-not-allowed' : 'bg-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#005ABD]'}`} 
+                disabled={!startInterviewButtonActive}
                 onClick={() => {console.log("hello")}}>
                 <span className="text-white text-medium text-base">Start interview</span>
             </button>
