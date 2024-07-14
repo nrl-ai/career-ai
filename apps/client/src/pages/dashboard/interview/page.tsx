@@ -262,6 +262,9 @@ export const InterviewPage = () => {
 
   return (
     <div className="h-screen p-6 bg-[#f2f2f7]">
+      <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
+        This page is under construction. Please come back later.
+      </div>
       <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""} h-full`}>
         <div
           className={`${interviews ? "col-span-2" : ""} flex flex-col gap-y-14 h-full`}
