@@ -18,6 +18,7 @@ import { ResumeModule } from "./resume/resume.module";
 import { StorageModule } from "./storage/storage.module";
 import { TranslationModule } from "./translation/translation.module";
 import { UserModule } from "./user/user.module";
+import { InterviewsModule } from "./interview/interview.module";
 import { JobApplicationsModule } from "./job_applications/job_applications.module";
 
 @Module({
@@ -42,6 +43,8 @@ import { JobApplicationsModule } from "./job_applications/job_applications.modul
     // Not needed in production
     // ContributorsModule,
 
+    InterviewsModule,
+    
     // Static Assets
     ServeStaticModule.forRoot({
       serveRoot: "/artboard",

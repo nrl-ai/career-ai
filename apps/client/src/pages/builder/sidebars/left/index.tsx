@@ -45,7 +45,7 @@ export const LeftSidebar = () => {
       <div className="hidden basis-12 flex-col items-center justify-between bg-secondary-accent/30 py-4 sm:flex">
         <Button asChild size="icon" variant="ghost" className="size-8 rounded-full">
           <Link to="/dashboard">
-            <Icon open={false} size={32} />
+            <Icon size={32} />
           </Link>
         </Button>
 

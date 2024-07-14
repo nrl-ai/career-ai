@@ -475,7 +475,7 @@ export const RichInput = forwardRef<Editor, RichInputProps>(
       editorProps: {
         attributes: {
           class: cn(
-            "prose prose-sm prose-zinc max-h-[200px] max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
+            "prose prose-sm prose-zinc max-h-[300px] max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
             editorClassName,
           ),
         },
@@ -519,7 +519,7 @@ export const RichInput = forwardRef<Editor, RichInputProps>(
         <EditorContent
           editor={editor}
           className={cn(
-            "grid min-h-[160px] w-full rounded-sm border bg-transparent px-3 py-2 text-sm placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
+            "grid min-h-[200px] w-full rounded-sm border bg-transparent px-3 py-2 text-sm placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
             hideToolbar && "pt-2",
             className,
           )}
