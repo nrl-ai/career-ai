@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
+        background: "#F2F2F7",
         foreground: "hsl(var(--foreground))",
         border: "hsl(var(--border))",
         primary: {

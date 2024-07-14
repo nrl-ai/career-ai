@@ -41,10 +41,7 @@ export const DashboardPage = () => {
           <div className="max-w-[500px] pb-4 text-md text-gray-500">
             {t`Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here.`}
           </div>
-
-          {/* <ScrollArea className="h-[300px] overflow-visible"> */}
           <GridView maxSize={2} />
-          {/* </ScrollArea> */}
         </main>
 
         <div className="flex items-center justify-between pt-4">

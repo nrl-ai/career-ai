@@ -9,9 +9,9 @@ import { Theme } from "@radix-ui/themes";
 const root = ReactDOM.createRoot(document.querySelector("#root")!);
 
 root.render(
-    <PrimeReactProvider value={{unstyled: true, pt: Tailwind}}>
-        {/* <Theme> */}
-            <RouterProvider router={router} />
-        {/* </Theme> */}
-    </PrimeReactProvider>
+  <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
+    {/* <Theme> */}
+    <RouterProvider router={router} />
+    {/* </Theme> */}
+  </PrimeReactProvider>,
 );
