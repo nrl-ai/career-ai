@@ -261,7 +261,7 @@ export const InterviewPage = () => {
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
 
   return (
-    <div className="h-screen p-6 bg-[#f2f2f7]">
+    <div className="h-screen bg-[#f2f2f7]">
       <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
         This page is under construction. Please come back later.
       </div>
