@@ -44,7 +44,7 @@ import { JobApplicationsModule } from "./job_applications/job_applications.modul
     // ContributorsModule,
 
     InterviewsModule,
-    
+
     // Static Assets
     ServeStaticModule.forRoot({
       serveRoot: "/artboard",

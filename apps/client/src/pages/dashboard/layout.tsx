@@ -28,7 +28,7 @@ export const DashboardLayout = () => {
               </Button>
             </SheetClose>
 
-            <Sidebar />
+            <Sidebar isOpen={open} setOpen={setOpen} isCollapsed={false} />
           </SheetContent>
         </Sheet>
       </div>
@@ -47,12 +47,12 @@ export const DashboardLayout = () => {
             !isCollapsed && "p-4",
           )}
         >
-          <Sidebar />
+          <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
         </div>
       </motion.div>
 
       <main
-        className={cn("", {
+        className={cn("mx-6 my-4 lg:mx-8", {
           "lg:pl-[300px]": !isCollapsed,
           "lg:pl-[80px]": isCollapsed,
         })}

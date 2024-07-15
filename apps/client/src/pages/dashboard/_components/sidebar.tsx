@@ -4,7 +4,8 @@ import { cn } from "@career-ai/utils";
 import {
   IoCalculatorOutline,
   IoCheckmarkDoneCircleOutline,
-  IoAppsOutline ,
+  IoAppsSharp,
+  IoAppsOutline,
   IoHomeOutline,
   IoLibraryOutline,
   IoNewspaperOutline,
@@ -12,8 +13,9 @@ import {
   IoSettingsOutline,
   IoTodayOutline,
 } from "react-icons/io5";
-
-// import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import { BsLayoutSidebarInset } from "react-icons/bs";
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { PiGraduationCap } from "react-icons/pi";
 
 import { Icon } from "@/client/components/icon";
@@ -34,7 +36,7 @@ type SidebarItemProps = SidebarItem & {
   onClick?: () => void;
 };
 
-const SidebarItem = ({ path, name, icon, onClick }: SidebarItemProps) => {
+const SidebarItem = ({ path, name, icon, onClick, isCollapsed }: SidebarItemProps) => {
   const isActive = useLocation().pathname === path;
 
   return (
@@ -43,37 +45,41 @@ const SidebarItem = ({ path, name, icon, onClick }: SidebarItemProps) => {
       size="lg"
       variant="ghost"
       className={cn(
-        "flex h-auto items-start justify-start rounded-lg py-2.5 px-3",
+        "flex h-auto items-start justify-start rounded-lg py-2.5",
         isActive && "pointer-events-none bg-blue-100 text-secondary-foreground",
+        !isCollapsed && "px-3",
+        isCollapsed && "px-1",
       )}
       onClick={onClick}
     >
       <Link to={path} className="flex size-full my-[2px]">
         <div
           className={cn(
-            "text-xl mr-3",
+            "text-xl",
             isActive && "text-blue-500",
+            isCollapsed ? "block mx-auto" : "mr-3",
           )}
         >
           {icon}
         </div>
-        <span className={cn("font-normal", isActive && "font-bold text-blue-500")}>{name}</span>
+        {!isCollapsed && (
+          <span className={cn("font-normal", isActive && "font-bold text-blue-500")}>{name}</span>
+        )}
       </Link>
     </Button>
   );
 };
 
-// type SidebarProps = {
-//   isOpen?: boolean;
-//   setOpen?: (open: boolean) => void;
-//   isCollapsed?: boolean;
-//   setIsCollapsed?: (collapsed: boolean) => void;
-// };
+type SidebarProps = {
+  isOpen?: boolean;
+  setOpen?: (open: boolean) => void;
+  isCollapsed?: boolean;
+  setIsCollapsed?: (collapsed: boolean) => void;
+};
 
 const iconStyle = { color: "#6B94F9" };
 
-// export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
-export const Sidebar = () => {
+export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
   const { toast } = useToast();
   const { user } = useUser();
 
@@ -81,7 +87,7 @@ export const Sidebar = () => {
     {
       path: "/dashboard",
       name: t`Dashboard`,
-      icon: <IoAppsOutline style={iconStyle}/>,
+      icon: <IoAppsOutline style={iconStyle} />,
     },
   ];
 
@@ -89,17 +95,17 @@ export const Sidebar = () => {
     {
       path: "/dashboard/resumes",
       name: t`Build Your Resume`,
-      icon: <IoNewspaperOutline style={iconStyle}/>,
+      icon: <IoNewspaperOutline style={iconStyle} />,
     },
     {
       path: "/dashboard/cv-optimization",
       name: t`Check & Optimize Resume`,
-      icon: <IoCheckmarkDoneCircleOutline style={iconStyle}/>,
+      icon: <IoCheckmarkDoneCircleOutline style={iconStyle} />,
     },
     {
       path: "/dashboard/interview",
       name: t`AI Mock Interview`,
-      icon: <IoTodayOutline style={iconStyle}/>,
+      icon: <IoTodayOutline style={iconStyle} />,
     },
   ];
 
@@ -107,124 +113,168 @@ export const Sidebar = () => {
     {
       path: "/dashboard/courses",
       name: t`Skill Courses`,
-      icon: <PiGraduationCap style={iconStyle}/>,
+      icon: <PiGraduationCap style={iconStyle} />,
     },
-    {
-      path: "https://blog.career-ai.vn/",
-      name: t`Knowledge Library`,
-      icon: <IoLibraryOutline style={iconStyle}/>,
-    },
+    // {
+    //   path: "https://blog.career-ai.vn/",
+    //   name: t`Knowledge Library`,
+    //   icon: <IoLibraryOutline style={iconStyle} />,
+    // },
   ];
 
   const toolItems: SidebarItem[] = [
     {
       path: "#",
-      name: t`Gross-Net Salary`,
-      icon: <IoCalculatorOutline style={iconStyle}/>,
+      name: t`Gross-Net Salary Calculator`,
+      icon: <IoCalculatorOutline style={iconStyle} />,
     },
     {
       path: "#",
-      name: t`Personal Income Tax`,
-      icon: <IoServerOutline style={iconStyle}/>,
+      name: t`Personal Income Tax Calculator`,
+      icon: <IoServerOutline style={iconStyle} />,
     },
   ];
 
   return (
-    <div className={cn("flex h-full flex-col gap-y-3 md:p-2")}>
-      <div className="lg:mb-4 lg:ml-0">
+    <div className={cn("flex h-full flex-col gap-y-2", isCollapsed ? "md:p-2" : "md:p-4")}>
+      <div className="ml-12 flex justify-between lg:mb-4 pb-4 lg:ml-0">
         <Link to="/" className="w-full">
           <Icon
-            // open={!isCollapsed}
+            open={!isCollapsed}
             size={32}
-            className={cn("lg:block")}
+            className={cn("hidden lg:block", isCollapsed && "mx-auto mt-4")}
           />
         </Link>
-      </div>
-      <h2
-        className={cn(
-          "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
+        {!isOpen && !isCollapsed && (
+          <Button
+            size="md"
+            variant="ghost"
+            className="text-gray-400"
+            onClick={() => {
+              setIsCollapsed?.(!isCollapsed);
+            }}
+          >
+            {isCollapsed ? (
+              <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
+            ) : (
+              <BsLayoutSidebarInset className="text-2xl font-normal" />
+            )}
+          </Button>
         )}
-      >
-        {t`Account`}
-      </h2>
-        
+      </div>
+
+      {!isOpen && isCollapsed && (
+        <Button
+          size="md"
+          variant="ghost"
+          className="text-gray-400"
+          onClick={() => {
+            setIsCollapsed?.(!isCollapsed);
+          }}
+        >
+          {isCollapsed ? (
+            <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
+          ) : (
+            <BsLayoutSidebarInset className="text-2xl font-normal" />
+          )}
+        </Button>
+      )}
+
       <UserOptions>
         <Button
           size="lg"
           variant="ghost"
-          className={cn("w-full py-6 px-3 justify-start")}
+          className={cn(
+            "justify-star w-full py-7",
+            isCollapsed
+              ? "px-0"
+              : "px-3 bg-gray-100/90 hover:bg-gray-200/90 shadow-gray-200 shadow-sm mb-2",
+          )}
         >
-          <UserAvatar size={38} className={cn("mr-3")} />
-
-            <div className="flex flex-col text-left">
-              <span className="text-sm text-gray-500">{t`User Profile`}</span>{" "}
+          <UserAvatar size={38} className={cn(isCollapsed ? "mr-0" : "mr-3")} />
+          {!isCollapsed && (
+            <div className="flex flex-col text-left flex-grow">
+              <span className="text-sm text-gray-500">{t`Pro User`}</span>{" "}
               <span className="max-w-[120px] truncate font-medium">{user?.name}</span>
             </div>
-
+          )}
+          {!isCollapsed && <IoIosArrowDown className="ml-auto text-xl text-gray-500" />}
         </Button>
-        
       </UserOptions>
 
-        <div className={cn("grid mt-2 gap-y-1")}>
-          {topItems.map((item) => ( 
-            <SidebarItem
-              {...item}
-              key={item.path}
-            />
-          ))}
+      <div className={cn("grid mt-2", !isCollapsed && "gap-y-1")}>
+        {topItems.map((item) => (
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
+        ))}
 
-          <h2
-            className={cn(
-              "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            )}
-          >
-            {t`Services`}
-          </h2>
+        {/* <Separator className="opacity-100" /> */}
 
-          {serviceItems.map((item) => (
-            <SidebarItem
-              {...item}
-              key={item.path}
-            />
-          ))}
+        <h2
+          className={cn(
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {t`Services`}
+        </h2>
+        {serviceItems.map((item) => (
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
+        ))}
 
-          <h2
-            className={cn(
-              "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            )}
-          >
-            {t`News & Community`}
-          </h2>
+        {/* <Separator className="opacity-100" /> */}
 
-          {libraryItems.map((item) => (
-            <SidebarItem
-              {...item}
-              key={item.path}
-            />
-          ))}
+        {/* <h2
+          className={cn(
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {isCollapsed ? "Library" : "News & Community"}
+        </h2>
+        {libraryItems.map((item) => (
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => setOpen?.(false)}
+          />
+        ))} */}
 
-          <h2
-            className={cn(
-              "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            )}
-          >
-            {t`Tools`}
-          </h2>
+        {/* <Separator className="opacity-100" /> */}
 
-          {toolItems.map((item) => (
-            <SidebarItem
-              {...item}
-              key={item.path}
-              onClick={() => {
-                toast({
-                  variant: "warning",
-                  title: t`This feature is under development.`,
-                  description: t`We are developing this feature. Please come back soon!`,
-                });
-              }}
-            />
-          ))}
-        </div>
+        {/* <h2
+          className={cn(
+            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
+            isCollapsed && "text-center",
+          )}
+        >
+          {isCollapsed ? "Tools" : "Calculators"}
+        </h2>
+        {toolItems.map((item) => (
+          <SidebarItem
+            isCollapsed={isCollapsed}
+            {...item}
+            key={item.path}
+            onClick={() => {
+              toast({
+                variant: "warning",
+                title: t`This feature is under development.`,
+                description: t`We are developing this feature. Please come back soon!`,
+              });
+            }}
+          />
+        ))} */}
+      </div>
     </div>
   );
 };
