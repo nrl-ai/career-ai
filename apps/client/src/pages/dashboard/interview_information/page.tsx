@@ -243,7 +243,7 @@ export const InterviewInformationPage = () => {
             <span className="text-base text-[#191919] font-medium">Create new resume</span>
             <div className="w-full flex justify-between mt-2">
               <BaseButton title="Create new resume" content="Create new resume from templates" icon="pi pi-plus-circle" dialog="resume" />
-              <BaseButton title="Create new resume" content="Create new resume from templates" icon="pi pi-arrow-down" dialog="import" />
+              <BaseButton title="Import exisiting resume" content="LinkedIn, JSON Resume, etc." icon="pi pi-arrow-down" dialog="import" />
             </div>
             
             <div className="mt-6">

@@ -64,6 +64,7 @@ export class InterviewsController {
   ai_createJd(@Param("position") position: string, @Param("language") language: string) {
     return this.interviewsService.createJd(position, language);
   }
+
   // @Patch(":id/retake")
   // // Retake interview
   // @UseGuards(TwoFactorGuard)

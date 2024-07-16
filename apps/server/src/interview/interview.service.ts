@@ -29,15 +29,11 @@ CV CỦA ỨNG VIÊN DẠNG JSON:
 VỊ TRÍ ỨNG TUYỂN CỦA ỨNG VIÊN:
 """{position}"""
 \n\n\n
-CẤP BẬC CỦA ỨNG VIÊN:
-"""{level}"""
-\n\n\n
-SỐ NĂM KINH NGHIỆM CỦA ỨNG VIÊN:
-"""{yearOfExp}"""
-\n\n\n
 HÌNH THỨC PHỎNG VẤN: 
 """{type}"""
 \n\n\n
+NỘI DUNG PHỎNG VẤN TRƯỚC ĐẤY:
+"""{content}"""
 `,
   en: `You are a recruiter for the company described in the job description below:
 
@@ -51,12 +47,6 @@ CANDIDATE'S CV IN JSON FORMAT:
 \n\n\n
 POSITION APPLIED FOR BY THE CANDIDATE:
 """{position}"""
-\n\n\n
-CANDIDATE'S LEVEL:
-"""{level}"""
-\n\n\n
-CANDIDATE'S YEARS OF EXPERIENCE:
-"""{yearOfExp}"""
 \n\n\n
 INTERVIEW FORMAT:
 """{type}"""
@@ -106,6 +96,16 @@ export const ai_createJd = async (language: keyof CreateJDPrompt, position: stri
   return result.choices[0].message.content ?? text;
 };
 
+export const ai_generate_interview_question = async(language: keyof CreateJDPrompt, cv: string, jd: string, position: string, type: string) => {
+  const prompt = PROMPT[language].replace("{jd}", jd).replace("{cv}", cv).replace("{position}", position).replace("{type}", type) 
+  const stream = await openai.chat.completions.create({
+    messages: [{role: "system", content: prompt}],
+    model: "gpt-3.5-turbo",
+    stream: true,
+  });
+  return stream;
+}
+
 @Injectable()
 export class InterviewsService {
   constructor(
@@ -150,6 +150,11 @@ export class InterviewsService {
     }
     return ai_createJd(language.toLowerCase() as keyof CreateJDPrompt, position);
   }
+
+  interviewQuestionGenerate(language: string, cv: string, jd: string, position: string, type: string) {
+    return ai_generate_interview_question(language.toLocaleLowerCase() as keyof InterviewPrompt, cv, jd, position, type);
+  }
+  
   // async create(userId: string, createResumeDto: CreateInterviewDto) {
   //     const { name, email, picture } = await this.prisma.user.findUniqueOrThrow({
   //       where: { id: userId },

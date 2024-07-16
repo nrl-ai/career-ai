@@ -3,6 +3,7 @@ import { AiSpeakingIcon } from "./_components/ai_speaking_icon";
 import { PushToTalkButton } from "./_components/push_to_talk_button";
 import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from 'primereact/progressbar';
+import { EndInterviewButton } from "./_components/end_interview_button";
 
 export const InterviewRoomPage = () => {
   const navigate = useNavigate();
@@ -68,16 +69,21 @@ export const InterviewRoomPage = () => {
             </div>
           </div>
         </div>  
-        <div className="col-span-1">
-          <div className="bg-white rounded-[10px] w-full p-6" style={{height: "calc(100vh - 300px)"}}>
+        <div className="col-span-1 h-full flex flex-col justify-between">
+          {/* <div className="bg-white rounded-[10px] w-full p-6" style={{height: "calc(100vh - 300px)"}}> */}
+          <div className="bg-white rounded-[10px] w-full p-6 h-[88%] flex flex-col justify-between gap-y-3">
             <span className="font-semibold text-2xl">Interview questions</span>
             {/** Add dynamic value to progress bar */}
-            <ProgressBar pt={{
+            <ProgressBar value={50} pt={{
               root: {
-                className: "h-3"
+                style: {
+                  height: "1.8vh"
+                }
               }
             }}/>
+            <div id="interview_question_container" className="flex-grow min-h-[59vh] bg-black"></div>
           </div>
+          <EndInterviewButton />
         </div>
       </div>  
     </div>
