@@ -11,12 +11,12 @@ const openai = new OpenAI({
 });
 
 type InterviewPrompt = {
-  vi: string;
+  vn: string;
   en: string;
 };
 
 const PROMPT: InterviewPrompt = {
-  vi: `Bạn là một nhà tuyển dụng của công ty được ghi trong phần mô tả công việc dưới đây:
+  vn: `Bạn là một nhà tuyển dụng của công ty được ghi trong phần mô tả công việc dưới đây:
 
 NỘI DUNG MÔ TẢ CÔNG VIỆC:
 """{jd}"""
@@ -65,12 +65,12 @@ INTERVIEW FORMAT:
 };
 
 type CreateJDPrompt = {
-  vi: string;
+  vn: string;
   en: string;
 };
 
 const CREATEJDPROMPT: CreateJDPrompt = {
-  vi: `
+  vn: `
 Bạn là một nhà tuyển dụng của một công ty bất kỳ (bạn có thể tự do lựa chọn), hãy giới thiệu về công ty của bạn (ví dụ:
 tên công ty, lĩnh vực mà công ty bạn đang làm, vị trí của công ty), những lợi ích
 mà công việc này đem lại, rồi dựa vào các điều kiện sau để tạo ra phần mô tả công việc:
@@ -119,7 +119,7 @@ export class InterviewsService {
     var end_number: number = +end;
     return this.prisma.interviews.findMany({
       where: { id: userId },
-      select: { position: true, type: true, createdAt: true, score: true },
+      select: { position: true, type: true, createdAt: true, totalScore: true},
       orderBy: { createdAt: "desc" },
       skip: start_number,
       take: end_number,
@@ -131,26 +131,24 @@ export class InterviewsService {
   }
 
   create(userId: string, createInterViewDto: CreateInterviewDto) {
+    debugger
     return this.prisma.interviews.create({
       data: {
         userId,
         position: createInterViewDto.position,
+        language: createInterViewDto.language,
         type: createInterViewDto.type,
-        // yearOfExp: createInterViewDto.yearOfExp,
         jd: createInterViewDto.jd,
-        content: "",
-        score: 0.0,
         cv: createInterViewDto.cv,
       },
     });
   }
 
   createJd(position: string, language: string) {
-    console.log(language.toLowerCase());
-    if (!["vi", "en"].includes(language.toLowerCase())) {
+    if (!["vn", "en"].includes(language.toLowerCase())) {
       language = "en";
     }
-    return ai_createJd(language as keyof CreateJDPrompt, position);
+    return ai_createJd(language.toLowerCase() as keyof CreateJDPrompt, position);
   }
   // async create(userId: string, createResumeDto: CreateInterviewDto) {
   //     const { name, email, picture } = await this.prisma.user.findUniqueOrThrow({

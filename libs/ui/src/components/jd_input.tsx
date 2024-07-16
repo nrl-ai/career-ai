@@ -60,11 +60,13 @@ const Toolbar = ({
   isActive,
   position,
   language,
+  onChange,
 }: {
   editor: Editor;
   isActive: boolean;
   position: string;
   language: string;
+  onChange: ((value: string) => void) | undefined;
 }) => {
   const setLink = useCallback(() => {
     const previousUrl = editor.getAttributes("link").href;
@@ -93,6 +95,7 @@ const Toolbar = ({
     try {
       const result = await ai_createJd({ position: position, language: language });
       editor.chain().focus().setContent(result).run();
+      onChange?.(editor.getHTML())
     } catch (error) {
       console.error("Error generating JD: ", error);
     } finally {
@@ -451,7 +454,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
       editorProps: {
         attributes: {
           class: cn(
-            "prose prose-sm prose-zinc max-h-[100vh] grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
+            "prose max-h-[calc(100vh-667px)] prose-sm prose-zinc grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
             editorClassName,
           ),
         },
@@ -488,7 +491,6 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
       );
     }
 
-    console.log(editor)
     return (
       <div>
         {!hideToolbar && (
@@ -497,13 +499,14 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
             isActive={isActive as boolean}
             position={position}
             language={language}
+            onChange={onChange}
           />
         )}
 
         <EditorContent
           editor={editor}
           className={cn(
-            "grid min-h-[34vh] w-full rounded-[10px] border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
+            "grid w-full min-h-[calc(100vh-624px)] rounded-[10px] border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
             hideToolbar && "pt-2",
             className,
           )}

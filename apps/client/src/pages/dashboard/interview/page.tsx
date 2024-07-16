@@ -255,17 +255,17 @@ export const InterviewPage = () => {
   const { result, loading, error } = useFindInterviewsByUserId(0, 10);
 
   const handleClick = () => {
-    navigate("/dashboard/interviewInformation");
+    navigate("/dashboard/interview-information");
   };
 
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
 
   return (
-    <div className="h-screen p-6 bg-[#f2f2f7]">
-      <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
+    <div className="h-full w-full p-6 bg-[#f2f2f7]">
+      {/* <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
         This page is under construction. Please come back later.
-      </div>
-      <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""} h-full`}>
+      </div> */}
+      <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""}`}>
         <div
           className={`${interviews ? "col-span-2" : ""} flex flex-col gap-y-14 h-full`}
           id="ai-interview-management"
@@ -273,7 +273,7 @@ export const InterviewPage = () => {
           <div className="flex justify-between items-center">
             <span className="text-3xl font-bold">AI Mock Interview</span>
           </div>
-          <div className="h-full">
+          <div className="">
             <DataTable
               rows={10}
               loading={loading}
@@ -286,11 +286,11 @@ export const InterviewPage = () => {
               emptyMessage={renderEmptyMessage(handleClick)}
               paginator={interviews ? true : false}
               pt={{
-                root: { className: "flex flex-col gap-y-4 pt-4" },
+                root: { className: "flex flex-col h-full gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
                 header: { style: { background: "transparent", padding: 0, border: "none" } },
                 wrapper: { className: "rounded-[10px]" },
-                table: { className: `w-full flex-grow bg-white` },
+                table: { className: `w-full overflow-y-hidden flex-grow bg-white h-[calc(100vh-256px)]` },
               }}
             >
               {ColumnItems.map((item, i) => (

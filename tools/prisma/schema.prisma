@@ -21,16 +21,13 @@ enum Visibility {
 enum Type {
   technical
   behavioral
-  mixed
+  combination
 }
 
-enum Level {
-  intern
-  fresher 
-  mid_junior
-  junior 
-  mid_senior
-  senior
+enum Language {
+  VN
+  EN
+  KR
 }
 
 model User {
@@ -99,16 +96,20 @@ model Statistics {
 model Interviews {
   id        String   @id @default(cuid())
   position  String    
-  type      Type     @default(mixed)
+  type      Type     @default(combination)
   jd        String
-  content   String
+  content   Json     @default("{}")
+  language  Language @default(EN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  score     Decimal  @db.Decimal(10, 1) @default(0.0)
-  model     String   @default("gpt-3.5")
+  model     String   @default("gpt-3.5-turbo-0125")
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   cv        Json     @default("{}")
+  accuracyRate Int   @default(0)
+  communication Int  @default(0)
+  responseRate Int   @default(0)
+  totalScore Int     @default(0)
 
   @@unique([userId, id])
   @@index(fields: [userId])

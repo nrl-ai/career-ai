@@ -13,6 +13,9 @@ import { Dropdown } from "primereact/dropdown";
 import { BaseButton } from "./_components/base_button";
 import { useDialog } from "@/client/stores/dialog";
 
+type typeEnum = "technical" | "behavioral" | "combination";
+type languageEnum =  "VN" | "EN" | "KR";
+
 export const InterviewInformationPage = () => {
   const [jd, setJD] = useState<string | undefined>("");
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
@@ -24,7 +27,7 @@ export const InterviewInformationPage = () => {
   const [type, setType] = useState<string>("");
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
-  //   const {createInterview, loading: createLoading} = useCreateInterview();
+    const {createInterview, loading: createLoading} = useCreateInterview();
 
   const navigate = useNavigate();
 
@@ -33,7 +36,7 @@ export const InterviewInformationPage = () => {
   };
 
   const handleCreateInterviewRoom = () => {
-    navigate("/dashboard/interviewRoom");
+    navigate("/dashboard/interview-room");
   };
 
   const handleSelectCV = (id: string) => {
@@ -41,12 +44,17 @@ export const InterviewInformationPage = () => {
     setHasResult(false);
   };
 
+  const StartInterview = () => {
+    const cvData = selectedCVDetailed?.data as ResumeDto["data"]
 
-  //   const StartInterview = async () => {
-  //         const cvData = selectedCVDetailed?.data as ResumeDto["data"]
-  //         await createInterview({position: positionButtonElementValue, type: typeButtonElementValue?.toLowerCase() as typeEnum, yearOfExp: yearOfExpButtonElementValue, jd: jd as string, cv: cvData})
-  //         handleCreateInterviewRoom();
-  //   }
+    createInterview({
+      position: position, 
+      type: type["code"] as typeEnum,
+      language: language as  languageEnum,
+      jd: jd as string, 
+      cv: cvData})
+    handleCreateInterviewRoom();
+  }
 
   // START: TEMPLATE OF SELECT LANGUAGE BUTTON
   const languageData = [
@@ -86,11 +94,7 @@ export const InterviewInformationPage = () => {
   // END
 
   const startInterviewButtonActive = (language != '' && position != '' && type != '' && jd != '' && selectedCVDetailed != null);
-  console.log(language)
-  console.log(position)
-  console.log(type)
-  console.log(jd)
-  console.log(selectedCVDetailed)
+
   return (
     <div className="h-full w-full p-6 flex flex-col bg-[#f2f2f7]">
       {/** TODO: Back to the previous router */}
@@ -258,7 +262,7 @@ export const InterviewInformationPage = () => {
 
         <button type="button" className={`py-3.5 px-[60px] rounded-[6px]  ${startInterviewButtonActive === false ? 'bg-[#AEAEB2] cursor-not-allowed' : 'bg-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#005ABD]'}`} 
           disabled={!startInterviewButtonActive}
-          onClick={() => {console.log("hello")}}>
+          onClick={StartInterview}>
           <span className="text-white text-medium text-base">Start interview</span>
         </button>
       </div>
