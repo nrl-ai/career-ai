@@ -51,6 +51,9 @@ POSITION APPLIED FOR BY THE CANDIDATE:
 INTERVIEW FORMAT:
 """{type}"""
 \n\n\n
+"PREVIOUS INTERVIEW CONTENT:
+"""{content}"""
+\n\n\n
 `,
 };
 
@@ -96,13 +99,14 @@ export const ai_createJd = async (language: keyof CreateJDPrompt, position: stri
   return result.choices[0].message.content ?? text;
 };
 
-export const ai_generate_interview_question = async(language: keyof CreateJDPrompt, cv: string, jd: string, position: string, type: string) => {
-  const prompt = PROMPT[language].replace("{jd}", jd).replace("{cv}", cv).replace("{position}", position).replace("{type}", type) 
+export const ai_generate_interview_question = async(language: keyof CreateJDPrompt, cv: string, jd: string, position: string, type: string, content: string) => {
+  const prompt = PROMPT[language].replace("{jd}", jd).replace("{cv}", cv).replace("{position}", position).replace("{type}", type).replace("{content}", content);
   const stream = await openai.chat.completions.create({
     messages: [{role: "system", content: prompt}],
     model: "gpt-3.5-turbo",
     stream: true,
   });
+
   return stream;
 }
 
@@ -131,7 +135,6 @@ export class InterviewsService {
   }
 
   create(userId: string, createInterViewDto: CreateInterviewDto) {
-    debugger
     return this.prisma.interviews.create({
       data: {
         userId,
@@ -151,8 +154,15 @@ export class InterviewsService {
     return ai_createJd(language.toLowerCase() as keyof CreateJDPrompt, position);
   }
 
-  interviewQuestionGenerate(language: string, cv: string, jd: string, position: string, type: string) {
-    return ai_generate_interview_question(language.toLocaleLowerCase() as keyof InterviewPrompt, cv, jd, position, type);
+  interviewQuestionGenerate(interviewDto: InterviewDto) {
+    const language = interviewDto.language.toLowerCase() as keyof InterviewPrompt;
+    const cv = JSON.stringify(interviewDto.cv);
+    const jd = interviewDto.jd;
+    const content = JSON.stringify(interviewDto.content);
+    const position = interviewDto.position;
+    const type = interviewDto.type;
+
+    return ai_generate_interview_question(language, cv, jd, position, type, content);
   }
   
   // async create(userId: string, createResumeDto: CreateInterviewDto) {

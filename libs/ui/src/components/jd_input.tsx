@@ -354,7 +354,7 @@ const Toolbar = ({
         type="button"
         disabled={isLoading || !isActive}
         className={`flex items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
-          bg-white py-2 px-10 rounded-[10px]`}
+          bg-white py-2 px-10 rounded-[10px] ${isLoading ? 'pointer-events-none cursor-not-allowed' : ''}`}
         onClick={handleAIGenerateJD}
       >
         {isLoading ? <span>Processing...</span> : <span>AI generate</span>}

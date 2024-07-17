@@ -4,13 +4,42 @@ import { PushToTalkButton } from "./_components/push_to_talk_button";
 import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from 'primereact/progressbar';
 import { EndInterviewButton } from "./_components/end_interview_button";
+import { QuestionCheckBox } from "./_components/question_check_box";
+import { useLocation } from "react-router-dom";
+import { useGenerateInterviewQuestion } from "@/client/services/interview/generate_interview_question";
 
 export const InterviewRoomPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const interviewInfo = location.state;
+
   const [aiIsSpeaking, setAiIsSpeaking] = useState(true);
-  const handleOnClick = () => {
-    navigate("/dashboard/interviewInformation");
-  };
+  const listFinishedQuestion = [];
+  const [finishedQuestion, setFinishedQuestion] = useState<{"question": string, "finished" : boolean}>();
+
+
+  // Streaming AI Response
+  const [response, setResponse] = useState<string | undefined>('');   
+  const responseRef = useRef<string>();
+  const { generateInterviewQuestion, loading, error, result } = useGenerateInterviewQuestion();
+
+  useEffect(() => {
+    const getOpenAIResponse = async () => {
+      const stream = await generateInterviewQuestion(interviewInfo);
+      for await (const chunk of stream) {
+        /** The ref stores a dynamic string containing each chunk of the response received so far and is stable across re-renders. */
+        responseRef.current = responseRef.current + chunk.choices[0]?.delta?.content;
+    
+        // Update the state variable based on the ref content so that the UI re-renders
+        setResponse(responseRef.current);
+      }
+    }
+    getOpenAIResponse()
+  }, []);
+
+  // const handleOnClick = () => {
+  //   navigate("/dashboard/interviewInformation");
+  // };
 
 
   return (
@@ -81,7 +110,9 @@ export const InterviewRoomPage = () => {
                 }
               }
             }}/>
-            <div id="interview_question_container" className="flex-grow min-h-[59vh] bg-black"></div>
+            <div id="interview_question_container" className="flex-grow min-h-[59vh] bg-white">
+              <QuestionCheckBox finishedQuestion={finishedQuestion} setFinishedQuestions={setFinishedQuestion}/>
+            </div>
           </div>
           <EndInterviewButton />
         </div>

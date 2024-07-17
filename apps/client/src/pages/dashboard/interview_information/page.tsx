@@ -6,7 +6,7 @@ import { useToast } from "@/client/hooks/use-toast";
 import { t } from "@lingui/macro";
 import { useCreateInterview } from "@/client/services/interview/create";
 import { useResumes } from "@/client/services/resume";
-import { ResumeDto } from "@career-ai/dto";
+import { InterviewDto, ResumeDto } from "@career-ai/dto";
 import { InputText } from "primereact/inputtext";
 import { SelectButton } from "primereact/selectbutton";
 import { Dropdown } from "primereact/dropdown";
@@ -25,6 +25,7 @@ export const InterviewInformationPage = () => {
   const [language, setLanguage] = useState<string>("");
   const [position, setPosition] = useState<string>("");
   const [type, setType] = useState<string>("");
+  const { toast } = useToast();
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
     const {createInterview, loading: createLoading} = useCreateInterview();
@@ -35,8 +36,8 @@ export const InterviewInformationPage = () => {
     navigate("/dashboard/interview");
   };
 
-  const handleCreateInterviewRoom = () => {
-    navigate("/dashboard/interview-room");
+  const handleCreateInterviewRoom = (result : InterviewDto) => {
+    navigate("/dashboard/interview-room", {state: result });
   };
 
   const handleSelectCV = (id: string) => {
@@ -44,16 +45,23 @@ export const InterviewInformationPage = () => {
     setHasResult(false);
   };
 
-  const StartInterview = () => {
+  const StartInterview = async () => {
     const cvData = selectedCVDetailed?.data as ResumeDto["data"]
+    try {
+      const result = await createInterview({
+        position: position, 
+        type: type["code"] as typeEnum,
+        language: language as  languageEnum,
+        jd: jd as string, 
+        cv: cvData})
 
-    createInterview({
-      position: position, 
-      type: type["code"] as typeEnum,
-      language: language as  languageEnum,
-      jd: jd as string, 
-      cv: cvData})
-    handleCreateInterviewRoom();
+      handleCreateInterviewRoom(result);
+    } catch (error) {
+      toast({
+        variant: "error",
+        title: t`${error}`,
+      });
+    }
   }
 
   // START: TEMPLATE OF SELECT LANGUAGE BUTTON
@@ -64,7 +72,7 @@ export const InterviewInformationPage = () => {
     },
     {
       name: "English",
-      code: "US",
+      code: "EN",
       // "icon":
     },
     {
