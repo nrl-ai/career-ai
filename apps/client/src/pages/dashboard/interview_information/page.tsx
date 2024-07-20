@@ -24,7 +24,7 @@ export const InterviewInformationPage = () => {
   const [languageSelector, setLanguageSelector] = useState<string>("");
   const [language, setLanguage] = useState<string>("");
   const [position, setPosition] = useState<string>("");
-  const [type, setType] = useState<string>("");
+  const [type, setType] = useState<typeEnum>();
   const { toast } = useToast();
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
@@ -50,7 +50,7 @@ export const InterviewInformationPage = () => {
     try {
       const result = await createInterview({
         position: position, 
-        type: type["code"] as typeEnum,
+        type: type ? type["code"] : "technical",
         language: language as  languageEnum,
         jd: jd as string, 
         cv: cvData})
@@ -101,7 +101,7 @@ export const InterviewInformationPage = () => {
 
   // END
 
-  const startInterviewButtonActive = (language != '' && position != '' && type != '' && jd != '' && selectedCVDetailed != null);
+  const startInterviewButtonActive = (language != '' && position != '' && type != undefined && jd != '' && selectedCVDetailed != null);
 
   return (
     <div className="h-full w-full p-6 flex flex-col bg-[#f2f2f7]">
@@ -192,11 +192,11 @@ export const InterviewInformationPage = () => {
                     className: "mt-2 outline outline-1 outline-[#D1D1D6]",
                   },
                   input: {
-                    style: { color: type == "" ? "#AEAEB2" : "#191919" },
+                    style: { color: type == undefined ? "#AEAEB2" : "#191919" },
                     className: `text-base font-medium focus:text-[#191919] p-2`,
                   },
                   trigger: {
-                    style: { color: type == "" ? "#AEAEB2" : "#191919" },
+                    style: { color: type == undefined ? "#AEAEB2" : "#191919" },
                   },
                   list: {
                     className: "p-2 text-base",

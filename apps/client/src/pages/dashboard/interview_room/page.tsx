@@ -6,41 +6,46 @@ import { ProgressBar } from 'primereact/progressbar';
 import { EndInterviewButton } from "./_components/end_interview_button";
 import { QuestionCheckBox } from "./_components/question_check_box";
 import { useLocation } from "react-router-dom";
-import { useGenerateInterviewQuestion } from "@/client/services/interview/generate_interview_question";
+import { useAICreateQuestionNoStreaming } from "@/client/services/interview/createQuestionNoStreaming";
+import { AxiosResponse } from "axios";
+
 
 export const InterviewRoomPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const interviewInfo = location.state;
 
-  const [aiIsSpeaking, setAiIsSpeaking] = useState(true);
+  const [aiIsSpeaking, setAiIsSpeaking] = useState(false);
   const listFinishedQuestion = [];
   const [finishedQuestion, setFinishedQuestion] = useState<{"question": string, "finished" : boolean}>();
 
 
   // Streaming AI Response
-  const [response, setResponse] = useState<string | undefined>('');   
+  const inputInterviewInfo = {
+    language : interviewInfo.language,
+    cv : interviewInfo.cv,
+    jd : interviewInfo.jd,
+    content : interviewInfo.content,
+    position : interviewInfo.position,
+    type : interviewInfo.type
+  }
+  const [response, setResponse] = useState('');   
   const responseRef = useRef<string>();
-  const { generateInterviewQuestion, loading, error, result } = useGenerateInterviewQuestion();
+  const { ai_createQuestion_no_streaming, loading, error, result } = useAICreateQuestionNoStreaming();
 
   useEffect(() => {
-    const getOpenAIResponse = async () => {
-      const stream = await generateInterviewQuestion(interviewInfo);
-      for await (const chunk of stream) {
-        /** The ref stores a dynamic string containing each chunk of the response received so far and is stable across re-renders. */
-        responseRef.current = responseRef.current + chunk.choices[0]?.delta?.content;
-    
-        // Update the state variable based on the ref content so that the UI re-renders
-        setResponse(responseRef.current);
-      }
-    }
-    getOpenAIResponse()
+    const getAIQuestionResponse = async () => { 
+      setAiIsSpeaking(true);
+      setResponse(await ai_createQuestion_no_streaming(inputInterviewInfo));
+      setAiIsSpeaking(false);
+    };
+
+    getAIQuestionResponse();
   }, []);
 
-  // const handleOnClick = () => {
-  //   navigate("/dashboard/interviewInformation");
-  // };
-
+  const handleEndInterviewClick = () => {
+    navigate("/dashboard/interview");
+  };
 
   return (
     <div className="h-full w-full p-6 flex flex-col bg-[#f2f2f7]">
@@ -60,25 +65,18 @@ export const InterviewRoomPage = () => {
             <div className="flex items-center h-[22%] gap-x-6 pb-3 border-b-2 border-[#D1D1D6]">
               <AiSpeakingIcon width="50" height="50" aiIsSpeaking={aiIsSpeaking}/>
               <span className={`font-medium text-sm ${aiIsSpeaking ? 'text-[#007AFF]' : 'text-[#8E8E93]'}`}>NOW</span>
-              {aiIsSpeaking ? 
+              {response != null || response != undefined || response != "" ? 
               <div className="h-full w-full overflow-y-auto">
                 <span className="font-medium text-sm text-[#191919]">
                   {/** AI response goes here */}
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
-                  Welcome to the ultimate guide for starting a new CrewAI project. This document will walk you through the steps to create, customize, and run your CrewAI project, ensuring you have everything you need to get started.
+                  {response}
                 </span>
               </div>
               : 
                 <span className="font-medium text-sm text-[#191919]">...</span>
               }
             </div>
-            <div className="flex h-[20%] w-full overflow-y-auto text-center">
+            <div className="flex h-[40%] w-full overflow-y-auto text-center">
 
               {/** Human answer goes here  */}
               <span id="human_answer" className="font-medium text-sm text-[#191919]">
@@ -114,7 +112,7 @@ export const InterviewRoomPage = () => {
               <QuestionCheckBox finishedQuestion={finishedQuestion} setFinishedQuestions={setFinishedQuestion}/>
             </div>
           </div>
-          <EndInterviewButton />
+          <EndInterviewButton navigate={handleEndInterviewClick}/>
         </div>
       </div>  
     </div>

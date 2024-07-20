@@ -1,11 +1,10 @@
 import { Button } from "primereact/button";
 
-// type Props = {
-//     navigate: void,
+type Props = {
+    navigate: () => void,
+}
 
-// }
-
-export const EndInterviewButton = () => {
+export const EndInterviewButton = ({navigate} : Props) => {
     return (
         <Button
             label="End interview"
@@ -21,6 +20,7 @@ export const EndInterviewButton = () => {
                     className: "font-medium text-white text-base"
                 }
             }}
+            onClick={navigate}
         />
     )
 }

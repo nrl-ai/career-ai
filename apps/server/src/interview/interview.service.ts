@@ -4,7 +4,7 @@ import { PrismaService } from "nestjs-prisma";
 import OpenAI from "openai";
 import { PrinterService } from "../printer/printer.service";
 import { StorageService } from "../storage/storage.service";
-import { CreateInterviewDto, InterviewDto } from "@career-ai/dto";
+import { CreateInterviewDto, InterviewDto, InterviewQuestionDto } from "@career-ai/dto";
 
 const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"],
@@ -34,13 +34,17 @@ HÌNH THỨC PHỎNG VẤN:
 \n\n\n
 NỘI DUNG PHỎNG VẤN TRƯỚC ĐẤY:
 """{content}"""
+
+Bạn hãy hỏi ứng viên lần lượt từng câu một.
+Cuộc phỏng vấn sẽ khép lại khi số lượng câu hỏi trong {content} đã đủ là 15 câu, khi đó hãy nói như sau:
+"""Cảm ơn bạn đã dành thời gian cho buổi phỏng vấn ngày hôm nay. Chúng tôi sẽ gửi kết quả đánh giá của buổi phỏng vấn này ngay sau đây."""
 `,
   en: `You are a recruiter for the company described in the job description below:
 
 JOB DESCRIPTION:
 """{jd}"""
 
-Your task is to interview the candidate based on the following information:
+Your task is to interview the candidate based on the following information, and you can ask up to 15 questions:
 
 CANDIDATE'S CV IN JSON FORMAT:
 """{cv}"""
@@ -54,6 +58,9 @@ INTERVIEW FORMAT:
 "PREVIOUS INTERVIEW CONTENT:
 """{content}"""
 \n\n\n
+
+The interview will conclude when the number of questions in {content} reaches 15. At that point, please say the following:
+"""Thank you for taking the time for the interview today. We will send you the evaluation results of this interview shortly."""
 `,
 };
 
@@ -100,14 +107,15 @@ export const ai_createJd = async (language: keyof CreateJDPrompt, position: stri
 };
 
 export const ai_generate_interview_question = async(language: keyof CreateJDPrompt, cv: string, jd: string, position: string, type: string, content: string) => {
+  const text = "Chúng tôi khi tạo câu hỏi phỏng vấn. Vui lòng thử lại.";
   const prompt = PROMPT[language].replace("{jd}", jd).replace("{cv}", cv).replace("{position}", position).replace("{type}", type).replace("{content}", content);
   const stream = await openai.chat.completions.create({
     messages: [{role: "system", content: prompt}],
     model: "gpt-3.5-turbo",
-    stream: true,
+    // stream: true,
   });
 
-  return stream;
+  return stream.choices[0].message.content ?? text;
 }
 
 @Injectable()
@@ -118,15 +126,10 @@ export class InterviewsService {
     private readonly storageService: StorageService,
   ) {}
 
-  findInterviewPerPage(userId: string, start: number, end: number) {
-    var start_number: number = +start;
-    var end_number: number = +end;
+  async fetchAll(userId: string) {
     return this.prisma.interviews.findMany({
-      where: { id: userId },
-      select: { position: true, type: true, createdAt: true, totalScore: true},
+      where: { userId: userId },
       orderBy: { createdAt: "desc" },
-      skip: start_number,
-      take: end_number,
     });
   }
 
@@ -134,14 +137,14 @@ export class InterviewsService {
     return this.prisma.interviews.delete({ where: { id: id } });
   }
 
-  create(userId: string, createInterViewDto: CreateInterviewDto) {
+  async create(userId: string, createInterViewDto: CreateInterviewDto) {
     return this.prisma.interviews.create({
       data: {
         userId,
         position: createInterViewDto.position,
-        language: createInterViewDto.language,
         type: createInterViewDto.type,
         jd: createInterViewDto.jd,
+        language: createInterViewDto.language,
         cv: createInterViewDto.cv,
       },
     });
@@ -154,13 +157,13 @@ export class InterviewsService {
     return ai_createJd(language.toLowerCase() as keyof CreateJDPrompt, position);
   }
 
-  interviewQuestionGenerate(interviewDto: InterviewDto) {
-    const language = interviewDto.language.toLowerCase() as keyof InterviewPrompt;
-    const cv = JSON.stringify(interviewDto.cv);
-    const jd = interviewDto.jd;
-    const content = JSON.stringify(interviewDto.content);
-    const position = interviewDto.position;
-    const type = interviewDto.type;
+  createQuestionNoStreaming(interviewQuestionDto: InterviewQuestionDto) {
+    const language = interviewQuestionDto.language.toLowerCase() as keyof InterviewPrompt;
+    const cv = JSON.stringify(interviewQuestionDto.cv);
+    const jd = interviewQuestionDto.jd;
+    const content = JSON.stringify(interviewQuestionDto.content);
+    const position = interviewQuestionDto.position;
+    const type = interviewQuestionDto.type;
 
     return ai_generate_interview_question(language, cv, jd, position, type, content);
   }
