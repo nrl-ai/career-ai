@@ -41,11 +41,20 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
       if (content.includes("MOCK INTERVIEW ENDED")) {
         setIsFinished(true);
       } else {
+        // There is no API in active now
+        await EasySpeech.speak({
+            text: content,
+            pitch: 1,
+            rate: 1,
+            volume: 1,
+          });
+        return;
         try {
           setWaitingForAudio(true);
           const audio = await textToAudio(content, "onyx");
           setWaitingForAudio(false);
-          // window.playingAudio = audio;
+          window.playingAudio = audio;
+          console.log(audio);
           setSpeechSynthesisInstance(audio); // Read out the message using the SpeechSynthesis API
           audio.play();
         } catch (error) {
@@ -74,10 +83,10 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
         window.speechSynthesis.cancel();
       }
     }
-    // if (window.playingAudio) {
-    //   window.playingAudio.pause();
-    //   window.playingAudio = null;
-    // }
+    if (window.playingAudio) {
+      window.playingAudio.pause();
+      window.playingAudio = null;
+    }
   };
 
   // Stop the TTS when the component is unmounted

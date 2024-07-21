@@ -126,7 +126,6 @@
     "@lingui/detect-locale": "^4.11.1",
     "@lingui/macro": "^4.11.1",
     "@lingui/react": "^4.11.1",
-    "@nanostores/react": "github:ai/react",
     "@nestjs-modules/mailer": "2.0.2",
     "@nestjs/axios": "^3.0.2",
     "@nestjs/common": "^10.3.9",
