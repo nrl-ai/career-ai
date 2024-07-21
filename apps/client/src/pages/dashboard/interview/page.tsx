@@ -294,15 +294,7 @@ export const InterviewPage = () => {
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
 
   return (
-<<<<<<< HEAD
     <div className="h-full w-full p-6 bg-[#f2f2f7]">
-      {/* <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
-=======
-    <div className="h-screen bg-[#f2f2f7]">
-      <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
->>>>>>> origin/main
-        This page is under construction. Please come back later.
-      </div> */}
       <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""}`}>
         <div
           className={`${interviews ? "col-span-2" : ""} flex flex-col h-full`}
