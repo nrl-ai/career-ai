@@ -16,7 +16,7 @@ import { InterviewsService } from "./interview.service";
 import { TwoFactorGuard } from "../auth/guards/two-factor.guard";
 import { User } from "../user/decorators/user.decorator";
 import { User as UserEntity } from "@prisma/client";
-import { CreateInterviewDto } from "@career-ai/dto";
+import { CreateInterviewDto, InterviewDto, InterviewQuestionDto } from "@career-ai/dto";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { ErrorMessage } from "@career-ai/utils";
 
@@ -25,16 +25,14 @@ import { ErrorMessage } from "@career-ai/utils";
 export class InterviewsController {
   constructor(private readonly interviewsService: InterviewsService) {}
 
-  @Get(":start/:end")
+  @Get("/findAll")
   // @Get()
   @UseGuards(TwoFactorGuard)
   // Find list of interview per page
-  findInterviewPerPage(
+  findAll(
     @User() user: UserEntity,
-    @Param("start") start: number,
-    @Param("end") end: number,
   ) {
-    return this.interviewsService.findInterviewPerPage(user.id, start, end);
+    return this.interviewsService.fetchAll(user.id);
   }
 
   @Post()
@@ -59,11 +57,20 @@ export class InterviewsController {
     return this.interviewsService.remove(id);
   }
 
-  @Post(":position/:language/createJd")
+  @Post("/createJd")
   @UseGuards(TwoFactorGuard)
-  ai_createJd(@Param("position") position: string, @Param("language") language: string) {
+  ai_createJd(@Body("position") position: string, @Body("language") language: string) {
     return this.interviewsService.createJd(position, language);
   }
+
+  @Post("/createQuestion")
+  @UseGuards(TwoFactorGuard)
+  ai_createQuestion(
+    @Body() interviewQuestionDto: InterviewQuestionDto
+  ) {
+    return this.interviewsService.createQuestionNoStreaming(interviewQuestionDto);
+  }
+
   // @Patch(":id/retake")
   // // Retake interview
   // @UseGuards(TwoFactorGuard)

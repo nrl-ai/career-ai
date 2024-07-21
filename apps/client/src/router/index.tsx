@@ -22,7 +22,7 @@ import { Providers } from "../providers";
 import { AuthGuard } from "./guards/auth";
 import { GuestGuard } from "./guards/guest";
 import { authLoader } from "./loaders/auth";
-import { ComingSoonPage } from "../pages/dashboard/coming_soon/page";
+import { ComingSoonPage } from "../pages/dashboard/courses/coming_soon/page";
 import { CoursesPage } from "../pages/dashboard/courses/page";
 import { CVOptimizationPage } from "../pages/dashboard/cv_optimization/page";
 import { DashboardPage } from "../pages/dashboard/dashboard/page";
@@ -81,7 +81,8 @@ export const routes = createRoutesFromElements(
           <Route path="cv-optimization" element={<CVOptimizationPage />} />
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="courses" element={<CoursesPage />} />
-          <Route path="interviewInformation" element={<InterviewInformationPage />} />
+          <Route path="interview-information" element={<InterviewInformationPage />} />
+          <Route path="interview-room" element={<InterviewRoomPage />} />
           <Route index element={<DashboardPage />} />
         </Route>
       </Route>

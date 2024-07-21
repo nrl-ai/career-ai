@@ -60,11 +60,13 @@ const Toolbar = ({
   isActive,
   position,
   language,
+  onChange,
 }: {
   editor: Editor;
   isActive: boolean;
   position: string;
   language: string;
+  onChange: ((value: string) => void) | undefined;
 }) => {
   const setLink = useCallback(() => {
     const previousUrl = editor.getAttributes("link").href;
@@ -93,6 +95,7 @@ const Toolbar = ({
     try {
       const result = await ai_createJd({ position: position, language: language });
       editor.chain().focus().setContent(result).run();
+      onChange?.(editor.getHTML())
     } catch (error) {
       console.error("Error generating JD: ", error);
     } finally {
@@ -102,7 +105,7 @@ const Toolbar = ({
 
   return (
     <div className="flex flex-wrap w-full justify-between items-center">
-      <div className="flex gap-2.5 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-[10px]">
+      <div className="flex gap-1.5 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-[10px]">
         <Tooltip content="Bold">
           <Toggle
             size="sm"
@@ -351,7 +354,7 @@ const Toolbar = ({
         type="button"
         disabled={isLoading || !isActive}
         className={`flex items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
-          bg-white py-2 px-10 rounded-[10px]`}
+          bg-white py-2 px-10 rounded-[10px] ${isLoading ? 'pointer-events-none cursor-not-allowed' : ''}`}
         onClick={handleAIGenerateJD}
       >
         {isLoading ? <span>Processing...</span> : <span>AI generate</span>}
@@ -451,7 +454,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
       editorProps: {
         attributes: {
           class: cn(
-            "prose prose-sm prose-zinc max-h-[300px] max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
+            "prose max-h-[calc(100vh-667px)] prose-sm prose-zinc grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
             editorClassName,
           ),
         },
@@ -496,13 +499,14 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
             isActive={isActive as boolean}
             position={position}
             language={language}
+            onChange={onChange}
           />
         )}
 
         <EditorContent
           editor={editor}
           className={cn(
-            "grid min-h-[200px] w-full rounded-[10px] border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
+            "grid w-full min-h-[calc(100vh-624px)] rounded-[10px] border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
             hideToolbar && "pt-2",
             className,
           )}

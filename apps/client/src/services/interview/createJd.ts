@@ -7,7 +7,7 @@ type aiCreateJdArgs = {
   language: string;
 };
 export const ai_createJd = async ({ position, language }: aiCreateJdArgs) => {
-  const response = await axios.post(`/interview/${position}/${language}/createJd`);
+  const response = await axios.post(`/interview/createJd`, {position, language});
   return response.data;
 };
 

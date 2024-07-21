@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFindInterviewsByUserId } from "@/client/services/interview/interview";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -7,6 +7,7 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { InterviewDto } from "@career-ai/dto";
 
 const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
   return (
@@ -219,6 +220,14 @@ const renderEmptyMessage = (handleClick) => {
   );
 };
 
+interface Interview {
+  id: number,
+  position: string,
+  type: string,
+  createdAt: string,
+  totalScore: number,
+};
+
 export const InterviewPage = () => {
   const navigate = useNavigate();
   const [globalFilterValue, onGlobalFilterChange] = useState<string>("");
@@ -240,62 +249,92 @@ export const InterviewPage = () => {
       width: "15%",
     },
     {
-      field: "date",
+      field: "createdAt",
       header: "Date",
       width: "15%",
     },
     {
-      field: "score",
+      field: "totalScore",
       header: "Score",
       width: "15%",
     },
   ];
 
   const [interviews, setInterviews] = useState<boolean | undefined>(false);
-  const { result, loading, error } = useFindInterviewsByUserId(0, 10);
+  const { result, loading, error } = useFindInterviewsByUserId();
+  const [dataTable, setDataTable] = useState([]);
+
+  const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = date.getFullYear();
+  
+    return `${day}/${month}/${year}`;
+  }
+
+  useEffect(() => {
+    if (result != undefined || result != null) {
+      if (result.length > 0) {
+        const formattedData = result.map(item => ({
+          ...item,
+          createdAt: formatDate(item.createdAt),
+        }));
+        setDataTable(formattedData as [])
+        setInterviews(true)
+      } else {
+        setInterviews(false)
+      }
+    }
+  }, [result])
 
   const handleClick = () => {
-    navigate("/dashboard/interviewInformation");
+    navigate("/dashboard/interview-information");
   };
 
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
 
   return (
+<<<<<<< HEAD
+    <div className="h-full w-full p-6 bg-[#f2f2f7]">
+      {/* <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
+=======
     <div className="h-screen bg-[#f2f2f7]">
       <div className="bg-gray-600 text-white p-2 rounded-lg mb-5">
+>>>>>>> origin/main
         This page is under construction. Please come back later.
-      </div>
-      <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""} h-full`}>
+      </div> */}
+      <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""}`}>
         <div
-          className={`${interviews ? "col-span-2" : ""} flex flex-col gap-y-14 h-full`}
+          className={`${interviews ? "col-span-2" : ""} flex flex-col h-full`}
           id="ai-interview-management"
         >
           <div className="flex justify-between items-center">
             <span className="text-3xl font-bold">AI Mock Interview</span>
           </div>
-          <div className="h-full">
+          <div className="">
             <DataTable
-              rows={10}
+              rows={8}
               loading={loading}
               dataKey="id"
               filterIcon={() => {
                 return <i className="pi pi-sort-down-fill"></i>;
               }}
-              globalFilterFields={["id", "position", "type", "date", "score"]}
+              globalFilterFields={["id", "position", "type", "date", "totalScore"]}
               header={header}
+              value={dataTable}
               emptyMessage={renderEmptyMessage(handleClick)}
               paginator={interviews ? true : false}
               pt={{
-                root: { className: "flex flex-col gap-y-4 pt-4" },
+                root: { className: "flex flex-col h-full gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
                 header: { style: { background: "transparent", padding: 0, border: "none" } },
                 wrapper: { className: "rounded-[10px]" },
-                table: { className: `w-full flex-grow bg-white` },
+                table: { className: `w-full overflow-y-hidden flex-grow bg-white h-[calc(100vh-256px)]` },
               }}
             >
               {ColumnItems.map((item, i) => (
                 <Column
-                  key={item.field}
+                  field={item.field}
                   header={item.header}
                   style={{ width: `${item.width}` }}
                   filter

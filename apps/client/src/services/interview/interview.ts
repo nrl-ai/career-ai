@@ -5,22 +5,22 @@ import { useQuery } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 import { INTERVIEWS_KEY } from "@/client/constants/query-keys";
 
-export const findInterviewsByUserId = async (data: { start: number; end: number }) => {
+export const findInterviewsByUserId = async () => {
   const response = await axios.get<InterviewDto[], AxiosResponse<InterviewDto[]>>(
-    `/interview/${data.start}/${data.end}`,
+    `/interview/findAll`,
   );
 
   return response.data;
 };
 
-export const useFindInterviewsByUserId = (start: number, end: number) => {
+export const useFindInterviewsByUserId = () => {
   const {
     error,
     isPending: loading,
     data: result,
   } = useQuery({
     queryKey: INTERVIEWS_KEY,
-    queryFn: () => findInterviewsByUserId({ start, end }),
+    queryFn: () => findInterviewsByUserId(),
   });
 
   return { result, loading, error };
