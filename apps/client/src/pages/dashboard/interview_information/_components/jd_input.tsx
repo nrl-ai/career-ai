@@ -18,10 +18,10 @@ import { Paragraph } from "@tiptap/extension-paragraph";
 import { Strike } from "@tiptap/extension-strike";
 import { Text } from "@tiptap/extension-text";
 import { TextAlign } from "@tiptap/extension-text-align";
-import { Toggle } from "./toggle";
-import { Tooltip } from "./tooltip";
-import { Button } from "./button";
-import { Skeleton } from "./skeleton";
+import { Toggle } from "../../../../../../../libs/ui/src/components/toggle";
+import { Tooltip } from "../../../../../../../libs/ui/src/components/tooltip";
+import { Button } from "../../../../../../../libs/ui/src/components/button";
+import { Skeleton } from "../../../../../../../libs/ui/src/components/skeleton";
 import { Spinner } from "@radix-ui/themes";
 import { useAiCreateJd } from "@/client/services/interview/createJd";
 
@@ -353,7 +353,7 @@ const Toolbar = ({
       <button
         type="button"
         disabled={isLoading || !isActive}
-        className={`mb-4 flex items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
+        className={`flex items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
           bg-white py-2 px-10 rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
@@ -506,7 +506,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
         <EditorContent
           editor={editor}
           className={cn(
-            "grid w-full min-h-[400px] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
+            "grid w-full min-h-[33vh] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
             hideToolbar && "pt-2",
             className,
           )}
