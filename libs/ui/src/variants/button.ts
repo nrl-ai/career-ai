@@ -11,8 +11,7 @@ export const buttonVariants = cva(
         warning: "bg-warning text-warning-foreground hover:bg-warning/80",
         info: "bg-info text-info-foreground hover:bg-info/80",
         success: "bg-success text-success-foreground hover:bg-success/80",
-        outline:
-          "border border-secondary bg-white hover:bg-white hover:text-secondary-foreground",
+        outline: "border border-secondary bg-white hover:bg-white hover:text-secondary-foreground",
         ghost: "hover:bg-white hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

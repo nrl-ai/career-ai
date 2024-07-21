@@ -14,7 +14,7 @@ const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
     <div className="flex w-full justify-between">
       <IconField
         iconPosition="left"
-        className="w-fit bg-white rounded-[10px] p-2.5 focus-within:ring-1 focus-within:ring-[#3D6CF5]"
+        className="w-fit bg-white rounded-xl p-2.5 focus-within:ring-1 focus-within:ring-[#3D6CF5]"
       >
         <InputIcon className="pi pi-search" />
         <InputText
@@ -25,14 +25,14 @@ const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
           pt={{
             root: {
               className:
-                "w-[500px] border-none h-8 font-medium text-base focus:ring-0 focus:shadow-none",
+                "max-w-[400px] border-none h-8 font-medium text-base focus:ring-0 focus:shadow-none",
             },
           }}
         />
       </IconField>
       <Button
         icon="pi pi-plus-circle"
-        className="flex h-[52px] w-[180px] rounded-[10px] bg-[#007AFF] text-white justify-center items-center gap-x-2.5"
+        className="flex h-[52px] w-[180px] rounded-xl bg-blue-500 text-white justify-center items-center gap-x-2.5"
         onClick={handleClick}
         label="New interview"
         pt={{
@@ -208,7 +208,7 @@ const renderEmptyMessage = (handleClick) => {
 
       <Button
         icon="pi pi-plus-circle"
-        className="flex h-[52px] w-[180px] rounded-[10px] bg-[#007AFF] text-white justify-center items-center gap-x-2.5"
+        className="flex h-[52px] w-[180px] rounded-xl bg-[#007AFF] text-white justify-center items-center gap-x-2.5"
         onClick={handleClick}
         label="New interview"
         pt={{
@@ -221,12 +221,12 @@ const renderEmptyMessage = (handleClick) => {
 };
 
 interface Interview {
-  id: number,
-  position: string,
-  type: string,
-  createdAt: string,
-  totalScore: number,
-};
+  id: number;
+  position: string;
+  type: string;
+  createdAt: string;
+  totalScore: number;
+}
 
 export const InterviewPage = () => {
   const navigate = useNavigate();
@@ -265,27 +265,27 @@ export const InterviewPage = () => {
   const [dataTable, setDataTable] = useState([]);
 
   const formatDate = (date) => {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
     const year = date.getFullYear();
-  
+
     return `${day}/${month}/${year}`;
-  }
+  };
 
   useEffect(() => {
     if (result != undefined || result != null) {
       if (result.length > 0) {
-        const formattedData = result.map(item => ({
+        const formattedData = result.map((item) => ({
           ...item,
           createdAt: formatDate(item.createdAt),
         }));
-        setDataTable(formattedData as [])
-        setInterviews(true)
+        setDataTable(formattedData as []);
+        setInterviews(true);
       } else {
-        setInterviews(false)
+        setInterviews(false);
       }
     }
-  }, [result])
+  }, [result]);
 
   const handleClick = () => {
     navigate("/dashboard/interview-information");
@@ -294,14 +294,14 @@ export const InterviewPage = () => {
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
 
   return (
-    <div className="h-full w-full p-6 bg-[#f2f2f7]">
-      <div className={`${interviews ? "grid grid-cols-3 gap-x-12" : ""}`}>
+    <div className="h-full w-full p-0 pt-4 bg-[#f2f2f7]">
+      <div className={`${interviews ? "grid grid-cols-2 gap-x-12" : ""}`}>
         <div
           className={`${interviews ? "col-span-2" : ""} flex flex-col h-full`}
           id="ai-interview-management"
         >
           <div className="flex justify-between items-center">
-            <span className="text-3xl font-bold">AI Mock Interview</span>
+            <span className="text-2xl font-bold">AI Mock Interview</span>
           </div>
           <div className="">
             <DataTable
@@ -317,11 +317,11 @@ export const InterviewPage = () => {
               emptyMessage={renderEmptyMessage(handleClick)}
               paginator={interviews ? true : false}
               pt={{
-                root: { className: "flex flex-col h-full gap-y-4 pt-4" },
+                root: { className: "flex flex-col gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
                 header: { style: { background: "transparent", padding: 0, border: "none" } },
-                wrapper: { className: "rounded-[10px]" },
-                table: { className: `w-full overflow-y-hidden flex-grow bg-white h-[calc(100vh-256px)]` },
+                wrapper: { className: "rounded-xl" },
+                table: { className: `w-full overflow-y-hidden bg-white` },
               }}
             >
               {ColumnItems.map((item, i) => (

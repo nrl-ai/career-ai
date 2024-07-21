@@ -14,7 +14,7 @@ import { BaseButton } from "./_components/base_button";
 import { useDialog } from "@/client/stores/dialog";
 
 type typeEnum = "technical" | "behavioral" | "combination";
-type languageEnum =  "VN" | "EN" | "KR";
+type languageEnum = "VN" | "EN" | "KR";
 
 export const InterviewInformationPage = () => {
   const [jd, setJD] = useState<string | undefined>("");
@@ -24,11 +24,11 @@ export const InterviewInformationPage = () => {
   const [languageSelector, setLanguageSelector] = useState<string>("");
   const [language, setLanguage] = useState<string>("");
   const [position, setPosition] = useState<string>("");
-  const [type, setType] = useState<typeEnum>();
+  const [type, setType] = useState<typeEnum>("combination");
   const { toast } = useToast();
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
-    const {createInterview, loading: createLoading} = useCreateInterview();
+  const { createInterview, loading: createLoading } = useCreateInterview();
 
   const navigate = useNavigate();
 
@@ -36,8 +36,8 @@ export const InterviewInformationPage = () => {
     navigate("/dashboard/interview");
   };
 
-  const handleCreateInterviewRoom = (result : InterviewDto) => {
-    navigate("/dashboard/interview-room", {state: result });
+  const handleCreateInterviewRoom = (result: InterviewDto) => {
+    navigate("/dashboard/interview-room", { state: result });
   };
 
   const handleSelectCV = (id: string) => {
@@ -46,14 +46,15 @@ export const InterviewInformationPage = () => {
   };
 
   const StartInterview = async () => {
-    const cvData = selectedCVDetailed?.data as ResumeDto["data"]
+    const cvData = selectedCVDetailed?.data as ResumeDto["data"];
     try {
       const result = await createInterview({
-        position: position, 
+        position: position,
         type: type ? type["code"] : "technical",
-        language: language as  languageEnum,
-        jd: jd as string, 
-        cv: cvData})
+        language: language as languageEnum,
+        jd: jd as string,
+        cv: cvData,
+      });
 
       handleCreateInterviewRoom(result);
     } catch (error) {
@@ -62,7 +63,7 @@ export const InterviewInformationPage = () => {
         title: t`${error}`,
       });
     }
-  }
+  };
 
   // START: TEMPLATE OF SELECT LANGUAGE BUTTON
   const languageData = [
@@ -101,22 +102,26 @@ export const InterviewInformationPage = () => {
 
   // END
 
-  const startInterviewButtonActive = (language != '' && position != '' && type != undefined && jd != '' && selectedCVDetailed != null);
+  const startInterviewButtonActive =
+    language != "" && position != "" && type != undefined && selectedCVDetailed != null;
 
   return (
-    <div className="h-full w-full p-6 flex flex-col bg-[#f2f2f7]">
+    <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       {/** TODO: Back to the previous router */}
       <div className="flex items-center gap-x-2">
         <span className="font-medium text-base text-[#AEAEB2]">AI Mocking Interview</span>
         <i className="pi pi-chevron-right text-[#AEAEB2]"></i>
-        <span className="font-medium text-base">Interview Input</span>
+        <span className="font-medium text-base">New interview</span>
       </div>
 
-      <div className="text-3xl font-semibold my-4">Interview input</div>
+      <div className="text-3xl font-semibold my-4">New interview</div>
 
-      <div className="grid grid-cols-2 gap-x-6 h-fit flex-cols" style={{height: 'calc(100vh - 240px)'}}>
-        <div className="col-span-1 rounded-[10px] bg-white p-6">
-          <span className="font-semibold text-2xl">Interview information</span>
+      <div
+        className="grid grid-cols-2 gap-x-6 h-fit flex-cols"
+        style={{ height: "calc(100vh - 240px)" }}
+      >
+        <div className="col-span-1 rounded-xl bg-white p-6">
+          <span className="font-semibold text-2xl">Applying position</span>
           <div className="grid grid-cols-2 gap-x-3 mt-[18px]">
             <div className="col-span-1 flex flex-col">
               <span className="text-base font-medium">Language</span>
@@ -176,7 +181,6 @@ export const InterviewInformationPage = () => {
                 placeholder="Select"
                 checkmark={true}
                 highlightOnSelect={false}
-                // className={`w-full ${ language != '' ? 'outline-[#007AFF] text-[#191919]' : 'outline-[#D1D1D6]'}`}
                 pt={{
                   root: {
                     style: {
@@ -232,7 +236,7 @@ export const InterviewInformationPage = () => {
           </div>
 
           <div className="mt-6 flex flex-col">
-            <span className="text-base font-medium">Job description</span>
+            <span className="text-base font-medium">Job description (optional)</span>
             <JDInput
               id="jd-input-field"
               content={jd}
@@ -244,16 +248,24 @@ export const InterviewInformationPage = () => {
           </div>
         </div>
 
-        <div className="col-span-1 rounded-[10px] bg-white p-6">
-          <span className="font-semibold text-2xl">Applied Resume</span>
+        <div className="col-span-1 rounded-xl bg-white p-6">
+          <span className="font-semibold text-2xl">Select Resume</span>
 
           <div className="flex flex-col mt-[18px]">
-            <span className="text-base text-[#191919] font-medium">Create new resume</span>
-            <div className="w-full flex justify-between mt-2">
-              <BaseButton title="Create new resume" content="Create new resume from templates" icon="pi pi-plus-circle" dialog="resume" />
-              <BaseButton title="Import exisiting resume" content="LinkedIn, JSON Resume, etc." icon="pi pi-arrow-down" dialog="import" />
+            <div className="w-full flex justify-between mt-2 gap-2">
+              <BaseButton
+                title="Create new resume"
+                content="Create new resume from templates"
+                icon="pi pi-plus-circle"
+                dialog="resume"
+              />
+              <BaseButton
+                title="Import exisiting resume"
+                content="LinkedIn, JSON Resume, etc."
+                icon="pi pi-arrow-down"
+                dialog="import"
+              />
             </div>
-            
             <div className="mt-6">
               <span className="text-base text-[#191919] font-medium">Recent Resume</span>
               <CVSelector selectedCV={selectedCV} setSelectedCV={handleSelectCV} />
@@ -262,15 +274,21 @@ export const InterviewInformationPage = () => {
         </div>
       </div>
 
-
       <div className="flex justify-between pt-4">
-        <button type="button" className="py-3.5 px-[72px] bg-white rounded-[6px] outline outline-1 outline-[#191919] transition-all duration-200 ease-in-out transform hover:bg-[#F2F2F7]" onClick={handleCancel}>
+        <button
+          type="button"
+          className="py-3.5 px-[72px] bg-white rounded-xl outline outline-1 outline-[#191919] transition-all duration-200 ease-in-out transform hover:bg-[#F2F2F7]"
+          onClick={handleCancel}
+        >
           <span className="font-medium text-base text-[#191919]">Cancel</span>
         </button>
 
-        <button type="button" className={`py-3.5 px-[60px] rounded-[6px]  ${startInterviewButtonActive === false ? 'bg-[#AEAEB2] cursor-not-allowed' : 'bg-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#005ABD]'}`} 
+        <button
+          type="button"
+          className={`py-3.5 px-[60px] rounded-xl  ${startInterviewButtonActive === false ? "bg-[#AEAEB2] cursor-not-allowed" : "bg-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#005ABD]"}`}
           disabled={!startInterviewButtonActive}
-          onClick={StartInterview}>
+          onClick={StartInterview}
+        >
           <span className="text-white text-medium text-base">Start interview</span>
         </button>
       </div>

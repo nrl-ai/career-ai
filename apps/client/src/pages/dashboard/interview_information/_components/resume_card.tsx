@@ -20,7 +20,7 @@ export const ResumeCard = ({ resume, selected, onClick }: Props) => {
         className={cn(
           "space-y-0 overflow-hidden p-2 hover:border-[3px] border-blue-200",
           selected && "border-[3px] border-blue-500 shadow-lg shadow-blue-300/60",
-          "aspect-[1/1.1]"
+          "aspect-[1/1.1]",
         )}
         template={resume.data.metadata.template}
       >

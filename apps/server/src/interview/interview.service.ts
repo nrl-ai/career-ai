@@ -106,17 +106,29 @@ export const ai_createJd = async (language: keyof CreateJDPrompt, position: stri
   return result.choices[0].message.content ?? text;
 };
 
-export const ai_generate_interview_question = async(language: keyof CreateJDPrompt, cv: string, jd: string, position: string, type: string, content: string) => {
+export const ai_generate_interview_question = async (
+  language: keyof CreateJDPrompt,
+  cv: string,
+  jd: string,
+  position: string,
+  type: string,
+  content: string,
+) => {
   const text = "Chúng tôi khi tạo câu hỏi phỏng vấn. Vui lòng thử lại.";
-  const prompt = PROMPT[language].replace("{jd}", jd).replace("{cv}", cv).replace("{position}", position).replace("{type}", type).replace("{content}", content);
+  const prompt = PROMPT[language]
+    .replace("{jd}", jd)
+    .replace("{cv}", cv)
+    .replace("{position}", position)
+    .replace("{type}", type)
+    .replace("{content}", content);
   const stream = await openai.chat.completions.create({
-    messages: [{role: "system", content: prompt}],
+    messages: [{ role: "system", content: prompt }],
     model: "gpt-3.5-turbo",
     // stream: true,
   });
 
   return stream.choices[0].message.content ?? text;
-}
+};
 
 @Injectable()
 export class InterviewsService {
@@ -167,7 +179,7 @@ export class InterviewsService {
 
     return ai_generate_interview_question(language, cv, jd, position, type, content);
   }
-  
+
   // async create(userId: string, createResumeDto: CreateInterviewDto) {
   //     const { name, email, picture } = await this.prisma.user.findUniqueOrThrow({
   //       where: { id: userId },

@@ -14,7 +14,7 @@ export const resumeDataSchema = z.object({
 export const interviewContentSchema = z.object({
   question: z.string().default(""),
   answer: z.string().default(""),
-})
+});
 
 // Type
 export type ResumeData = z.infer<typeof resumeDataSchema>;

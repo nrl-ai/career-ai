@@ -29,9 +29,7 @@ export class InterviewsController {
   // @Get()
   @UseGuards(TwoFactorGuard)
   // Find list of interview per page
-  findAll(
-    @User() user: UserEntity,
-  ) {
+  findAll(@User() user: UserEntity) {
     return this.interviewsService.fetchAll(user.id);
   }
 
@@ -65,9 +63,7 @@ export class InterviewsController {
 
   @Post("/createQuestion")
   @UseGuards(TwoFactorGuard)
-  ai_createQuestion(
-    @Body() interviewQuestionDto: InterviewQuestionDto
-  ) {
+  ai_createQuestion(@Body() interviewQuestionDto: InterviewQuestionDto) {
     return this.interviewsService.createQuestionNoStreaming(interviewQuestionDto);
   }
 
