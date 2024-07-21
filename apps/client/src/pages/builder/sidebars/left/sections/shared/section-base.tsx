@@ -109,7 +109,7 @@ export const SectionBase = <T extends SectionItem>({ id, title, description }: P
         {section.items.length === 0 && (
           <Button
             variant="outline"
-            className="gap-x-2 border-dashed py-6 leading-relaxed hover:bg-secondary-accent"
+            className="gap-x-2 border-dashed py-6 leading-relaxed hover:bg-white-accent"
             onClick={onCreate}
           >
             <Plus size={20} />

@@ -48,7 +48,7 @@ const Column = ({ id, name, items }: ColumnProps) => {
   return (
     <SortableContext id={id} items={items} strategy={verticalListSortingStrategy}>
       <div className="relative">
-        <div className="absolute inset-0 w-3/4 rounded bg-secondary/50" />
+        <div className="absolute inset-0 w-3/4 rounded bg-white/50" />
 
         <div className="relative z-10 p-3 pb-8">
           <p className="mb-3 text-xs font-bold">{name}</p>

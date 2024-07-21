@@ -6,14 +6,14 @@ export const badgeVariants = cva(
     variants: {
       variant: {
         primary: "border-primary bg-primary text-primary-foreground",
-        secondary: "border-secondary bg-secondary text-secondary-foreground",
+        secondary: "border-secondary bg-white text-secondary-foreground",
         error: "border-error bg-error text-error-foreground",
         warning: "border-warning bg-warning text-warning-foreground",
         info: "border-info bg-info text-info-foreground",
         success: "border-success bg-success text-success-foreground",
       },
       outline: {
-        true: "bg-transparent",
+        true: "bg-white",
       },
     },
     compoundVariants: [

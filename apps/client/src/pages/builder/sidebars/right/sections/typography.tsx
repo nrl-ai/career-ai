@@ -75,7 +75,7 @@ export const TypographySection = () => {
               style={{ fontFamily: font }}
               disabled={typography.font.family === font}
               className={cn(
-                "flex h-12 items-center justify-center overflow-hidden rounded border text-center text-sm ring-primary transition-colors hover:bg-secondary-accent focus:outline-none focus:ring-1 disabled:opacity-100",
+                "flex h-12 items-center justify-center overflow-hidden rounded border text-center text-sm ring-primary transition-colors hover:bg-white-accent focus:outline-none focus:ring-1 disabled:opacity-100",
                 typography.font.family === font && "ring-1",
               )}
               onClick={() => {

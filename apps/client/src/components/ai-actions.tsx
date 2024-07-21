@@ -64,7 +64,7 @@ export const AiActions = ({ value, onChange, className }: Props) => {
   return (
     <div
       className={cn(
-        "relative mt-4 rounded bg-secondary-accent/50 p-3 outline outline-secondary-accent",
+        "relative mt-4 rounded bg-white-accent/50 p-3 outline outline-secondary-accent",
         "flex flex-wrap items-center justify-center gap-2",
         className,
       )}

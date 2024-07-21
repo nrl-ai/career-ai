@@ -70,7 +70,7 @@ export const Combobox = forwardRef(
             role="combobox"
             variant="outline"
             aria-expanded={open}
-            className="w-full justify-between hover:bg-secondary/20 active:scale-100"
+            className="w-full justify-between hover:bg-white/20 active:scale-100"
           >
             <span className="line-clamp-1 text-left font-normal">
               {props.multiple && props.value && props.value.length > 0 && (

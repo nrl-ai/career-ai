@@ -33,11 +33,11 @@ export const DashboardPage = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-bold tracking-tight"
           >
-            {t`Resumes`}
+            {t`Dashboard`}
           </motion.h1>
         </div>
 
-        <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
+        <main className="grid gap-y12" style={{ maxWidth: "1600px" }}>
           <div className="max-w-[500px] pb-4 text-md text-gray-500">
             {t`Create CVs quickly and easily using our templates. Manage CVs for different jobs and positions here.`}
           </div>
@@ -54,7 +54,7 @@ export const DashboardPage = () => {
           </motion.h1>
         </div>
 
-        <main className="grid gap-y12" style={{ maxWidth: "1200px" }}>
+        <main className="grid gap-y12" style={{ maxWidth: "1600px" }}>
           <BoardView />
         </main>
       </Tabs>

@@ -110,7 +110,7 @@ export const OpenAISettings = () => {
           </div>
         </form>
       </Form>
-
+{/* 
       <Alert variant="warning">
         <div className="prose prose-neutral max-w-full text-xs leading-relaxed text-primary dark:prose-invert">
           <Trans>
@@ -136,7 +136,7 @@ export const OpenAISettings = () => {
             liabilities solely rest on the user.
           </Trans>
         </div>
-      </Alert>
+      </Alert> */}
     </div>
   );
 };

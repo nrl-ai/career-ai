@@ -52,7 +52,7 @@ export const SectionListItem = ({
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, x: -50 }}
-      className="border-x border-t bg-secondary/10 first-of-type:rounded-t last-of-type:rounded-b last-of-type:border-b"
+      className="border-x border-t bg-white/10 first-of-type:rounded-t last-of-type:rounded-b last-of-type:border-b"
     >
       <div style={style} className="flex transition-opacity">
         {/* Drag Handle */}
@@ -61,7 +61,7 @@ export const SectionListItem = ({
           {...attributes}
           className={cn(
             "flex w-5 cursor-move items-center justify-center",
-            !isDragging && "hover:bg-secondary",
+            !isDragging && "hover:bg-white",
           )}
         >
           <DotsSixVertical weight="bold" size={20} />
@@ -72,7 +72,7 @@ export const SectionListItem = ({
           <ContextMenuTrigger asChild>
             <div
               className={cn(
-                "flex-1 cursor-context-menu p-4 hover:bg-secondary-accent",
+                "flex-1 cursor-context-menu p-4 hover:bg-white-accent",
                 !visible && "opacity-50",
               )}
               onClick={onUpdate}
