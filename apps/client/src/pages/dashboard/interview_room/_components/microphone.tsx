@@ -5,7 +5,6 @@ import WaveIcon from "./wave-icon";
 import { blobToBase64 } from "./blob-to-base64";
 import { startRecording, stopRecording, convertToWav } from "./libs-microphone";
 
-const BASE_URL = "";
 const Microphone = ({
   onNewText,
   iconSize,
@@ -17,7 +16,7 @@ const Microphone = ({
 }) => {
   const onNewRecordedBase64 = async (base64data: string | null) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/stt-az`, {
+      const response = await fetch(`/api/voice/speech-to-text`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

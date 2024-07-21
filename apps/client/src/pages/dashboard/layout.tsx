@@ -16,7 +16,7 @@ export const DashboardLayout = () => {
       <div className="sticky top-0 z-50 flex items-center justify-between p-4 pb-0 lg:hidden bg-white">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button size="icon" variant="ghost" className="bg-background">
+            <Button size="icon" variant="ghost" className="bg-background mb-4">
               <SidebarSimple />
             </Button>
           </SheetTrigger>

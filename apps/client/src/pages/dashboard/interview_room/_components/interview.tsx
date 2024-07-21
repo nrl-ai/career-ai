@@ -11,7 +11,6 @@ import { textToAudio } from "./tts";
 import ChatPanel from "./chat-panel";
 import ChatList from "./chat-list";
 
-const BASE_URL = "";
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
   lng: string;
@@ -26,7 +25,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
 
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
-      api: `${BASE_URL}/api/role_playing/interview/generate`,
+      api: `/api/interview/create-interview-answer`,
       initialMessages,
       headers: {
         "Content-Type": "application/json",

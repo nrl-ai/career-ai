@@ -20,6 +20,7 @@ import { TranslationModule } from "./translation/translation.module";
 import { UserModule } from "./user/user.module";
 import { InterviewsModule } from "./interview/interview.module";
 import { JobApplicationsModule } from "./job_applications/job_applications.module";
+import { VoiceModule } from './voice/voice.module';
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { JobApplicationsModule } from "./job_applications/job_applications.modul
       // eslint-disable-next-line unicorn/prefer-module
       rootPath: path.join(__dirname, "..", "client"),
     }),
+    VoiceModule,
   ],
   providers: [
     {

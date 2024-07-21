@@ -217,6 +217,7 @@
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "lucide-react": "^0.412.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.38.0",
     "minio": "^8.0.0",
     "nest-raven": "^10.1.0",
     "nestjs-minio-client": "^2.2.0",

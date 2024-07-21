@@ -67,6 +67,14 @@ export class InterviewsController {
     return this.interviewsService.createQuestionNoStreaming(interviewQuestionDto);
   }
 
+  @Post("/create-interview-answer")
+  @UseGuards(TwoFactorGuard)
+  ai_createInterviewAnswer(@Body() data: any) {
+    const messages = data.messages;
+    const forceFinish = data.forceFinish;
+    return this.interviewsService.generateInterviewAnswer(messages, forceFinish);
+  }
+
   // @Patch(":id/retake")
   // // Retake interview
   // @UseGuards(TwoFactorGuard)

@@ -1,8 +1,6 @@
-const BASE_URL = "";
-
 export const textToAudio = async (text: string, voice: string = "nova") => {
   // Fetching audio
-  const audioResponse = await fetch(`${BASE_URL}/api/tts/az`, {
+  const audioResponse = await fetch(`/api/voice/text-to-speech`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
