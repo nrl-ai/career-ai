@@ -4,6 +4,7 @@ import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 import helmet from "helmet";
 import { patchNestJsSwagger } from "nestjs-zod";
 
@@ -21,7 +22,8 @@ async function bootstrap() {
   // Cookie Parser
   app.use(cookieParser());
 
-  app.useBodyParser("raw", { limig: "50mb" });
+  app.use(bodyParser.json({ limit: "50mb" }));
+  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
   // CORS
   app.enableCors({

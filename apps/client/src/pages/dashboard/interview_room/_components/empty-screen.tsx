@@ -2,9 +2,11 @@ import { IconArrowRight } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { IconX } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { CVSelector } from "@/client/components/cv_selector";
 
 export function EmptyScreen({ append, lng }: any) {
   const [position, setPosition] = useState("");
+  const [selectedCV, setSelectedCV] = useState<string | null>(null);
 
   const positionsOptions =
     "Software Engineer;Marketing Associate;Data Scientist;Sales Representative;Financial Analyst;Accountant;HR Manager;Product Manager".split(
@@ -14,6 +16,10 @@ export function EmptyScreen({ append, lng }: any) {
     setPosition(positionsOptions[0]);
   }, []);
 
+  const handleSelectCV = (id: string) => {
+    setSelectedCV(id);
+  };
+
   return (
     <div className="mx-auto max-w-[900px] w-full px-4 lg:px-4 overflow-auto">
       <div className="rounded-2xl lg:border bg-white bg-opacity-60 p-8 lg:p-8 border-gray-300 lg:shadow-lg mb-8 overflow-auto pt-10 relative">
@@ -22,10 +28,15 @@ export function EmptyScreen({ append, lng }: any) {
             <IconX className="bg-black bg-opacity-5 text-gray-700 rounded-full p-2 z-50 w-8 h-8" />
           </a>
         </div>
+        <div className="flex items-center justify-center">
+          <h1 className="text-2xl font-bold tracking-tight mb-4 border-blue-500 border-b-4">
+            {"Welcome to Interview Room! ⭐⭐⭐"}
+          </h1>
+        </div>
         <div className="flex items-center justify-center mt-6 mb-2">
           <h2 className="text-lg font-semibold mb-8">{"Which position are you applying for?"}</h2>
         </div>
-        <div className="mb-4 grid grid-cols-2 lg:grid-cols-4 gap-1">
+        <div className="mb-8 grid grid-cols-2 lg:grid-cols-4 gap-1">
           {positionsOptions.map((option: string) => (
             <motion.nav
               key={option}
@@ -42,13 +53,23 @@ export function EmptyScreen({ append, lng }: any) {
         <div className="flex items-center justify-center mt-2">
           <input
             type="text"
-            className="rounded-lg border border-gray-300 shadow-sm focus:border-primary focus:ring-primary focus:ring-opacity-50 focus:ring-offset-background w-[300px] h-8 px-4 py-2 text-sm text-gray-700 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200"
+            className="rounded-lg shadow-sm focus:border-primary focus:ring-primary focus:ring-opacity-50 focus:ring-offset-background w-[300px] h-8 px-4 py-4 text-sm text-gray-700 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 border-2 border-blue-500"
             placeholder={"Type in position to apply"}
             value={position}
             onChange={(e) => setPosition(e.target.value)}
           />
         </div>
-        <div className="flex items-center justify-center mt-2">
+
+        <hr className="my-8 border-gray-300" />
+
+        <div className="flex items-center justify-center mt-8">
+          <h2 className="text-lg font-semibold mb-2">
+            Select a resume to start interview (optional)
+          </h2>
+        </div>
+        <CVSelector selectedCV={selectedCV} setSelectedCV={handleSelectCV} />
+
+        <div className="flex items-center justify-center mt-4">
           <button
             className="text-white shadow-md bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-xl flex flex-row px-4 py-3 mt-2"
             onClick={() =>
@@ -59,7 +80,7 @@ export function EmptyScreen({ append, lng }: any) {
             }
           >
             <IconArrowRight className="mr-2" />
-            {"start"}
+            <span className="font-semibold leading-6">Start Interview</span>
           </button>
         </div>
       </div>

@@ -7,8 +7,7 @@ export class VoiceController {
 
   @Post("text-to-speech")
   async textToSpeech(@Body() body: any) {
-    const { text, voice } = body;
-    return this.voiceService.textToAudio(text, voice);
+    return this.voiceService.textToAudioGTTS(body);
   }
 
   @Post("speech-to-text")

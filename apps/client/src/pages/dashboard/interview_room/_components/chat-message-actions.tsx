@@ -4,7 +4,7 @@ import { Button } from "./button";
 import { IconCheck, IconCopy } from "./icons";
 import { useCopyToClipboard } from "./use-copy-to-clipboard";
 import cn from "classnames";
-import { IconWand } from "@tabler/icons-react";
+
 const BASE_URL = "";
 interface ChatMessageActionsProps extends React.ComponentProps<"div"> {
   lng: string;

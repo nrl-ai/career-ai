@@ -10,6 +10,10 @@ import EasySpeech from "easy-speech";
 import { textToAudio } from "./tts";
 import ChatPanel from "./chat-panel";
 import ChatList from "./chat-list";
+import TalkingHeadComponent from "./TalkingHeadComponent";
+import { useRef } from "react";
+import { TalkingHead } from "./talking_head/talkinghead.mjs";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
@@ -17,11 +21,16 @@ export interface ChatProps extends React.ComponentProps<"div"> {
 }
 
 export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
+  const headRef = useRef<TalkingHead | null>(null);
   const [isFinished, setIsFinished] = useState(false);
   const [speechSynthesisInstance, setSpeechSynthesisInstance] = useState<
     HTMLAudioElement | SpeechSynthesisUtterance | null
   >(null);
   const [waitingForAudio, setWaitingForAudio] = useState(false);
+
+  const handleSpeak = (text: string) => {
+    headRef.current?.speakText(text);
+  };
 
   const { messages, append, reload, stop, isLoading, input, setInput } = useChat({
     api: `/api/interview/create-interview-answer`,
@@ -41,7 +50,6 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
       if (content.includes("MOCK INTERVIEW ENDED")) {
         setIsFinished(true);
       } else {
-        // There is no API in active now
         await EasySpeech.speak({
           text: content,
           pitch: 1,
@@ -49,9 +57,15 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
           volume: 1,
         });
         return;
+
+        // Talk with avatar
+        handleSpeak(content);
+
+        // TODO Fix the TTS
+
         try {
           setWaitingForAudio(true);
-          const audio = await textToAudio(content, "onyx");
+          const audio = await textToAudio(content);
           setWaitingForAudio(false);
           window.playingAudio = audio;
           console.log(audio);
@@ -101,14 +115,17 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
       <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto", className)}>
         {messages.length ? (
           <>
-            <ChatList
-              lng={lng}
-              messages={messages}
-              isLoading={isLoading}
-              waitingForAudio={waitingForAudio}
-              assistantAvatar={interviewerAvatar}
-            />
-            <ChatScrollAnchor trackVisibility={isLoading || waitingForAudio} />
+            <TalkingHeadComponent headRef={headRef as any} />
+            <ScrollArea className="flex-grow overflow-auto h-[300px]">
+              <ChatList
+                lng={lng}
+                messages={messages}
+                isLoading={isLoading}
+                waitingForAudio={waitingForAudio}
+                assistantAvatar={interviewerAvatar}
+              />
+              <ChatScrollAnchor trackVisibility={isLoading || waitingForAudio} />
+            </ScrollArea>
           </>
         ) : (
           <EmptyScreen append={append} lng={lng} />

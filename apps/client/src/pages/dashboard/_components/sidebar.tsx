@@ -13,6 +13,7 @@ import {
   IoSettingsOutline,
   IoTodayOutline,
   IoCameraOutline,
+  IoPersonOutline,
 } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsLayoutSidebarInset } from "react-icons/bs";
@@ -104,14 +105,14 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
       icon: <IoCheckmarkDoneCircleOutline style={iconStyle} />,
     },
     {
-      path: "/dashboard/interview",
-      name: t`AI Mock Interview`,
-      icon: <IoTodayOutline style={iconStyle} />,
-    },
-    {
       path: "/dashboard/interview-room",
       name: t`Mock Interview - Simple`,
-      icon: <IoCameraOutline style={iconStyle} />,
+      icon: <IoPersonOutline style={iconStyle} />,
+    },
+    {
+      path: "/dashboard/interview",
+      name: t`Mock Interview Sessions`,
+      icon: <IoTodayOutline style={iconStyle} />,
     },
   ];
 

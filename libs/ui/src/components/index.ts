@@ -34,4 +34,4 @@ export * from "./toast";
 export * from "./toggle";
 export * from "./toggle-group";
 export * from "./tooltip";
-export * from "./jd_input";
+export * from "../../../../apps/client/src/components/jd_input";

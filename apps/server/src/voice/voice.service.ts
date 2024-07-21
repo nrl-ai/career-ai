@@ -5,6 +5,7 @@ import * as fs from "fs";
 import * as os from "os";
 import path from "path";
 import * as speech from "@google-cloud/speech";
+import * as textToSpeech from "@google-cloud/text-to-speech";
 
 const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
   const subscriptionKey = process.env.AZURE_SPEECH_SUBSCRIPTION_KEY || "";
@@ -88,6 +89,7 @@ const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
 @Injectable()
 export class VoiceService {
   private client: speech.SpeechClient;
+  private ttsClient: textToSpeech.TextToSpeechClient;
 
   constructor() {
     // Load the Google Cloud credentials from an environment variable
@@ -95,6 +97,9 @@ export class VoiceService {
     console.log(credentials);
 
     this.client = new speech.SpeechClient({
+      credentials: credentials,
+    });
+    this.ttsClient = new textToSpeech.TextToSpeechClient({
       credentials: credentials,
     });
   }
@@ -123,6 +128,29 @@ export class VoiceService {
       .join("\n");
 
     return transcription;
+  }
+
+  // Forward Google Cloud Speech API Text To Speech
+  async textToAudioGTTS(body: any) {
+    let request = {} as any;
+    if (body.input.text) {
+      request.input = { text: body.input.text };
+    } else if (body.input.ssml) {
+      request.input = { ssml: body.input.ssml };
+    }
+    if (body.voice) {
+      request.voice = { languageCode: body.voice.languageCode, name: body.voice.name };
+    }
+    if (body.audioConfig) {
+      request.audioConfig = {
+        audioEncoding: "OGG_OPUS" as any,
+        speakingRate: body.audioConfig.speakingRate,
+        pitch: body.audioConfig.pitch,
+        volumeGainDb: body.audioConfig.volumeGainDb,
+      };
+    }
+    const [response] = await this.ttsClient.synthesizeSpeech(request);
+    return response;
   }
 
   async textToAudio(text: string, voice: string = "en-US-AvaNeural") {
