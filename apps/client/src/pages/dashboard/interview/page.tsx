@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFindInterviewsByUserId } from "@/client/services/interview/interview";
-import { DataTable } from "primereact/datatable";
+import { DataTable, DataTableValue } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { InterviewDto } from "@career-ai/dto";
+import { e } from "@lingui/react/dist/shared/react.e5f95de8";
 
 const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
   return (
@@ -220,17 +221,53 @@ const renderEmptyMessage = (handleClick) => {
   );
 };
 
-interface Interview {
-  id: number;
-  position: string;
-  type: string;
-  createdAt: string;
-  totalScore: number;
-}
-
 export const InterviewPage = () => {
   const navigate = useNavigate();
   const [globalFilterValue, onGlobalFilterChange] = useState<string>("");
+  const [showResult, setShowResult] = useState<boolean>(false);
+  const [selectedRowIndex, setSelectedRowIndex] = useState<HTMLElement>();
+  const [selectedRowData, setSelectedRowData] = useState<DataTableValue>({});
+
+  const typeBodyTemplate = (rowData) => {
+    let bgcolor = "";
+    let rowDataName = "";
+    let textColor = "";
+
+    if (rowData.type == "technical") {
+      rowDataName = "Technical";
+      bgcolor = "#FFF6D1";
+      textColor = "#D9AE00"
+    } else if (rowData.type == "behavioral") {
+      rowDataName = "Behavioral";
+      bgcolor = "#D9EBFF";
+      textColor = "#007AFF"; 
+    } else if (rowData.type == "combination") {
+      rowDataName = "Combination";
+      bgcolor = "#C8C7FF";
+      textColor = "#5856D6";
+    }
+    return (
+      <div className={`w-fit py-2 px-4 flex items-center bg-[${bgcolor}] rounded-lg pointer-events-none`}>
+        <span className={`font-medium text-base text-[${textColor}]`}>{rowDataName}</span>
+      </div>
+    )
+  };
+
+  const dateBodyTemplate = (rowData) => {
+    return (
+      <div className="pointer-events-none">
+        <span className="text-[#8E8E93] font-medium text-base">{rowData.createdAt}</span>
+      </div>
+    )
+  }
+
+  const scoreBodyTemplate = (rowData) => {
+    return (
+      <div className="pointer-events-none">
+        <span className="text-[#8E8E93] font-medium text-base">{rowData.totalScore}</span>
+      </div>
+    )
+  }
 
   const ColumnItems = [
     {
@@ -247,16 +284,19 @@ export const InterviewPage = () => {
       field: "type",
       header: "Type",
       width: "15%",
+      body: typeBodyTemplate,
     },
     {
       field: "createdAt",
       header: "Date",
       width: "15%",
+      body: dateBodyTemplate,
     },
     {
       field: "totalScore",
       header: "Score",
       width: "15%",
+      body: scoreBodyTemplate
     },
   ];
 
@@ -264,6 +304,7 @@ export const InterviewPage = () => {
   const { result, loading, error } = useFindInterviewsByUserId();
   const [dataTable, setDataTable] = useState([]);
 
+  // Format data
   const formatDate = (date) => {
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
@@ -277,6 +318,7 @@ export const InterviewPage = () => {
       if (result.length > 0) {
         const formattedData = result.map((item) => ({
           ...item,
+
           createdAt: formatDate(item.createdAt),
         }));
         setDataTable(formattedData as []);
@@ -292,17 +334,17 @@ export const InterviewPage = () => {
   };
 
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
-
+  console.log(typeof selectedRowData["position"])
   return (
-    <div className="h-full w-full p-0 pt-4 bg-[#f2f2f7]">
-      <div className={`${interviews ? "grid grid-cols-2 gap-x-12" : ""}`}>
+    <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
+      <div className="flex justify-between items-center">
+        <span className="text-2xl font-bold">AI Mock Interview</span>
+      </div>
+      <div className={`${interviews && showResult ? "flex gap-x-12" : ""}`}>
         <div
-          className={`${interviews ? "col-span-2" : ""} flex flex-col h-full`}
+          className={`${interviews && showResult ? "w-[calc(100vw-380px)]" : ""} flex flex-col h-full`}
           id="ai-interview-management"
         >
-          <div className="flex justify-between items-center">
-            <span className="text-2xl font-bold">AI Mock Interview</span>
-          </div>
           <div className="">
             <DataTable
               rows={8}
@@ -316,6 +358,30 @@ export const InterviewPage = () => {
               value={dataTable}
               emptyMessage={renderEmptyMessage(handleClick)}
               paginator={interviews ? true : false}
+              onRowClick={
+                (e) => {
+                  setShowResult(true);
+                  const target = e.originalEvent.target as HTMLElement; 
+                  const parent = target.parentElement as HTMLElement;
+                  if (selectedRowIndex == null || selectedRowIndex == undefined) {
+                    parent.className = "outline outline-2 outline-[#007AFF]"
+                    setSelectedRowData(e.data);
+                    setSelectedRowIndex(parent);
+                  }
+
+                  if (parent != selectedRowIndex && selectedRowIndex != null && selectedRowIndex != undefined) {
+                    parent.className = "outline outline-2 outline-[#007AFF]"
+                    selectedRowIndex.className = ""
+                    setSelectedRowData(e.data);
+                    setSelectedRowIndex(parent);
+                  }
+                  // if (e.index != selectedRowIndex) {
+                  //   parent.className = " outline outline-1 outline-[#007AFF]"
+                  //   setSelectedRowIndex(e.index)
+                  // } else {
+                  //   parent.className =
+                  // }
+              }}
               pt={{
                 root: { className: "flex flex-col gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
@@ -329,6 +395,7 @@ export const InterviewPage = () => {
                   field={item.field}
                   header={item.header}
                   style={{ width: `${item.width}` }}
+                  body={item.body ? item.body : null}
                   filter
                   pt={{
                     headerContent: { className: "flex items-start justify-between" },
@@ -345,6 +412,18 @@ export const InterviewPage = () => {
             </DataTable>
           </div>
         </div>
+        {interviews && showResult ?
+          <div
+            className="pt-4"
+            id="ai-interview-information"
+          >
+            <div className="flex flex-col bg-white h-full w-[380px] rounded-xl">
+              <span className="font-semibold text-2xl">{selectedRowData["position"]}</span>
+            </div>
+          </div>
+          : 
+          <div></div>
+        }
       </div>
     </div>
   );

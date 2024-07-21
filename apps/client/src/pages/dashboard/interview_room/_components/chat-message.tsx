@@ -6,9 +6,10 @@ import cn from "classnames";
 import { CodeBlock } from "./codeblock";
 import { MemoizedReactMarkdown } from "./markdown";
 import { IconUser } from "./icons";
-import { useState } from "react";
+import { ClassAttributes, HTMLAttributes, ReactNode, useState } from "react";
 import { LoadingSpinner } from "./spinner";
 import { ChatMessageActions } from "./chat-message-actions";
+import { ExtraProps } from "react-markdown";
 
 export interface ChatMessageProps {
   lng: string;
@@ -78,8 +79,8 @@ export function ChatMessage({
             p({ children }) {
               return <p className="mb-2 last:mb-0">{children}</p>;
             },
-            code({ node, inline, className, children, ...props }) {
-              if (children.length) {
+            code({ node, className, children, ...props }) {
+              if (children != null && children != undefined) {
                 if (children[0] == "▍") {
                   return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                 }
@@ -88,15 +89,15 @@ export function ChatMessage({
               }
 
               const match = /language-(\w+)/.exec(className || "");
-
-              if (inline) {
-                return (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              }
-
+              
+              // if (inline) {
+                //   return (
+                //     <code className={className} {...props}>
+                //       {children}
+                //     </code>
+                //   );
+                // }
+                
               return (
                 <CodeBlock
                   key={Math.random()}
@@ -120,8 +121,8 @@ export function ChatMessage({
               p({ children }) {
                 return <p className="mb-2 last:mb-0">{children}</p>;
               },
-              code({ node, inline, className, children, ...props }) {
-                if (children.length) {
+              code({ node, className, children, ...props }) {
+                if (children != null && children != undefined ) {
                   if (children[0] == "▍") {
                     return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                   }
@@ -131,13 +132,13 @@ export function ChatMessage({
 
                 const match = /language-(\w+)/.exec(className || "");
 
-                if (inline) {
-                  return (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  );
-                }
+                // if (inline) {
+                //   return (
+                //     <code className={className} {...props}>
+                //       {children}
+                //     </code>
+                //   );
+                // }
 
                 return (
                   <CodeBlock
@@ -166,8 +167,8 @@ export function ChatMessage({
               p({ children }) {
                 return <p className="mb-2 last:mb-0">{children}</p>;
               },
-              code({ node, inline, className, children, ...props }) {
-                if (children.length) {
+              code({ node, className, children, ...props }) {
+                if (children != null && children != undefined) {
                   if (children[0] == "▍") {
                     return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                   }
@@ -177,13 +178,13 @@ export function ChatMessage({
 
                 const match = /language-(\w+)/.exec(className || "");
 
-                if (inline) {
-                  return (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  );
-                }
+                // if (inline) {
+                //   return (
+                //     <code className={className} {...props}>
+                //       {children}
+                //     </code>
+                //   );
+                // }
 
                 return (
                   <CodeBlock

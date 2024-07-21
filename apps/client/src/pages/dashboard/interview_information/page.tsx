@@ -1,4 +1,4 @@
-import { JDInput } from "@career-ai/ui";
+import { JDInput } from "./_components/jd_input";
 import { useState, useEffect } from "react";
 import { CVSelector } from "./_components/cv_selector";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ export const InterviewInformationPage = () => {
   const [languageSelector, setLanguageSelector] = useState<string>("");
   const [language, setLanguage] = useState<string>("");
   const [position, setPosition] = useState<string>("");
-  const [type, setType] = useState<typeEnum>("combination");
+  const [type, setType] = useState<typeEnum>();
   const { toast } = useToast();
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
