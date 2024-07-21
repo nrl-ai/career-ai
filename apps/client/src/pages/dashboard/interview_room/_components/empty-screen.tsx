@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 export function EmptyScreen({ append, lng }: any) {
   const [position, setPosition] = useState("");
 
-
-  const positionsOptions = (
-    "Software Engineer;Marketing Associate;Data Scientist;Sales Representative;Financial Analyst;Accountant;HR Manager;Product Manager"
-  ).split(";");
+  const positionsOptions =
+    "Software Engineer;Marketing Associate;Data Scientist;Sales Representative;Financial Analyst;Accountant;HR Manager;Product Manager".split(
+      ";",
+    );
   useEffect(() => {
     setPosition(positionsOptions[0]);
   }, []);
@@ -23,9 +23,7 @@ export function EmptyScreen({ append, lng }: any) {
           </a>
         </div>
         <div className="flex items-center justify-center mt-6 mb-2">
-          <h2 className="text-lg font-semibold">
-            {"Which position are you applying for?"}
-          </h2>
+          <h2 className="text-lg font-semibold">{"Which position are you applying for?"}</h2>
         </div>
         <div className="mb-4 grid grid-cols-2 lg:grid-cols-4 gap-1">
           {positionsOptions.map((option: string) => (

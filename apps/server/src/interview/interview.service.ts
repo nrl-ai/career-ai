@@ -136,7 +136,7 @@ export class InterviewsService {
     private readonly prisma: PrismaService,
     private readonly printerService: PrinterService,
     private readonly storageService: StorageService,
-  ) { }
+  ) {}
 
   async fetchAll(userId: string) {
     return this.prisma.interviews.findMany({
@@ -207,9 +207,7 @@ export class InterviewsService {
         }
       }
       let messagesWithPrompt = [];
-      messagesWithPrompt.push(
-        prompt as OpenAI.Chat.Completions.ChatCompletionMessageParam,
-      );
+      messagesWithPrompt.push(prompt as OpenAI.Chat.Completions.ChatCompletionMessageParam);
       messagesWithPrompt.push({
         content: reFormatedMessage,
         role: "user",

@@ -1,10 +1,4 @@
-export default function WaveIcon({
-  className,
-  size = 20,
-}: {
-  className?: string;
-  size?: number;
-}) {
+export default function WaveIcon({ className, size = 20 }: { className?: string; size?: number }) {
   return (
     <svg
       id="wave"

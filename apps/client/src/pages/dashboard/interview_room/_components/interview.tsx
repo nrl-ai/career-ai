@@ -23,44 +23,43 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   >(null);
   const [waitingForAudio, setWaitingForAudio] = useState(false);
 
-  const { messages, append, reload, stop, isLoading, input, setInput } =
-    useChat({
-      api: `/api/interview/create-interview-answer`,
-      initialMessages,
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: `Bearer ${getLocalToken()}`,
-      },
-      onResponse(response) {
-        if (response.status === 401) {
-          alert(response.statusText);
+  const { messages, append, reload, stop, isLoading, input, setInput } = useChat({
+    api: `/api/interview/create-interview-answer`,
+    initialMessages,
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: `Bearer ${getLocalToken()}`,
+    },
+    onResponse(response) {
+      if (response.status === 401) {
+        alert(response.statusText);
+      }
+    },
+    async onFinish(message) {
+      const content = message?.content || "";
+      // Check if the interview is finished
+      if (content.includes("MOCK INTERVIEW ENDED")) {
+        setIsFinished(true);
+      } else {
+        try {
+          setWaitingForAudio(true);
+          const audio = await textToAudio(content, "onyx");
+          setWaitingForAudio(false);
+          // window.playingAudio = audio;
+          setSpeechSynthesisInstance(audio); // Read out the message using the SpeechSynthesis API
+          audio.play();
+        } catch (error) {
+          setWaitingForAudio(false);
+          await EasySpeech.speak({
+            text: content,
+            pitch: 1,
+            rate: 1,
+            volume: 1,
+          });
         }
-      },
-      async onFinish(message) {
-        const content = message?.content || "";
-        // Check if the interview is finished
-        if (content.includes("MOCK INTERVIEW ENDED")) {
-          setIsFinished(true);
-        } else {
-          try {
-            setWaitingForAudio(true);
-            const audio = await textToAudio(content, "onyx");
-            setWaitingForAudio(false);
-            // window.playingAudio = audio;
-            setSpeechSynthesisInstance(audio); // Read out the message using the SpeechSynthesis API
-            audio.play();
-          } catch (error) {
-            setWaitingForAudio(false);
-            await EasySpeech.speak({
-              text: content,
-              pitch: 1,
-              rate: 1,
-              volume: 1,
-            });
-          }
-        }
-      },
-    });
+      }
+    },
+  });
 
   useEffect(() => {
     EasySpeech.init({ maxTimeout: 5000, interval: 250 });
@@ -90,12 +89,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
 
   return (
     <div className="flex flex-col flex-grow w-full overflow-auto">
-      <div
-        className={cn(
-          "pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto",
-          className,
-        )}
-      >
+      <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto", className)}>
         {messages.length ? (
           <>
             <ChatList

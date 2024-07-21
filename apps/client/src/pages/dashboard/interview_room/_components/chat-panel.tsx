@@ -7,13 +7,7 @@ import { PromptForm } from "./prompt-form";
 export interface ChatPanelProps
   extends Pick<
     UseChatHelpers,
-    | "append"
-    | "isLoading"
-    | "reload"
-    | "messages"
-    | "stop"
-    | "input"
-    | "setInput"
+    "append" | "isLoading" | "reload" | "messages" | "stop" | "input" | "setInput"
   > {
   lng: string;
   id?: string;

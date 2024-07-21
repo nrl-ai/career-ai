@@ -15,8 +15,7 @@ const askAudioPermission = async () => {
 };
 
 const loadFfmpeg = async () => {
-  if (window.ffmpegStatus === "loaded" || window.ffmpegStatus === "loading")
-    return;
+  if (window.ffmpegStatus === "loaded" || window.ffmpegStatus === "loading") return;
   console.log("Loading ffmpeg");
   window.ffmpegStatus = "loading";
   const baseURL = "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd";
@@ -58,10 +57,7 @@ const convertToOgg = async (blob: Blob, sampleRate = 44100) => {
     throw new Error(`Unsupported audio type: ${fileType}`);
   }
   const ffmpeg = await initializeWindowFFmpeg();
-  await ffmpeg.writeFile(
-    `input.${fileType}`,
-    new Uint8Array(await blob.arrayBuffer()),
-  );
+  await ffmpeg.writeFile(`input.${fileType}`, new Uint8Array(await blob.arrayBuffer()));
 
   // Update sample rate to vorbis, 44100 Hz, mono, fltp (default)
   // This will allow using with Safari
@@ -94,10 +90,7 @@ const convertToWav = async (blob: Blob, sampleRate = 16000) => {
     throw new Error(`Unsupported audio type: ${fileType}`);
   }
   const ffmpeg = await initializeWindowFFmpeg();
-  await ffmpeg.writeFile(
-    `input.${fileType}`,
-    new Uint8Array(await blob.arrayBuffer()),
-  );
+  await ffmpeg.writeFile(`input.${fileType}`, new Uint8Array(await blob.arrayBuffer()));
   await ffmpeg.exec([
     "-i",
     `input.${fileType}`,

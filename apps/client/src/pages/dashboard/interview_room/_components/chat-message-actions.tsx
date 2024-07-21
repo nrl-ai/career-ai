@@ -45,12 +45,7 @@ export function ChatMessageActions({
   };
 
   const handleTranslate = async (text: string, target: string) => {
-    if (
-      translating ||
-      translation !== null ||
-      !setTranslation ||
-      !setTranslating
-    ) {
+    if (translating || translation !== null || !setTranslation || !setTranslating) {
       return;
     }
     setTranslating(true);
@@ -84,17 +79,14 @@ export function ChatMessageActions({
       return message;
     });
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/role_playing/message-evaluation`,
-        {
-          method: "POST",
-          body: JSON.stringify({ messages: messagesToEvaluate }),
-          headers: {
-            "Content-Type": "application/json",
-            // Authorization: `Bearer ${getLocalToken()}`,
-          },
+      const response = await fetch(`${BASE_URL}/api/role_playing/message-evaluation`, {
+        method: "POST",
+        body: JSON.stringify({ messages: messagesToEvaluate }),
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${getLocalToken()}`,
         },
-      );
+      });
       setEvaluation(await response.text());
     } catch (error) {
       // console.error(error);

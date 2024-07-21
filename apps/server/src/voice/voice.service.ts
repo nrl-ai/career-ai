@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from "@nestjs/common";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import OpenAI from "openai";
 import * as fs from "fs";
-import * as os from 'os';
-import path from 'path';
+import * as os from "os";
+import path from "path";
 
 const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
   const subscriptionKey = process.env.AZURE_SPEECH_SUBSCRIPTION_KEY || "";
@@ -18,8 +18,8 @@ const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
   // see https://aka.ms/speech/tts-languages for available languages and voices
   speechConfig.speechSynthesisLanguage = "en-US";
   speechConfig.speechSynthesisVoiceName = voice;
-  speechConfig.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Audio16Khz32KBitRateMonoMp3;
-
+  speechConfig.speechSynthesisOutputFormat =
+    sdk.SpeechSynthesisOutputFormat.Audio16Khz32KBitRateMonoMp3;
 
   // create the speech synthesizer.
   var synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
@@ -70,7 +70,8 @@ const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
 
   // Await the result
   return new Promise((resolve, reject) => {
-    synthesizer.speakSsmlAsync(text,
+    synthesizer.speakSsmlAsync(
+      text,
       (result) => {
         resolve(result);
         synthesizer.close();
@@ -78,10 +79,10 @@ const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
       (err) => {
         reject(err);
         synthesizer.close();
-      });
+      },
+    );
   });
-
-}
+};
 
 @Injectable()
 export class VoiceService {
@@ -110,7 +111,7 @@ export class VoiceService {
     }
 
     try {
-      const response = await synthesize(say, voice) as sdk.SpeechSynthesisResult;
+      const response = (await synthesize(say, voice)) as sdk.SpeechSynthesisResult;
       console.log(response);
       const buffer = Buffer.from(response.audioData);
       return buffer;
@@ -119,7 +120,6 @@ export class VoiceService {
       return null;
     }
   }
-
 
   async speechToText(audio: string) {
     const audioFormat = audio.split(";")[0].split(":")[1].split("/")[1];
@@ -132,7 +132,6 @@ export class VoiceService {
 
     // Convert the base64 audio data to a Buffer
     const audioBuff = Buffer.from(base64Audio, "base64");
-
 
     // Define the file path for storing the temporary audio file
     // generate a random file name
@@ -149,11 +148,13 @@ export class VoiceService {
       fs.writeFileSync(filePath, audio);
 
       // open the file and push it to the push stream.
-      fs.createReadStream(filePath).on('data', function (arrayBuffer: any) {
-        pushStream.write(arrayBuffer.slice());
-      }).on('end', function () {
-        pushStream.close();
-      });
+      fs.createReadStream(filePath)
+        .on("data", function (arrayBuffer: any) {
+          pushStream.write(arrayBuffer.slice());
+        })
+        .on("end", function () {
+          pushStream.close();
+        });
 
       // now create the audio-config pointing to our stream and
       // the speech config specifying the language.
@@ -171,17 +172,18 @@ export class VoiceService {
         recognizer.recognizeOnceAsync(
           (result) => {
             resolve(result);
-            recognizer.close()
+            recognizer.close();
           },
           (err) => {
             reject(err);
             recognizer.close();
-          });
+          },
+        );
       });
 
       // Wait for the result
       let data;
-      const resultData = await result as sdk.SpeechRecognitionResult;
+      const resultData = (await result) as sdk.SpeechRecognitionResult;
       if (resultData) {
         data = resultData.text;
       }
@@ -190,11 +192,9 @@ export class VoiceService {
       fs.unlinkSync(filePath);
       return {
         text: data,
-      }
-
+      };
     } catch (error) {
       throw error;
     }
-
   }
 }

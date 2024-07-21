@@ -20,7 +20,7 @@ import { TranslationModule } from "./translation/translation.module";
 import { UserModule } from "./user/user.module";
 import { InterviewsModule } from "./interview/interview.module";
 import { JobApplicationsModule } from "./job_applications/job_applications.module";
-import { VoiceModule } from './voice/voice.module';
+import { VoiceModule } from "./voice/voice.module";
 
 @Module({
   imports: [

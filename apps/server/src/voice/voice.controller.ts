@@ -1,13 +1,9 @@
-import {
-  Controller,
-  Post,
-  Body,
-} from "@nestjs/common";
+import { Controller, Post, Body } from "@nestjs/common";
 import { VoiceService } from "./voice.service";
 
-@Controller('voice')
+@Controller("voice")
 export class VoiceController {
-  constructor(private readonly voiceService: VoiceService) { }
+  constructor(private readonly voiceService: VoiceService) {}
 
   @Post("text-to-speech")
   async textToSpeech(@Body() body: any) {

@@ -5,8 +5,8 @@ export function FinishedMessage() {
     <div className="mx-auto max-w-2xl px-4 mt-2">
       <div className="rounded-lg border bg-background p-4">
         <p className="leading-normal text-muted-foreground">
-          You have finished your interviewing section. Check out the feedback
-          and tips below to improve your interviewing skills.
+          You have finished your interviewing section. Check out the feedback and tips below to
+          improve your interviewing skills.
         </p>
         <div className="flex items-center justify-center mt-2">
           <button

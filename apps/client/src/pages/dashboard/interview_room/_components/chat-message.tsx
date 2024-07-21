@@ -8,7 +8,7 @@ import { MemoizedReactMarkdown } from "./markdown";
 import { IconUser } from "./icons";
 import { useState } from "react";
 import { LoadingSpinner } from "./spinner";
-import {ChatMessageActions} from "./chat-message-actions";
+import { ChatMessageActions } from "./chat-message-actions";
 
 export interface ChatMessageProps {
   lng: string;
@@ -81,9 +81,7 @@ export function ChatMessage({
             code({ node, inline, className, children, ...props }) {
               if (children.length) {
                 if (children[0] == "▍") {
-                  return (
-                    <span className="mt-1 cursor-default animate-pulse">▍</span>
-                  );
+                  return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                 }
 
                 children[0] = (children[0] as string).replace("`▍`", "▍");
@@ -125,11 +123,7 @@ export function ChatMessage({
               code({ node, inline, className, children, ...props }) {
                 if (children.length) {
                   if (children[0] == "▍") {
-                    return (
-                      <span className="mt-1 cursor-default animate-pulse">
-                        ▍
-                      </span>
-                    );
+                    return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                   }
 
                   children[0] = (children[0] as string).replace("`▍`", "▍");
@@ -175,11 +169,7 @@ export function ChatMessage({
               code({ node, inline, className, children, ...props }) {
                 if (children.length) {
                   if (children[0] == "▍") {
-                    return (
-                      <span className="mt-1 cursor-default animate-pulse">
-                        ▍
-                      </span>
-                    );
+                    return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                   }
 
                   children[0] = (children[0] as string).replace("`▍`", "▍");
