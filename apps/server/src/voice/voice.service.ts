@@ -4,6 +4,7 @@ import OpenAI from "openai";
 import * as fs from "fs";
 import * as os from "os";
 import path from "path";
+import * as speech from "@google-cloud/speech";
 
 const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
   const subscriptionKey = process.env.AZURE_SPEECH_SUBSCRIPTION_KEY || "";
@@ -86,6 +87,44 @@ const synthesize = (text: string, voice: string = "en-US-AvaNeural") => {
 
 @Injectable()
 export class VoiceService {
+  private client: speech.SpeechClient;
+
+  constructor() {
+    // Load the Google Cloud credentials from an environment variable
+    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON || "{}");
+    console.log(credentials);
+
+    this.client = new speech.SpeechClient({
+      credentials: credentials,
+    });
+  }
+
+  async transcribeAudio(base64Audio: string): Promise<string> {
+    base64Audio = base64Audio.split("base64,")[1];
+
+    const audio = {
+      content: base64Audio,
+    };
+
+    const config = {
+      encoding: "LINEAR16",
+      sampleRateHertz: 16000,
+      languageCode: "en-US",
+    };
+
+    const request = {
+      audio: audio,
+      config: config,
+    };
+
+    const [response] = (await this.client.recognize(request as any)) as any;
+    const transcription = response.results
+      .map((result: any) => result.alternatives[0].transcript)
+      .join("\n");
+
+    return transcription;
+  }
+
   async textToAudio(text: string, voice: string = "en-US-AvaNeural") {
     // Map the voice name to the Azure voice name
     // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech

@@ -14,6 +14,8 @@ export class VoiceController {
   @Post("speech-to-text")
   async speechToText(@Body() body: any) {
     const { audio } = body;
-    return this.voiceService.speechToText(audio);
+    return {
+      text: await this.voiceService.transcribeAudio(audio),
+    };
   }
 }

@@ -118,7 +118,7 @@ export function ChatMessageActions({
             variant="ghost"
             size="icon"
             className={cn(
-              "ml-2 rounded-xl",
+              "ml-2 rounded-xl hidden",
               translating || translation !== null
                 ? "text-gray-400 hover:text-gray-400 bg-gray-200 hover:bg-gray-200 cursor-not-allowed shadow-sm border"
                 : "bg-white hover:bg-white shadow-md border",
@@ -150,7 +150,7 @@ export function ChatMessageActions({
           </Button>
         </>
       )}
-      {message.role === "user" && (
+      {/* {message.role === "user" && (
         <Button
           variant="ghost"
           className={cn(
@@ -167,7 +167,7 @@ export function ChatMessageActions({
           <IconWand className="w-4 h-4 mr-1" />
           Improve
         </Button>
-      )}
+      )} */}
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import RecordRTC, { StereoAudioRecorder } from "recordrtc";
 import { isEdge, isSafari } from "react-device-detect";
+import coreURL from "@ffmpeg/core?url";
+import wasmURL from "@ffmpeg/core/wasm?url";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { toBlobURL } from "@ffmpeg/util";
 
@@ -18,16 +20,12 @@ const loadFfmpeg = async () => {
   if (window.ffmpegStatus === "loaded" || window.ffmpegStatus === "loading") return;
   console.log("Loading ffmpeg");
   window.ffmpegStatus = "loading";
-  const baseURL = "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd";
   window.ffmpegInstance.on("log", ({ message }: { message: any }) => {
     console.log(message);
   });
   // toBlobURL is used to bypass CORS issue, urls with the same
   // domain can be used directly.
-  await window.ffmpegInstance.load({
-    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript"),
-    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, "application/wasm"),
-  });
+  await window.ffmpegInstance.load({ coreURL, wasmURL });
   window.ffmpegStatus = "loaded";
 };
 

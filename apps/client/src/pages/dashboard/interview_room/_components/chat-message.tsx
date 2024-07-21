@@ -35,7 +35,7 @@ export function ChatMessage({
   return (
     <div
       className={cn(
-        "relative mb-4 flex",
+        "relative mb-4 flex gap-2 lg:gap-4",
         message.role === "user" ? "flex-row-reverse lg:!flex-row" : "flex-row",
       )}
       {...props}
@@ -46,8 +46,8 @@ export function ChatMessage({
             <img
               alt="User Avatar"
               src={userAvatar}
-              width={128}
-              height={128}
+              width={64}
+              height={64}
               className="w-full h-full"
             />
           ) : (
@@ -57,18 +57,17 @@ export function ChatMessage({
           <img
             alt="Friendly Friend"
             src={assistantAvatar}
-            width={128}
-            height={128}
+            width={64}
+            height={64}
             className="w-full h-full"
           />
         )}
       </div>
       <div
         className={cn(
-          "flex-1 space-y-2 overflow-hidden bg-white bg-opacity-100 px-4 py-2 rounded-xl shadow-md border",
-          message.role === "user"
-            ? "border-blue-500 bg-gradient-to-br from-green-400 to-blue-400 text-gray-800"
-            : "border-gray-200 bg-opacity-85 bg-gray-800 text-white",
+          "flex-1 space-y-2 overflow-hidden px-4 py-2 rounded-xl shadow-md border",
+          message.role === "user" && "border-blue-700 bg-blue-300 text-white",
+          message.role != "user" && "border-gray-200 bg-opacity-85 bg-white text-gray-800",
         )}
       >
         <MemoizedReactMarkdown

@@ -12,7 +12,7 @@ export const DashboardLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div>
+    <div className="h-screen">
       <div className="sticky top-0 z-50 flex items-center justify-between p-4 pb-0 lg:hidden bg-white">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
@@ -52,7 +52,7 @@ export const DashboardLayout = () => {
       </motion.div>
 
       <main
-        className={cn("mx-6 my-4 lg:mx-8", {
+        className={cn("h-full pb-24 mx-6 my-4 lg:mx-8", {
           "lg:pl-[300px]": !isCollapsed,
           "lg:pl-[80px]": isCollapsed,
         })}

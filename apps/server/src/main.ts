@@ -21,6 +21,8 @@ async function bootstrap() {
   // Cookie Parser
   app.use(cookieParser());
 
+  app.useBodyParser("raw", { limig: "50mb" });
+
   // CORS
   app.enableCors({
     credentials: true,
@@ -43,9 +45,7 @@ async function bootstrap() {
   // This can be accessed by visiting {SERVER_URL}/api/docs
   const config = new DocumentBuilder()
     .setTitle("CareerAI")
-    .setDescription(
-      "CareerAI is a free and open source resume builder that's built to make the mundane tasks of creating, updating and sharing your resume as easy as 1, 2, 3.",
-    )
+    .setDescription("CareerAI is a platform that helps you prepare for your next job interview.")
     .addCookieAuth("Authentication", { type: "http", in: "cookie", scheme: "Bearer" })
     .setVersion("4.0.0")
     .build();

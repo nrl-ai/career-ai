@@ -15,15 +15,15 @@ export function EmptyScreen({ append, lng }: any) {
   }, []);
 
   return (
-    <div className="mx-auto max-w-[900px px-2 lg:px-4 overflow-auto">
-      <div className="rounded-2xl lg:border bg-white bg-opacity-60 p-4 lg:p-8 border-gray-300 lg:shadow-lg mb-8 overflow-auto pt-10 relative">
+    <div className="mx-auto max-w-[900px] w-full px-4 lg:px-4 overflow-auto">
+      <div className="rounded-2xl lg:border bg-white bg-opacity-60 p-8 lg:p-8 border-gray-300 lg:shadow-lg mb-8 overflow-auto pt-10 relative">
         <div className="hidden lg:block absolute top-4 right-4 z-50">
           <a href={`/${lng}/apps/speaking/lessons`}>
             <IconX className="bg-black bg-opacity-5 text-gray-700 rounded-full p-2 z-50 w-8 h-8" />
           </a>
         </div>
         <div className="flex items-center justify-center mt-6 mb-2">
-          <h2 className="text-lg font-semibold">{"Which position are you applying for?"}</h2>
+          <h2 className="text-lg font-semibold mb-8">{"Which position are you applying for?"}</h2>
         </div>
         <div className="mb-4 grid grid-cols-2 lg:grid-cols-4 gap-1">
           {positionsOptions.map((option: string) => (

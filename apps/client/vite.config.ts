@@ -21,9 +21,14 @@ export default defineConfig({
     host: true,
     port: 5173,
     fs: { allow: [searchForWorkspaceRoot(process.cwd())] },
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "require-corp",
+    },
   },
 
   optimizeDeps: {
+    exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
     esbuildOptions: {
       loader: {
         ".po": "text",

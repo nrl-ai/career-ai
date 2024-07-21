@@ -43,11 +43,11 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
       } else {
         // There is no API in active now
         await EasySpeech.speak({
-            text: content,
-            pitch: 1,
-            rate: 1,
-            volume: 1,
-          });
+          text: content,
+          pitch: 1,
+          rate: 1,
+          volume: 1,
+        });
         return;
         try {
           setWaitingForAudio(true);

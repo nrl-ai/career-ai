@@ -119,6 +119,9 @@ services:
       # Azure TTS
       AZURE_SPEECH_SUBSCRIPTION_KEY: ${AZURE_SPEECH_SUBSCRIPTION_KEY:-azure_tts_key}
       AZURE_SPEECH_REGION: ${AZURE_SPEECH_REGION:-eastus}
+
+      # Google STT
+      GOOGLE_APPLICATION_CREDENTIALS_JSON: ${GOOGLE_APPLICATION_CREDENTIALS_JSON:-{}}
     labels:
       - traefik.enable=true
       - traefik.http.routers.app.rule=Host(`www.careerai.me`)
