@@ -9,7 +9,8 @@ export default defineConfig({
   cacheDir: "../../node_modules/.vite/client",
 
   build: {
-    sourcemap: true,
+    minify: true,
+    sourcemap: false,
     emptyOutDir: true,
   },
 
