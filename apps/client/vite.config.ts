@@ -15,6 +15,7 @@ export default defineConfig({
 
   define: {
     appVersion: JSON.stringify(process.env.npm_package_version),
+    "process.env.IS_PREACT": JSON.stringify(process.env.IS_PREACT),
   },
 
   server: {

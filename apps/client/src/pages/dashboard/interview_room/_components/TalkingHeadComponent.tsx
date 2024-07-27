@@ -8,6 +8,7 @@ interface TalkingHeadOptions {
   cameraView: "upper" | "lower" | "mid" | "head";
   cameraRotateEnabled: boolean;
   cameraPanEnable: boolean;
+  cameraZoomEnable?: boolean;
 }
 
 interface AvatarOptions {
@@ -34,13 +35,14 @@ const TalkingHeadComponent: React.FC = ({ headRef }: any) => {
         cameraView: "upper",
         cameraRotateEnabled: false,
         cameraPanEnable: false,
+        cameraZoomEnable: false,
       };
 
       headRef.current = new TalkingHead(avatarRef.current, options);
 
       // Load and show the avatar
       const avatarOptions: AvatarOptions = {
-        url: "/avatars/brunette.glb",
+        url: "/avatars/interviewer.glb",
         body: "M",
         avatarMood: "happy",
         ttsLang: "en-US",
@@ -99,19 +101,17 @@ const TalkingHeadComponent: React.FC = ({ headRef }: any) => {
     }
   }, [avatarLoaded]);
 
-  console.log("Avatar loaded:", avatarLoaded);
-
   return (
     <div>
       <div
         ref={avatarRef}
         style={{
-          width: "100%",
+          width: "840px",
           height: "600px",
           background: "url(/office-background.jpg)",
           backgroundSize: "cover",
         }}
-        className="rounded-3xl mb-2"
+        className="rounded-3xl mb-2 mx-auto"
       ></div>
     </div>
   );

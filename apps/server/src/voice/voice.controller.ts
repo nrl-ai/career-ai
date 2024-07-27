@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from "@nestjs/common";
+import { Controller, Post, Body, HttpCode } from "@nestjs/common";
 import { VoiceService } from "./voice.service";
 
 @Controller("voice")
@@ -6,8 +6,11 @@ export class VoiceController {
   constructor(private readonly voiceService: VoiceService) {}
 
   @Post("text-to-speech")
+  @HttpCode(200)
   async textToSpeech(@Body() body: any) {
-    return this.voiceService.textToAudioGTTS(body);
+    const data = this.voiceService.textToAudioGTTS(body);
+    // Return with HTTP response code 200
+    return data;
   }
 
   @Post("speech-to-text")
