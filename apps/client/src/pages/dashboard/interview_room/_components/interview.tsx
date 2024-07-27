@@ -102,7 +102,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   return (
     <div className="pt-8 w-full">
       {!messages.length ? <EmptyScreen append={append} lng={lng} /> :
-        <div className="flex flex-row flex-grow overflow-hidden">
+        <div className="flex flex-row flex-grow overflow-hidden w-full">
           {messages.length ? <div>
             <TalkingHeadComponent headRef={headRef as any} />
             <div style={{ height: "500px", background: "white" }} className="rounded-xl bg-white overflow-hidden p-4">
@@ -110,7 +110,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
             </div>
           </div>
             : <></>}
-          <div className="flex flex-col w-[600px]">
+          <div className="flex flex-col w-[400px]">
             <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 w-full", className)}>
               <>
                 <ChatList
@@ -125,7 +125,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
               {isFinished && <FinishedMessage />}
             </div>
             {!isFinished && (
-              <div className="lg:mx-auto sz-10 lg:w-[400px] xl:w-[500px] w-full rounded-xl flex-grow-0 flex">
+              <div className="lg:mx-auto sz-10 lg:w-[300px] xl:w-[400px] w-full rounded-xl flex-grow-0 flex">
                 <ChatPanel
                   lng={lng}
                   isLoading={isLoading}
