@@ -31,7 +31,7 @@ export default function ChatPanel({
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div
           className={
-            "p-2 border-t shadow-lg sm:rounded-2xl sm:border border-gray-400 bg-background dark:bg-background/90 dark:border-background/50" +
+            "p-2 border-t shadow-lg sm:rounded-2xl sm:border border-gray-400 bg-white dark:bg-background/90 dark:border-background/50" +
             (messages.length > 0 ? "" : " hidden")
           }
         >

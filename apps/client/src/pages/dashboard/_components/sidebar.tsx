@@ -195,7 +195,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             "justify-star w-full py-7",
             isCollapsed
               ? "px-0"
-              : "px-3 bg-gray-100/90 hover:bg-gray-200/90 shadow-gray-200 shadow-sm mb-2",
+              : "px-3 bg-gray-100/90 hover:bg-gray-200/90 shadow-gray-200 mb-2 rounded-2xl",
           )}
         >
           <UserAvatar size={38} className={cn(isCollapsed ? "mr-0" : "mr-3")} />

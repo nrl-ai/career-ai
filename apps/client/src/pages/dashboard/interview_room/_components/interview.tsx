@@ -100,7 +100,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   }, []);
 
   return (
-    <div className="pt-8">
+    <div className="pt-8 w-full">
       {!messages.length ? <EmptyScreen append={append} lng={lng} /> :
         <div className="flex flex-row flex-grow overflow-hidden">
           {messages.length ? <div>
@@ -110,7 +110,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
             </div>
           </div>
             : <></>}
-          <div className="flex flex-col w-[500px]">
+          <div className="flex flex-col w-[600px]">
             <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 w-full", className)}>
               <>
                 <ChatList
