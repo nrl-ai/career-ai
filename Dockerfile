@@ -1,5 +1,3 @@
-ARG NX_CLOUD_ACCESS_TOKEN
-
 # --- Base Image ---
 FROM node:lts-bullseye-slim AS base
 
@@ -19,8 +17,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-ENV NODE_OPTIONS="--max_old_space_size=8192"
-RUN pnpm run build
+RUN NODE_OPTIONS="--max_old_space_size=8192" pnpm run build
 
 # --- Release Image ---
 FROM base AS release
