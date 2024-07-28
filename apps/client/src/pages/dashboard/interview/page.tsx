@@ -9,7 +9,8 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Gauge } from "./_components/gauge";
 import { FilterMatchMode, FilterOperator } from "primereact/api"; 
-import { Calendar } from "primereact/calendar";
+// import { Calendar } from "primereact/calendar";
+import { useDeleteInterview } from "@/client/services/interview/delete";
 
 const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
   return (
@@ -348,7 +349,8 @@ export const InterviewPage = () => {
   ];
 
   const [interviews, setInterviews] = useState<boolean | undefined>(false);
-  const { result, loading, error } = useFindInterviewsByUserId();
+  const { result, loading: interviewLoading, error } = useFindInterviewsByUserId();
+  const {deleteInterview, loading: deleteLoading} = useDeleteInterview();
   const [dataTable, setDataTable] = useState([]);
 
   // Format data
@@ -400,6 +402,19 @@ export const InterviewPage = () => {
     },
   ]
 
+  const showResultOnClick = () => {
+    navigate("/dashboard/interview-feedback");
+  }
+
+  const redoInterviewOnClick = () => {
+    navigate("/dashboard/interview-room");
+  }
+
+  const deleteInterviewOnClick = async () => {
+      await deleteInterview(selectedRowData['id']);
+      setShowResult(false);
+  }
+
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       <div className="flex justify-between items-center">
@@ -413,7 +428,7 @@ export const InterviewPage = () => {
           <div className="">
             <DataTable
               rows={8}
-              loading={loading}
+              loading={interviewLoading}
               dataKey="id"
               filterIcon={() => {
                 return <i className="pi pi-sort-down-fill"></i>;
@@ -547,12 +562,12 @@ export const InterviewPage = () => {
                     }}></Column>
                   </DataTable>
 
-                  <Button label="Show result" className="w-80 mt-5" pt={{
+                  <Button label="Show result" onClick={showResultOnClick} className="w-80 mt-5" pt={{
                     label: {
                       className: 'font-medium text-base'
                     }
                   }}></Button>
-                  <Button label="Redo interview" className="w-80 mt-5" pt={{
+                  <Button label="Redo interview" onClick={redoInterviewOnClick} className="w-80 mt-5" pt={{
                     root: {
                       style: {
                         background: "none",
@@ -563,7 +578,7 @@ export const InterviewPage = () => {
                       className: 'font-medium text-base'
                     }
                   }}></Button>
-                  <span className="font-medium text-sm text-[#191919] mt-5">or <span className="underline text-[#FF3B30] cursor-pointer">delete</span> here</span>
+                  <span className="font-medium text-sm text-[#191919] mt-5">or <span onClick={deleteInterviewOnClick} className="underline text-[#FF3B30] cursor-pointer">delete</span> here</span>
                 </div>
               </div>
             </div>
