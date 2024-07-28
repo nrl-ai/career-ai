@@ -1,15 +1,15 @@
 "use client";
 
-import { FC, useState } from "react";
-import * as Popover from "@radix-ui/react-popover";
-import styles from "../styles/components/BoardOptions.module.scss";
-import { VerticalEllipsisIcon } from "./icons";
-import EditBoardModal from "./EditBoardModal";
-import { BoardTypes, ColumnTypes, KanbanTypes, TaskTypes } from "../types";
-import WarnModal from "./WarnModal";
-import EditTaskModal from "./EditTaskModal";
 import { updateJobApplications } from "@/client/services/job-applications";
+import { useDialog } from "@/client/stores/dialog";
+import * as Popover from "@radix-ui/react-popover";
+import { FC, useState } from "react";
 import { sampleData, sampleEmptyData } from "../store/boards";
+import styles from "../styles/components/BoardOptions.module.scss";
+import { BoardTypes, ColumnTypes, KanbanTypes, TaskTypes } from "../types";
+import EditTaskModal from "./EditTaskModal";
+import { VerticalEllipsisIcon } from "./icons";
+import WarnModal from "./WarnModal";
 
 interface OptionsProps {
   activeBoard: BoardTypes;
@@ -19,6 +19,7 @@ interface OptionsProps {
 }
 
 const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, activeTask }) => {
+  const { open } = useDialog("job-board");
   const [isOpen, setIsOpen] = useState(false);
   const fillBoardWithExamples = async () => {
     await updateJobApplications(sampleData);
@@ -41,11 +42,14 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
         <Popover.Content className={styles.PopoverContent} sideOffset={10} align="end">
           {optionsType === KanbanTypes.Board ? (
             <>
-              <EditBoardModal activeBoard={activeBoard!} hideBoardOptions={setIsOpen}>
-                <button className="w-full px-2">
-                  <h3 className={styles.Edit}>Edit {optionsType}</h3>
-                </button>
-              </EditBoardModal>
+              <button
+                className="w-full px-2"
+                onClick={() => {
+                  open("update");
+                }}
+              >
+                <h3 className={styles.Edit}>Edit {optionsType}</h3>
+              </button>
               <button className="text-gray-500 pt-2" onClick={fillBoardWithEmpty}>
                 <span className={styles.SpanText}>Clear board</span>
               </button>
@@ -66,7 +70,12 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
                 activeTask={activeTask!}
                 hideBoardOptions={setIsOpen}
               >
-                <button className="w-full px-2">
+                <button
+                  className="w-full px-2"
+                  onClick={() => {
+                    open("update");
+                  }}
+                >
                   <h3 className={styles.Edit}>Edit {optionsType}</h3>
                 </button>
               </EditTaskModal>

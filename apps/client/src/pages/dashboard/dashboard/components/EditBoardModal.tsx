@@ -3,15 +3,47 @@
 import React, { Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
 import styles from "../styles/components/ui/Modal.module.scss";
 
-import * as Dialog from "@radix-ui/react-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Tooltip,
+} from "@career-ai/ui";
 
 import TextInput, { TextInputDrag } from "./ui/TextInput";
 
-import Button, { ButtonVariant } from "./ui/Button";
+// import Button, { ButtonVariant } from "./ui/Button";
 import { useBoardStore } from "../store/BoardStore";
 
 import { createBoard, createColumn } from "../utility";
 import { BoardTypes } from "../types";
+import { useDialog } from "@/client/stores/dialog";
+import { Plus } from "@phosphor-icons/react";
 
 interface EditBoardModalProps {
   children: ReactNode;
@@ -19,84 +51,84 @@ interface EditBoardModalProps {
   hideBoardOptions?: Dispatch<SetStateAction<boolean>>;
 }
 
-const EditBoardModal: FC<EditBoardModalProps> = ({ children, activeBoard, hideBoardOptions }) => {
-  const { updateBoard } = useBoardStore();
+const EditBoardModal = () => {
+  const { boards, activeBoardId, updateBoard } = useBoardStore();
+  const activeBoard = boards.find(({ id }) => id === activeBoardId);
+  const { isOpen, mode, payload, close, open } = useDialog("job-board");
+  console.log("check mode", mode);
 
   const [changedBoardName, setBoardName] = useState("");
   const [columnName, setColumnName] = useState("");
 
-  const [columns, setColumns] = useState(activeBoard.columns);
+  const [columns, setColumns] = useState(activeBoard?.columns);
 
   const handleAddBoard = () => {
-    const validColumns = columns.filter((column) => column.title !== "");
+    const validColumns = columns?.filter((column) => column.title !== "");
 
-    const boardName = changedBoardName || activeBoard.title;
-    const updatedBoard = createBoard(boardName, validColumns, activeBoard.id);
+    const boardName = changedBoardName || (activeBoard?.title as string);
+    const updatedBoard = createBoard(boardName, validColumns, activeBoard?.id);
 
     if (boardName) {
       updateBoard(updatedBoard);
+      close();
     }
     return null;
   };
 
   const handleAddColumn = () => {
     const newColumn = createColumn(columnName);
-    setColumns([...columns, newColumn]);
+    setColumns((prevCol) => (prevCol ? [...prevCol, newColumn] : [newColumn]));
   };
 
   const handleRemoveColumn = (columnId: string) => {
-    setColumns(columns.filter((column) => column.id !== columnId));
+    setColumns(columns?.filter((column) => column.id !== columnId));
   };
 
   const handleColumnNameChange = (columnId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updatedColumns = columns.map((column) =>
+    const updatedColumns = columns?.map((column) =>
       column.id === columnId ? { ...column, title: e.target.value } : column,
     );
     setColumns(updatedColumns);
   };
 
   return (
-    <Dialog.Root onOpenChange={hideBoardOptions}>
-      <Dialog.Trigger asChild aria-label="Add New Board">
-        {children}
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.DialogContent}>
-          <Dialog.Title className={styles.DialogTitle}>Edit Board</Dialog.Title>
-          <div className={styles.ModalItem}>
-            <label htmlFor="Board Name">Board Name</label>
-            <TextInput
-              placeholder=""
-              defaultValue={activeBoard.title}
-              onChange={(event) => setBoardName(event.target.value)}
-            />
-          </div>
+    <Dialog open={isOpen} onOpenChange={close}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Edit Board</DialogTitle>
+          <DialogDescription></DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="Board Name">Board Name</label>
+          <TextInput
+            placeholder=""
+            defaultValue={activeBoard?.title}
+            onChange={(event) => setBoardName(event.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="Board Columns">Board Columns</label>
 
-          <div className={styles.ModalItem}>
-            <label htmlFor="Board Columns">Board Columns</label>
-
-            <div className={styles.ItemsList}>
-              {columns.map((column) => (
-                <TextInputDrag
-                  key={column.id}
-                  placeholder={column.title ? `e.g. ${column.title}` : "e.g. Column Name"}
-                  defaultValue={column.title}
-                  onChange={handleColumnNameChange(column.id)}
-                  remove={() => handleRemoveColumn(column.id)}
-                />
-              ))}
-            </div>
+          <div>
+            {columns?.map((column) => (
+              <TextInputDrag
+                key={column.id}
+                placeholder={column.title ? `e.g. ${column.title}` : "e.g. Column Name"}
+                defaultValue={column.title}
+                onChange={handleColumnNameChange(column.id)}
+                remove={() => handleRemoveColumn(column.id)}
+              />
+            ))}
           </div>
-          <Button variant={ButtonVariant.Secondary} onClick={handleAddColumn}>
-            + Add New Column
-          </Button>
-          <Dialog.Close asChild>
-            <Button onClick={handleAddBoard}>Save Changes</Button>
-          </Dialog.Close>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+        </div>
+
+        <Button variant={"ghost"} onClick={handleAddColumn}>
+          <Plus /> Add New Column
+        </Button>
+        <Button onClick={handleAddBoard}>Save Changes</Button>
+        <DialogFooter></DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

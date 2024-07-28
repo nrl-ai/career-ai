@@ -1,15 +1,15 @@
 "use client";
 
-import { useBoardStore } from "../../store/BoardStore";
-import React, { FC } from "react";
+import { useDialog } from "@/client/stores/dialog";
+import { FC } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
+import { useBoardStore } from "../../store/BoardStore";
 import styles from "../../styles/components/board/Board.module.scss";
-import Column from "./Column";
 import { KanbanTypes } from "../../types";
-import Button, { ButtonVariant } from "../ui/Button";
 import AddNewBoardModal from "../AddNewBoardModal";
 import DisplayBoards from "../DisplayBoards";
-import EditBoardModal from "../EditBoardModal";
+import Button, { ButtonVariant } from "../ui/Button";
+import Column from "./Column";
 
 interface BoardProps {
   displayedSideMenu: boolean;
@@ -17,7 +17,7 @@ interface BoardProps {
 
 const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
   const { boards, activeBoardId, moveTask, moveColumn } = useBoardStore();
-
+  const { open } = useDialog("job-board");
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
 
   const onDragEnd = (result: DropResult) => {
@@ -64,18 +64,27 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
               )}
             </Droppable>
           </DragDropContext>
-          <EditBoardModal activeBoard={activeBoard}>
-            <button className={styles.NewColumn}>+New Column</button>
-          </EditBoardModal>
+          <button
+            className={styles.NewColumn}
+            onClick={() => {
+              open("update");
+            }}
+          >
+            +New Column
+          </button>
         </>
       ) : (
         <div className={styles.EmptyBoard}>
           <h1>This board is empty. Create a new column to get started.</h1>
-          <EditBoardModal activeBoard={activeBoard}>
-            <Button variant={ButtonVariant.Primary} btnType="Welcome">
-              +Add New Column
-            </Button>
-          </EditBoardModal>
+          <Button
+            variant={ButtonVariant.Primary}
+            btnType="Welcome"
+            onClick={() => {
+              open("update");
+            }}
+          >
+            +Add New Column
+          </Button>
         </div>
       )}
     </div>

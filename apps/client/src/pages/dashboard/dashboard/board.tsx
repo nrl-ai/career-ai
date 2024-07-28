@@ -30,13 +30,13 @@ export function BoardView() {
     }
   }, [jobApplications, setBoardData, setActiveBoard]);
 
-  if (
-    loading ||
-    (typeof jobApplications === "object" &&
-      !Array.isArray(jobApplications) &&
-      jobApplications !== null)
-  )
-    return <div>Loading...</div>;
+  // if (
+  //   loading ||
+  //   (typeof jobApplications === "object" &&
+  //     !Array.isArray(jobApplications) &&
+  //     jobApplications !== null)
+  // )
+  //   return <div>Loading...</div>;
   return (
     <div className="Wrapper">
       <main className="AppContainer">
