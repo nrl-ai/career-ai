@@ -21,10 +21,10 @@ export const InterviewInformationPage = () => {
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
   const [hasResult, setHasResult] = useState(false);
   const { resumes, loading } = useResumes();
-  const [languageSelector, setLanguageSelector] = useState<string>("");
-  const [language, setLanguage] = useState<string>("");
+  // const [languageSelector, setLanguageSelector] = useState<string>("");
+  // const [language, setLanguage] = useState<string>("");
   const [position, setPosition] = useState<string>("");
-  const [type, setType] = useState<typeEnum>();
+  // const [type, setType] = useState<typeEnum>();
   const { toast } = useToast();
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
@@ -50,8 +50,8 @@ export const InterviewInformationPage = () => {
     try {
       const result = await createInterview({
         position: position,
-        type: type ? type["code"] : "technical",
-        language: language as languageEnum,
+        // type: type ? type["code"] : "technical",
+        // language: language as languageEnum,
         jd: jd as string,
         cv: cvData,
       });
@@ -66,44 +66,45 @@ export const InterviewInformationPage = () => {
   };
 
   // START: TEMPLATE OF SELECT LANGUAGE BUTTON
-  const languageData = [
-    {
-      name: "Vietnamese",
-      code: "VN",
-    },
-    {
-      name: "English",
-      code: "EN",
-      // "icon":
-    },
-    {
-      name: "Korean",
-      code: "KR",
-    },
-  ];
+  // const languageData = [
+  //   {
+  //     name: "Vietnamese",
+  //     code: "VN",
+  //   },
+  //   {
+  //     name: "English",
+  //     code: "EN",
+  //     // "icon":
+  //   },
+  //   {
+  //     name: "Korean",
+  //     code: "KR",
+  //   },
+  // ];
   // END
 
   // START: TEMPLATE FOR SELECT TYPE BUTTON
-  const typeData = [
-    {
-      name: "Technical",
-      code: "technical",
-    },
-    {
-      name: "Behavioral",
-      code: "behavioral",
-      // "icon":
-    },
-    {
-      name: "Combination",
-      code: "combination",
-    },
-  ];
+  // const typeData = [
+  //   {
+  //     name: "Technical",
+  //     code: "technical",
+  //   },
+  //   {
+  //     name: "Behavioral",
+  //     code: "behavioral",
+  //     // "icon":
+  //   },
+  //   {
+  //     name: "Combination",
+  //     code: "combination",
+  //   },
+  // ];
 
   // END
 
   const startInterviewButtonActive =
-    language != "" && position != "" && type != undefined && selectedCVDetailed != null;
+    // language != "" && position != "" && type != undefined && selectedCVDetailed != null;
+    position != "" && jd != "" && selectedCVDetailed != null;
 
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
@@ -122,7 +123,7 @@ export const InterviewInformationPage = () => {
       >
         <div className="col-span-1 rounded-xl bg-white p-6">
           <span className="font-semibold text-2xl">Applying position</span>
-          <div className="grid grid-cols-2 gap-x-3 mt-[18px]">
+          {/* <div className="grid grid-cols-2 gap-x-3 mt-[18px]">
             <div className="col-span-1 flex flex-col">
               <span className="text-base font-medium">Language</span>
               <Dropdown
@@ -214,7 +215,7 @@ export const InterviewInformationPage = () => {
                 }}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="mt-4">
             <span className="text-base font-medium">Position</span>
@@ -241,9 +242,9 @@ export const InterviewInformationPage = () => {
               id="jd-input-field"
               content={jd}
               onChange={setJD}
-              isActive={language != "" && position != ""}
+              isActive={position != ""} // add language != "" when needed
               position={position}
-              language={language}
+              language={"EN"}
             />
           </div>
         </div>

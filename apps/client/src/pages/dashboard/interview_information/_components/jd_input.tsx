@@ -454,7 +454,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
       editorProps: {
         attributes: {
           class: cn(
-            "prose max-h-[calc(100vh-667px)] prose-sm prose-zinc grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
+            "prose max-h-[calc(100vh-545px)] prose-sm prose-zinc grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
             editorClassName,
           ),
         },
@@ -506,7 +506,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
         <EditorContent
           editor={editor}
           className={cn(
-            "grid w-full min-h-[33vh] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
+            "grid w-full min-h-[44vh] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
             hideToolbar && "pt-2",
             className,
           )}

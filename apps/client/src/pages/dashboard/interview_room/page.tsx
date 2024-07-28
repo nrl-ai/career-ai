@@ -8,13 +8,14 @@ export const InterviewRoomPage = () => {
   const location = useLocation();
 
   const interviewInput = {
-    language : location.state['language'],
-    type: location.state['type'],
+    // language : location.state['language'],
+    // type: location.state['type'],
     position: location.state['position'],
     jd: location.state['jd'],
     cv: location.state['cv']
   };
 
+  console.log(interviewInput)
   const handleEndInterviewClick = () => {
     navigate("/dashboard/interview");
   };
