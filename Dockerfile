@@ -16,9 +16,10 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 COPY .npmrc package.json pnpm-lock.yaml ./
 COPY ./tools/prisma /app/tools/prisma
 RUN pnpm install --frozen-lockfile
-RUN pnpm run build
 
 COPY . .
+
+RUN pnpm run build
 
 # --- Release Image ---
 FROM base AS release
