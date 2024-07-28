@@ -21,7 +21,7 @@ export function EmptyScreen({ append, lng }: any) {
   };
 
   return (
-    <div className="mx-auto max-w-[900px] w-full px-4 lg:px-4 overflow-auto">
+    <div className="max-w-[1200px] w-full px-4 lg:px-4 overflow-auto">
       <div className="rounded-2xl lg:border bg-white bg-opacity-60 p-8 lg:p-8 border-gray-300 lg:shadow-lg mb-8 overflow-auto pt-10 relative">
         <div className="hidden lg:block absolute top-4 right-4 z-50">
           <a href={`/${lng}/apps/speaking/lessons`}>
@@ -43,7 +43,7 @@ export function EmptyScreen({ append, lng }: any) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br from-blue-500 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-2 py-2 mt-1 mr-1 cursor-default"
+              className="inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br from-blue-500 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default"
               onClick={() => setPosition(option)}
             >
               {option}

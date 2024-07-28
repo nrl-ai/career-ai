@@ -40,7 +40,7 @@ export const InterviewFeedbackPage = () => {
             </div>
 
             <div className="flex w-full h-[145rem] mt-4 justify-between gap-x-4">
-                <div className="flex flex-col">
+                <div className="flex flex-col justify-between">
                     <div className="bg-white h-28 bg-white p-4 rounded-lg">
                         {/** TODO: Fetch data based on interview id and fill iin here */}
                         <span className="font-semibold text-xl text-[#191919]">Senior Software Developer</span>

@@ -41,7 +41,7 @@ export function ChatMessage({
       )}
       {...props}
     >
-      <div className="flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 select-none items-center justify-center rounded-full border overflow-hidden shadow-lg bg-white m-2 border-gray-500">
+      {/* <div className="flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 select-none items-center justify-center rounded-full border overflow-hidden shadow-lg bg-white m-2 border-gray-500">
         {message.role === "user" ? (
           userAvatar ? (
             <img
@@ -63,7 +63,7 @@ export function ChatMessage({
             className="w-full h-full"
           />
         )}
-      </div>
+      </div> */}
       <div
         className={cn(
           "flex-1 space-y-2 overflow-hidden px-4 py-2 rounded-xl shadow-md border",

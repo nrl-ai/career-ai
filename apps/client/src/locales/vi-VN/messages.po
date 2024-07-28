@@ -17,6 +17,10 @@ msgstr ""
 msgid "You have enabled two-factor authentication successfully."
 msgstr "Bạn đã kích hoạt xác thực hai yếu tố thành công."
 
+#: apps/client/src/pages/dashboard/interview_information/page.tsx:63
+msgid "{error}"
+msgstr "{error}"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:141
 msgid "{value, plural, one {Column} other {Columns}}"
 msgstr "{value, plural, one {Cột} other {Cột}}"
@@ -28,10 +32,6 @@ msgstr "<0>Tôi đã xây dựng sự nghiệp chủ yếu là một mình trong
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:51
 msgid "<0>I'm sure the app is not perfect, but I'd like for it to be.</0><1>If you faced any issues while creating your resume, or have an idea that would help you and other users in creating your resume more easily, drop an issue on the repository or send me an email about it.</1>"
 msgstr "<0>Tôi chắc chắn rằng ứng dụng không hoàn hảo, nhưng tôi muốn nó như vậy. </0><1>Nếu bạn gặp bất kỳ vấn đề nào trong khi tạo sơ yếu lý lịch của mình hoặc có ý tưởng sẽ giúp bạn và những người dùng khác trong việc tạo sơ yếu lý lịch của bạn dễ dàng hơn, hãy thả một vấn đề vào kho lưu trữ hoặc gửi email cho tôi về nó. </1>"
-
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:116
-msgid "<0>Note: </0>By utilizing the OpenAI API, you acknowledge and accept the <1>terms of use</1> and <2>privacy policy</2> outlined by OpenAI. Please note that CareerAI bears no responsibility for any improper or unauthorized utilization of the service, and any resulting repercussions or liabilities solely rest on the user."
-msgstr "<0>Lưu ý: </0> Bằng cách sử dụng API OpenAI, bạn thừa nhận và chấp nhận các điều <1> khoản sử dụng </1> và chính sách bảo <2> mật do OpenAI </2> nêu ra. Xin lưu ý rằng CareerAI không chịu trách nhiệm về bất kỳ việc sử dụng dịch vụ không đúng cách hoặc trái phép nào và mọi hậu quả hoặc trách nhiệm pháp lý do đó chỉ thuộc về người dùng."
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:85
 msgid "<0>The community has spent a lot of time writing the documentation for CareerAI, and I'm sure it will help you get started with the app.</0><1>There are also a lot of examples to help you get started, and features that you might not know about which could help you build your perfect resume.</1>"
@@ -101,10 +101,6 @@ msgstr "Thêm trang mới"
 #: apps/client/src/components/ai-actions.tsx:79
 msgid "AI"
 msgstr "AI"
-
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:102
-msgid "AI Mock Interview"
-msgstr "Phỏng vấn ảo AI"
 
 #: apps/client/src/pages/auth/register/page.tsx:71
 msgid "Already have an account?"
@@ -212,7 +208,7 @@ msgid "Border Radius"
 msgstr "Độ bo góc"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:92
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:99
 msgid "Build Your Resume"
 msgstr "Tạo CV theo mẫu"
 
@@ -236,10 +232,10 @@ msgstr "Hủy"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/courses/page.tsx:177
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:56
 #: apps/client/src/pages/dashboard/dashboard/page.tsx:19
-#: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/home/components/footer.tsx:18
@@ -264,6 +260,7 @@ msgid "Center Artboard"
 msgstr "Bảng vẽ trung tâm"
 
 #: apps/client/src/components/cv_selector/index.tsx:56
+#: apps/client/src/pages/dashboard/interview_information/_components/cv_selector.tsx:54
 msgid "Change"
 msgstr "Thay đổi"
 
@@ -280,7 +277,7 @@ msgstr "Thay đổi Ngữ điệu"
 msgid "Changed your mind about the name? Give it a new one."
 msgstr "Bạn đã thay đổi ý kiến về cái tên? Cho nó một cái mới."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:97
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:104
 msgid "Check & Optimize Resume"
 msgstr "Kiểm tra và Tối ưu CV"
 
@@ -310,6 +307,8 @@ msgstr "Cột"
 
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:20
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:10
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:20
 msgid "Coming Soon"
 msgstr "Sắp ra mắt"
 
@@ -401,12 +400,9 @@ msgstr "Phần tùy chỉnh"
 msgid "Danger Zone"
 msgstr "Vùng nguy hiểm"
 
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:87
-msgid "Dark"
-msgstr "Tối"
-
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:84
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:91
 #: apps/client/src/pages/dashboard/dashboard/page.tsx:19
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 msgid "Dashboard"
 msgstr "Bảng trung tâm"
 
@@ -455,7 +451,7 @@ msgstr "Vô hiệu hóa 2FA"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:280
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:219
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:134
+#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:119
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:124
 msgid "Discard"
 msgstr "Loại bỏ"
@@ -471,10 +467,6 @@ msgstr "Bạn không có tài khoản?"
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:83
 msgid "Don't know where to begin? Hit the docs!"
 msgstr "Không biết bắt đầu từ đâu? Đọc tài liệu!"
-
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:107
-msgid "Don't see your language? <0>Help translate the app.</0>"
-msgstr "Không thấy ngôn ngữ của bạn? <0>Giúp dịch ứng dụng. </0>"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:40
 msgid "Donate to CareerAI"
@@ -660,7 +652,7 @@ msgstr "Google"
 msgid "Grayscale"
 msgstr "Màu xám"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:123
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:135
 msgid "Gross-Net Salary Calculator"
 msgstr "Tính lương Gross-Net"
 
@@ -749,11 +741,6 @@ msgstr "Thông tin"
 msgid "Institution"
 msgstr "Tổ chức"
 
-#: apps/client/src/pages/dashboard/interview/page.tsx:11
-#: apps/client/src/pages/dashboard/interview/page.tsx:22
-msgid "Interview"
-msgstr "Phỏng vấn"
-
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:53
 msgid "Issuer"
 msgstr "Tổ chức phát hành"
@@ -786,7 +773,7 @@ msgstr "Có vẻ như mã thông báo xác minh bạn cung cấp không hợp l�
 msgid "It looks like your email address has already been verified."
 msgstr "Có vẻ như địa chỉ email của bạn đã được xác minh."
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:56
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:53
 msgid "Job Application Tracker"
 msgstr "Bảng theo dõi ứng tuyển"
 
@@ -816,10 +803,6 @@ msgstr "JSON"
 msgid "Keywords"
 msgstr "Từ khóa"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:115
-msgid "Knowledge Library"
-msgstr "Thư viện kiến thức"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:34
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:44
 msgid "Label"
@@ -831,6 +814,8 @@ msgstr "Ngôn ngữ"
 
 #: apps/client/src/components/cv_selector/_components/resume-card.tsx:33
 #: apps/client/src/components/cv_selector/index.tsx:46
+#: apps/client/src/pages/dashboard/interview_information/_components/cv_selector.tsx:44
+#: apps/client/src/pages/dashboard/interview_information/_components/resume_card.tsx:34
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:86
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:139
 msgid "Last updated {lastUpdated}"
@@ -849,10 +834,6 @@ msgstr "Thư"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:77
 msgid "Level"
 msgstr "Cấp"
-
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:86
-msgid "Light"
-msgstr "Sáng"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:151
 msgid "Line Height"
@@ -911,6 +892,10 @@ msgstr "Tháng 3 2023 - Hiện tại"
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:50
 msgid "Margin"
 msgstr "Biên (lề)"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
+msgid "Mock Interview - Simple"
+msgstr "Phỏng vấn ảo"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
@@ -1012,7 +997,7 @@ msgstr "Mật khẩu"
 msgid "PDF"
 msgstr "PDF"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:128
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:140
 msgid "Personal Income Tax Calculator"
 msgstr "Tính toán thuế thu nhập cá nhân"
 
@@ -1071,6 +1056,10 @@ msgstr "Màu cơ bản"
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:23
 msgid "Privacy Policy"
 msgstr "Chính sách bảo mật"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:204
+msgid "Pro User"
+msgstr "Pro User"
 
 #: apps/client/src/components/ai-actions.tsx:109
 #: apps/client/src/components/ai-actions.tsx:112
@@ -1139,7 +1128,6 @@ msgstr "Đặt lại Zoom"
 msgid "Resume Checker and Optimizer"
 msgstr "Kiểm tra và Tối ưu CV"
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
@@ -1152,7 +1140,7 @@ msgstr "Tròn"
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:168
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:243
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:216
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:131
+#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:116
 msgid "Save Changes"
 msgstr "Lưu thay đổi"
 
@@ -1201,7 +1189,7 @@ msgstr "Gửi tin nhắn"
 msgid "Separate Links"
 msgstr "Liên kết riêng biệt"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:196
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:230
 msgid "Services"
 msgstr "Dịch vụ"
 
@@ -1267,7 +1255,7 @@ msgstr "Đăng ký hiện đang bị vô hiệu hóa bởi quản trị viên."
 msgid "Size (in px)"
 msgstr "Kích thước (tính bằng px)"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:110
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:122
 msgid "Skill Courses"
 msgstr "Khóa học kỹ năng"
 
@@ -1333,10 +1321,6 @@ msgstr "Bản tóm tắt"
 msgid "Support the app by donating what you can!"
 msgstr "Hỗ trợ ứng dụng bằng cách quyên góp những gì bạn có thể!"
 
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:85
-msgid "System"
-msgstr "Hệ thống"
-
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:59
 #: apps/client/src/pages/builder/sidebars/right/sections/template.tsx:19
 msgid "Template"
@@ -1354,10 +1338,6 @@ msgstr "Điều đó trông không giống như một khóa API OpenAI hợp l�
 msgid "The comprehensive resume optimizer tool helps you increase your chances of being invited to an interview by evaluating the keywords and formatting of your CV."
 msgstr "Công cụ tối ưu sơ yếu lý lịch toàn diện giúp bạn tăng cơ hội được mời phỏng vấn bằng cách đánh giá các từ khóa và định dạng của CV của bạn."
 
-#: apps/client/src/pages/dashboard/interview/page.tsx:27
-msgid "The Mock Interview tool helps you practice interviews effectively and authentically, and is currently under development. Please wait for the experience in the near future."
-msgstr "Công cụ Phỏng vấn ảo với AI giúp bạn thực hành phỏng vấn một cách hiệu quả và chân thực, và hiện đang trong quá trình phát triển. Vui lòng chờ đợi trải nghiệm trong tương lai gần."
-
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:34
 msgid "The passwords you entered do not match."
 msgstr "Mật khẩu bạn đã nhập không khớp."
@@ -1368,7 +1348,6 @@ msgstr "Sơ yếu lý lịch bạn muốn cập nhật bị khóa, vui lòng m�
 
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:80
 #: apps/client/src/pages/builder/sidebars/right/sections/theme.tsx:20
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:79
 msgid "Theme"
 msgstr "Theme"
 
@@ -1388,11 +1367,8 @@ msgstr "Hành động này không thể hoàn tác. Điều này sẽ xóa vĩnh
 msgid "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 msgstr "Địa chỉ email này được liên kết với tài khoản OAuth. Vui lòng đăng nhập với nhà cung cấp OAuth của bạn."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
-msgid "This feature is under development."
-msgstr "Tính năng này đang được phát triển."
-
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:26
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:26
 msgid "This page is under construction. Please check back later."
 msgstr "Trang này đang được xây dựng. Vui lòng kiểm tra lại sau."
 
@@ -1505,10 +1481,6 @@ msgstr "Sử dụng mã dự phòng của bạn"
 msgid "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 msgstr "Người dùng không có bản ghi 'bí mật' liên quan. Vui lòng báo cáo vấn đề này trên GitHub."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:265
-msgid "User Profile"
-msgstr "Hồ sơ người dùng"
-
 #: apps/client/src/pages/auth/register/page.tsx:119
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:66
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:166
@@ -1551,10 +1523,6 @@ msgstr "Lượt xem"
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:86
 msgid "Visible"
 msgstr "Hiện"
-
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:245
-msgid "We are developing this feature. Please come back soon!"
-msgstr "Chúng tôi đang phát triển tính năng này. Vui lòng quay lại sớm!"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:61
 msgid "We verify your email address only to ensure that we can send you a password reset link in case you forget your password."

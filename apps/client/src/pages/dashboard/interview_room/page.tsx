@@ -18,7 +18,7 @@ export const InterviewRoomPage = () => {
         <i className="pi pi-chevron-right text-[#AEAEB2]"></i>
         <span className="font-medium text-base">Interviewing</span>
       </div>
-      <div className="flex flex-grow flex-row gap-x-6 h-fit max-w-[1500px]">
+      <div className="flex flex-grow flex-row gap-x-6 h-fit">
         <InterviewUI lng="en" />
       </div>
     </div>

@@ -11,6 +11,9 @@ import { Gauge } from "./_components/gauge";
 import { FilterMatchMode, FilterOperator } from "primereact/api"; 
 // import { Calendar } from "primereact/calendar";
 import { useDeleteInterview } from "@/client/services/interview/delete";
+import { ConfirmDialog, confirmDialog  } from 'primereact/confirmdialog';
+import { t } from "@lingui/macro";
+import { toast } from "@/client/hooks/use-toast";
 
 const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
   return (
@@ -403,20 +406,50 @@ export const InterviewPage = () => {
   ]
 
   const showResultOnClick = () => {
-    navigate("/dashboard/interview-feedback");
+    navigate("/dashboard/interview-feedback", {state: selectedRowData});
   }
 
   const redoInterviewOnClick = () => {
-    navigate("/dashboard/interview-room");
+    navigate("/dashboard/interview-room", {state: selectedRowData});
   }
 
   const deleteInterviewOnClick = async () => {
-      await deleteInterview(selectedRowData['id']);
+      try {
+        await deleteInterview(selectedRowData['id']);
+        toast({ 
+          variant: "success",
+          title: t`Delete the record successfully`,
+          // description: (error as Error).message,
+        });
+      } catch(error) { 
+        toast({ 
+          variant: "error",
+          title: t`Oops, the server returned an error when trying to delete the record.`,
+          description: (error as Error).message,
+        });
+      }
       setShowResult(false);
   }
 
+  const confirmDelete = () => {
+    confirmDialog({
+        message: 'Do you want to delete this record?',
+        header: 'Delete Confirmation',
+        icon: 'pi pi-info-circle',
+        defaultFocus: 'reject',
+        acceptClassName: 'p-button-danger',
+        accept: deleteInterviewOnClick,
+    });
+  };
+  
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
+      <ConfirmDialog pt={{
+        content: {style: {display: "flex", alignItems: "center"}},
+        acceptButton: {
+          root: {className: "bg-[#FF3B30] hover:bg-[#DE3D34] border-none"}
+        }
+      }}/>
       <div className="flex justify-between items-center">
         <span className="text-2xl font-bold">AI Mock Interview</span>
       </div>
@@ -508,7 +541,7 @@ export const InterviewPage = () => {
             className="pt-4"
             id="ai-interview-information"
           >
-            <div className="flex flex-col bg-white min-h-[800px] w-[380px] rounded-xl p-6">
+            <div className="flex flex-col bg-white min-h-[800px] w-[380px] rounded-xl p-6 xl:relative">
               <span className="font-semibold text-xl">{selectedRowData["position"]}</span>
               <div className="flex gap-x-5 items-center mt-2">
                 <div className="py-2 px-4 w-fit rounded-xl" style={{background: typeData['bgcolor'], color: typeData['textColor']}}>
@@ -578,7 +611,7 @@ export const InterviewPage = () => {
                       className: 'font-medium text-base'
                     }
                   }}></Button>
-                  <span className="font-medium text-sm text-[#191919] mt-5">or <span onClick={deleteInterviewOnClick} className="underline text-[#FF3B30] cursor-pointer">delete</span> here</span>
+                  <span className="font-medium text-sm text-[#191919] mt-5">or <span onClick={confirmDelete} className="underline text-[#FF3B30] cursor-pointer">delete</span> here</span>
                 </div>
               </div>
             </div>

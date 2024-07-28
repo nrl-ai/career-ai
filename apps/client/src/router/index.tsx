@@ -82,6 +82,7 @@ export const routes = createRoutesFromElements(
           <Route path="cv-optimization" element={<CVOptimizationPage />} />
           <Route path="blog" element={<ComingSoonPage />} />
           <Route path="courses" element={<CoursesPage />} />
+          <Route path="interview" element={<InterviewPage />} />
           <Route path="interview-information" element={<InterviewInformationPage />} />
           <Route path="interview-room" element={<InterviewRoomPage />} />
           <Route path="interview-feedback" element={<InterviewFeedbackPage />} />

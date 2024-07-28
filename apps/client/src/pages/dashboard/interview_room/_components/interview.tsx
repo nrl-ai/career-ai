@@ -7,13 +7,12 @@ import { useState, useEffect } from "react";
 import { FinishedMessage } from "./finished-message";
 import interviewerAvatar from "./interviewer.png";
 import EasySpeech from "easy-speech";
-import { textToAudio } from "./tts";
 import ChatPanel from "./chat-panel";
 import ChatList from "./chat-list";
 import TalkingHeadComponent from "./TalkingHeadComponent";
 import { useRef } from "react";
 import { TalkingHead } from "./talking_head/talkinghead.mjs";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { Excalidraw } from "@excalidraw/excalidraw";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
@@ -21,6 +20,7 @@ export interface ChatProps extends React.ComponentProps<"div"> {
 }
 
 export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
+  const [firstTime, setFirstTime] = useState(true);
   const headRef = useRef<TalkingHead | null>(null);
   const [isFinished, setIsFinished] = useState(false);
   const [speechSynthesisInstance, setSpeechSynthesisInstance] = useState<
@@ -29,7 +29,16 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   const [waitingForAudio, setWaitingForAudio] = useState(false);
 
   const handleSpeak = (text: string) => {
-    headRef.current?.speakText(text);
+    if (firstTime) {
+      setFirstTime(false);
+      setTimeout(() => {
+        headRef.current?.speakText(text);
+        headRef.current?.startSpeaking();
+      }, 2000);
+    } else {
+      headRef.current?.speakText(text);
+      headRef.current?.startSpeaking();
+    }
   };
 
   const { messages, append, reload, stop, isLoading, input, setInput } = useChat({
@@ -50,36 +59,16 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
       if (content.includes("MOCK INTERVIEW ENDED")) {
         setIsFinished(true);
       } else {
-        await EasySpeech.speak({
-          text: content,
-          pitch: 1,
-          rate: 1,
-          volume: 1,
-        });
-        return;
+        // await EasySpeech.speak({
+        //   text: content,
+        //   pitch: 1,
+        //   rate: 1,
+        //   volume: 1,
+        // });
+        // return;
 
         // Talk with avatar
         handleSpeak(content);
-
-        // TODO Fix the TTS
-
-        try {
-          setWaitingForAudio(true);
-          const audio = await textToAudio(content);
-          setWaitingForAudio(false);
-          window.playingAudio = audio;
-          console.log(audio);
-          setSpeechSynthesisInstance(audio); // Read out the message using the SpeechSynthesis API
-          audio.play();
-        } catch (error) {
-          setWaitingForAudio(false);
-          await EasySpeech.speak({
-            text: content,
-            pitch: 1,
-            rate: 1,
-            volume: 1,
-          });
-        }
       }
     },
   });
@@ -111,42 +100,49 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   }, []);
 
   return (
-    <div className="flex flex-col flex-grow w-full overflow-auto">
-      <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto", className)}>
-        {messages.length ? (
-          <>
+    <div className="pt-8 w-full">
+      {!messages.length ? <EmptyScreen append={append} lng={lng} /> :
+        <div className="flex flex-row flex-grow overflow-hidden w-full">
+          {messages.length ? <div>
             <TalkingHeadComponent headRef={headRef as any} />
-            <ScrollArea className="flex-grow overflow-auto h-[300px]">
-              <ChatList
-                lng={lng}
-                messages={messages}
-                isLoading={isLoading}
-                waitingForAudio={waitingForAudio}
-                assistantAvatar={interviewerAvatar}
-              />
-              <ChatScrollAnchor trackVisibility={isLoading || waitingForAudio} />
-            </ScrollArea>
-          </>
-        ) : (
-          <EmptyScreen append={append} lng={lng} />
-        )}
-        {isFinished && <FinishedMessage />}
-      </div>
-      {!isFinished && (
-        <div className="lg:mx-auto sz-10 lg:w-[400px] xl:w-[600px] w-full rounded-xl flex-grow-0 flex">
-          <ChatPanel
-            lng={lng}
-            isLoading={isLoading}
-            stop={stop}
-            append={append}
-            reload={reload}
-            messages={messages}
-            input={input}
-            setInput={setInput}
-            onStartRecording={stopTTS}
-          />
+            <div style={{ height: "500px", background: "white" }} className="rounded-xl bg-white overflow-hidden p-4">
+              <Excalidraw />
+            </div>
+          </div>
+            : <></>}
+          <div className="flex flex-col w-[400px]">
+            <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 w-full", className)}>
+              <>
+                <ChatList
+                  lng={lng}
+                  messages={messages}
+                  isLoading={isLoading}
+                  waitingForAudio={waitingForAudio}
+                  assistantAvatar={interviewerAvatar}
+                />
+                <ChatScrollAnchor trackVisibility={isLoading || waitingForAudio} />
+              </>
+              {isFinished && <FinishedMessage />}
+            </div>
+            {!isFinished && (
+              <div className="lg:mx-auto sz-10 lg:w-[300px] xl:w-[400px] w-full rounded-xl flex-grow-0 flex">
+                <ChatPanel
+                  lng={lng}
+                  isLoading={isLoading}
+                  stop={stop}
+                  append={append}
+                  reload={reload}
+                  messages={messages}
+                  input={input}
+                  setInput={setInput}
+                  onStartRecording={stopTTS}
+                />
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      }
     </div>
   );
+
 }

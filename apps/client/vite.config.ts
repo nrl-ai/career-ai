@@ -9,12 +9,14 @@ export default defineConfig({
   cacheDir: "../../node_modules/.vite/client",
 
   build: {
-    sourcemap: true,
+    minify: true,
+    sourcemap: false,
     emptyOutDir: true,
   },
 
   define: {
     appVersion: JSON.stringify(process.env.npm_package_version),
+    "process.env.IS_PREACT": JSON.stringify(process.env.IS_PREACT),
   },
 
   server: {

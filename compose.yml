@@ -122,6 +122,7 @@ services:
 
       # Google STT
       GOOGLE_APPLICATION_CREDENTIALS_JSON: ${GOOGLE_APPLICATION_CREDENTIALS_JSON:-{}}
+      GOOGLE_TTS_API_KEY: ${GOOGLE_TTS_API_KEY:-google_tts_key}
     labels:
       - traefik.enable=true
       - traefik.http.routers.app.rule=Host(`www.careerai.me`)

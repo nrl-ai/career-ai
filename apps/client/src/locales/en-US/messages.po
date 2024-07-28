@@ -22,6 +22,10 @@ msgstr ""
 msgid "You have enabled two-factor authentication successfully."
 msgstr "You have enabled two-factor authentication successfully."
 
+#: apps/client/src/pages/dashboard/interview_information/page.tsx:63
+msgid "{error}"
+msgstr "{error}"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:141
 msgid "{value, plural, one {Column} other {Columns}}"
 msgstr "{value, plural, one {Column} other {Columns}}"
@@ -33,10 +37,6 @@ msgstr "<0>I built CareerAI mostly by myself during my spare time, with a lot of
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:51
 msgid "<0>I'm sure the app is not perfect, but I'd like for it to be.</0><1>If you faced any issues while creating your resume, or have an idea that would help you and other users in creating your resume more easily, drop an issue on the repository or send me an email about it.</1>"
 msgstr "<0>I'm sure the app is not perfect, but I'd like for it to be.</0><1>If you faced any issues while creating your resume, or have an idea that would help you and other users in creating your resume more easily, drop an issue on the repository or send me an email about it.</1>"
-
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:116
-msgid "<0>Note: </0>By utilizing the OpenAI API, you acknowledge and accept the <1>terms of use</1> and <2>privacy policy</2> outlined by OpenAI. Please note that CareerAI bears no responsibility for any improper or unauthorized utilization of the service, and any resulting repercussions or liabilities solely rest on the user."
-msgstr "<0>Note: </0>By utilizing the OpenAI API, you acknowledge and accept the <1>terms of use</1> and <2>privacy policy</2> outlined by OpenAI. Please note that CareerAI bears no responsibility for any improper or unauthorized utilization of the service, and any resulting repercussions or liabilities solely rest on the user."
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:85
 msgid "<0>The community has spent a lot of time writing the documentation for CareerAI, and I'm sure it will help you get started with the app.</0><1>There are also a lot of examples to help you get started, and features that you might not know about which could help you build your perfect resume.</1>"
@@ -106,10 +106,6 @@ msgstr "Add New Page"
 #: apps/client/src/components/ai-actions.tsx:79
 msgid "AI"
 msgstr "AI"
-
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:102
-msgid "AI Mock Interview"
-msgstr "AI Mock Interview"
 
 #: apps/client/src/pages/auth/register/page.tsx:71
 msgid "Already have an account?"
@@ -217,7 +213,7 @@ msgid "Border Radius"
 msgstr "Border Radius"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:67
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:92
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:99
 msgid "Build Your Resume"
 msgstr "Build Your Resume"
 
@@ -241,10 +237,10 @@ msgstr "Cancel"
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/builder/page.tsx:43
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/courses/page.tsx:177
 #: apps/client/src/pages/dashboard/cv_optimization/page.tsx:56
 #: apps/client/src/pages/dashboard/dashboard/page.tsx:19
-#: apps/client/src/pages/dashboard/interview/page.tsx:11
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/home/components/footer.tsx:18
@@ -269,6 +265,7 @@ msgid "Center Artboard"
 msgstr "Center Artboard"
 
 #: apps/client/src/components/cv_selector/index.tsx:56
+#: apps/client/src/pages/dashboard/interview_information/_components/cv_selector.tsx:54
 msgid "Change"
 msgstr "Change"
 
@@ -285,7 +282,7 @@ msgstr "Change Tone"
 msgid "Changed your mind about the name? Give it a new one."
 msgstr "Changed your mind about the name? Give it a new one."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:97
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:104
 msgid "Check & Optimize Resume"
 msgstr "Check & Optimize Resume"
 
@@ -315,6 +312,8 @@ msgstr "Columns"
 
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:10
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:20
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:10
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:20
 msgid "Coming Soon"
 msgstr "Coming Soon"
 
@@ -406,12 +405,9 @@ msgstr "Custom Section"
 msgid "Danger Zone"
 msgstr "Danger Zone"
 
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:87
-msgid "Dark"
-msgstr "Dark"
-
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:84
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:91
 #: apps/client/src/pages/dashboard/dashboard/page.tsx:19
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -460,7 +456,7 @@ msgstr "Disable 2FA"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:280
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:219
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:134
+#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:119
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:124
 msgid "Discard"
 msgstr "Discard"
@@ -476,10 +472,6 @@ msgstr "Don't have an account?"
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:83
 msgid "Don't know where to begin? Hit the docs!"
 msgstr "Don't know where to begin? Hit the docs!"
-
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:107
-msgid "Don't see your language? <0>Help translate the app.</0>"
-msgstr "Don't see your language? <0>Help translate the app.</0>"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:40
 msgid "Donate to CareerAI"
@@ -665,7 +657,7 @@ msgstr "Google"
 msgid "Grayscale"
 msgstr "Grayscale"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:123
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:135
 msgid "Gross-Net Salary Calculator"
 msgstr "Gross-Net Salary Calculator"
 
@@ -754,11 +746,6 @@ msgstr "Information"
 msgid "Institution"
 msgstr "Institution"
 
-#: apps/client/src/pages/dashboard/interview/page.tsx:11
-#: apps/client/src/pages/dashboard/interview/page.tsx:22
-msgid "Interview"
-msgstr "Interview"
-
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:53
 msgid "Issuer"
 msgstr "Issuer"
@@ -791,7 +778,7 @@ msgstr "It looks like the verification token you provided is invalid. Please try
 msgid "It looks like your email address has already been verified."
 msgstr "It looks like your email address has already been verified."
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:56
+#: apps/client/src/pages/dashboard/dashboard/page.tsx:53
 msgid "Job Application Tracker"
 msgstr "Job Application Tracker"
 
@@ -821,10 +808,6 @@ msgstr "JSON"
 msgid "Keywords"
 msgstr "Keywords"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:115
-msgid "Knowledge Library"
-msgstr "Knowledge Library"
-
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:34
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:44
 msgid "Label"
@@ -836,6 +819,8 @@ msgstr "Language"
 
 #: apps/client/src/components/cv_selector/_components/resume-card.tsx:33
 #: apps/client/src/components/cv_selector/index.tsx:46
+#: apps/client/src/pages/dashboard/interview_information/_components/cv_selector.tsx:44
+#: apps/client/src/pages/dashboard/interview_information/_components/resume_card.tsx:34
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:86
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:139
 msgid "Last updated {lastUpdated}"
@@ -854,10 +839,6 @@ msgstr "Letter"
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:77
 msgid "Level"
 msgstr "Level"
-
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:86
-msgid "Light"
-msgstr "Light"
 
 #: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:151
 msgid "Line Height"
@@ -916,6 +897,10 @@ msgstr "March 2023 - Present"
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:50
 msgid "Margin"
 msgstr "Margin"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
+msgid "Mock Interview - Simple"
+msgstr "Mock Interview - Simple"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
@@ -1017,7 +1002,7 @@ msgstr "Password"
 msgid "PDF"
 msgstr "PDF"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:128
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:140
 msgid "Personal Income Tax Calculator"
 msgstr "Personal Income Tax Calculator"
 
@@ -1076,6 +1061,10 @@ msgstr "Primary Color"
 #: apps/client/src/pages/home/meta/privacy-policy/page.tsx:23
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
+
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:204
+msgid "Pro User"
+msgstr "Pro User"
 
 #: apps/client/src/components/ai-actions.tsx:109
 #: apps/client/src/components/ai-actions.tsx:112
@@ -1144,7 +1133,6 @@ msgstr "Reset Zoom"
 msgid "Resume Checker and Optimizer"
 msgstr "Resume Checker and Optimizer"
 
-#: apps/client/src/pages/dashboard/dashboard/page.tsx:36
 #: apps/client/src/pages/dashboard/resumes/page.tsx:18
 #: apps/client/src/pages/dashboard/resumes/page.tsx:35
 msgid "Resumes"
@@ -1157,7 +1145,7 @@ msgstr "Rounded"
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:168
 #: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:243
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:216
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:131
+#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:116
 msgid "Save Changes"
 msgstr "Save Changes"
 
@@ -1206,7 +1194,7 @@ msgstr "Send me a message"
 msgid "Separate Links"
 msgstr "Separate Links"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:196
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:230
 msgid "Services"
 msgstr "Services"
 
@@ -1272,7 +1260,7 @@ msgstr "Signups are currently disabled by the administrator."
 msgid "Size (in px)"
 msgstr "Size (in px)"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:110
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:122
 msgid "Skill Courses"
 msgstr "Skill Courses"
 
@@ -1338,10 +1326,6 @@ msgstr "Summary"
 msgid "Support the app by donating what you can!"
 msgstr "Support the app by donating what you can!"
 
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:85
-msgid "System"
-msgstr "System"
-
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:59
 #: apps/client/src/pages/builder/sidebars/right/sections/template.tsx:19
 msgid "Template"
@@ -1359,10 +1343,6 @@ msgstr "That doesn't look like a valid OpenAI API key."
 msgid "The comprehensive resume optimizer tool helps you increase your chances of being invited to an interview by evaluating the keywords and formatting of your CV."
 msgstr "The comprehensive resume optimizer tool helps you increase your chances of being invited to an interview by evaluating the keywords and formatting of your CV."
 
-#: apps/client/src/pages/dashboard/interview/page.tsx:27
-msgid "The Mock Interview tool helps you practice interviews effectively and authentically, and is currently under development. Please wait for the experience in the near future."
-msgstr "The Mock Interview tool helps you practice interviews effectively and authentically, and is currently under development. Please wait for the experience in the near future."
-
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:34
 msgid "The passwords you entered do not match."
 msgstr "The passwords you entered do not match."
@@ -1373,7 +1353,6 @@ msgstr "The resume you want to update is locked, please unlock if you wish to ma
 
 #: apps/client/src/pages/builder/sidebars/right/index.tsx:80
 #: apps/client/src/pages/builder/sidebars/right/sections/theme.tsx:20
-#: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:79
 msgid "Theme"
 msgstr "Theme"
 
@@ -1393,11 +1372,8 @@ msgstr "This action cannot be undone. This will permanently delete your resume a
 msgid "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 msgstr "This email address is associated with an OAuth account. Please sign in with your OAuth provider."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:244
-msgid "This feature is under development."
-msgstr "This feature is under development."
-
 #: apps/client/src/pages/dashboard/coming_soon/page.tsx:26
+#: apps/client/src/pages/dashboard/courses/coming_soon/page.tsx:26
 msgid "This page is under construction. Please check back later."
 msgstr "This page is under construction. Please check back later."
 
@@ -1510,10 +1486,6 @@ msgstr "Use your backup code"
 msgid "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 msgstr "User does not have an associated 'secrets' record. Please report this issue on GitHub."
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:265
-msgid "User Profile"
-msgstr "User Profile"
-
 #: apps/client/src/pages/auth/register/page.tsx:119
 #: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:66
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:166
@@ -1556,10 +1528,6 @@ msgstr "Views"
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:86
 msgid "Visible"
 msgstr "Visible"
-
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:245
-msgid "We are developing this feature. Please come back soon!"
-msgstr "We are developing this feature. Please come back soon!"
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:61
 msgid "We verify your email address only to ensure that we can send you a password reset link in case you forget your password."
