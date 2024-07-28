@@ -19,9 +19,9 @@ import { cn } from "@career-ai/utils";
 import { useState } from "react";
 
 import { toast } from "../hooks/use-toast";
-import { changeTone } from "../services/openai/change-tone";
-import { fixGrammar } from "../services/openai/fix-grammar";
-import { improveWriting } from "../services/openai/improve-writing";
+import { changeTone } from "../services/llm/change-tone";
+import { fixGrammar } from "../services/llm/fix-grammar";
+import { improveWriting } from "../services/llm/improve-writing";
 import { useOpenAiStore } from "../stores/openai";
 
 type Action = "improve" | "fix" | "tone";
@@ -60,6 +60,9 @@ export const AiActions = ({ value, onChange, className }: Props) => {
       setLoading(false);
     }
   };
+
+  // TODO (vietanhdev): Disable AI actions at the moment
+  return null;
 
   return (
     <div

@@ -13,7 +13,7 @@ export const interviewSchema = z.object({
   language: z.enum(["VN", "EN", "KR"]).default("EN"),
   createdAt: z.date().or(z.dateString()),
   updatedAt: z.date().or(z.dateString()),
-  model: z.string().default("gpt-3.5-turbo-0125"),
+  model: z.string().default("gemini-pro-0125"),
   userId: idSchema,
   user: userSchema,
   cv: resumeDataSchema.default(defaultResumeData),

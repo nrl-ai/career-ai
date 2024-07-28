@@ -41,9 +41,6 @@ import { VoiceModule } from "./voice/voice.module";
     JobApplicationsModule,
     TranslationModule,
 
-    // Not needed in production
-    // ContributorsModule,
-
     InterviewsModule,
 
     // Static Assets

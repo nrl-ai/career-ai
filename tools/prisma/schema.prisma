@@ -102,7 +102,7 @@ model Interviews {
   language  Language @default(EN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  model     String   @default("gpt-3.5-turbo-0125")
+  model     String   @default("gemini-pro-0125")
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   cv        Json     @default("{}")
