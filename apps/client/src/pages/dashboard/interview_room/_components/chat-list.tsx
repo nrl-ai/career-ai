@@ -28,7 +28,7 @@ export default function ChatList({
   }
 
   return (
-    <div className="relative mx-auto max-w-2xl px-4 w-full pb-4">
+    <div className="relative mx-auto max-w-2xl w-full pb-4">
       {messages.map((message, index) => {
         if (!message.content) {
           return null;

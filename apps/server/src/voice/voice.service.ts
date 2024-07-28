@@ -131,13 +131,16 @@ export class VoiceService {
     // with the API key provided in the body
     // The body should contain the text and the voice
     // The voice should be a string like "en-US-Standard-A"
-    const response = await fetch("https://eu-texttospeech.googleapis.com/v1beta1/text:synthesize?key=" + this.gTTSKey, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://eu-texttospeech.googleapis.com/v1beta1/text:synthesize?key=" + this.gTTSKey,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
       },
-      body: JSON.stringify(body),
-    });
+    );
     return response.json();
   }
 

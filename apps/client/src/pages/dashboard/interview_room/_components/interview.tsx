@@ -1,4 +1,6 @@
 "use client";
+import { t } from "@lingui/macro";
+import { motion } from "framer-motion";
 import { useChat, type Message } from "ai/react";
 import cn from "classnames";
 import { EmptyScreen } from "./empty-screen";
@@ -13,6 +15,9 @@ import TalkingHeadComponent from "./TalkingHeadComponent";
 import { useRef } from "react";
 import { TalkingHead } from "./talking_head/talkinghead.mjs";
 import { Excalidraw } from "@excalidraw/excalidraw";
+import { Button, ScrollArea } from "@career-ai/ui";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { BsPersonVideo } from "react-icons/bs";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
@@ -27,6 +32,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
     HTMLAudioElement | SpeechSynthesisUtterance | null
   >(null);
   const [waitingForAudio, setWaitingForAudio] = useState(false);
+  const [mode, setMode] = useState<"chat" | "whiteboard">("chat");
 
   const handleSpeak = (text: string) => {
     if (firstTime) {
@@ -99,50 +105,118 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
     };
   }, []);
 
+  const toggleWhiteboard = () => {
+    if (mode === "chat") {
+      setMode("whiteboard");
+    } else {
+      setMode("chat");
+    }
+  };
+
   return (
-    <div className="pt-8 w-full">
-      {!messages.length ? <EmptyScreen append={append} lng={lng} /> :
-        <div className="flex flex-row flex-grow overflow-hidden w-full">
-          {messages.length ? <div>
-            <TalkingHeadComponent headRef={headRef as any} />
-            <div style={{ height: "500px", background: "white" }} className="rounded-xl bg-white overflow-hidden p-4">
-              <Excalidraw />
-            </div>
+    <div className="w-full max-w-[1600px] pt-4">
+      {!messages.length ? (
+        <EmptyScreen append={append} lng={lng} />
+      ) : (
+        <>
+          <div className="flex items-center justify-between mt-4 mb-4">
+            <motion.h1
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-2xl font-bold tracking-tight"
+            >
+              {t`Interview Room`}
+            </motion.h1>
           </div>
-            : <></>}
-          <div className="flex flex-col w-[400px]">
-            <div className={cn("pt-16 lg:pt-8 flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 w-full", className)}>
-              <>
-                <ChatList
-                  lng={lng}
-                  messages={messages}
-                  isLoading={isLoading}
-                  waitingForAudio={waitingForAudio}
-                  assistantAvatar={interviewerAvatar}
-                />
-                <ChatScrollAnchor trackVisibility={isLoading || waitingForAudio} />
-              </>
-              {isFinished && <FinishedMessage />}
-            </div>
-            {!isFinished && (
-              <div className="lg:mx-auto sz-10 lg:w-[300px] xl:w-[400px] w-full rounded-xl flex-grow-0 flex">
-                <ChatPanel
-                  lng={lng}
-                  isLoading={isLoading}
-                  stop={stop}
-                  append={append}
-                  reload={reload}
-                  messages={messages}
-                  input={input}
-                  setInput={setInput}
-                  onStartRecording={stopTTS}
-                />
+          <div className="flex flex-col 2xl:flex-row flex-grow overflow-hidden w-full justify-start bg-white p-8 rounded-2xl">
+            {messages.length ? (
+              <div className="flex flex-grow flex-col">
+                <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px] mx-auto">
+                  <div
+                    className="flex flex-row items-center justify-center rounded-2xl"
+                    style={{
+                      background: "url(/office-background.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  >
+                    <Button
+                      variant={"secondary"}
+                      onClick={toggleWhiteboard}
+                      className="absolute top-4 left-6 z-50"
+                    >
+                      {mode == "chat" ? (
+                        <FaChalkboardTeacher className="mr-2" />
+                      ) : (
+                        <BsPersonVideo className="mr-2" />
+                      )}
+                      {mode == "chat" ? "Whiteboard" : "Video"}
+                    </Button>
+                    <div
+                      className={cn(
+                        "rounded-3xl mx-auto h-[400px] w-[600px] max-w-full lg:h-[500px] lg:w-[900px]",
+                        mode == "whiteboard" ? "hidden" : "",
+                      )}
+                    >
+                      <TalkingHeadComponent headRef={headRef as any} />
+                    </div>
+                    {mode == "whiteboard" && (
+                      <div
+                        style={{ height: "500px", width: "100%", background: "white" }}
+                        className="rounded-xl bg-white overflow-hidden p-4"
+                      >
+                        <Excalidraw />
+                      </div>
+                    )}
+                  </div>
+                  {!isFinished && (
+                    <div className="lg:mx-auto sz-10 w-[400px] rounded-xl flex-grow-0 flex mt-2">
+                      <ChatPanel
+                        lng={lng}
+                        isLoading={isLoading}
+                        stop={stop}
+                        append={append}
+                        reload={reload}
+                        messages={messages}
+                        input={input}
+                        setInput={setInput}
+                        onStartRecording={stopTTS}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
+            ) : (
+              <></>
             )}
+            <div className="flex flex-col w-[500px] mx-auto">
+              <div
+                className={cn(
+                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 bg-white px-1 max-h-[600px]",
+                  className,
+                )}
+              >
+                <>
+                  <div className="text-xl mb-2 mt-6 font-bold text-gray-600 text-center">
+                    Transcription
+                  </div>
+                  <ScrollArea className="flex-grow">
+                    <ChatList
+                      lng={lng}
+                      messages={messages}
+                      isLoading={isLoading}
+                      waitingForAudio={waitingForAudio}
+                      assistantAvatar={interviewerAvatar}
+                    />
+                    <ChatScrollAnchor trackVisibility={isLoading || waitingForAudio} />
+                  </ScrollArea>
+                </>
+                {isFinished && <FinishedMessage />}
+              </div>
+            </div>
+            <div className="flex flex-grow"></div>
           </div>
-        </div>
-      }
+        </>
+      )}
     </div>
   );
-
 }

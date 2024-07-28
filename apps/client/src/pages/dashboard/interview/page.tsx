@@ -236,21 +236,23 @@ export const InterviewPage = () => {
     if (rowData.type == "technical") {
       rowDataName = "Technical";
       bgcolor = "#FFF6D1";
-      textColor = "#D9AE00"
+      textColor = "#D9AE00";
     } else if (rowData.type == "behavioral") {
       rowDataName = "Behavioral";
       bgcolor = "#D9EBFF";
-      textColor = "#007AFF"; 
+      textColor = "#007AFF";
     } else if (rowData.type == "combination") {
       rowDataName = "Combination";
       bgcolor = "#C8C7FF";
       textColor = "#5856D6";
     }
     return (
-      <div className={`w-fit py-2 px-4 flex items-center bg-[${bgcolor}] rounded-lg pointer-events-none`}>
+      <div
+        className={`w-fit py-2 px-4 flex items-center bg-[${bgcolor}] rounded-lg pointer-events-none`}
+      >
         <span className={`font-medium text-base text-[${textColor}]`}>{rowDataName}</span>
       </div>
-    )
+    );
   };
 
   const dateBodyTemplate = (rowData) => {
@@ -258,16 +260,16 @@ export const InterviewPage = () => {
       <div className="pointer-events-none">
         <span className="text-[#8E8E93] font-medium text-base">{rowData.createdAt}</span>
       </div>
-    )
-  }
+    );
+  };
 
   const scoreBodyTemplate = (rowData) => {
     return (
       <div className="pointer-events-none">
         <span className="text-[#8E8E93] font-medium text-base">{rowData.totalScore}</span>
       </div>
-    )
-  }
+    );
+  };
 
   const ColumnItems = [
     {
@@ -296,7 +298,7 @@ export const InterviewPage = () => {
       field: "totalScore",
       header: "Score",
       width: "15%",
-      body: scoreBodyTemplate
+      body: scoreBodyTemplate,
     },
   ];
 
@@ -334,7 +336,7 @@ export const InterviewPage = () => {
   };
 
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
-  console.log(typeof selectedRowData["position"])
+  console.log(typeof selectedRowData["position"]);
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       <div className="flex justify-between items-center">
@@ -358,29 +360,32 @@ export const InterviewPage = () => {
               value={dataTable}
               emptyMessage={renderEmptyMessage(handleClick)}
               paginator={interviews ? true : false}
-              onRowClick={
-                (e) => {
-                  setShowResult(true);
-                  const target = e.originalEvent.target as HTMLElement; 
-                  const parent = target.parentElement as HTMLElement;
-                  if (selectedRowIndex == null || selectedRowIndex == undefined) {
-                    parent.className = "outline outline-2 outline-[#007AFF]"
-                    setSelectedRowData(e.data);
-                    setSelectedRowIndex(parent);
-                  }
+              onRowClick={(e) => {
+                setShowResult(true);
+                const target = e.originalEvent.target as HTMLElement;
+                const parent = target.parentElement as HTMLElement;
+                if (selectedRowIndex == null || selectedRowIndex == undefined) {
+                  parent.className = "outline outline-2 outline-[#007AFF]";
+                  setSelectedRowData(e.data);
+                  setSelectedRowIndex(parent);
+                }
 
-                  if (parent != selectedRowIndex && selectedRowIndex != null && selectedRowIndex != undefined) {
-                    parent.className = "outline outline-2 outline-[#007AFF]"
-                    selectedRowIndex.className = ""
-                    setSelectedRowData(e.data);
-                    setSelectedRowIndex(parent);
-                  }
-                  // if (e.index != selectedRowIndex) {
-                  //   parent.className = " outline outline-1 outline-[#007AFF]"
-                  //   setSelectedRowIndex(e.index)
-                  // } else {
-                  //   parent.className =
-                  // }
+                if (
+                  parent != selectedRowIndex &&
+                  selectedRowIndex != null &&
+                  selectedRowIndex != undefined
+                ) {
+                  parent.className = "outline outline-2 outline-[#007AFF]";
+                  selectedRowIndex.className = "";
+                  setSelectedRowData(e.data);
+                  setSelectedRowIndex(parent);
+                }
+                // if (e.index != selectedRowIndex) {
+                //   parent.className = " outline outline-1 outline-[#007AFF]"
+                //   setSelectedRowIndex(e.index)
+                // } else {
+                //   parent.className =
+                // }
               }}
               pt={{
                 root: { className: "flex flex-col gap-y-4 pt-4" },
@@ -412,18 +417,15 @@ export const InterviewPage = () => {
             </DataTable>
           </div>
         </div>
-        {interviews && showResult ?
-          <div
-            className="pt-4"
-            id="ai-interview-information"
-          >
+        {interviews && showResult ? (
+          <div className="pt-4" id="ai-interview-information">
             <div className="flex flex-col bg-white h-full w-[380px] rounded-xl">
               <span className="font-semibold text-2xl">{selectedRowData["position"]}</span>
             </div>
           </div>
-          : 
+        ) : (
           <div></div>
-        }
+        )}
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ export function EmptyScreen({ append, lng }: any) {
   };
 
   return (
-    <div className="max-w-[1200px] w-full px-4 lg:px-4 overflow-auto">
+    <div className="max-w-[1200px] w-full overflow-auto pt-6">
       <div className="rounded-2xl lg:border bg-white bg-opacity-60 p-8 lg:p-8 border-gray-300 lg:shadow-lg mb-8 overflow-auto pt-10 relative">
         <div className="hidden lg:block absolute top-4 right-4 z-50">
           <a href={`/${lng}/apps/speaking/lessons`}>
