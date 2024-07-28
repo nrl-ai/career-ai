@@ -49,6 +49,17 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
     }
   };
 
+  useEffect(() => {
+    console.log(state?.cv);
+    if (state?.cv) {
+      setSelectedCV(state.cv);
+    }
+    append({
+      role: "user",
+      content: "I am applying for position: " + state.position,
+    })
+  }, [state]);
+
   const { messages, append, reload, stop, isLoading, input, setInput } = useChat({
     api: `/api/interview/create-interview-answer`,
     initialMessages,
