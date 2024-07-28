@@ -103,7 +103,7 @@ msgstr "Add a new section"
 msgid "Add New Page"
 msgstr "Add New Page"
 
-#: apps/client/src/components/ai-actions.tsx:79
+#: apps/client/src/components/ai-actions.tsx:82
 msgid "AI"
 msgstr "AI"
 
@@ -255,8 +255,8 @@ msgstr "CareerAI"
 msgid "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
 msgstr "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
 
-#: apps/client/src/components/ai-actions.tsx:103
 #: apps/client/src/components/ai-actions.tsx:106
+#: apps/client/src/components/ai-actions.tsx:109
 msgid "Casual"
 msgstr "Casual"
 
@@ -274,7 +274,7 @@ msgstr "Change"
 msgid "Change Password"
 msgstr "Change Password"
 
-#: apps/client/src/components/ai-actions.tsx:97
+#: apps/client/src/components/ai-actions.tsx:100
 msgid "Change Tone"
 msgstr "Change Tone"
 
@@ -321,8 +321,8 @@ msgstr "Coming Soon"
 msgid "Company"
 msgstr "Company"
 
-#: apps/client/src/components/ai-actions.tsx:115
 #: apps/client/src/components/ai-actions.tsx:118
+#: apps/client/src/components/ai-actions.tsx:121
 msgid "Confident"
 msgstr "Confident"
 
@@ -437,6 +437,10 @@ msgstr "Delete"
 #: apps/client/src/pages/dashboard/settings/_sections/danger.tsx:94
 msgid "Delete Account"
 msgstr "Delete Account"
+
+#: apps/client/src/pages/dashboard/interview/page.tsx:421
+msgid "Delete the record successfully"
+msgstr "Delete the record successfully"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:72
 #: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:50
@@ -583,7 +587,7 @@ msgstr "File"
 msgid "Filetype"
 msgstr "Filetype"
 
-#: apps/client/src/components/ai-actions.tsx:90
+#: apps/client/src/components/ai-actions.tsx:93
 msgid "Fix Spelling & Grammar"
 msgstr "Fix Spelling & Grammar"
 
@@ -628,8 +632,8 @@ msgstr "Format"
 msgid "Found a bug, or have an idea for a new feature?"
 msgstr "Found a bug, or have an idea for a new feature?"
 
-#: apps/client/src/components/ai-actions.tsx:121
 #: apps/client/src/components/ai-actions.tsx:124
+#: apps/client/src/components/ai-actions.tsx:127
 msgid "Friendly"
 msgstr "Friendly"
 
@@ -721,7 +725,7 @@ msgstr "Import"
 msgid "Import an existing resume"
 msgstr "Import an existing resume"
 
-#: apps/client/src/components/ai-actions.tsx:85
+#: apps/client/src/components/ai-actions.tsx:88
 msgid "Improve Writing"
 msgstr "Improve Writing"
 
@@ -746,7 +750,7 @@ msgstr "Information"
 msgid "Institution"
 msgstr "Institution"
 
-#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:128
+#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:143
 msgid "Interview Room"
 msgstr "Interview Room"
 
@@ -902,9 +906,9 @@ msgstr "March 2023 - Present"
 msgid "Margin"
 msgstr "Margin"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
-msgid "Mock Interview - Simple"
-msgstr "Mock Interview - Simple"
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:114
+msgid "Mock Interview"
+msgstr "Mock Interview"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
@@ -949,6 +953,10 @@ msgstr "Notes"
 msgid "One-Time Password"
 msgstr "One-Time Password"
 
+#: apps/client/src/pages/dashboard/interview/page.tsx:427
+msgid "Oops, the server returned an error when trying to delete the record."
+msgstr "Oops, the server returned an error when trying to delete the record."
+
 #: apps/client/src/components/ai-actions.tsx:56
 #: apps/client/src/libs/axios.ts:29
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:172
@@ -962,9 +970,9 @@ msgstr "Oops, the server returned an error."
 msgid "Open"
 msgstr "Open"
 
-#: apps/client/src/services/openai/change-tone.ts:30
-#: apps/client/src/services/openai/fix-grammar.ts:28
-#: apps/client/src/services/openai/improve-writing.ts:28
+#: apps/client/src/services/llm/change-tone.ts:30
+#: apps/client/src/services/llm/fix-grammar.ts:28
+#: apps/client/src/services/llm/improve-writing.ts:28
 msgid "OpenAI did not return any choices for your text."
 msgstr "OpenAI did not return any choices for your text."
 
@@ -1070,8 +1078,8 @@ msgstr "Privacy Policy"
 msgid "Pro User"
 msgstr "Pro User"
 
-#: apps/client/src/components/ai-actions.tsx:109
 #: apps/client/src/components/ai-actions.tsx:112
+#: apps/client/src/components/ai-actions.tsx:115
 msgid "Professional"
 msgstr "Professional"
 
@@ -1591,7 +1599,7 @@ msgstr "Your account and all your data has been deleted successfully. Goodbye!"
 msgid "Your email address has been verified successfully."
 msgstr "Your email address has been verified successfully."
 
-#: apps/client/src/services/openai/client.ts:11
+#: apps/client/src/services/llm/client.ts:11
 msgid "Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration."
 msgstr "Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration."
 

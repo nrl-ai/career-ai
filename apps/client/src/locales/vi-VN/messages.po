@@ -98,7 +98,7 @@ msgstr "Thêm một phần mới"
 msgid "Add New Page"
 msgstr "Thêm trang mới"
 
-#: apps/client/src/components/ai-actions.tsx:79
+#: apps/client/src/components/ai-actions.tsx:82
 msgid "AI"
 msgstr "AI"
 
@@ -250,8 +250,8 @@ msgstr "CareerAI"
 msgid "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
 msgstr "CareerAI chọn lọc và giới thiệu bạn với những khóa học trực tuyến hữu ích nhất trên trang web này. Mục tiêu của chúng tôi là giúp bạn nâng cao kiến thức và kỹ năng của mình một cách nhanh chóng và hiệu quả. Hãy khám phá những khóa học tốt nhất dành cho bạn!"
 
-#: apps/client/src/components/ai-actions.tsx:103
 #: apps/client/src/components/ai-actions.tsx:106
+#: apps/client/src/components/ai-actions.tsx:109
 msgid "Casual"
 msgstr "Thường ngày"
 
@@ -269,7 +269,7 @@ msgstr "Thay đổi"
 msgid "Change Password"
 msgstr "Đổi mật khẩu"
 
-#: apps/client/src/components/ai-actions.tsx:97
+#: apps/client/src/components/ai-actions.tsx:100
 msgid "Change Tone"
 msgstr "Thay đổi Ngữ điệu"
 
@@ -316,8 +316,8 @@ msgstr "Sắp ra mắt"
 msgid "Company"
 msgstr "Công ty"
 
-#: apps/client/src/components/ai-actions.tsx:115
 #: apps/client/src/components/ai-actions.tsx:118
+#: apps/client/src/components/ai-actions.tsx:121
 msgid "Confident"
 msgstr "Tự tin"
 
@@ -432,6 +432,10 @@ msgstr "Xóa"
 #: apps/client/src/pages/dashboard/settings/_sections/danger.tsx:94
 msgid "Delete Account"
 msgstr "Xóa tài khoản"
+
+#: apps/client/src/pages/dashboard/interview/page.tsx:421
+msgid "Delete the record successfully"
+msgstr "Xóa bản ghi thành công"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:72
 #: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:50
@@ -578,7 +582,7 @@ msgstr "Tập tin"
 msgid "Filetype"
 msgstr "Loại tập tin"
 
-#: apps/client/src/components/ai-actions.tsx:90
+#: apps/client/src/components/ai-actions.tsx:93
 msgid "Fix Spelling & Grammar"
 msgstr "Sửa lỗi chính tả & ngữ pháp"
 
@@ -623,8 +627,8 @@ msgstr "Định dạng"
 msgid "Found a bug, or have an idea for a new feature?"
 msgstr "Tìm thấy một lỗi hoặc có ý tưởng cho một tính năng mới?"
 
-#: apps/client/src/components/ai-actions.tsx:121
 #: apps/client/src/components/ai-actions.tsx:124
+#: apps/client/src/components/ai-actions.tsx:127
 msgid "Friendly"
 msgstr "Thân thiện"
 
@@ -716,7 +720,7 @@ msgstr "Nhập dữ liệu"
 msgid "Import an existing resume"
 msgstr "Đăng tệp sẵn có"
 
-#: apps/client/src/components/ai-actions.tsx:85
+#: apps/client/src/components/ai-actions.tsx:88
 msgid "Improve Writing"
 msgstr "Cải thiện việc viết"
 
@@ -741,7 +745,7 @@ msgstr "Thông tin"
 msgid "Institution"
 msgstr "Tổ chức"
 
-#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:128
+#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:143
 msgid "Interview Room"
 msgstr "Phòng phỏng vấn"
 
@@ -897,8 +901,8 @@ msgstr "Tháng 3 2023 - Hiện tại"
 msgid "Margin"
 msgstr "Biên (lề)"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
-msgid "Mock Interview - Simple"
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:114
+msgid "Mock Interview"
 msgstr "Phỏng vấn ảo"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
@@ -944,6 +948,10 @@ msgstr "Ghi chú"
 msgid "One-Time Password"
 msgstr "Mật khẩu một lần"
 
+#: apps/client/src/pages/dashboard/interview/page.tsx:427
+msgid "Oops, the server returned an error when trying to delete the record."
+msgstr "Rất tiếc, máy chủ đã trả về một lỗi khi cố gắng xóa bản ghi."
+
 #: apps/client/src/components/ai-actions.tsx:56
 #: apps/client/src/libs/axios.ts:29
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:172
@@ -957,9 +965,9 @@ msgstr "Rất tiếc, máy chủ đã trả về một lỗi."
 msgid "Open"
 msgstr "Mở"
 
-#: apps/client/src/services/openai/change-tone.ts:30
-#: apps/client/src/services/openai/fix-grammar.ts:28
-#: apps/client/src/services/openai/improve-writing.ts:28
+#: apps/client/src/services/llm/change-tone.ts:30
+#: apps/client/src/services/llm/fix-grammar.ts:28
+#: apps/client/src/services/llm/improve-writing.ts:28
 msgid "OpenAI did not return any choices for your text."
 msgstr "OpenAI không trả về bất kỳ lựa chọn nào cho văn bản của bạn."
 
@@ -1065,8 +1073,8 @@ msgstr "Chính sách bảo mật"
 msgid "Pro User"
 msgstr "Pro User"
 
-#: apps/client/src/components/ai-actions.tsx:109
 #: apps/client/src/components/ai-actions.tsx:112
+#: apps/client/src/components/ai-actions.tsx:115
 msgid "Professional"
 msgstr "Chuyên nghiệp"
 
@@ -1586,7 +1594,7 @@ msgstr "Tài khoản của bạn và tất cả dữ liệu của bạn đã b�
 msgid "Your email address has been verified successfully."
 msgstr "Địa chỉ email của bạn đã được xác minh thành công."
 
-#: apps/client/src/services/openai/client.ts:11
+#: apps/client/src/services/llm/client.ts:11
 msgid "Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration."
 msgstr "Khóa API OpenAI của bạn chưa được đặt. Vui lòng vào cài đặt tài khoản của bạn để bật Tích hợp OpenAI."
 
