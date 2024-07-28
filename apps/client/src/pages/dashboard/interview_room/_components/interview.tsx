@@ -133,7 +133,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
               <div className="flex flex-grow flex-col">
                 <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px]">
                   <div
-                    className="flex flex-row items-center justify-center rounded-2xl"
+                    className="flex flex-row items-center justify-center rounded-2xl relative"
                     style={{
                       background: "url(/office-background.jpg)",
                       backgroundSize: "cover",
@@ -154,6 +154,9 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
                       )}
                       {mode == "chat" ? "Whiteboard" : "Video"}
                     </Button>
+                    <div className="absolute bottom-0 left-0 right-0 top-0 rounded-2xl z-40">
+{/* To prevent interaction with avatar */}
+                    </div>
                     <div
                       className={cn(
                         "rounded-3xl mx-auto h-[400px] w-[600px] max-w-full lg:h-[500px] lg:w-[900px]",
@@ -191,10 +194,10 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
             ) : (
               <></>
             )}
-            <div className="flex flex-col w-[500px] mx-auto">
+            <div className="flex flex-col w-full mt-4 xl:mt-0 xl:w-[600px] mx-auto">
               <div
                 className={cn(
-                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 px-4 max-h-[600px] bg-white",
+                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 px-4 max-h-[600px] bg-white/50 w-full",
                   className,
                 )}
               >
