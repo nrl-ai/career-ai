@@ -69,10 +69,11 @@ export class InterviewsController {
 
   @Post("/create-interview-answer")
   @UseGuards(TwoFactorGuard)
-  ai_createInterviewAnswer(@Body() data: any) {
+  ai_createInterviewAnswer(@User() user: UserEntity, @Body() data: any) {
+    const cvId = data.cvId;
     const messages = data.messages;
     const forceFinish = data.forceFinish;
-    return this.interviewsService.generateInterviewAnswer(messages, forceFinish);
+    return this.interviewsService.generateInterviewAnswer(user, messages, forceFinish, cvId);
   }
 
   // @Patch(":id/retake")

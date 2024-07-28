@@ -3,7 +3,7 @@ import { t } from "@lingui/macro";
 import { motion } from "framer-motion";
 import { useChat, type Message } from "ai/react";
 import cn from "classnames";
-import { EmptyScreen } from "./empty-screen";
+import { SetupScreen } from "./setup-screen";
 import { ChatScrollAnchor } from "./chat-scroll-anchor";
 import { useState, useEffect } from "react";
 import { FinishedMessage } from "./finished-message";
@@ -33,6 +33,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   >(null);
   const [waitingForAudio, setWaitingForAudio] = useState(false);
   const [mode, setMode] = useState<"chat" | "whiteboard">("chat");
+  const [selectedCV, setSelectedCV] = useState<string | null>(null);
 
   const handleSpeak = (text: string) => {
     if (firstTime) {
@@ -53,6 +54,9 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
     headers: {
       "Content-Type": "application/json",
       // Authorization: `Bearer ${getLocalToken()}`,
+    },
+    body: {
+      cvId: selectedCV,
     },
     onResponse(response) {
       if (response.status === 401) {
@@ -116,7 +120,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
   return (
     <div className="w-full max-w-[1600px] pt-4">
       {!messages.length ? (
-        <EmptyScreen append={append} lng={lng} />
+        <SetupScreen append={append} lng={lng} selectedCV={selectedCV} setSelectedCV={setSelectedCV} />
       ) : (
         <>
           <div className="flex items-center justify-between mt-4 mb-4">
