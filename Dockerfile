@@ -19,8 +19,6 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN NODE_OPTIONS="--max_old_space_size=8192" pnpm run build
-
 # --- Release Image ---
 FROM base AS release
 
@@ -32,7 +30,7 @@ RUN pnpm install --prod --frozen-lockfile
 
 COPY --chown=node:node --from=build /app/dist ./dist
 COPY --chown=node:node --from=build /app/tools/prisma ./tools/prisma
-RUN NODE_OPTIONS="--max_old_space_size=8192" pnpm run prisma:generate
+RUN pnpm run prisma:generate
 
 ENV TZ=UTC
 ENV PORT=3000
