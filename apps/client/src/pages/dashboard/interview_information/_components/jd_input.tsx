@@ -104,8 +104,8 @@ const Toolbar = ({
   };
 
   return (
-    <div className="flex flex-wrap w-full justify-between items-center">
-      <div className="flex gap-1.5 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
+    <div className="flex flex-nowrap w-full justify-between items-center">
+      <div className="flex-shrink gap-1 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
         <Tooltip content="Bold">
           <Toggle
             size="sm"
@@ -166,7 +166,7 @@ const Toolbar = ({
               <LinkSimple />
             </Button>
           </Tooltip> */}
-
+{/* 
         <Tooltip content="Heading 1">
           <Toggle
             size="sm"
@@ -198,7 +198,7 @@ const Toolbar = ({
           >
             <TextHThree size={20} />
           </Toggle>
-        </Tooltip>
+        </Tooltip> */}
 
         {/* <Tooltip content="Paragraph">
             <Toggle
@@ -353,8 +353,8 @@ const Toolbar = ({
       <button
         type="button"
         disabled={isLoading || !isActive}
-        className={`flex items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
-          bg-white py-2 px-10 rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
+        className={`flex flex-shrink items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF] ml-2"} 
+          bg-white py-2 px-7  rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
         {isLoading ? <span>Processing...</span> : <span>AI generate</span>}

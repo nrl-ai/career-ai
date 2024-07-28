@@ -22,9 +22,10 @@ import { BsPersonVideo, BsRecord2 } from "react-icons/bs";
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
   lng: string;
+  state: any;
 }
 
-export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
+export function InterviewUI({ initialMessages, className, lng, state }: ChatProps) {
   const [firstTime, setFirstTime] = useState(true);
   const headRef = useRef<TalkingHead | null>(null);
   const [isFinished, setIsFinished] = useState(false);
@@ -132,7 +133,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
               {t`Interview Room`}
             </motion.h1>
           </div>
-          <div className="flex flex-col 2xl:flex-row flex-grow overflow-hidden w-full justify-start p-8 rounded-2xl bg-gradient-to-t from-gray-100 to-gray-200">
+          <div className="flex flex-col lg:flex-row flex-grow overflow-hidden w-full justify-start rounded-2xl bg-gradient-to-t from-gray-100 to-gray-200">
             {messages.length ? (
               <div className="flex flex-grow flex-col">
                 <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px]">
@@ -163,7 +164,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
                     </div>
                     <div
                       className={cn(
-                        "rounded-3xl mx-auto h-[400px] w-[600px] max-w-full lg:h-[500px] lg:w-[900px]",
+                        "rounded-3xl mx-auto h-[300px] w-[300px] md:w-[400px] max-w-full lg:h-[500px] lg:w-[900px]",
                         mode == "whiteboard" ? "hidden" : "",
                       )}
                     >
@@ -198,7 +199,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
             ) : (
               <></>
             )}
-            <div className="flex flex-col w-full mt-4 xl:mt-0 xl:w-[600px] mx-auto">
+            <div className="flex flex-col mt-4 xl:mt-0 min-w-[300px] xl:w-[600px] mx-auto">
               <div
                 className={cn(
                   "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 px-4 max-h-[600px] bg-white/50 w-full",

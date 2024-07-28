@@ -7,8 +7,13 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { InterviewDto } from "@career-ai/dto";
-import { e } from "@lingui/react/dist/shared/react.e5f95de8";
+import { Gauge } from "./_components/gauge";
+import { FilterMatchMode, FilterOperator } from "primereact/api"; 
+// import { Calendar } from "primereact/calendar";
+import { useDeleteInterview } from "@/client/services/interview/delete";
+import { ConfirmDialog, confirmDialog  } from 'primereact/confirmdialog';
+import { t } from "@lingui/macro";
+import { toast } from "@/client/hooks/use-toast";
 
 const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
   return (
@@ -223,10 +228,29 @@ const renderEmptyMessage = (handleClick) => {
 
 export const InterviewPage = () => {
   const navigate = useNavigate();
-  const [globalFilterValue, onGlobalFilterChange] = useState<string>("");
+  const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [showResult, setShowResult] = useState<boolean>(false);
-  const [selectedRowIndex, setSelectedRowIndex] = useState<HTMLElement>();
-  const [selectedRowData, setSelectedRowData] = useState<DataTableValue>({});
+  // const [selectedRowIndex, setSelectedRowIndex] = useState<HTMLElement>();
+  const [selectedRowData, setSelectedRowData] = useState<DataTableValue | null>(null);
+  const [typeData, setTypeData] = useState({});
+  const [filters, setFilters] = useState({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    id: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    position: {value: null, matchMode: FilterMatchMode.CONTAINS},
+    type: { value: null, matchMode: FilterMatchMode.EQUALS },
+    createdAt: { value: null, matchMode: FilterMatchMode.DATE_IS },
+    totalScore: {value: null, matchMode: FilterMatchMode.EQUALS},
+  });
+
+  const onGlobalFilterChange = (e) => {
+    const value = e.target.value;
+    let _filters = { ...filters };
+
+    _filters['global'].value = value;
+
+    setFilters(_filters);
+    setGlobalFilterValue(value);
+};
 
   const typeBodyTemplate = (rowData) => {
     let bgcolor = "";
@@ -246,14 +270,19 @@ export const InterviewPage = () => {
       bgcolor = "#C8C7FF";
       textColor = "#5856D6";
     }
+
     return (
-      <div
-        className={`w-fit py-2 px-4 flex items-center bg-[${bgcolor}] rounded-lg pointer-events-none`}
-      >
-        <span className={`font-medium text-base text-[${textColor}]`}>{rowDataName}</span>
+      <div className={`w-fit py-2 px-4 flex items-center rounded-lg pointer-events-none`} style={{
+        background: bgcolor
+      }}>
+        <span className={`font-medium text-base`} style={{color: textColor}}>{rowDataName}</span>
       </div>
     );
   };
+
+  // const dateFilterTemplate = (options) => {
+  //   return <Calendar value={options.value} onChange={(e) => options.filterCallback(e.value, options.index)} dateFormat="dd/mm/yy" selectionMode="range"/>;
+  // };
 
   const dateBodyTemplate = (rowData) => {
     return (
@@ -271,39 +300,60 @@ export const InterviewPage = () => {
     );
   };
 
+  const positionBodyTemplate = (rowData) => {
+    return (
+      <div className="pointer-events-none">
+        <span className="text-[#191919] font-medium text-base">{rowData.position}</span>
+      </div>
+    )
+  }
+
   const ColumnItems = [
     {
       field: "id",
+      filterField: "id",
       header: "ID",
       width: "15%",
+      filter: true,
     },
     {
       field: "position",
+      filterField: "position",
       header: "Position",
       width: "40%",
+      body: positionBodyTemplate,
+      filter: true,
     },
     {
       field: "type",
+      filterField: "type",
       header: "Type",
       width: "15%",
       body: typeBodyTemplate,
+      filter: true,
     },
     {
       field: "createdAt",
+      filterField: "createdAt",
       header: "Date",
       width: "15%",
       body: dateBodyTemplate,
+      filter: false,
+      // filterElement: dateFilterTemplate,
     },
     {
       field: "totalScore",
+      filterField: "totalScore",
       header: "Score",
       width: "15%",
       body: scoreBodyTemplate,
+      filter: true,
     },
   ];
 
   const [interviews, setInterviews] = useState<boolean | undefined>(false);
-  const { result, loading, error } = useFindInterviewsByUserId();
+  const { result, loading: interviewLoading, error } = useFindInterviewsByUserId();
+  const {deleteInterview, loading: deleteLoading} = useDeleteInterview();
   const [dataTable, setDataTable] = useState([]);
 
   // Format data
@@ -336,9 +386,70 @@ export const InterviewPage = () => {
   };
 
   const header = renderHeader(globalFilterValue, onGlobalFilterChange, handleClick);
-  console.log(typeof selectedRowData["position"]);
+  
+  const scoreTableValue = [
+    { 
+      components : "Accuracy Rate",
+      score: selectedRowData ? selectedRowData["accuracyRate"] : 0,
+      weight: "60%",
+    },
+    { 
+      components : "Communication",
+      score: selectedRowData ? selectedRowData["communication"] : 0,
+      weight: "20%",
+    },
+    { 
+      components : "Response Rate",
+      score: selectedRowData ? selectedRowData["responseRate"] : 0,
+      weight: "20%",
+    },
+  ]
+  console.log(selectedRowData)
+  const showResultOnClick = () => {
+    navigate("/dashboard/interview-feedback", {state: selectedRowData});
+  }
+
+  const redoInterviewOnClick = () => {
+    navigate("/dashboard/interview-room", {state: selectedRowData});
+  }
+
+  const deleteInterviewOnClick = async () => {
+      try {
+        await deleteInterview(selectedRowData ? selectedRowData["id"] : "");
+        toast({ 
+          variant: "success",
+          title: t`Delete the record successfully`,
+          // description: (error as Error).message,
+        });
+      } catch(error) { 
+        toast({ 
+          variant: "error",
+          title: t`Oops, the server returned an error when trying to delete the record.`,
+          description: (error as Error).message,
+        });
+      }
+      setShowResult(false);
+  }
+
+  const confirmDelete = () => {
+    confirmDialog({
+        message: 'Do you want to delete this record?',
+        header: 'Delete Confirmation',
+        icon: 'pi pi-info-circle',
+        defaultFocus: 'reject',
+        acceptClassName: 'p-button-danger',
+        accept: deleteInterviewOnClick,
+    });
+  };
+
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
+      <ConfirmDialog pt={{
+        content: {style: {display: "flex", alignItems: "center"}},
+        acceptButton: {
+          root: {className: "bg-[#FF3B30] hover:bg-[#DE3D34] border-none"}
+        }
+      }}/>
       <div className="flex justify-between items-center">
         <span className="text-2xl font-bold">AI Mock Interview</span>
       </div>
@@ -350,42 +461,47 @@ export const InterviewPage = () => {
           <div className="">
             <DataTable
               rows={8}
-              loading={loading}
+              loading={interviewLoading}
               dataKey="id"
               filterIcon={() => {
                 return <i className="pi pi-sort-down-fill"></i>;
               }}
-              globalFilterFields={["id", "position", "type", "date", "totalScore"]}
+              filters={filters}
+              globalFilterFields={["id", "position", "type", "createdDate", "totalScore"]}
               header={header}
               value={dataTable}
               emptyMessage={renderEmptyMessage(handleClick)}
+              selectionMode={"single"}
+              selection={selectedRowData}
+              onSelectionChange={(e) => {
+                if (e.value != null) {
+                  setSelectedRowData(e.value)
+                }
+              }}
               paginator={interviews ? true : false}
-              onRowClick={(e) => {
-                setShowResult(true);
-                const target = e.originalEvent.target as HTMLElement;
-                const parent = target.parentElement as HTMLElement;
-                if (selectedRowIndex == null || selectedRowIndex == undefined) {
-                  parent.className = "outline outline-2 outline-[#007AFF]";
-                  setSelectedRowData(e.data);
-                  setSelectedRowIndex(parent);
-                }
 
-                if (
-                  parent != selectedRowIndex &&
-                  selectedRowIndex != null &&
-                  selectedRowIndex != undefined
-                ) {
-                  parent.className = "outline outline-2 outline-[#007AFF]";
-                  selectedRowIndex.className = "";
-                  setSelectedRowData(e.data);
-                  setSelectedRowIndex(parent);
-                }
-                // if (e.index != selectedRowIndex) {
-                //   parent.className = " outline outline-1 outline-[#007AFF]"
-                //   setSelectedRowIndex(e.index)
-                // } else {
-                //   parent.className =
-                // }
+              onRowClick={
+                (e) => {
+                  setShowResult(true);
+                  if (e.data['type'] == 'technical') {
+                    setTypeData({
+                      'typeName' : "Technical",
+                      'bgcolor' : "#FFF6D1",
+                      'textColor' : "#D9AE00",
+                    })
+                  } else if (e.data['type'] == 'behavioral') {
+                    setTypeData({
+                      'typeName' : "Behavioral",
+                      'bgcolor' : "#D9EBFF",
+                      'textColor' : "#007AFF", 
+                    })
+                  } else if (e.data['type'] == 'combination') {
+                    setTypeData({
+                      'typeName' : "Combination",
+                      'bgcolor' : "#C8C7FF",
+                      'textColor' : "#5856D6",
+                    })
+                  }
               }}
               pt={{
                 root: { className: "flex flex-col gap-y-4 pt-4" },
@@ -393,15 +509,19 @@ export const InterviewPage = () => {
                 header: { style: { background: "transparent", padding: 0, border: "none" } },
                 wrapper: { className: "rounded-xl" },
                 table: { className: `w-full overflow-y-hidden bg-white` },
+                bodyRow: { className: `cursor-pointer`},
               }}
             >
               {ColumnItems.map((item, i) => (
                 <Column
                   field={item.field}
+                  filterField={item.filterField}
                   header={item.header}
                   style={{ width: `${item.width}` }}
                   body={item.body ? item.body : null}
-                  filter
+                  filter={item.filter}
+                  showFilterMatchModes={false}
+                  // filterElement={item.filterElement ? item.filterElement: null}
                   pt={{
                     headerContent: { className: "flex items-start justify-between" },
                     headerCell: {
@@ -418,9 +538,83 @@ export const InterviewPage = () => {
           </div>
         </div>
         {interviews && showResult ? (
-          <div className="pt-4" id="ai-interview-information">
-            <div className="flex flex-col bg-white h-full w-[380px] rounded-xl">
-              <span className="font-semibold text-2xl">{selectedRowData["position"]}</span>
+          <div
+            className="pt-4"
+            id="ai-interview-information"
+          >
+            <div className="flex flex-col bg-white min-h-[800px] w-[380px] rounded-xl p-6 xl:relative">
+              <span className="font-semibold text-xl">{selectedRowData ? selectedRowData["position"] : ""}</span>
+              <div className="flex gap-x-5 items-center mt-2">
+                <div className="py-2 px-4 w-fit rounded-xl" style={{background: typeData['bgcolor'], color: typeData['textColor']}}>
+                  <span className="font-medium text-xs">{typeData['typeName']}</span>
+                </div>
+
+                <span className="text-sm font-medium">{selectedRowData ? selectedRowData['createdAt'] : ""}</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <Gauge value={selectedRowData? selectedRowData["totalScore"] : 0} label="Good job!" className={"mt-5"} valueClassName={""} labelClassName={""}/>
+                <div className="absolute flex flex-col items-center mt-56">
+                  <DataTable value={scoreTableValue} pt={{
+                    root: {className: "w-80"},
+                    headerRow: {className: "font-medium text-base text-[#191919]"}
+                  }}>
+                    <Column field="components" header="Components" pt={{
+                      headerCell: {
+                        style: {
+                          background: "#E5E5EA",
+                          borderBottom: 1,
+                          borderBottomColor: "#E5E5EA",
+                        },
+                      },
+                      bodyCell: {
+                        className: 'font-medium text-base text-[#8E8E93]'
+                      }
+                    }}></Column>
+                    <Column field="score" header="Score" pt={{
+                      headerCell: {
+                        style: {
+                          background: "#E5E5EA",
+                          borderBottom: 1,
+                          borderBottomColor: "#E5E5EA",
+                        },
+                      },
+                      bodyCell: {
+                        className: 'font-medium text-base text-[#8E8E93]'
+                      }
+                    }}></Column>
+                    <Column field="weight" header="Weight" pt={{
+                      headerCell: {
+                        style: {
+                          background: "#E5E5EA",
+                          borderBottom: 1,
+                          borderBottomColor: "#E5E5EA",
+                        },
+                      },
+                      bodyCell: {
+                        className: 'font-medium text-base text-[#8E8E93]'
+                      }
+                    }}></Column>
+                  </DataTable>
+
+                  <Button label="Show result" onClick={showResultOnClick} className="w-80 mt-5" pt={{
+                    label: {
+                      className: 'font-medium text-base'
+                    }
+                  }}></Button>
+                  <Button label="Redo interview" onClick={redoInterviewOnClick} className="w-80 mt-5" pt={{
+                    root: {
+                      style: {
+                        background: "none",
+                        color: "#007AFF",
+                      }, 
+                    },
+                    label: {
+                      className: 'font-medium text-base'
+                    }
+                  }}></Button>
+                  <span className="font-medium text-sm text-[#191919] mt-5">or <span onClick={confirmDelete} className="underline text-[#FF3B30] cursor-pointer">delete</span> here</span>
+                </div>
+              </div>
             </div>
           </div>
         ) : (

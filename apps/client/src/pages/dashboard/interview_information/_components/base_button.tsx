@@ -15,7 +15,7 @@ export const BaseButton = ({ title, content, icon, dialog, classname }: BaseButt
 
   return (
     <button
-      className="flex flex-col w-[17vw] h-[13vh] text-[#8E8E93] bg-[#F2F2F7] justify-center items-center rounded-xl
+      className="flex flex-col w-[18vw] h-[120px] text-[#8E8E93] bg-[#F2F2F7] justify-center items-center rounded-xl
         transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF] hover:outline hover:outline-1 hover:outline-[#007AFF] hover:text-[#007AFF]"
       onClick={() => {
         open("create");

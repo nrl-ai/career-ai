@@ -311,9 +311,6 @@ dependencies:
   helmet:
     specifier: ^7.1.0
     version: 7.1.0
-  husky:
-    specifier: ^9.1.1
-    version: 9.1.1
   immer:
     specifier: ^10.1.1
     version: 10.1.1
@@ -380,6 +377,9 @@ dependencies:
   pdf-lib:
     specifier: ^1.17.1
     version: 1.17.1
+  preline:
+    specifier: ^2.4.0
+    version: 2.4.1
   primeicons:
     specifier: ^7.0.0
     version: 7.0.0
@@ -712,6 +712,9 @@ devDependencies:
   eslint-plugin-unused-imports:
     specifier: ^3.2.0
     version: 3.2.0(@typescript-eslint/eslint-plugin@7.13.1)(eslint@8.57.0)
+  husky:
+    specifier: ^9.1.1
+    version: 9.1.1
   jest:
     specifier: ^29.7.0
     version: 29.7.0(@types/node@20.14.2)(babel-plugin-macros@3.1.0)(ts-node@10.9.2)
@@ -13939,7 +13942,7 @@ packages:
     resolution: {integrity: sha512-fCqlqLXcBnXa/TJXmT93/A36tJsjdJkibQ1MuIiFyCCYUlpYpIaj2mv1w+3KR6Rzu1IC3slFTje5f6DUp2A2rg==}
     engines: {node: '>=18'}
     hasBin: true
-    dev: false
+    dev: true
 
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -18584,6 +18587,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       xtend: 4.0.2
+    dev: false
+
+  /preline@2.4.1:
+    resolution: {integrity: sha512-30yx5s2gEOTBWXSTPa+Th23/kGryn9Inhmp9KPzz9G8DZPp9j/LkGyyrSvdsuXh4Clc/sJFLObumFrbI/WmB0w==}
+    dependencies:
+      '@popperjs/core': 2.11.8
     dev: false
 
   /prelude-ls@1.2.1:

@@ -104,16 +104,16 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
       name: t`Check & Optimize Resume`,
       icon: <IoCheckmarkDoneCircleOutline style={iconStyle} />,
     },
-    {
-      path: "/dashboard/interview-room",
-      name: t`Mock Interview - Simple`,
-      icon: <IoPersonOutline style={iconStyle} />,
-    },
     // {
-    //   path: "/dashboard/interview",
-    //   name: t`Mock Interview Sessions`,
-    //   icon: <IoTodayOutline style={iconStyle} />,
+    //   path: "/dashboard/interview-room",
+    //   name: t`Mock Interview - Simple`,
+    //   icon: <IoPersonOutline style={iconStyle} />,
     // },
+    {
+      path: "/dashboard/interview",
+      name: t`Mock Interview`,
+      icon: <IoTodayOutline style={iconStyle} />,
+    },
   ];
 
   const libraryItems: SidebarItem[] = [
