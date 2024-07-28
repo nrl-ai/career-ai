@@ -202,7 +202,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
             <div className="flex flex-col mt-4 xl:mt-0 min-w-[300px] xl:w-[600px] mx-auto">
               <div
                 className={cn(
-                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 px-4 max-h-[600px] bg-white/50 w-full",
+                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 mt-2 px-4 max-h-[600px] bg-white/50 w-full",
                   className,
                 )}
               >
