@@ -29,7 +29,7 @@ ADD COLUMN     "totalScore" INTEGER NOT NULL DEFAULT 0,
 ALTER COLUMN "type" DROP DEFAULT,
 DROP COLUMN "content",
 ADD COLUMN     "content" JSONB NOT NULL DEFAULT '{}',
-ALTER COLUMN "model" SET DEFAULT 'gpt-3.5-turbo-0125';
+ALTER COLUMN "model" SET DEFAULT 'gemini-pro-0125';
 
 -- DropEnum
 DROP TYPE "Level";

@@ -7,6 +7,7 @@ import { StorageService } from "../storage/storage.service";
 import { CreateInterviewDto, InterviewDto, InterviewQuestionDto } from "@career-ai/dto";
 
 const openai = new OpenAI({
+  baseURL: "http://45.32.110.35:4000",
   apiKey: process.env["OPENAI_API_KEY"],
 });
 
@@ -101,7 +102,7 @@ export const ai_createJd = async (language: keyof CreateJDPrompt, position: stri
   const prompt = CREATEJDPROMPT[language].replace("{position}", position);
   const result = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gemini-pro",
   });
   return result.choices[0].message.content ?? text;
 };
@@ -123,7 +124,7 @@ export const ai_generate_interview_question = async (
     .replace("{content}", content);
   const stream = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gemini-pro",
     // stream: true,
   });
 
@@ -214,7 +215,7 @@ export class InterviewsService {
       } as OpenAI.Chat.Completions.ChatCompletionMessageParam);
 
       const res = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gemini-pro",
         messages: messagesWithPrompt,
         temperature: 0.7,
         stream: false,
@@ -239,7 +240,7 @@ export class InterviewsService {
     let messagesWithPrompt = [prompt, ...messages];
 
     const res = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gemini-pro",
       messages: messagesWithPrompt,
       temperature: 0.7,
       stream: false,

@@ -17,7 +17,7 @@ import { TalkingHead } from "./talking_head/talkinghead.mjs";
 import { Excalidraw } from "@excalidraw/excalidraw";
 import { Button, ScrollArea } from "@career-ai/ui";
 import { FaChalkboardTeacher } from "react-icons/fa";
-import { BsPersonVideo } from "react-icons/bs";
+import { BsPersonVideo, BsRecord2 } from "react-icons/bs";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
@@ -123,7 +123,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
             <motion.h1
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold tracking-tight"
+              className="text-2xl font-bold tracking-tight text-gray-800"
             >
               {t`Interview Room`}
             </motion.h1>
@@ -131,7 +131,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
           <div className="flex flex-col 2xl:flex-row flex-grow overflow-hidden w-full justify-start bg-white p-8 rounded-2xl">
             {messages.length ? (
               <div className="flex flex-grow flex-col">
-                <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px] mx-auto">
+                <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px]">
                   <div
                     className="flex flex-row items-center justify-center rounded-2xl"
                     style={{
@@ -139,6 +139,9 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
                       backgroundSize: "cover",
                     }}
                   >
+                    <div className="absolute top-4 right-6 z-50">
+                      <BsRecord2 className="text-4xl text-red-600 text-opacity-90" />
+                    </div>
                     <Button
                       variant={"secondary"}
                       onClick={toggleWhiteboard}
