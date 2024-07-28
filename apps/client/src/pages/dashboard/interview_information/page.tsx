@@ -114,10 +114,10 @@ export const InterviewInformationPage = () => {
         <span className="font-medium text-base">New interview</span>
       </div>
 
-      <div className="text-3xl font-semibold my-4">New interview</div>
+      {/* <div className="text-3xl font-semibold my-4">New interview</div> */}
 
       <div
-        className="grid grid-cols-2 gap-x-6 h-fit flex-cols"
+        className="grid grid-cols-2 gap-x-6 h-fit flex-cols mt-4"
         // style={{ height: "calc(100vh - 240px)" }}
       >
         <div className="col-span-1 rounded-xl bg-white p-6">
@@ -216,7 +216,7 @@ export const InterviewInformationPage = () => {
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-4">
             <span className="text-base font-medium">Position</span>
             <InputText
               type="text"
@@ -235,8 +235,8 @@ export const InterviewInformationPage = () => {
             />
           </div>
 
-          <div className="mt-6 flex flex-col">
-            <span className="text-base font-medium">Job description (optional)</span>
+          <div className="mt-4 flex flex-col">
+            {/* <span className="text-base font-medium">Job description (optional)</span> */}
             <JDInput
               id="jd-input-field"
               content={jd}
@@ -266,7 +266,7 @@ export const InterviewInformationPage = () => {
                 dialog="import"
               />
             </div>
-            <div className="mt-6">
+            <div className="mt-4">
               <span className="text-base text-[#191919] font-medium">Recent Resume</span>
               <CVSelector selectedCV={selectedCV} setSelectedCV={handleSelectCV} />
             </div>

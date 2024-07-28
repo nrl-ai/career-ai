@@ -166,7 +166,7 @@ const Toolbar = ({
               <LinkSimple />
             </Button>
           </Tooltip> */}
-
+{/* 
         <Tooltip content="Heading 1">
           <Toggle
             size="sm"
@@ -198,7 +198,7 @@ const Toolbar = ({
           >
             <TextHThree size={20} />
           </Toggle>
-        </Tooltip>
+        </Tooltip> */}
 
         {/* <Tooltip content="Paragraph">
             <Toggle
@@ -353,7 +353,7 @@ const Toolbar = ({
       <button
         type="button"
         disabled={isLoading || !isActive}
-        className={`flex flex-shrink items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
+        className={`flex flex-shrink items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF] ml-2"} 
           bg-white py-2 px-7  rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
