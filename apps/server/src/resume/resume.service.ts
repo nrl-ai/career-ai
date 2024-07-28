@@ -17,7 +17,8 @@ import { StorageService } from "../storage/storage.service";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
+  baseURL: process.env["LLM_BASE_URL"],
+  apiKey: process.env["LLM_API_KEY"],
 });
 
 type CVReviewPrompt = {

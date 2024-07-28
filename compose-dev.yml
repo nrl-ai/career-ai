@@ -49,7 +49,7 @@ services:
       TOKEN: ${CHROME_TOKEN:-chrome_token}
       EXIT_ON_HEALTH_FAILURE: true
       PRE_REQUEST_HEALTH_CHECK: true
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
 
 volumes:
   minio_data_dev:

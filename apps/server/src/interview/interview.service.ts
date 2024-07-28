@@ -7,8 +7,8 @@ import { StorageService } from "../storage/storage.service";
 import { CreateInterviewDto, InterviewDto, InterviewQuestionDto } from "@career-ai/dto";
 
 const openai = new OpenAI({
-  baseURL: "http://45.32.110.35:4000",
-  apiKey: process.env["OPENAI_API_KEY"],
+  baseURL: process.env["LLM_BASE_URL"],
+  apiKey: process.env["LLM_API_KEY"],
 });
 
 type InterviewPrompt = {

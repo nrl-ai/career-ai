@@ -114,7 +114,7 @@ services:
       GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-https://www.careerai.me/api/auth/google/callback}
 
       # OpenAI API Key
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-openai_api_key}
+      LLM_API_KEY: ${LLM_API_KEY:-LLM_API_KEY}
 
       # Azure TTS
       AZURE_SPEECH_SUBSCRIPTION_KEY: ${AZURE_SPEECH_SUBSCRIPTION_KEY:-azure_tts_key}
