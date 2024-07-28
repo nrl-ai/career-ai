@@ -28,6 +28,7 @@ RUN apt update && apt install -y dumb-init --no-install-recommends && rm -rf /va
 
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 COPY --chown=node:node --from=build /app/.npmrc /app/package.json /app/pnpm-lock.yaml ./
+RUN pnpm install husky
 RUN pnpm install --prod --frozen-lockfile
 
 COPY --chown=node:node --from=build /app/dist ./dist
