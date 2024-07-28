@@ -29,7 +29,7 @@ export default function ChatList({
 
   return (
     <div className="relative mx-auto max-w-2xl w-full pb-4">
-      {messages.reverse().map((message, index) => {
+      {messages.map((message, index) => {
         if (!message.content) {
           return null;
         }
