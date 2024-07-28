@@ -74,7 +74,7 @@ export class InterviewsController {
     const forceFinish = data.forceFinish;
     return this.interviewsService.generateInterviewAnswer(messages, forceFinish);
   }
-
+  
   // @Patch(":id/retake")
   // // Retake interview
   // @UseGuards(TwoFactorGuard)

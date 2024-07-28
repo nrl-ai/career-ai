@@ -118,7 +118,7 @@ export const InterviewInformationPage = () => {
 
       <div
         className="grid grid-cols-2 gap-x-6 h-fit flex-cols"
-        style={{ height: "calc(100vh - 240px)" }}
+        // style={{ height: "calc(100vh - 240px)" }}
       >
         <div className="col-span-1 rounded-xl bg-white p-6">
           <span className="font-semibold text-2xl">Applying position</span>

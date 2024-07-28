@@ -248,6 +248,8 @@ export class InterviewsService {
     return finalResponse;
   }
 
+  
+
   // async create(userId: string, createResumeDto: CreateInterviewDto) {
   //     const { name, email, picture } = await this.prisma.user.findUniqueOrThrow({
   //       where: { id: userId },
