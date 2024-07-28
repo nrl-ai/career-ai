@@ -128,7 +128,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
               {t`Interview Room`}
             </motion.h1>
           </div>
-          <div className="flex flex-col 2xl:flex-row flex-grow overflow-hidden w-full justify-start bg-white p-8 rounded-2xl">
+          <div className="flex flex-col 2xl:flex-row flex-grow overflow-hidden w-full justify-start p-8 rounded-2xl bg-gradient-to-t from-gray-100 to-gray-200">
             {messages.length ? (
               <div className="flex flex-grow flex-col">
                 <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px]">
@@ -194,7 +194,7 @@ export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
             <div className="flex flex-col w-[500px] mx-auto">
               <div
                 className={cn(
-                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 bg-white px-1 max-h-[600px]",
+                  "flex flex-col flex-grow overflow-auto rounded-xl mx-4 mb-2 px-4 max-h-[600px] bg-white",
                   className,
                 )}
               >
