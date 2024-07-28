@@ -33,6 +33,13 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [/^react.*/, /^@radix-ui\/*/],
+      onwarn(warning, defaultHandler) {
+        if (warning.code === 'SOURCEMAP_ERROR') {
+          return
+        }
+
+        defaultHandler(warning)
+      },
     },
   },
 

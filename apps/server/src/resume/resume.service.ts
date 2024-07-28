@@ -17,7 +17,8 @@ import { StorageService } from "../storage/storage.service";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
+  baseURL: process.env["LLM_BASE_URL"],
+  apiKey: process.env["LLM_API_KEY"],
 });
 
 type CVReviewPrompt = {
@@ -73,7 +74,7 @@ export const queryCVAnalyze = async (language: keyof CVReviewPrompt, cv: string,
   const prompt = PROMPT[language].replace("{cv}", cv).replace("{jd}", jd);
   const result = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gemini-pro",
   });
   return result.choices[0].message.content ?? text;
 };

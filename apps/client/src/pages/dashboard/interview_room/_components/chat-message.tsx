@@ -67,7 +67,7 @@ export function ChatMessage({
       <div
         className={cn(
           "flex-1 space-y-2 overflow-hidden px-4 py-2 rounded-xl shadow-md border",
-          message.role === "user" && "border-blue-700 bg-blue-300 text-white",
+          message.role === "user" && " bg-gray-100 text-white",
           message.role != "user" && "border-gray-200 bg-opacity-85 bg-white text-gray-800",
         )}
       >
@@ -88,15 +88,7 @@ export function ChatMessage({
               }
 
               const match = /language-(\w+)/.exec(className || "");
-              
-              // if (inline) {
-                //   return (
-                //     <code className={className} {...props}>
-                //       {children}
-                //     </code>
-                //   );
-                // }
-                
+
               return (
                 <CodeBlock
                   key={Math.random()}
@@ -121,7 +113,7 @@ export function ChatMessage({
                 return <p className="mb-2 last:mb-0">{children}</p>;
               },
               code({ node, className, children, ...props }) {
-                if (children != null && children != undefined ) {
+                if (children != null && children != undefined) {
                   if (children[0] == "▍") {
                     return <span className="mt-1 cursor-default animate-pulse">▍</span>;
                   }

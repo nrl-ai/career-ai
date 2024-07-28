@@ -33,8 +33,8 @@ export const SettingsPage = () => (
           <SecuritySettings />
           <Separator />
           <ProfileSettings />
-          <Separator />
-          <OpenAISettings />
+          {/* <Separator />
+          <OpenAISettings /> */}
           <Separator />
           <DangerZoneSettings />
         </div>

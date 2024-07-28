@@ -746,6 +746,10 @@ msgstr "Information"
 msgid "Institution"
 msgstr "Institution"
 
+#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:128
+msgid "Interview Room"
+msgstr "Interview Room"
+
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:53
 msgid "Issuer"
 msgstr "Issuer"

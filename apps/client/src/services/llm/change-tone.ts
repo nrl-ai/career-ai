@@ -19,7 +19,7 @@ export const changeTone = async (text: string, mood: Mood) => {
 
   const result = await openai().chat.completions.create({
     messages: [{ role: "user", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gemini-pro",
     max_tokens: 1024,
     temperature: 0.5,
     stop: ['"""'],

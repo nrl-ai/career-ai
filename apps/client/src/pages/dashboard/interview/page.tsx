@@ -264,7 +264,7 @@ export const InterviewPage = () => {
     } else if (rowData.type == "behavioral") {
       rowDataName = "Behavioral";
       bgcolor = "#D9EBFF";
-      textColor = "#007AFF"; 
+      textColor = "#007AFF";
     } else if (rowData.type == "combination") {
       rowDataName = "Combination";
       bgcolor = "#C8C7FF";
@@ -277,7 +277,7 @@ export const InterviewPage = () => {
       }}>
         <span className={`font-medium text-base`} style={{color: textColor}}>{rowDataName}</span>
       </div>
-    )
+    );
   };
 
   // const dateFilterTemplate = (options) => {
@@ -289,16 +289,16 @@ export const InterviewPage = () => {
       <div className="pointer-events-none">
         <span className="text-[#8E8E93] font-medium text-base">{rowData.createdAt}</span>
       </div>
-    )
-  }
+    );
+  };
 
   const scoreBodyTemplate = (rowData) => {
     return (
       <div className="pointer-events-none">
         <span className="text-[#8E8E93] font-medium text-base">{rowData.totalScore}</span>
       </div>
-    )
-  }
+    );
+  };
 
   const positionBodyTemplate = (rowData) => {
     return (
@@ -441,7 +441,7 @@ export const InterviewPage = () => {
         accept: deleteInterviewOnClick,
     });
   };
-  
+
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       <ConfirmDialog pt={{
@@ -479,6 +479,7 @@ export const InterviewPage = () => {
                 }
               }}
               paginator={interviews ? true : false}
+
               onRowClick={
                 (e) => {
                   setShowResult(true);
@@ -616,9 +617,9 @@ export const InterviewPage = () => {
               </div>
             </div>
           </div>
-          : 
+        ) : (
           <div></div>
-        }
+        )}
       </div>
     </div>
   );

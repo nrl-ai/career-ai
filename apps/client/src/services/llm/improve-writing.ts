@@ -17,7 +17,7 @@ export const improveWriting = async (text: string) => {
 
   const result = await openai().chat.completions.create({
     messages: [{ role: "user", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gemini-pro",
     max_tokens: 1024,
     temperature: 0,
     stop: ['"""'],

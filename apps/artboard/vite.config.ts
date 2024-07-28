@@ -10,7 +10,7 @@ export default defineConfig({
   cacheDir: "../../node_modules/.vite/artboard",
 
   build: {
-    sourcemap: true,
+    sourcemap: false,
     emptyOutDir: true,
   },
 

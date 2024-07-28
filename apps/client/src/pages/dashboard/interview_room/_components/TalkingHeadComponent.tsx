@@ -22,7 +22,7 @@ interface AvatarOptions {
   cameraY: number;
 }
 
-const TalkingHeadComponent = ({headRef = useRef<TalkingHead | null>(null)}) => {
+const TalkingHeadComponent = ({ headRef = useRef<TalkingHead | null>(null) }) => {
   const avatarRef = useRef<HTMLDivElement>(null);
   const [avatarLoaded, setAvatarLoaded] = useState(false);
 
@@ -80,24 +80,6 @@ const TalkingHeadComponent = ({headRef = useRef<TalkingHead | null>(null)}) => {
         headRef.current.stopPose();
         console.log("stopPose method called");
       }
-
-      // // Method 2: resetPose (if available)
-      // if (typeof headRef.current.resetPose === "function") {
-      //   headRef.current.resetPose();
-      //   console.log("resetPose method called");
-      // }
-
-      // // Method 3: Set a neutral pose (if available)
-      // if (typeof headRef.current.setPose === "function") {
-      //   headRef.current.setPose("neutral");
-      //   console.log("setPose method called with 'neutral'");
-      // }
-
-      // // Method 4: Stop any ongoing animations (if available)
-      // if (typeof headRef.current.stopAnimation === "function") {
-      //   headRef.current.stopAnimation();
-      //   console.log("stopAnimation method called");
-      // }
     }
   }, [avatarLoaded]);
 
@@ -105,13 +87,7 @@ const TalkingHeadComponent = ({headRef = useRef<TalkingHead | null>(null)}) => {
     <div>
       <div
         ref={avatarRef}
-        style={{
-          width: "840px",
-          height: "600px",
-          background: "url(/office-background.jpg)",
-          backgroundSize: "cover",
-        }}
-        className="rounded-3xl mb-2 mx-auto"
+        className="rounded-3xl mx-auto h-[400px] w-[500px] lg:h-[500px] lg:w-[800px]"
       ></div>
     </div>
   );
