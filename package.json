@@ -24,7 +24,7 @@
     "prisma:migrate": "pnpm exec prisma migrate deploy",
     "prisma:migrate:dev": "pnpm exec prisma migrate dev",
     "messages:extract": "pnpm exec lingui extract --clean --overwrite",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
