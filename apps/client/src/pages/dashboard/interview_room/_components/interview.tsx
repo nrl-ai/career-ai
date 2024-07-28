@@ -50,9 +50,8 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
   };
 
   useEffect(() => {
-    console.log(state?.cv);
-    if (state?.cv) {
-      setSelectedCV(state.cv);
+    if (state?.cv?.id) {
+      setSelectedCV(state?.cv?.id);
     }
     append({
       role: "user",
