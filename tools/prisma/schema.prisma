@@ -110,6 +110,7 @@ model Interviews {
   communication Int  @default(0)
   responseRate Int   @default(0)
   totalScore Int     @default(0)
+  feedback  String   @default("")
 
   @@unique([userId, id])
   @@index(fields: [userId])

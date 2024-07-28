@@ -62,7 +62,7 @@ export const InterviewFeedbackPage = () => {
                         <span className="font-semibold text-xl text-[#191919]">Components score</span>
                         <DataTable value={scoreTableValue} pt={{
                             root: {className: "w-80 mt-7"},
-                            headerrow: {className: "font-medium text-base text-[#191919]"}
+                            headerRow: {className: "font-medium text-base text-[#191919]"}
                         }}>
                             <Column field="components" header="Components" pt={{
                             headerCell: {

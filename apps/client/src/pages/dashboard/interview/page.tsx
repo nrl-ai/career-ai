@@ -231,7 +231,7 @@ export const InterviewPage = () => {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [showResult, setShowResult] = useState<boolean>(false);
   // const [selectedRowIndex, setSelectedRowIndex] = useState<HTMLElement>();
-  const [selectedRowData, setSelectedRowData] = useState([]);
+  const [selectedRowData, setSelectedRowData] = useState<DataTableValue | null>(null);
   const [typeData, setTypeData] = useState({});
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -390,21 +390,21 @@ export const InterviewPage = () => {
   const scoreTableValue = [
     { 
       components : "Accuracy Rate",
-      score: selectedRowData["accuracyRate"],
+      score: selectedRowData ? selectedRowData["accuracyRate"] : 0,
       weight: "60%",
     },
     { 
       components : "Communication",
-      score: selectedRowData["communication"],
+      score: selectedRowData ? selectedRowData["communication"] : 0,
       weight: "20%",
     },
     { 
       components : "Response Rate",
-      score: selectedRowData["responseRate"],
+      score: selectedRowData ? selectedRowData["responseRate"] : 0,
       weight: "20%",
     },
   ]
-
+  console.log(selectedRowData)
   const showResultOnClick = () => {
     navigate("/dashboard/interview-feedback", {state: selectedRowData});
   }
@@ -415,7 +415,7 @@ export const InterviewPage = () => {
 
   const deleteInterviewOnClick = async () => {
       try {
-        await deleteInterview(selectedRowData['id']);
+        await deleteInterview(selectedRowData ? selectedRowData["id"] : "");
         toast({ 
           variant: "success",
           title: t`Delete the record successfully`,
@@ -542,20 +542,20 @@ export const InterviewPage = () => {
             id="ai-interview-information"
           >
             <div className="flex flex-col bg-white min-h-[800px] w-[380px] rounded-xl p-6 xl:relative">
-              <span className="font-semibold text-xl">{selectedRowData["position"]}</span>
+              <span className="font-semibold text-xl">{selectedRowData ? selectedRowData["position"] : ""}</span>
               <div className="flex gap-x-5 items-center mt-2">
                 <div className="py-2 px-4 w-fit rounded-xl" style={{background: typeData['bgcolor'], color: typeData['textColor']}}>
                   <span className="font-medium text-xs">{typeData['typeName']}</span>
                 </div>
 
-                <span className="text-sm font-medium">{selectedRowData['createdAt']}</span>
+                <span className="text-sm font-medium">{selectedRowData ? selectedRowData['createdAt'] : ""}</span>
               </div>
               <div className="flex flex-col items-center">
-                <Gauge value={selectedRowData["totalScore"]} label="Good job!" className={"mt-5"} valueClassName={""} labelClassName={""}/>
+                <Gauge value={selectedRowData? selectedRowData["totalScore"] : 0} label="Good job!" className={"mt-5"} valueClassName={""} labelClassName={""}/>
                 <div className="absolute flex flex-col items-center mt-56">
                   <DataTable value={scoreTableValue} pt={{
                     root: {className: "w-80"},
-                    headerrow: {className: "font-medium text-base text-[#191919]"}
+                    headerRow: {className: "font-medium text-base text-[#191919]"}
                   }}>
                     <Column field="components" header="Components" pt={{
                       headerCell: {

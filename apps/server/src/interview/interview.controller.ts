@@ -70,6 +70,7 @@ export class InterviewsController {
   @Post("/create-interview-answer")
   @UseGuards(TwoFactorGuard)
   ai_createInterviewAnswer(@Body() data: any) {
+    console.log(data)
     const messages = data.messages;
     const forceFinish = data.forceFinish;
     return this.interviewsService.generateInterviewAnswer(messages, forceFinish);

@@ -17,9 +17,10 @@ import { Excalidraw } from "@excalidraw/excalidraw";
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
   lng: string;
+  state: any;
 }
 
-export function InterviewUI({ initialMessages, className, lng }: ChatProps) {
+export function InterviewUI({ initialMessages, className, lng, state }: ChatProps) {
   const [firstTime, setFirstTime] = useState(true);
   const headRef = useRef<TalkingHead | null>(null);
   const [isFinished, setIsFinished] = useState(false);

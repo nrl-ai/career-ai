@@ -7,6 +7,14 @@ export const InterviewRoomPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const interviewInput = {
+    language : location.state['language'],
+    type: location.state['type'],
+    position: location.state['position'],
+    jd: location.state['jd'],
+    cv: location.state['cv']
+  };
+
   const handleEndInterviewClick = () => {
     navigate("/dashboard/interview");
   };
@@ -19,7 +27,7 @@ export const InterviewRoomPage = () => {
         <span className="font-medium text-base">Interviewing</span>
       </div>
       <div className="flex flex-grow flex-row gap-x-6 h-fit">
-        <InterviewUI lng="en" />
+        <InterviewUI lng="en" state={interviewInput}/>
       </div>
     </div>
   );
