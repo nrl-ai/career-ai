@@ -118,9 +118,9 @@ export const InterviewInformationPage = () => {
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       {/** TODO: Back to the previous router */}
       <div className="flex items-center gap-x-2">
-        <span className="font-medium text-base text-[#AEAEB2]">AI Mocking Interview</span>
-        <i className="pi pi-chevron-right text-[#AEAEB2]"></i>
-        <span className="font-medium text-base">New interview</span>
+        <span className="font-medium text-base text-[#AEAEB2] cursor-default">AI Mocking Interview</span>
+        <i className="pi pi-chevron-right text-[#AEAEB2] cursor-default"></i>
+        <span className="font-medium text-base cursor-default">New interview</span>
       </div>
 
       <div className="text-2xl font-semibold my-2">New interview</div>

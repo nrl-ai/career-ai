@@ -507,7 +507,7 @@ export const InterviewPage = () => {
                 root: { className: "flex flex-col gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
                 header: { style: { background: "transparent", padding: 0, border: "none" } },
-                wrapper: { className: "rounded-xl" },
+                wrapper: { className: "rounded-t-xl" },
                 table: { className: `w-full overflow-y-hidden bg-white` },
                 bodyRow: { className: `cursor-pointer`},
               }}

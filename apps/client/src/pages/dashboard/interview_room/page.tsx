@@ -19,7 +19,7 @@ export const InterviewRoomPage = () => {
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       <div className="flex flex-grow-0 items-center gap-x-2">
         <span className="font-medium text-base text-[#AEAEB2] cursor-pointer">AI Mocking Interview</span>
-        <i className="pi pi-chevron-right text-[#AEAEB2]"></i>
+        <i className="pi pi-chevron-right text-[#AEAEB2] cursor-default"></i>
         <span className="font-medium text-base cursor-pointer">Interviewing</span>
       </div>
       <div className="flex flex-grow flex-row gap-x-6 h-fit">
