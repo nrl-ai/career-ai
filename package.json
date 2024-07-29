@@ -23,8 +23,7 @@
     "prisma:generate": "pnpm exec prisma generate",
     "prisma:migrate": "pnpm exec prisma migrate deploy",
     "prisma:migrate:dev": "pnpm exec prisma migrate dev",
-    "messages:extract": "pnpm exec lingui extract --clean --overwrite",
-    "prepare": "husky && husky install"
+    "messages:extract": "pnpm exec lingui extract --clean --overwrite"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",

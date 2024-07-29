@@ -15,11 +15,6 @@ export const InterviewRoomPage = () => {
     cv: location.state['cv']
   };
 
-  console.log(interviewInput)
-  const handleEndInterviewClick = () => {
-    navigate("/dashboard/interview");
-  };
-
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       <div className="flex flex-grow-0 items-center gap-x-2">

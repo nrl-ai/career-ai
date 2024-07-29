@@ -58,7 +58,7 @@ export const LoginPage = () => {
 
       <div className="space-y-1.5">
         <h2 className="text-2xl font-semibold tracking-tight">{t`Sign in to your account`}</h2>
-        <h6>
+        {(!flags.isEmailAuthDisabled || process.env.NODE_ENV == "development") && <h6>
           <span className="opacity-75">{t`Don't have an account?`}</span>
           <Button asChild variant="link" className="px-1.5">
             <Link to="/auth/register">
@@ -66,16 +66,10 @@ export const LoginPage = () => {
               <ArrowRight className="ml-1" />
             </Link>
           </Button>
-        </h6>
+        </h6>}
       </div>
 
-      {flags.isEmailAuthDisabled && (
-        <Alert variant="error">
-          <AlertTitle>{t`Signing in via email is currently disabled by the administrator.`}</AlertTitle>
-        </Alert>
-      )}
-
-      <div className={cn(flags.isEmailAuthDisabled && "pointer-events-none select-none blur-sm")}>
+      {(!flags.isEmailAuthDisabled || process.env.NODE_ENV == "development") && <div>
         <Form {...form}>
           <form
             ref={formRef}
@@ -128,7 +122,7 @@ export const LoginPage = () => {
             </div>
           </form>
         </Form>
-      </div>
+      </div>}
     </div>
   );
 };

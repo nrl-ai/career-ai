@@ -103,7 +103,7 @@ msgstr "Add a new section"
 msgid "Add New Page"
 msgstr "Add New Page"
 
-#: apps/client/src/components/ai-actions.tsx:79
+#: apps/client/src/components/ai-actions.tsx:82
 msgid "AI"
 msgstr "AI"
 
@@ -255,8 +255,8 @@ msgstr "CareerAI"
 msgid "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
 msgstr "CareerAI selects and introduces you to the most useful online courses on this website. Our goal is to help you improve your knowledge and skills quickly and effectively. Let's explore the best courses for you!"
 
-#: apps/client/src/components/ai-actions.tsx:103
 #: apps/client/src/components/ai-actions.tsx:106
+#: apps/client/src/components/ai-actions.tsx:109
 msgid "Casual"
 msgstr "Casual"
 
@@ -274,7 +274,7 @@ msgstr "Change"
 msgid "Change Password"
 msgstr "Change Password"
 
-#: apps/client/src/components/ai-actions.tsx:97
+#: apps/client/src/components/ai-actions.tsx:100
 msgid "Change Tone"
 msgstr "Change Tone"
 
@@ -321,8 +321,8 @@ msgstr "Coming Soon"
 msgid "Company"
 msgstr "Company"
 
-#: apps/client/src/components/ai-actions.tsx:115
 #: apps/client/src/components/ai-actions.tsx:118
+#: apps/client/src/components/ai-actions.tsx:121
 msgid "Confident"
 msgstr "Confident"
 
@@ -334,6 +334,11 @@ msgstr "Confirm New Password"
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:246
 msgid "Continue"
 msgstr "Continue"
+
+#: apps/client/src/pages/auth/layout.tsx:47
+msgctxt "The user can either login with email/password, or continue with GitHub or Google."
+msgid "Continue with"
+msgstr "Continue with"
 
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:94
 msgid "Copy"
@@ -438,6 +443,10 @@ msgstr "Delete"
 msgid "Delete Account"
 msgstr "Delete Account"
 
+#: apps/client/src/pages/dashboard/interview/page.tsx:421
+msgid "Delete the record successfully"
+msgstr "Delete the record successfully"
+
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:72
 #: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:50
 #: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:66
@@ -523,7 +532,7 @@ msgid "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 msgstr "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:82
-#: apps/client/src/pages/auth/login/page.tsx:90
+#: apps/client/src/pages/auth/login/page.tsx:84
 #: apps/client/src/pages/auth/register/page.tsx:140
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:54
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:180
@@ -583,7 +592,7 @@ msgstr "File"
 msgid "Filetype"
 msgstr "Filetype"
 
-#: apps/client/src/components/ai-actions.tsx:90
+#: apps/client/src/components/ai-actions.tsx:93
 msgid "Fix Spelling & Grammar"
 msgstr "Fix Spelling & Grammar"
 
@@ -611,7 +620,7 @@ msgstr "For example, information regarding which companies you sent this resume 
 msgid "Forget"
 msgstr "Forget"
 
-#: apps/client/src/pages/auth/login/page.tsx:126
+#: apps/client/src/pages/auth/login/page.tsx:120
 msgid "Forgot Password?"
 msgstr "Forgot Password?"
 
@@ -628,8 +637,8 @@ msgstr "Format"
 msgid "Found a bug, or have an idea for a new feature?"
 msgstr "Found a bug, or have an idea for a new feature?"
 
-#: apps/client/src/components/ai-actions.tsx:121
 #: apps/client/src/components/ai-actions.tsx:124
+#: apps/client/src/components/ai-actions.tsx:127
 msgid "Friendly"
 msgstr "Friendly"
 
@@ -687,7 +696,7 @@ msgstr "Hide"
 msgid "Hide Icons"
 msgstr "Hide Icons"
 
-#: apps/client/src/pages/auth/login/page.tsx:110
+#: apps/client/src/pages/auth/login/page.tsx:104
 #: apps/client/src/pages/auth/register/page.tsx:166
 #: apps/client/src/pages/auth/reset-password/page.tsx:88
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
@@ -721,7 +730,7 @@ msgstr "Import"
 msgid "Import an existing resume"
 msgstr "Import an existing resume"
 
-#: apps/client/src/components/ai-actions.tsx:85
+#: apps/client/src/components/ai-actions.tsx:88
 msgid "Improve Writing"
 msgstr "Improve Writing"
 
@@ -746,7 +755,7 @@ msgstr "Information"
 msgid "Institution"
 msgstr "Institution"
 
-#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:128
+#: apps/client/src/pages/dashboard/interview_room/_components/interview.tsx:143
 msgid "Interview Room"
 msgstr "Interview Room"
 
@@ -902,9 +911,9 @@ msgstr "March 2023 - Present"
 msgid "Margin"
 msgstr "Margin"
 
-#: apps/client/src/pages/dashboard/_components/sidebar.tsx:109
-msgid "Mock Interview - Simple"
-msgstr "Mock Interview - Simple"
+#: apps/client/src/pages/dashboard/_components/sidebar.tsx:114
+msgid "Mock Interview"
+msgstr "Mock Interview"
 
 #: apps/client/src/pages/auth/register/page.tsx:98
 #: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
@@ -949,6 +958,10 @@ msgstr "Notes"
 msgid "One-Time Password"
 msgstr "One-Time Password"
 
+#: apps/client/src/pages/dashboard/interview/page.tsx:427
+msgid "Oops, the server returned an error when trying to delete the record."
+msgstr "Oops, the server returned an error when trying to delete the record."
+
 #: apps/client/src/components/ai-actions.tsx:56
 #: apps/client/src/libs/axios.ts:29
 #: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:172
@@ -962,9 +975,9 @@ msgstr "Oops, the server returned an error."
 msgid "Open"
 msgstr "Open"
 
-#: apps/client/src/services/openai/change-tone.ts:30
-#: apps/client/src/services/openai/fix-grammar.ts:28
-#: apps/client/src/services/openai/improve-writing.ts:28
+#: apps/client/src/services/llm/change-tone.ts:30
+#: apps/client/src/services/llm/fix-grammar.ts:28
+#: apps/client/src/services/llm/improve-writing.ts:28
 msgid "OpenAI did not return any choices for your text."
 msgstr "OpenAI did not return any choices for your text."
 
@@ -976,11 +989,6 @@ msgstr "OpenAI Integration"
 #: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:168
 msgid "Options"
 msgstr "Options"
-
-#: apps/client/src/pages/auth/layout.tsx:47
-msgctxt "The user can either login with email/password, or continue with GitHub or Google."
-msgid "or continue with"
-msgstr "or continue with"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:39
 msgid "Organization"
@@ -995,7 +1003,7 @@ msgstr "Page"
 msgid "Page {0}"
 msgstr "Page {0}"
 
-#: apps/client/src/pages/auth/login/page.tsx:105
+#: apps/client/src/pages/auth/login/page.tsx:99
 #: apps/client/src/pages/auth/register/page.tsx:161
 #: apps/client/src/pages/auth/reset-password/page.tsx:83
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:76
@@ -1070,8 +1078,8 @@ msgstr "Privacy Policy"
 msgid "Pro User"
 msgstr "Pro User"
 
-#: apps/client/src/components/ai-actions.tsx:109
 #: apps/client/src/components/ai-actions.tsx:112
+#: apps/client/src/components/ai-actions.tsx:115
 msgid "Professional"
 msgstr "Professional"
 
@@ -1234,7 +1242,7 @@ msgid "Sidebar"
 msgstr "Sidebar"
 
 #: apps/client/src/pages/auth/backup-otp/page.tsx:102
-#: apps/client/src/pages/auth/login/page.tsx:122
+#: apps/client/src/pages/auth/login/page.tsx:116
 #: apps/client/src/pages/auth/verify-otp/page.tsx:92
 msgid "Sign in"
 msgstr "Sign in"
@@ -1251,10 +1259,6 @@ msgstr "Sign in to your account"
 #: apps/client/src/pages/auth/register/page.tsx:177
 msgid "Sign up"
 msgstr "Sign up"
-
-#: apps/client/src/pages/auth/login/page.tsx:74
-msgid "Signing in via email is currently disabled by the administrator."
-msgstr "Signing in via email is currently disabled by the administrator."
 
 #: apps/client/src/pages/auth/register/page.tsx:82
 msgid "Signups are currently disabled by the administrator."
@@ -1558,7 +1562,7 @@ msgstr "Website"
 msgid "You can add multiple keywords by separating them with a comma or pressing enter."
 msgstr "You can add multiple keywords by separating them with a comma or pressing enter."
 
-#: apps/client/src/pages/auth/login/page.tsx:94
+#: apps/client/src/pages/auth/login/page.tsx:88
 msgid "You can also enter your username."
 msgstr "You can also enter your username."
 
@@ -1591,7 +1595,7 @@ msgstr "Your account and all your data has been deleted successfully. Goodbye!"
 msgid "Your email address has been verified successfully."
 msgstr "Your email address has been verified successfully."
 
-#: apps/client/src/services/openai/client.ts:11
+#: apps/client/src/services/llm/client.ts:11
 msgid "Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration."
 msgstr "Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration."
 
