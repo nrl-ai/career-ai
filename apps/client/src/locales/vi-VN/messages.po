@@ -330,6 +330,11 @@ msgstr "Xác nhận mật khẩu mới"
 msgid "Continue"
 msgstr "Tiếp tục"
 
+#: apps/client/src/pages/auth/layout.tsx:47
+msgctxt "The user can either login with email/password, or continue with GitHub or Google."
+msgid "Continue with"
+msgstr "Tiếp tục với"
+
 #: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:94
 msgid "Copy"
 msgstr "Sao chép"
@@ -522,7 +527,7 @@ msgid "Elevate Your Job Hunt with AI-Powered CVs, Interviews, and Job Matches!."
 msgstr "Nâng tầm sự nghiệp với Trợ lý AI: tư vấn sửa CV, phỏng vấn ảo, học kĩ năng và hơn thế nữa!"
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:82
-#: apps/client/src/pages/auth/login/page.tsx:90
+#: apps/client/src/pages/auth/login/page.tsx:84
 #: apps/client/src/pages/auth/register/page.tsx:140
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:54
 #: apps/client/src/pages/dashboard/settings/_sections/account.tsx:180
@@ -610,7 +615,7 @@ msgstr "Ví dụ: thông tin liên quan đến công ty bạn đã gửi sơ y�
 msgid "Forget"
 msgstr "Quên"
 
-#: apps/client/src/pages/auth/login/page.tsx:126
+#: apps/client/src/pages/auth/login/page.tsx:120
 msgid "Forgot Password?"
 msgstr "Quên mật khẩu?"
 
@@ -686,7 +691,7 @@ msgstr "Ẩn"
 msgid "Hide Icons"
 msgstr "Ẩn biểu tượng"
 
-#: apps/client/src/pages/auth/login/page.tsx:110
+#: apps/client/src/pages/auth/login/page.tsx:104
 #: apps/client/src/pages/auth/register/page.tsx:166
 #: apps/client/src/pages/auth/reset-password/page.tsx:88
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
@@ -980,11 +985,6 @@ msgstr "Tích hợp OpenAI"
 msgid "Options"
 msgstr "Tùy chọn"
 
-#: apps/client/src/pages/auth/layout.tsx:47
-msgctxt "The user can either login with email/password, or continue with GitHub or Google."
-msgid "or continue with"
-msgstr "Hoặc tiếp tục với"
-
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:39
 msgid "Organization"
 msgstr "Tổ chức"
@@ -998,7 +998,7 @@ msgstr "Trang"
 msgid "Page {0}"
 msgstr "Trang {0}"
 
-#: apps/client/src/pages/auth/login/page.tsx:105
+#: apps/client/src/pages/auth/login/page.tsx:99
 #: apps/client/src/pages/auth/register/page.tsx:161
 #: apps/client/src/pages/auth/reset-password/page.tsx:83
 #: apps/client/src/pages/dashboard/settings/_sections/security.tsx:76
@@ -1237,7 +1237,7 @@ msgid "Sidebar"
 msgstr "Thanh bên"
 
 #: apps/client/src/pages/auth/backup-otp/page.tsx:102
-#: apps/client/src/pages/auth/login/page.tsx:122
+#: apps/client/src/pages/auth/login/page.tsx:116
 #: apps/client/src/pages/auth/verify-otp/page.tsx:92
 msgid "Sign in"
 msgstr "Đăng nhập"
@@ -1254,10 +1254,6 @@ msgstr "Đăng nhập vào tài khoản của bạn"
 #: apps/client/src/pages/auth/register/page.tsx:177
 msgid "Sign up"
 msgstr "Đăng ký"
-
-#: apps/client/src/pages/auth/login/page.tsx:74
-msgid "Signing in via email is currently disabled by the administrator."
-msgstr "Đăng nhập qua email hiện đang bị vô hiệu hóa bởi quản trị viên."
 
 #: apps/client/src/pages/auth/register/page.tsx:82
 msgid "Signups are currently disabled by the administrator."
@@ -1561,7 +1557,7 @@ msgstr "Trang web"
 msgid "You can add multiple keywords by separating them with a comma or pressing enter."
 msgstr "Bạn có thể thêm nhiều từ khóa bằng cách tách chúng bằng dấu phẩy hoặc nhấn enter."
 
-#: apps/client/src/pages/auth/login/page.tsx:94
+#: apps/client/src/pages/auth/login/page.tsx:88
 msgid "You can also enter your username."
 msgstr "Bạn cũng có thể nhập tên người dùng của mình."
 
