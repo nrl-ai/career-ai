@@ -114,16 +114,15 @@ export const InterviewInformationPage = () => {
         <span className="font-medium text-base">New interview</span>
       </div>
 
-      {/* <div className="text-3xl font-semibold my-4">New interview</div> */}
+      <div className="text-3xl font-semibold my-2">New interview</div>
 
       <div
-        className="grid grid-cols-2 gap-x-6 h-fit flex-cols mt-4"
-        // style={{ height: "calc(100vh - 240px)" }}
+        className="gap-x-2 h-fit flex flex-col lg:flex-row mt-2"
       >
-        <div className="col-span-1 rounded-xl bg-white p-6">
+        <div className="flex-grow rounded-xl bg-white p-6 mb-2">
           <span className="font-semibold text-2xl">Applying position</span>
-          <div className="grid grid-cols-2 gap-x-3 mt-[18px]">
-            <div className="col-span-1 flex flex-col">
+          <div className="gap-x-3 mt-[18px]">
+            <div className="col-span-1 flex-col hidden">
               <span className="text-base font-medium">Language</span>
               <Dropdown
                 value={languageSelector}
@@ -171,7 +170,7 @@ export const InterviewInformationPage = () => {
               />
             </div>
 
-            <div className="col-span-1 flex flex-col grow ">
+            <div className="col-span-1 flex-col grow hidden">
               <span className="text-base font-medium">Interview type</span>
               <Dropdown
                 value={type}
@@ -236,7 +235,7 @@ export const InterviewInformationPage = () => {
           </div>
 
           <div className="mt-4 flex flex-col">
-            {/* <span className="text-base font-medium">Job description (optional)</span> */}
+            <span className="text-base font-medium">Job Description (optional)</span>
             <JDInput
               id="jd-input-field"
               content={jd}
@@ -248,11 +247,10 @@ export const InterviewInformationPage = () => {
           </div>
         </div>
 
-        <div className="col-span-1 rounded-xl bg-white p-6">
+        <div className="flex-grow rounded-xl bg-white p-6">
           <span className="font-semibold text-2xl">Select Resume</span>
-
           <div className="flex flex-col mt-[18px]">
-            <div className="w-full flex justify-between mt-2 gap-2">
+            <div className="w-full flex mt-2 gap-2">
               <BaseButton
                 title="Create new resume"
                 content="Create new resume from templates"

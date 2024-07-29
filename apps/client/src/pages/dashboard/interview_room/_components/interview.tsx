@@ -143,7 +143,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
               {t`Interview Room`}
             </motion.h1>
           </div>
-          <div className="flex flex-col lg:flex-row flex-grow overflow-hidden w-full justify-start rounded-2xl bg-gradient-to-t from-gray-100 to-gray-200">
+          <div className="flex flex-col xl:flex-row flex-grow overflow-hidden w-full justify-start rounded-2xl bg-gradient-to-t from-gray-100 to-gray-200">
             {messages.length ? (
               <div className="flex flex-grow flex-col">
                 <div className="flex flex-col flex-grow relative w-[600px] lg:w-[800px]">

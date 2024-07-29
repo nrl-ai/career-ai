@@ -104,8 +104,8 @@ const Toolbar = ({
   };
 
   return (
-    <div className="flex flex-nowrap w-full justify-between items-center">
-      <div className="flex-shrink gap-1 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
+    <div className="flex w-full justify-between items-center gap-2">
+      <div className="flex lg:flex-row flex-grow gap-1 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
         <Tooltip content="Bold">
           <Toggle
             size="sm"
@@ -353,11 +353,11 @@ const Toolbar = ({
       <button
         type="button"
         disabled={isLoading || !isActive}
-        className={`flex flex-shrink items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF] ml-2"} 
-          bg-white py-2 px-7  rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
+        className={`w-full flex flex-grow-0 items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF] ml-2"} 
+          bg-white py-2 px-7 rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
-        {isLoading ? <span>Processing...</span> : <span>AI generate</span>}
+        {isLoading ? <span>Processing...</span> : <span>Gen</span>}
         {isLoading ? (
           <svg
             aria-hidden="true"
@@ -505,8 +505,9 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
 
         <EditorContent
           editor={editor}
+          cols={20}
           className={cn(
-            "grid w-full min-h-[33vh] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
+            "w-full h-[10rem] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
             hideToolbar && "pt-2",
             className,
           )}
