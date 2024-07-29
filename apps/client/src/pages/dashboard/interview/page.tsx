@@ -341,14 +341,14 @@ export const InterviewPage = () => {
     //   body: typeBodyTemplate,
     //   filter: true,
     // },
-    {
-      field: "totalScore",
-      filterField: "totalScore",
-      header: "Score",
-      width: "15%",
-      body: scoreBodyTemplate,
-      filter: true,
-    },
+    // {
+    //   field: "totalScore",
+    //   filterField: "totalScore",
+    //   header: "Score",
+    //   width: "15%",
+    //   body: scoreBodyTemplate,
+    //   filter: true,
+    // },
   ];
 
   const [interviews, setInterviews] = useState<boolean | undefined>(false);

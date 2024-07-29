@@ -73,7 +73,8 @@ export class InterviewsController {
     const cvId = data.cvId;
     const messages = data.messages;
     const forceFinish = data.forceFinish;
-    return this.interviewsService.generateInterviewAnswer(user, messages, forceFinish, cvId);
+    const interviewer = data.interviewer;
+    return this.interviewsService.generateInterviewAnswer(user, messages, forceFinish, cvId, interviewer);
   }
   
   // @Patch(":id/retake")

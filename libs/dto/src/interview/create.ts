@@ -8,6 +8,7 @@ export const createInterviewSchema = z.object({
   language: z.enum(["VN", "EN", "KR"]),
   jd: z.string(),
   cv: resumeDataSchema.default(defaultResumeData),
+  interviewer: z.string(),
 });
 
 export class CreateInterviewDto extends createZodDto(createInterviewSchema) {}

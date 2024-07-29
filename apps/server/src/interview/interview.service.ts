@@ -146,6 +146,7 @@ export class InterviewsService {
         jd: createInterViewDto.jd,
         language: createInterViewDto.language,
         cv: createInterViewDto.cv,
+        interviewer: createInterViewDto.interviewer,
       },
     });
   }
@@ -168,11 +169,18 @@ export class InterviewsService {
     return ai_generate_interview_question(language, cv, jd, position, type, content);
   }
 
-  async generateInterviewAnswer(user: any,messages: any, forceFinish = false, cvId: string = "") {
+  async generateInterviewAnswer(user: any,messages: any, forceFinish = false, cvId: string = "", interviewer="andrew") {
     let resumeDetails = "";
     if (cvId) {
       const resume = await this.resumeService.findOne(cvId, user.id);
       resumeDetails = JSON.stringify(resume.data);
+    }
+
+    let intro = "";
+    if (interviewer === "andrew") {
+      intro = "You are Andrew, the CEO of the company.";
+    } else if (interviewer === "lily") {
+      intro = "You are Lily, the HR Manager of the company.";
     }
 
     const HACK_SHIELD_PROMPT =
@@ -188,7 +196,7 @@ export class InterviewsService {
     if (step >= NUM_STEPS || forceFinish) {
       const prompt = {
         content:
-          "Act like an interviewer. Evaluate following dialogues and give feedback to the candidate with a score from 0 to 10 and give a reason for the score. Give warnings if users use other languages than English. Format of the feedback should be: \n\n**MOCK INTERVIEW ENDED.**\n\n- **Score:** 8.0/10.0. \n\n- **Comments:** The candidate is very confident and has a good understanding of the position.\nYou can give some advice to the candidate." +
+        `"Act like an interviewer. ${intro}. Evaluate following dialogues and give feedback to the candidate with a score from 0 to 10 and give a reason for the score. Give warnings if users use other languages than English. Format of the feedback should be: \n\n**MOCK INTERVIEW ENDED.**\n\n- **Score:** 8.0/10.0. \n\n- **Comments:** The candidate is very confident and has a good understanding of the position.\nYou can give some advice to the candidate.` +
           HACK_SHIELD_PROMPT,
         role: "system",
       };
@@ -226,9 +234,9 @@ export class InterviewsService {
 
     const prompt = {
       content:
-        `Act like an interviewer who is interviewing a candidate for a job. The interview will be in English only. Give warnings if users use other languages than English. Based on the candidate's answers, ask the candidate some follow-up questions.
+        `Act like an interviewer who is interviewing a candidate for a job. ${intro}. Based on the candidate's answers, ask the candidate some follow-up creative and natural questions.
 
-        User Resume:
+        The candidate's Resume:
         ${resumeDetails}
 
         `

@@ -111,6 +111,7 @@ model Interviews {
   responseRate Int   @default(0)
   totalScore Int     @default(0)
   feedback  String   @default("")
+  interviewer String  @default("andrew")
 
   @@unique([userId, id])
   @@index(fields: [userId])

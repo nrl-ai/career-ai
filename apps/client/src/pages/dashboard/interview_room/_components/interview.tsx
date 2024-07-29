@@ -35,6 +35,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
   const [waitingForAudio, setWaitingForAudio] = useState(false);
   const [mode, setMode] = useState<"chat" | "whiteboard">("chat");
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
+  const interviewer = state?.interviewer || "andrew";
 
   const handleSpeak = (text: string) => {
     if (firstTime) {
@@ -68,6 +69,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
     },
     body: {
       cvId: selectedCV,
+      interviewer: interviewer,
     },
     onResponse(response) {
       if (response.status === 401) {
@@ -140,7 +142,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
               animate={{ opacity: 1, x: 0 }}
               className="text-2xl font-bold tracking-tight text-gray-800"
             >
-              {t`Interview Room`}
+              Interview with {interviewer == "andrew" ? "Andrew - CEO" : "Lily - HR Manager"}
             </motion.h1>
           </div>
           <div className="flex flex-col xl:flex-row flex-grow overflow-hidden w-full justify-start rounded-2xl bg-gradient-to-t from-gray-100 to-gray-200">
@@ -160,7 +162,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
                     <Button
                       variant={"secondary"}
                       onClick={toggleWhiteboard}
-                      className="absolute top-4 left-6 z-50"
+                      className="absolute right-4 bottom-4 z-50"
                     >
                       {mode == "chat" ? (
                         <FaChalkboardTeacher className="mr-2" />
@@ -178,7 +180,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
                         mode == "whiteboard" ? "hidden" : "",
                       )}
                     >
-                      <TalkingHeadComponent headRef={headRef as any} />
+                      <TalkingHeadComponent actor={interviewer} headRef={headRef as any} />
                     </div>
                     {mode == "whiteboard" && (
                       <div

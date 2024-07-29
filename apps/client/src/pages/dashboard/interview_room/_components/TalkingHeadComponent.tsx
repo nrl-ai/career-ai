@@ -22,7 +22,7 @@ interface AvatarOptions {
   cameraY: number;
 }
 
-const TalkingHeadComponent = ({ headRef = useRef<TalkingHead | null>(null) }) => {
+const TalkingHeadComponent = ({ actor="andrew", headRef = useRef<TalkingHead | null>(null) }) => {
   const avatarRef = useRef<HTMLDivElement>(null);
   const [avatarLoaded, setAvatarLoaded] = useState(false);
 
@@ -42,11 +42,11 @@ const TalkingHeadComponent = ({ headRef = useRef<TalkingHead | null>(null) }) =>
 
       // Load and show the avatar
       const avatarOptions: AvatarOptions = {
-        url: "/avatars/interviewer.glb",
+        url: `/avatars/${actor}.glb`,
         body: "M",
         avatarMood: "happy",
         ttsLang: "en-US",
-        ttsVoice: "en-US-Standard-A",
+        ttsVoice: actor == "andrew" ? "en-US-Standard-A" : "en-US-Standard-C",
         lipsyncLang: "en",
         cameraX: 1,
         cameraY: 1,
