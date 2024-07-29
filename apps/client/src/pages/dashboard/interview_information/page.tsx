@@ -67,8 +67,6 @@ export const InterviewInformationPage = () => {
     try {
       const result = await createInterview({
         position: position,
-        type: "combination",
-        language: language as languageEnum,
         jd: jd as string,
         cv: cvData,
         interviewer: interviewer,
@@ -120,9 +118,7 @@ export const InterviewInformationPage = () => {
 
   // END
 
-  const startInterviewButtonActive =
-    // language != "" && position != "" && type != undefined && selectedCVDetailed != null;
-    position != "" && jd != "" && selectedCVDetailed != null;
+  const startInterviewButtonActive = position != "" && selectedCV != null;
 
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
