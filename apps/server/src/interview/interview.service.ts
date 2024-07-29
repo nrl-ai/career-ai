@@ -73,28 +73,15 @@ type CreateJDPrompt = {
 
 const CREATEJDPROMPT: CreateJDPrompt = {
   vn: `
-Bạn là một nhà tuyển dụng của một công ty bất kỳ (bạn có thể tự do lựa chọn), hãy giới thiệu về công ty của bạn (ví dụ:
-tên công ty, lĩnh vực mà công ty bạn đang làm, vị trí của công ty), những lợi ích
-mà công việc này đem lại, rồi dựa vào các điều kiện sau để tạo ra phần mô tả công việc:
+Bạn là chuyên viên tuyển dụng. Hãy sinh mô tả công việc cho vị trí: {position}.
 
-VỊ TRÍ ỨNG TUYỂN CỦA ỨNG VIÊN:
-"""{position}"""
+Nội dung mô tả công việc ngắn gọn, súc tích, không quá 100 từ.
 
-####
-LƯU Ý : BẠN CHỈ TRẢ VỀ PHẦN MÔ TẢ CÔNG VIỆC
-####
 `,
   en: `
-You are a recruiter for any company (you may choose freely), please introduce your company 
-(e.g., company name, the industry your company operates in, company location), 
-the benefits this job brings, then use the following conditions to create a job description:
+You are a recruitment specialist. Please create a job description for the position: {position}.
 
-POSITION THE CANDIDATE IS APPLYING FOR:
-""" {position} """
-
-####
-ONLY RETURN THE JOB DESCRIPTION
-####
+The job description should be concise and not exceed 100 words.
 `,
 };
 
@@ -201,7 +188,7 @@ export class InterviewsService {
     if (step >= NUM_STEPS || forceFinish) {
       const prompt = {
         content:
-          "Act like an interviewer only knowing English. Evaluate following dialogues and give feedback to the candidate with a score from 0 to 10 and give a reason for the score. Give warnings if users use other languages than English. Format of the feedback should be: \n\n**MOCK INTERVIEW ENDED.**\n\n- **Score:** 8.0/10.0. \n\n- **Comments:** The candidate is very confident and has a good understanding of the position.\nYou can give some advice to the candidate." +
+          "Act like an interviewer. Evaluate following dialogues and give feedback to the candidate with a score from 0 to 10 and give a reason for the score. Give warnings if users use other languages than English. Format of the feedback should be: \n\n**MOCK INTERVIEW ENDED.**\n\n- **Score:** 8.0/10.0. \n\n- **Comments:** The candidate is very confident and has a good understanding of the position.\nYou can give some advice to the candidate." +
           HACK_SHIELD_PROMPT,
         role: "system",
       };

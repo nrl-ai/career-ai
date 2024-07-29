@@ -275,7 +275,7 @@ export const InterviewInformationPage = () => {
           </div>
         </div>
 
-        <div className="flex-grow rounded-xl bg-white p-6">
+        <div className="flex-grow-0 rounded-xl bg-white p-6 max-w-[500px] min-w-[300px]">
           <span className="font-semibold text-xl">Select Resume</span>
           <div className="flex flex-col mt-[18px]">
             <div className="w-full flex mt-2 gap-2">
