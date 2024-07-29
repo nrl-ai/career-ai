@@ -1,17 +1,5 @@
-"use client";
-
-import React, { Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
-import styles from "../styles/components/ui/Modal.module.scss";
-
+import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
   Dialog,
   DialogContent,
@@ -19,31 +7,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Tooltip,
 } from "@career-ai/ui";
-
 import TextInput, { TextInputDrag } from "./ui/TextInput";
-
-// import Button, { ButtonVariant } from "./ui/Button";
 import { useBoardStore } from "../store/BoardStore";
-
-import { createBoard, createColumn } from "../utility";
-import { BoardTypes } from "../types";
 import { useDialog } from "@/client/stores/dialog";
 import { Plus } from "@phosphor-icons/react";
+import { BoardTypes } from "../types";
+import { createBoard, createColumn } from "../utility";
 
 interface EditBoardModalProps {
   children: ReactNode;
@@ -55,7 +25,8 @@ const EditBoardModal = () => {
   const { boards, activeBoardId, updateBoard } = useBoardStore();
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
   const { isOpen, mode, payload, close, open } = useDialog("job-board");
-  console.log("check mode", mode);
+  const isUpdate = mode === "update";
+  const isCreate = mode === "create";
 
   const [changedBoardName, setBoardName] = useState("");
   const [columnName, setColumnName] = useState("");
@@ -95,7 +66,9 @@ const EditBoardModal = () => {
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Board</DialogTitle>
+          <DialogTitle>
+            {isUpdate ? "Edit Board" : isCreate ? "Create New Board" : "Edit Board"}
+          </DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-2">
@@ -126,7 +99,7 @@ const EditBoardModal = () => {
           <Plus /> Add New Column
         </Button>
         <Button onClick={handleAddBoard}>Save Changes</Button>
-        <DialogFooter></DialogFooter>
+        {/* <DialogFooter></DialogFooter> */}
       </DialogContent>
     </Dialog>
   );

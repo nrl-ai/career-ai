@@ -1,7 +1,17 @@
 import { SectionKey } from "@career-ai/schema";
 import { create } from "zustand";
 
-export type DialogName = "resume" | "lock" | "import" | "two-factor" | SectionKey | "job-board";
+export type DialogName =
+  | "resume"
+  | "lock"
+  | "import"
+  | "two-factor"
+  | SectionKey
+  | "job-board"
+  | "add-task"
+  | "edit-task"
+  | "view-task"
+  | "warning";
 
 export type DialogMode = "create" | "update" | "duplicate" | "delete";
 

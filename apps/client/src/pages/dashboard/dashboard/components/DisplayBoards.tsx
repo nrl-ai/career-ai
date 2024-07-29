@@ -1,15 +1,15 @@
 "use client";
 
-import React, { FC } from "react";
-import { BoardIcon, ChevronDownIcon } from "./icons";
-import styles from "../styles/components/DisplayBoards.module.scss";
+import { useDialog } from "@/client/stores/dialog";
 import * as Dialog from "@radix-ui/react-dialog";
+import { FC } from "react";
 import { useBoardStore } from "../store/BoardStore";
-import AddNewBoardModal from "./AddNewBoardModal";
-import classNames from "classnames";
+import styles from "../styles/components/DisplayBoards.module.scss";
+import { ChevronDownIcon } from "./icons";
 import BoardsList from "./ui/BoardsList";
 
 const DisplayBoards: FC<{ showIcon: boolean }> = ({ showIcon }) => {
+  const { open } = useDialog("job-board");
   const { setActiveBoard } = useBoardStore();
   const boards = useBoardStore((state) => state.boards);
 
@@ -38,11 +38,13 @@ const DisplayBoards: FC<{ showIcon: boolean }> = ({ showIcon }) => {
           </Dialog.Portal>
         </Dialog.Root>
       ) : (
-        <AddNewBoardModal>
-          <button>
-            <h2>+Create New Board</h2>
-          </button>
-        </AddNewBoardModal>
+        <button
+          onClick={() => {
+            open("create");
+          }}
+        >
+          <h2>+Create New Board</h2>
+        </button>
       )}
     </>
   );

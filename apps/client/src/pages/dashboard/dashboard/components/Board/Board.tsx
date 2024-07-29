@@ -6,7 +6,6 @@ import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { useBoardStore } from "../../store/BoardStore";
 import styles from "../../styles/components/board/Board.module.scss";
 import { KanbanTypes } from "../../types";
-import AddNewBoardModal from "../AddNewBoardModal";
 import DisplayBoards from "../DisplayBoards";
 import Button, { ButtonVariant } from "../ui/Button";
 import Column from "./Column";
@@ -80,7 +79,7 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
             variant={ButtonVariant.Primary}
             btnType="Welcome"
             onClick={() => {
-              open("update");
+              open("create");
             }}
           >
             +Add New Column
@@ -100,11 +99,15 @@ const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
           "There are no boards. Create a new board to get started."
         )}
       </h1>
-      <AddNewBoardModal>
-        <Button variant={ButtonVariant.Primary} btnType="Welcome">
-          +Add New Board
-        </Button>
-      </AddNewBoardModal>
+      <Button
+        variant={ButtonVariant.Primary}
+        btnType="Welcome"
+        onClick={() => {
+          open("create");
+        }}
+      >
+        +Add New Board
+      </Button>
     </div>
   );
 };

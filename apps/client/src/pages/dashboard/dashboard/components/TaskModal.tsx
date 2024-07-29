@@ -1,4 +1,4 @@
-import { useDialog, useDialogStore } from "@/client/stores/dialog";
+import { useDialog } from "@/client/stores/dialog";
 import {
   Button,
   Dialog,
@@ -16,66 +16,40 @@ import { Plus } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import { useBoardStore } from "../store/BoardStore";
 import styles from "../styles/components/ui/Modal.module.scss";
-import { SubtaskTypes } from "../types";
-import { createSubtask } from "../utility";
+import { ColumnTypes } from "../types";
+import { createSubtask, createTask } from "../utility";
 import TextInput, { TextArea, TextInputDrag } from "./ui/TextInput";
 
-const EditTaskModal = () => {
-  const { isOpen, close } = useDialog("edit-task");
-  const { activeColumn, activeTask } = useDialogStore(
-    (state) => state.dialog?.payload?.item,
-  ) as any;
-  const { boards, activeBoardId, updateTask, moveTask } = useBoardStore();
-  const activeBoard = boards.find(({ id }) => id === activeBoardId)!;
+const TaskModal = () => {
+  const { isOpen, close } = useDialog("add-task");
+  const { boards, activeBoardId, addTask } = useBoardStore();
+  const activeBoard = boards.find(({ id }) => id === activeBoardId);
+
   const { columns } = activeBoard!;
-
-  const [selectedDropdownValue, setSelectedDropdownValue] = useState(activeColumn.title);
-
-  const [taskName, setTaskName] = useState(activeTask.title);
-  const [subtasks, setSubtasks] = useState(activeTask.subtasks);
+  const [taskName, setTaskName] = useState("");
   const [subtaskName, setSubtaskName] = useState("");
-  const [description, setDescription] = useState(activeTask.description);
+  const [description, setDescription] = useState("");
+
+  const [selectedDropdownValue, setSelectedDropdownValue] = useState(columns[0].title);
+
+  const [subtasks, setSubtasks] = useState([createSubtask("")]);
 
   const handleAddTask = () => {
+    if (!columns.length) return null;
+
     const validSubtasks = subtasks.filter((subtask) => subtask.title !== "");
-    const selectedColumn = columns.find((column) => column.title === selectedDropdownValue);
 
-    if (selectedColumn) {
-      const updatedTask = {
-        ...activeTask,
-        title: taskName,
-        subtasks: validSubtasks,
-        description,
-      };
+    const selectedColumn = columns.find(
+      (column: ColumnTypes) => column.title === selectedDropdownValue,
+    );
+    const newTask = createTask(taskName, description, validSubtasks);
 
-      updateTask(activeColumn.id, updatedTask);
-
-      if (selectedColumn.id !== activeColumn.id) {
-        const sourceColumnIndex = columns.findIndex((column) => column.id === activeColumn.id);
-        const destinationColumnIndex = columns.findIndex(
-          (column) => column.id === selectedColumn.id,
-        );
-
-        const taskIndex = activeColumn.tasks.findIndex((task) => task.id === activeTask.id);
-
-        moveTask(
-          activeBoard.id,
-          activeColumn.id,
-          selectedColumn.id,
-          taskIndex,
-          destinationColumnIndex,
-        );
-      }
-      close();
+    if (newTask && selectedColumn) {
+      addTask(activeBoardId, selectedColumn.id, newTask);
     }
+    close();
+    return null;
   };
-  const handleSubtaskNameChange =
-    (subtaskId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      const updatedSubtasks = subtasks.map((subtask: SubtaskTypes) =>
-        subtask.id === subtaskId ? { ...subtask, title: event.target.value } : subtask,
-      );
-      setSubtasks(updatedSubtasks);
-    };
 
   const handleAddSubtask = () => {
     const newSubtask = createSubtask(subtaskName);
@@ -83,11 +57,7 @@ const EditTaskModal = () => {
   };
 
   const handleRemoveSubtask = (subtaskId: string) => {
-    setSubtasks(subtasks.filter((subtask: SubtaskTypes) => subtask.id !== subtaskId));
-  };
-
-  const handleDropdownChange = (value: string) => {
-    setSelectedDropdownValue(value);
+    setSubtasks(subtasks.filter((subtask) => subtask.id !== subtaskId));
   };
 
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,20 +68,27 @@ const EditTaskModal = () => {
     setTaskName(event.target.value);
   };
 
+  const handleSubtaskNameChange =
+    (subtaskId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const updatedSubtasks = subtasks.map((subtask) =>
+        subtask.id === subtaskId ? { ...subtask, title: event.target.value } : subtask,
+      );
+      setSubtasks(updatedSubtasks);
+    };
   return (
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Task</DialogTitle>
+          <DialogTitle>Add New Job</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-2">
           <label htmlFor="Task Name">Title</label>
-          <TextInput onChange={handleTaskNameChange} placeholder="" defaultValue={taskName} />
+          <TextInput onChange={handleTaskNameChange} placeholder="" />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="Task Description">Description</label>
-          <TextArea placeholder="" onChange={handleDescriptionChange} defaultValue={description} />
+          <TextArea placeholder="" onChange={handleDescriptionChange} />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="Subtasks">Tasks</label>
@@ -132,7 +109,7 @@ const EditTaskModal = () => {
         <Button variant={"ghost"} onClick={handleAddSubtask}>
           <Plus /> Add New Task
         </Button>
-        <Button onClick={handleAddTask}>Save Changes</Button>
+        <Button onClick={handleAddTask}>Create Task</Button>
         <Select
           value={selectedDropdownValue}
           onValueChange={(value) => setSelectedDropdownValue(value)}
@@ -155,4 +132,4 @@ const EditTaskModal = () => {
   );
 };
 
-export default EditTaskModal;
+export default TaskModal;
