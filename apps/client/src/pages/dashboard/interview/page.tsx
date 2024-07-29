@@ -20,7 +20,7 @@ const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
     <div className="flex w-full justify-between">
       <IconField
         iconPosition="left"
-        className="w-fit bg-white rounded-xl p-2.5 focus-within:ring-1 focus-within:ring-[#3D6CF5]"
+        className="w-fit bg-white rounded-xl px-4 p-2 focus-within:ring-1 focus-within:ring-[#3D6CF5]"
       >
         <InputIcon className="pi pi-search" />
         <InputText
@@ -31,14 +31,14 @@ const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
           pt={{
             root: {
               className:
-                "max-w-[400px] border-none h-8 font-medium text-base focus:ring-0 focus:shadow-none",
+                "max-w-[400px] border-none h-6 font-medium text-base focus:ring-0 focus:shadow-none",
             },
           }}
         />
       </IconField>
       <Button
         icon="pi pi-plus-circle"
-        className="flex h-[52px] w-[180px] rounded-xl bg-blue-500 text-white justify-center items-center gap-x-2.5"
+        className="flex h-10 w-[180px] rounded-xl bg-blue-500 text-white justify-center items-center gap-x-2.5"
         onClick={handleClick}
         label="New interview"
         pt={{
@@ -507,7 +507,7 @@ export const InterviewPage = () => {
                 root: { className: "flex flex-col gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
                 header: { style: { background: "transparent", padding: 0, border: "none" } },
-                wrapper: { className: "rounded-xl" },
+                wrapper: { className: "rounded-t-xl" },
                 table: { className: `w-full overflow-y-hidden bg-white` },
                 bodyRow: { className: `cursor-pointer`},
               }}

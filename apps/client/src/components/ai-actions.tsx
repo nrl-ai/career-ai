@@ -19,13 +19,18 @@ import { cn } from "@career-ai/utils";
 import { useState } from "react";
 
 import { toast } from "../hooks/use-toast";
-import { changeTone } from "../services/llm/change-tone";
-import { fixGrammar } from "../services/llm/fix-grammar";
-import { improveWriting } from "../services/llm/improve-writing";
+import { useChangeTone } from "../services/llm/change-tone";
+import { useFixGrammar } from "../services/llm/fix-grammar";
+import { useImproveWriting } from "../services/llm/improve-writing";
 import { useOpenAiStore } from "../stores/openai";
 
 type Action = "improve" | "fix" | "tone";
 type Mood = "casual" | "professional" | "confident" | "friendly";
+
+type changeToneArgs = {
+  text: string;
+  mood: Mood;
+}
 
 type Props = {
   value: string;
@@ -36,6 +41,9 @@ type Props = {
 export const AiActions = ({ value, onChange, className }: Props) => {
   const [loading, setLoading] = useState<Action | false>(false);
   const aiEnabled = useOpenAiStore((state) => !!state.apiKey);
+  const { improveWriting, result: improveResult, loading: improveLoading, error: improveError } = useImproveWriting()
+  const { fixGrammar, result: fixResult, loading: fixLoading, error: fixError } = useFixGrammar()
+  const { changeTone, result: changeResult, loading: changeLoading, error: changeError } = useChangeTone()
 
   if (!aiEnabled) return null;
 
@@ -47,8 +55,13 @@ export const AiActions = ({ value, onChange, className }: Props) => {
 
       if (action === "improve") result = await improveWriting(value);
       if (action === "fix") result = await fixGrammar(value);
-      if (action === "tone" && mood) result = await changeTone(value, mood);
-
+      if (action === "tone" && mood) {
+        const changeToneInput: changeToneArgs = {
+          text: value,
+          mood: mood
+        }
+        result = await changeTone(changeToneInput);
+      }
       onChange(result);
     } catch (error) {
       toast({

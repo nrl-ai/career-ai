@@ -1,32 +1,21 @@
-/* eslint-disable lingui/text-restrictions */
+import { useMutation } from "@tanstack/react-query";
 
-import { t } from "@lingui/macro";
-
-import { openai } from "./client";
-
-const PROMPT = `You are an AI writing assistant specialized in writing copy for resumes.
-Do not return anything else except the text you improved. It should not begin with a newline. It should not have any prefix or suffix text.
-Just fix the spelling and grammar of the following paragraph, do not change the meaning and returns in the language of the text:
-
-Text: """{input}"""
-
-Revised Text: """`;
+import { axios } from "@/client/libs/axios";
 
 export const fixGrammar = async (text: string) => {
-  const prompt = PROMPT.replace("{input}", text);
+  const response = await axios.post(`/llm/fix-grammar`, {text});
+  return response.data;
+}
 
-  const result = await openai().chat.completions.create({
-    messages: [{ role: "user", content: prompt }],
-    model: "gemini-pro",
-    max_tokens: 1024,
-    temperature: 0,
-    stop: ['"""'],
-    n: 1,
+export const useFixGrammar = () => {
+  const {
+    error,
+    isPending: loading,
+    mutateAsync: fixGrammarFn,
+    data: result,
+  } = useMutation({
+    mutationFn: fixGrammar,
   });
 
-  if (result.choices.length === 0) {
-    throw new Error(t`OpenAI did not return any choices for your text.`);
-  }
-
-  return result.choices[0].message.content ?? text;
-};
+  return { fixGrammar: fixGrammarFn, loading, error, result };
+}

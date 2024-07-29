@@ -24,9 +24,9 @@ export const InterviewFeedbackPage = () => {
     return (
         <div className="w-full h-full bg-[#f2f2f7] p-0 pt-4 flex flex-col">
             <div className="flex items-center gap-x-2">
-                <span className="font-medium text-base text-[#AEAEB2]">AI Mocking Interview</span>
-                <i className="pi pi-chevron-right text-[#AEAEB2]"></i>
-                <span className="font-medium text-base">Interview feedback</span>
+                <span className="font-medium text-base text-[#AEAEB2] cursor-default">AI Mocking Interview</span>
+                <i className="pi pi-chevron-right text-[#AEAEB2] cursor-default"></i>
+                <span className="font-medium text-base cursor-default">Interview feedback</span>
             </div>
 
             <div className="flex justify-between items-center">
@@ -41,7 +41,7 @@ export const InterviewFeedbackPage = () => {
 
             <div className="flex w-full h-[145rem] mt-4 justify-between gap-x-4">
                 <div className="flex flex-col justify-between">
-                    <div className="bg-white h-28 bg-white p-4 rounded-lg">
+                    <div className="bg-white h-28 p-4 rounded-lg">
                         {/** TODO: Fetch data based on interview id and fill iin here */}
                         <span className="font-semibold text-xl text-[#191919]">Senior Software Developer</span>
                         <div className="flex gap-x-5 items-center mt-2">

@@ -357,7 +357,7 @@ const Toolbar = ({
           bg-white py-2 px-7 rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
-        {isLoading ? <span>Processing...</span> : <span>Gen</span>}
+        {isLoading ? <span>Processing...</span> : <span>Gen JD</span>}
         {isLoading ? (
           <svg
             aria-hidden="true"

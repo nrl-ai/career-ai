@@ -12,6 +12,8 @@ import { SelectButton } from "primereact/selectbutton";
 import { Dropdown } from "primereact/dropdown";
 import { BaseButton } from "./_components/base_button";
 import { useDialog } from "@/client/stores/dialog";
+import { motion } from "framer-motion";
+import cn from "classnames";
 
 type typeEnum = "technical" | "behavioral" | "combination";
 type languageEnum = "VN" | "EN" | "KR";
@@ -21,11 +23,18 @@ export const InterviewInformationPage = () => {
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
   const [hasResult, setHasResult] = useState(false);
   const { resumes, loading } = useResumes();
-  // const [languageSelector, setLanguageSelector] = useState<string>("");
-  // const [language, setLanguage] = useState<string>("");
+  const [languageSelector, setLanguageSelector] = useState<string>("en");
+  const [language, setLanguage] = useState<string>("EN");
   const [position, setPosition] = useState<string>("");
-  // const [type, setType] = useState<typeEnum>();
+  const [type, setType] = useState<typeEnum>("combination");
   const { toast } = useToast();
+  const positionsOptions =
+    "Software Engineer;Marketing Associate;Data Scientist;Sales Representative;Financial Analyst;Accountant;HR Manager;Product Manager".split(
+      ";",
+    );
+  useEffect(() => {
+    setPosition(positionsOptions[0]);
+  }, []);
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
   const { createInterview, loading: createLoading } = useCreateInterview();
@@ -45,13 +54,13 @@ export const InterviewInformationPage = () => {
     setHasResult(false);
   };
 
-  const StartInterview = async () => {
+  const startInterview = async () => {
     const cvData = selectedCVDetailed?.data as ResumeDto["data"];
     try {
       const result = await createInterview({
         position: position,
-        // type: type ? type["code"] : "technical",
-        // language: language as languageEnum,
+        type: "combination",
+        language: language as languageEnum,
         jd: jd as string,
         cv: cvData,
       });
@@ -110,18 +119,18 @@ export const InterviewInformationPage = () => {
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       {/** TODO: Back to the previous router */}
       <div className="flex items-center gap-x-2">
-        <span className="font-medium text-base text-[#AEAEB2]">AI Mocking Interview</span>
-        <i className="pi pi-chevron-right text-[#AEAEB2]"></i>
-        <span className="font-medium text-base">New interview</span>
+        <span className="font-medium text-base text-[#AEAEB2] cursor-default">AI Mocking Interview</span>
+        <i className="pi pi-chevron-right text-[#AEAEB2] cursor-default"></i>
+        <span className="font-medium text-base cursor-default">New interview</span>
       </div>
 
-      <div className="text-3xl font-semibold my-2">New interview</div>
+      <div className="text-2xl font-semibold my-2">New interview</div>
 
       <div
         className="gap-x-2 h-fit flex flex-col lg:flex-row mt-2"
       >
         <div className="flex-grow rounded-xl bg-white p-6 mb-2">
-          <span className="font-semibold text-2xl">Applying position</span>
+          <span className="font-semibold text-xl">Applying position</span>
           <div className="gap-x-3 mt-[18px]">
             <div className="col-span-1 flex-col hidden">
               <span className="text-base font-medium">Language</span>
@@ -131,7 +140,7 @@ export const InterviewInformationPage = () => {
                   setLanguageSelector(e.value);
                   setLanguage(e.value.code);
                 }}
-                options={languageData}
+                // options={languageData}
                 optionLabel="name"
                 placeholder="Select"
                 checkmark={true}
@@ -176,7 +185,7 @@ export const InterviewInformationPage = () => {
               <Dropdown
                 value={type}
                 onChange={(e) => setType(e.value)}
-                options={typeData}
+                // options={typeData}
                 optionLabel="name"
                 placeholder="Select"
                 checkmark={true}
@@ -214,25 +223,44 @@ export const InterviewInformationPage = () => {
                 }}
               />
             </div>
-          </div> */}
+          </div> 
 
           <div className="mt-4">
             <span className="text-base font-medium">Position</span>
             <InputText
               type="text"
               placeholder="E.g: Senior Software Engineer"
+              value={position}
               onChange={(e) => setPosition(e.target.value)}
               pt={{
                 root: {
                   style: {
                     background: "#F2F2F7",
                     borderRadius: "10px",
-                    color: "#191919",
                   },
-                  className: `w-full border-none text-base font-medium items-center focus:outline focus:outline-1 focus:outline-[#007AFF] focus:shadow-none mt-2 placeholder-[#AEAEB2]`,
+                  className: `py-2 w-full border-none text-base font-medium items-center focus:outline focus:outline-1 focus:outline-[#007AFF] focus:shadow-none mt-2`,
                 },
               }}
             />
+            <div className="mb-8 grid grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
+          {positionsOptions.map((option: string) => (
+            <motion.nav
+              key={option}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className={cn("inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
+
+
+              { "bg-gradient-to-br from-blue-500 to-blue-600": option === position },
+              { "bg-[#bababa]": option !== position },
+              )}
+              onClick={() => setPosition(option)}
+            >
+              {option}
+            </motion.nav>
+          ))}
+        </div>
           </div>
 
           <div className="mt-4 flex flex-col">
@@ -249,7 +277,7 @@ export const InterviewInformationPage = () => {
         </div>
 
         <div className="flex-grow rounded-xl bg-white p-6">
-          <span className="font-semibold text-2xl">Select Resume</span>
+          <span className="font-semibold text-xl">Select Resume</span>
           <div className="flex flex-col mt-[18px]">
             <div className="w-full flex mt-2 gap-2">
               <BaseButton
@@ -276,7 +304,7 @@ export const InterviewInformationPage = () => {
       <div className="flex justify-between pt-4">
         <button
           type="button"
-          className="py-3.5 px-[72px] bg-white rounded-xl outline outline-1 outline-[#191919] transition-all duration-200 ease-in-out transform hover:bg-[#F2F2F7]"
+          className="py-3 px-[72px] bg-white rounded-2xl outline outline-1 outline-gray-500 transition-all duration-200 ease-in-out transform hover:bg-[#F2F2F7]"
           onClick={handleCancel}
         >
           <span className="font-medium text-base text-[#191919]">Cancel</span>
@@ -284,9 +312,9 @@ export const InterviewInformationPage = () => {
 
         <button
           type="button"
-          className={`py-3.5 px-[60px] rounded-xl  ${startInterviewButtonActive === false ? "bg-[#AEAEB2] cursor-not-allowed" : "bg-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#005ABD]"}`}
+          className={`py-3 px-[60px] rounded-2xl  ${startInterviewButtonActive === false ? "bg-[#AEAEB2] cursor-not-allowed" : "bg-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#005ABD]"}`}
           disabled={!startInterviewButtonActive}
-          onClick={StartInterview}
+          onClick={startInterview}
         >
           <span className="text-white text-medium text-base">Start interview</span>
         </button>
