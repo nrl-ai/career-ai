@@ -556,7 +556,7 @@ export const InterviewPage = () => {
             className="pt-4 flex-grow-0 w-[400px]"
             id="ai-interview-information"
           >
-            <div className="flex flex-col bg-white min-h-[800px] w-full rounded-xl p-6 xl:relative">
+            <div className="flex flex-col bg-white min-h-[800px] w-[380px] rounded-xl p-6 xl:relative">
               <span className="font-semibold text-xl">{selectedRowData ? selectedRowData["position"] : ""}</span>
               <div className="flex gap-x-5 items-center mt-2">
                 <div className="py-2 px-4 w-fit rounded-xl" style={{background: typeData['bgcolor'], color: typeData['textColor']}}>

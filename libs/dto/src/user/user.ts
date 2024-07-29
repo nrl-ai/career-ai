@@ -26,6 +26,8 @@ export const userSchema = z.object({
   createdAt: z.date().or(z.dateString()),
   updatedAt: z.date().or(z.dateString()),
   jobApplications: z.any(),
+  lastActiveDay: z.date().or(z.dateString()),
+  numRequestsToday: z.number().int().default(200),
 });
 
 export class UserDto extends createZodDto(userSchema) {}

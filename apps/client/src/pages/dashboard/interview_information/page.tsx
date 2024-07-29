@@ -84,44 +84,45 @@ export const InterviewInformationPage = () => {
   };
 
   // START: TEMPLATE OF SELECT LANGUAGE BUTTON
-  const languageData = [
-    {
-      name: "Vietnamese",
-      code: "VN",
-    },
-    {
-      name: "English",
-      code: "EN",
-      // "icon":
-    },
-    {
-      name: "Korean",
-      code: "KR",
-    },
-  ];
+  // const languageData = [
+  //   {
+  //     name: "Vietnamese",
+  //     code: "VN",
+  //   },
+  //   {
+  //     name: "English",
+  //     code: "EN",
+  //     // "icon":
+  //   },
+  //   {
+  //     name: "Korean",
+  //     code: "KR",
+  //   },
+  // ];
   // END
 
   // START: TEMPLATE FOR SELECT TYPE BUTTON
-  const typeData = [
-    {
-      name: "Technical",
-      code: "technical",
-    },
-    {
-      name: "Behavioral",
-      code: "behavioral",
-      // "icon":
-    },
-    {
-      name: "Combination",
-      code: "combination",
-    },
-  ];
+  // const typeData = [
+  //   {
+  //     name: "Technical",
+  //     code: "technical",
+  //   },
+  //   {
+  //     name: "Behavioral",
+  //     code: "behavioral",
+  //     // "icon":
+  //   },
+  //   {
+  //     name: "Combination",
+  //     code: "combination",
+  //   },
+  // ];
 
   // END
 
   const startInterviewButtonActive =
-    language != "" && position != "" && type != undefined && selectedCVDetailed != null;
+    // language != "" && position != "" && type != undefined && selectedCVDetailed != null;
+    position != "" && jd != "" && selectedCVDetailed != null;
 
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
@@ -148,7 +149,7 @@ export const InterviewInformationPage = () => {
                   setLanguageSelector(e.value);
                   setLanguage(e.value.code);
                 }}
-                options={languageData}
+                // options={languageData}
                 optionLabel="name"
                 placeholder="Select"
                 checkmark={true}
@@ -193,7 +194,7 @@ export const InterviewInformationPage = () => {
               <Dropdown
                 value={type}
                 onChange={(e) => setType(e.value)}
-                options={typeData}
+                // options={typeData}
                 optionLabel="name"
                 placeholder="Select"
                 checkmark={true}
@@ -231,7 +232,7 @@ export const InterviewInformationPage = () => {
                 }}
               />
             </div>
-          </div>
+          </div> 
 
           <div className="mt-4">
             <span className="text-base font-medium">Position</span>
@@ -300,9 +301,9 @@ export const InterviewInformationPage = () => {
               id="jd-input-field"
               content={jd}
               onChange={setJD}
-              isActive={language != "" && position != ""}
+              isActive={position != ""} // add language != "" when needed
               position={position}
-              language={language}
+              language={"EN"}
             />
           </div>
         </div>

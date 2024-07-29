@@ -17,54 +17,54 @@ type InterviewPrompt = {
   en: string;
 };
 
-const PROMPT: InterviewPrompt = {
-  vn: `Bạn là một nhà tuyển dụng của công ty được ghi trong phần mô tả công việc dưới đây:
+// const PROMPT: InterviewPrompt = {
+//   vn: `Bạn là một nhà tuyển dụng của công ty được ghi trong phần mô tả công việc dưới đây:
 
-NỘI DUNG MÔ TẢ CÔNG VIỆC:
-"""{jd}"""
+// NỘI DUNG MÔ TẢ CÔNG VIỆC:
+// """{jd}"""
 
-Nhiệm vụ của bạn là phỏng vấn ứng viên dựa trên những thông tin sau:
+// Nhiệm vụ của bạn là phỏng vấn ứng viên dựa trên những thông tin sau:
 
-CV CỦA ỨNG VIÊN DẠNG JSON:
-"""{cv}"""
-\n\n\n
-VỊ TRÍ ỨNG TUYỂN CỦA ỨNG VIÊN:
-"""{position}"""
-\n\n\n
-HÌNH THỨC PHỎNG VẤN: 
-"""{type}"""
-\n\n\n
-NỘI DUNG PHỎNG VẤN TRƯỚC ĐẤY:
-"""{content}"""
+// CV CỦA ỨNG VIÊN DẠNG JSON:
+// """{cv}"""
+// \n\n\n
+// VỊ TRÍ ỨNG TUYỂN CỦA ỨNG VIÊN:
+// """{position}"""
+// \n\n\n
+// HÌNH THỨC PHỎNG VẤN: 
+// """{type}"""
+// \n\n\n
+// NỘI DUNG PHỎNG VẤN TRƯỚC ĐẤY:
+// """{content}"""
 
-Bạn hãy hỏi ứng viên lần lượt từng câu một.
-Cuộc phỏng vấn sẽ khép lại khi số lượng câu hỏi trong {content} đã đủ là 15 câu, khi đó hãy nói như sau:
-"""Cảm ơn bạn đã dành thời gian cho buổi phỏng vấn ngày hôm nay. Chúng tôi sẽ gửi kết quả đánh giá của buổi phỏng vấn này ngay sau đây."""
-`,
-  en: `You are a recruiter for the company described in the job description below:
+// Bạn hãy hỏi ứng viên lần lượt từng câu một.
+// Cuộc phỏng vấn sẽ khép lại khi số lượng câu hỏi trong {content} đã đủ là 15 câu, khi đó hãy nói như sau:
+// """Cảm ơn bạn đã dành thời gian cho buổi phỏng vấn ngày hôm nay. Chúng tôi sẽ gửi kết quả đánh giá của buổi phỏng vấn này ngay sau đây."""
+// `,
+//   en: `You are a recruiter for the company described in the job description below:
 
-JOB DESCRIPTION:
-"""{jd}"""
+// JOB DESCRIPTION:
+// """{jd}"""
 
-Your task is to interview the candidate based on the following information, and you can ask up to 15 questions:
+// Your task is to interview the candidate based on the following information, and you can ask up to 15 questions:
 
-CANDIDATE'S CV IN JSON FORMAT:
-"""{cv}"""
-\n\n\n
-POSITION APPLIED FOR BY THE CANDIDATE:
-"""{position}"""
-\n\n\n
-INTERVIEW FORMAT:
-"""{type}"""
-\n\n\n
-"PREVIOUS INTERVIEW CONTENT:
-"""{content}"""
-\n\n\n
+// CANDIDATE'S CV IN JSON FORMAT:
+// """{cv}"""
+// \n\n\n
+// POSITION APPLIED FOR BY THE CANDIDATE:
+// """{position}"""
+// \n\n\n
+// INTERVIEW FORMAT:
+// """{type}"""
+// \n\n\n
+// "PREVIOUS INTERVIEW CONTENT:
+// """{content}"""
+// \n\n\n
 
-The interview will conclude when the number of questions in {content} reaches 15. At that point, please say the following:
-"""Thank you for taking the time for the interview today. We will send you the evaluation results of this interview shortly."""
-`,
-};
+// The interview will conclude when the number of questions in {content} reaches 15. At that point, please say the following:
+// """Thank you for taking the time for the interview today. We will send you the evaluation results of this interview shortly."""
+// `,
+// };
 
 type CreateJDPrompt = {
   vn: string;
@@ -95,29 +95,29 @@ export const ai_createJd = async (language: keyof CreateJDPrompt, position: stri
   return result.choices[0].message.content ?? text;
 };
 
-export const ai_generate_interview_question = async (
-  language: keyof CreateJDPrompt,
-  cv: string,
-  jd: string,
-  position: string,
-  type: string,
-  content: string,
-) => {
-  const text = "Chúng tôi khi tạo câu hỏi phỏng vấn. Vui lòng thử lại.";
-  const prompt = PROMPT[language]
-    .replace("{jd}", jd)
-    .replace("{cv}", cv)
-    .replace("{position}", position)
-    .replace("{type}", type)
-    .replace("{content}", content);
-  const stream = await openai.chat.completions.create({
-    messages: [{ role: "system", content: prompt }],
-    model: "gemini-pro",
-    // stream: true,
-  });
+// export const ai_generate_interview_question = async (
+//   language: keyof CreateJDPrompt,
+//   cv: string,
+//   jd: string,
+//   position: string,
+//   type: string,
+//   content: string,
+// ) => {
+//   const text = "Chúng tôi khi tạo câu hỏi phỏng vấn. Vui lòng thử lại.";
+//   const prompt = PROMPT[language]
+//     .replace("{jd}", jd)
+//     .replace("{cv}", cv)
+//     .replace("{position}", position)
+//     .replace("{type}", type)
+//     .replace("{content}", content);
+//   const stream = await openai.chat.completions.create({
+//     messages: [{ role: "system", content: prompt }],
+//     model: "gemini-pro",
+//     // stream: true,
+//   });
 
-  return stream.choices[0].message.content ?? text;
-};
+//   return stream.choices[0].message.content ?? text;
+// };
 
 @Injectable()
 export class InterviewsService {
@@ -142,9 +142,7 @@ export class InterviewsService {
       data: {
         userId,
         position: createInterViewDto.position,
-        type: createInterViewDto.type,
         jd: createInterViewDto.jd,
-        language: createInterViewDto.language,
         cv: createInterViewDto.cv,
         interviewer: createInterViewDto.interviewer,
       },
@@ -158,16 +156,16 @@ export class InterviewsService {
     return ai_createJd(language.toLowerCase() as keyof CreateJDPrompt, position);
   }
 
-  createQuestionNoStreaming(interviewQuestionDto: InterviewQuestionDto) {
-    const language = interviewQuestionDto.language.toLowerCase() as keyof InterviewPrompt;
-    const cv = JSON.stringify(interviewQuestionDto.cv);
-    const jd = interviewQuestionDto.jd;
-    const content = JSON.stringify(interviewQuestionDto.content);
-    const position = interviewQuestionDto.position;
-    const type = interviewQuestionDto.type;
+  // createQuestionNoStreaming(interviewQuestionDto: InterviewQuestionDto) {
+  //   const language = interviewQuestionDto.language.toLowerCase() as keyof InterviewPrompt;
+  //   const cv = JSON.stringify(interviewQuestionDto.cv);
+  //   const jd = interviewQuestionDto.jd;
+  //   const content = JSON.stringify(interviewQuestionDto.content);
+  //   const position = interviewQuestionDto.position;
+  //   const type = interviewQuestionDto.type;
 
-    return ai_generate_interview_question(language, cv, jd, position, type, content);
-  }
+  //   return ai_generate_interview_question(language, cv, jd, position, type, content);
+  // }
 
   async generateInterviewAnswer(user: any,messages: any, forceFinish = false, cvId: string = "", interviewer="andrew") {
     let resumeDetails = "";

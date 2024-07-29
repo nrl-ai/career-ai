@@ -45,7 +45,9 @@ model User {
   secrets          Secrets?
   resumes          Resume[]
   interviews       Interviews[]
-  jobApplications Json @default("[]")
+  jobApplications  Json @default("[]")
+  lastActiveDay    DateTime @default(now())
+  numRequestsToday Int      @default(200)
 }
 
 model Secrets {

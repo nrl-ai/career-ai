@@ -61,11 +61,11 @@ export class InterviewsController {
     return this.interviewsService.createJd(position, language);
   }
 
-  @Post("/createQuestion")
-  @UseGuards(TwoFactorGuard)
-  ai_createQuestion(@Body() interviewQuestionDto: InterviewQuestionDto) {
-    return this.interviewsService.createQuestionNoStreaming(interviewQuestionDto);
-  }
+  // @Post("/createQuestion")
+  // @UseGuards(TwoFactorGuard)
+  // ai_createQuestion(@Body() interviewQuestionDto: InterviewQuestionDto) {
+  //   return this.interviewsService.createQuestionNoStreaming(interviewQuestionDto);
+  // }
 
   @Post("/create-interview-answer")
   @UseGuards(TwoFactorGuard)
