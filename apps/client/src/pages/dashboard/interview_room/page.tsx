@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { InterviewUI } from "./_components/interview";
 
 export const InterviewRoomPage = () => {
-  const navigate = useNavigate();
   const location = useLocation();
 
   const interviewInput = {
@@ -12,7 +11,8 @@ export const InterviewRoomPage = () => {
     // type: location.state['type'],
     position: location.state['position'],
     jd: location.state['jd'],
-    cv: location.state['cv']
+    cv: location.state['cv'],
+    interviewer: location.state['interviewer']
   };
 
   return (

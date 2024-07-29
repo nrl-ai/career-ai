@@ -333,6 +333,20 @@ export const InterviewPage = () => {
       body: positionBodyTemplate,
       filter: true,
     },
+    {
+      field: "interviewer",
+      filterField: "interviewer",
+      header: "Interviewer",
+      width: "40%",
+      body: (rowData) => {
+        return (
+          <div className="pointer-events-none">
+            <span className="text-[#8E8E93] font-medium text-base">{rowData.interviewer == "andrew" ? "Andrew - CEO" : "Lily - HR Manager"}</span>
+          </div>
+        );
+      },
+      filter: true,
+    },
     // {
     //   field: "type",
     //   filterField: "type",
@@ -341,14 +355,14 @@ export const InterviewPage = () => {
     //   body: typeBodyTemplate,
     //   filter: true,
     // },
-    {
-      field: "totalScore",
-      filterField: "totalScore",
-      header: "Score",
-      width: "15%",
-      body: scoreBodyTemplate,
-      filter: true,
-    },
+    // {
+    //   field: "totalScore",
+    //   filterField: "totalScore",
+    //   header: "Score",
+    //   width: "15%",
+    //   body: scoreBodyTemplate,
+    //   filter: true,
+    // },
   ];
 
   const [interviews, setInterviews] = useState<boolean | undefined>(false);

@@ -20,10 +20,9 @@ import { Text } from "@tiptap/extension-text";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { Toggle } from "../../../../../../../libs/ui/src/components/toggle";
 import { Tooltip } from "../../../../../../../libs/ui/src/components/tooltip";
-import { Button } from "../../../../../../../libs/ui/src/components/button";
 import { Skeleton } from "../../../../../../../libs/ui/src/components/skeleton";
-import { Spinner } from "@radix-ui/themes";
 import { useAiCreateJd } from "@/client/services/interview/createJd";
+import { Markdown } from 'tiptap-markdown';
 
 import {
   ArrowClockwise,
@@ -37,9 +36,6 @@ import {
   FontBoldIcon,
   FontItalicIcon,
   TextAlignLeftIcon,
-  TextAlignCenterIcon,
-  TextAlignRightIcon,
-  TextAlignJustifyIcon,
   ListBulletIcon,
 } from "@radix-ui/react-icons";
 
@@ -104,8 +100,8 @@ const Toolbar = ({
   };
 
   return (
-    <div className="flex w-full justify-between items-center gap-2">
-      <div className="flex lg:flex-row flex-grow gap-1 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
+    <div className="flex w-full justify-start items-center gap-2">
+      <div className="flex lg:flex-row flex-grow-0 gap-1 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
         <Tooltip content="Bold">
           <Toggle
             size="sm"
@@ -127,89 +123,6 @@ const Toolbar = ({
             <FontItalicIcon style={{ width: "20px", height: "20px" }} />
           </Toggle>
         </Tooltip>
-
-        {/* <Tooltip content="Strikethrough">
-            <Toggle
-              size="sm"
-              pressed={editor.isActive("strike")}
-              disabled={!editor.can().chain().focus().toggleStrike().run()}
-              onPressedChange={() => editor.chain().focus().toggleStrike().run()}
-            >
-              <TextStrikethrough />
-            </Toggle>
-          </Tooltip> */}
-
-        {/* <Tooltip content="Underline">
-            <Toggle
-              size="sm"
-              pressed={editor.isActive("underline")}
-              disabled={!editor.can().chain().focus().toggleUnderline().run()}
-              onPressedChange={() => editor.chain().focus().toggleUnderline().run()}
-            >
-              <TextAUnderline />
-            </Toggle>
-          </Tooltip> */}
-
-        {/* <Tooltip content="Highlight">
-            <Toggle
-              size="sm"
-              pressed={editor.isActive("highlight")}
-              disabled={!editor.can().chain().focus().toggleHighlight().run()}
-              onPressedChange={() => editor.chain().focus().toggleHighlight().run()}
-            >
-              <HighlighterCircle />
-            </Toggle>
-          </Tooltip>
-
-          <Tooltip content="Hyperlink">
-            <Button type="button" size="sm" variant="ghost" className="px-2" onClick={setLink}>
-              <LinkSimple />
-            </Button>
-          </Tooltip> */}
-{/* 
-        <Tooltip content="Heading 1">
-          <Toggle
-            size="sm"
-            pressed={editor.isActive("heading", { level: 1 })}
-            disabled={!editor.can().chain().focus().toggleHeading({ level: 1 }).run()}
-            onPressedChange={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          >
-            <TextHOne size={20} />
-          </Toggle>
-        </Tooltip>
-
-        <Tooltip content="Heading 2">
-          <Toggle
-            size="sm"
-            pressed={editor.isActive("heading", { level: 2 })}
-            disabled={!editor.can().chain().focus().toggleHeading({ level: 2 }).run()}
-            onPressedChange={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          >
-            <TextHTwo size={20} />
-          </Toggle>
-        </Tooltip>
-
-        <Tooltip content="Heading 3">
-          <Toggle
-            size="sm"
-            pressed={editor.isActive("heading", { level: 3 })}
-            disabled={!editor.can().chain().focus().toggleHeading({ level: 3 }).run()}
-            onPressedChange={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          >
-            <TextHThree size={20} />
-          </Toggle>
-        </Tooltip> */}
-
-        {/* <Tooltip content="Paragraph">
-            <Toggle
-              size="sm"
-              pressed={editor.isActive("paragraph")}
-              onPressedChange={() => editor.chain().focus().setParagraph().run()}
-            >
-              <ParagraphIcon />
-            </Toggle>
-          </Tooltip>
-    */}
         <Tooltip content="Align Left">
           <Toggle
             size="sm"
@@ -218,39 +131,6 @@ const Toolbar = ({
             onPressedChange={() => editor.chain().focus().setTextAlign("left").run()}
           >
             <TextAlignLeftIcon style={{ width: "20px", height: "20px" }} />
-          </Toggle>
-        </Tooltip>
-
-        <Tooltip content="Align Center">
-          <Toggle
-            size="sm"
-            pressed={editor.isActive({ textAlign: "center" })}
-            disabled={!editor.can().chain().focus().setTextAlign("center").run()}
-            onPressedChange={() => editor.chain().focus().setTextAlign("center").run()}
-          >
-            <TextAlignCenterIcon style={{ width: "20px", height: "20px" }} />
-          </Toggle>
-        </Tooltip>
-
-        <Tooltip content="Align Right">
-          <Toggle
-            size="sm"
-            pressed={editor.isActive({ textAlign: "right" })}
-            disabled={!editor.can().chain().focus().setTextAlign("right").run()}
-            onPressedChange={() => editor.chain().focus().setTextAlign("right").run()}
-          >
-            <TextAlignRightIcon style={{ width: "20px", height: "20px" }} />
-          </Toggle>
-        </Tooltip>
-
-        <Tooltip content="Align Justify">
-          <Toggle
-            size="sm"
-            pressed={editor.isActive({ textAlign: "justify" })}
-            disabled={!editor.can().chain().focus().setTextAlign("justify").run()}
-            onPressedChange={() => editor.chain().focus().setTextAlign("justify").run()}
-          >
-            <TextAlignJustifyIcon style={{ width: "20px", height: "20px" }} />
           </Toggle>
         </Tooltip>
 
@@ -264,96 +144,13 @@ const Toolbar = ({
             <ListBulletIcon style={{ width: "20px", height: "20px" }} />
           </Toggle>
         </Tooltip>
-
-        {/* <Tooltip content="Numbered List">
-            <Toggle
-              size="sm"
-              pressed={editor.isActive("orderedList")}
-              disabled={!editor.can().chain().focus().toggleOrderedList().run()}
-              onPressedChange={() => editor.chain().focus().toggleOrderedList().run()}
-            >
-              <ListNumbers />
-            </Toggle>
-          </Tooltip> */}
-
-        {/* <Tooltip content="Outdent">
-            <Button
-              size="sm"
-              variant="ghost"
-              className="px-2"
-              disabled={!editor.can().chain().focus().liftListItem("listItem").run()}
-              onClick={() => editor.chain().focus().liftListItem("listItem").run()}
-            >
-              <TextOutdent />
-            </Button>
-          </Tooltip>
-    
-          <Tooltip content="Indent">
-            <Button
-              size="sm"
-              variant="ghost"
-              className="px-2"
-              disabled={!editor.can().chain().focus().sinkListItem("listItem").run()}
-              onClick={() => editor.chain().focus().sinkListItem("listItem").run()}
-            >
-              <TextIndent />
-            </Button>
-          </Tooltip> */}
-
-        {/* <Tooltip content="Insert Break Line">
-            <Button
-              size="sm"
-              variant="ghost"
-              className="px-2"
-              disabled={!editor.can().chain().focus().setHardBreak().run()}
-              onClick={() => editor.chain().focus().setHardBreak().run()}
-            >
-              <KeyReturn />
-            </Button>
-          </Tooltip> */}
-
-        {/* <Tooltip content="Insert Horizontal Rule">
-            <Button
-              size="sm"
-              variant="ghost"
-              className="px-2"
-              disabled={!editor.can().chain().focus().setHorizontalRule().run()}
-              onClick={() => editor.chain().focus().setHorizontalRule().run()}
-            >
-              <Minus />
-            </Button>
-          </Tooltip> */}
-
-        {/* <Tooltip content="Undo">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="px-2"
-            disabled={!editor.can().undo()}
-            onClick={() => editor.chain().focus().undo().run()}
-          >
-            <ArrowCounterClockwise size={20} />
-          </Button>
-        </Tooltip>
-
-        <Tooltip content="Redo">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="px-2"
-            disabled={!editor.can().redo()}
-            onClick={() => editor.chain().focus().redo().run()}
-          >
-            <ArrowClockwise size={20} />
-          </Button>
-        </Tooltip> */}
       </div>
 
       {/** TODO: Write API to automatically generate JD based on users input */}
       <button
         type="button"
         disabled={isLoading || !isActive}
-        className={`w-full flex flex-grow-0 items-center gap-x-3 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-[#007AFF] outline-[#007AFF] transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF] ml-2"} 
+        className={`flex items-center gap-x-2 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-blue-500 border-blue-500 transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
           bg-white py-2 px-7 rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
@@ -429,6 +226,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
   ) => {
     const editor = useEditor({
       extensions: [
+        Markdown,
         Document,
         Text,
         Bold,
@@ -439,8 +237,6 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
         ListItem,
         BulletList,
         OrderedList,
-        HardBreak,
-        History,
         HorizontalRule,
         Highlight,
         Link.extend({
@@ -454,7 +250,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
       editorProps: {
         attributes: {
           class: cn(
-            "prose max-h-[calc(100vh-545px)] prose-sm prose-zinc grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
+            "prose h-[300px] prose-sm prose-zinc grow max-w-none overflow-y-scroll dark:prose-invert focus:outline-none [&_*]:my-2",
             editorClassName,
           ),
         },
@@ -507,7 +303,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
           editor={editor}
           cols={20}
           className={cn(
-            "w-full h-[10rem] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
+            "w-full h-[320px] rounded-xl border-none bg-[#F2F2F7] px-3 py-2 placeholder:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 overflow-y-auto",
             hideToolbar && "pt-2",
             className,
           )}

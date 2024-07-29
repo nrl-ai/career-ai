@@ -35,6 +35,14 @@ export const InterviewInformationPage = () => {
   useEffect(() => {
     setPosition(positionsOptions[0]);
   }, []);
+  const [interviewer, setInterviewer] = useState<string>("andrew");
+  const interviewerOptions = [{
+    id: "andrew",
+    title: "Andrew - CEO",
+  }, {
+    id: "lily",
+    title: "Lily - HR Manager",
+  }];
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
   const { createInterview, loading: createLoading } = useCreateInterview();
@@ -63,6 +71,7 @@ export const InterviewInformationPage = () => {
         language: language as languageEnum,
         jd: jd as string,
         cv: cvData,
+        interviewer: interviewer,
       });
 
       handleCreateInterviewRoom(result);
@@ -243,24 +252,47 @@ export const InterviewInformationPage = () => {
               }}
             />
             <div className="mb-8 grid grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
-          {positionsOptions.map((option: string) => (
-            <motion.nav
-              key={option}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className={cn("inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
+              {positionsOptions.map((option: string) => (
+                <motion.nav
+                  key={option}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className={cn("inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
 
 
-              { "bg-gradient-to-br from-blue-500 to-blue-600": option === position },
-              { "bg-[#bababa]": option !== position },
-              )}
-              onClick={() => setPosition(option)}
-            >
-              {option}
-            </motion.nav>
-          ))}
-        </div>
+                    { "bg-gradient-to-br from-blue-500 to-blue-600": option === position },
+                    { "bg-[#bababa]": option !== position },
+                  )}
+                  onClick={() => setPosition(option)}
+                >
+                  {option}
+                </motion.nav>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <span className="text-base font-medium">Interviewer</span>
+            <div className="mb-8 grid grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
+              {interviewerOptions.map((interviewerOption, index) => (
+                <motion.nav
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className={cn("inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
+
+
+                    { "bg-gradient-to-br from-blue-500 to-blue-600": interviewerOption.id === interviewer },
+                    { "bg-[#bababa]": interviewerOption.id !== interviewer },
+                  )}
+                  onClick={() => setInterviewer(interviewerOption.id)}
+                >
+                  {interviewerOption.title}
+                </motion.nav>
+              ))}
+            </div>
           </div>
 
           <div className="mt-4 flex flex-col">
@@ -276,7 +308,7 @@ export const InterviewInformationPage = () => {
           </div>
         </div>
 
-        <div className="flex-grow rounded-xl bg-white p-6">
+        <div className="flex-grow-0 rounded-xl bg-white p-6 max-w-[500px] min-w-[300px]">
           <span className="font-semibold text-xl">Select Resume</span>
           <div className="flex flex-col mt-[18px]">
             <div className="w-full flex mt-2 gap-2">
