@@ -309,29 +309,13 @@ export const InterviewPage = () => {
   }
 
   const ColumnItems = [
-    {
-      field: "id",
-      filterField: "id",
-      header: "ID",
-      width: "15%",
-      filter: true,
-    },
-    {
-      field: "position",
-      filterField: "position",
-      header: "Position",
-      width: "40%",
-      body: positionBodyTemplate,
-      filter: true,
-    },
-    {
-      field: "type",
-      filterField: "type",
-      header: "Type",
-      width: "15%",
-      body: typeBodyTemplate,
-      filter: true,
-    },
+    // {
+    //   field: "id",
+    //   filterField: "id",
+    //   header: "ID",
+    //   width: 2,
+    //   filter: true,
+    // },
     {
       field: "createdAt",
       filterField: "createdAt",
@@ -341,6 +325,22 @@ export const InterviewPage = () => {
       filter: false,
       // filterElement: dateFilterTemplate,
     },
+    {
+      field: "position",
+      filterField: "position",
+      header: "Position",
+      width: "40%",
+      body: positionBodyTemplate,
+      filter: true,
+    },
+    // {
+    //   field: "type",
+    //   filterField: "type",
+    //   header: "Type",
+    //   width: "15%",
+    //   body: typeBodyTemplate,
+    //   filter: true,
+    // },
     {
       field: "totalScore",
       filterField: "totalScore",
@@ -480,29 +480,29 @@ export const InterviewPage = () => {
               }}
               paginator={interviews ? true : false}
 
-              onRowClick={
-                (e) => {
-                  setShowResult(true);
-                  if (e.data['type'] == 'technical') {
-                    setTypeData({
-                      'typeName' : "Technical",
-                      'bgcolor' : "#FFF6D1",
-                      'textColor' : "#D9AE00",
-                    })
-                  } else if (e.data['type'] == 'behavioral') {
-                    setTypeData({
-                      'typeName' : "Behavioral",
-                      'bgcolor' : "#D9EBFF",
-                      'textColor' : "#007AFF", 
-                    })
-                  } else if (e.data['type'] == 'combination') {
-                    setTypeData({
-                      'typeName' : "Combination",
-                      'bgcolor' : "#C8C7FF",
-                      'textColor' : "#5856D6",
-                    })
-                  }
-              }}
+              // onRowClick={
+              //   (e) => {
+              //     setShowResult(true);
+              //     if (e.data['type'] == 'technical') {
+              //       setTypeData({
+              //         'typeName' : "Technical",
+              //         'bgcolor' : "#FFF6D1",
+              //         'textColor' : "#D9AE00",
+              //       })
+              //     } else if (e.data['type'] == 'behavioral') {
+              //       setTypeData({
+              //         'typeName' : "Behavioral",
+              //         'bgcolor' : "#D9EBFF",
+              //         'textColor' : "#007AFF", 
+              //       })
+              //     } else if (e.data['type'] == 'combination') {
+              //       setTypeData({
+              //         'typeName' : "Combination",
+              //         'bgcolor' : "#C8C7FF",
+              //         'textColor' : "#5856D6",
+              //       })
+              //     }
+              // }}
               pt={{
                 root: { className: "flex flex-col gap-y-4 pt-4" },
                 thead: { className: "bg-[#E5E5EA]" },
@@ -537,7 +537,7 @@ export const InterviewPage = () => {
             </DataTable>
           </div>
         </div>
-        {interviews && showResult ? (
+        {/* {interviews && showResult ? (
           <div
             className="pt-4 flex-grow-0 w-[400px]"
             id="ai-interview-information"
@@ -619,7 +619,7 @@ export const InterviewPage = () => {
           </div>
         ) : (
           <div></div>
-        )}
+        )} */}
       </div>
     </div>
   );
