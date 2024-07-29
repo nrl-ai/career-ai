@@ -74,9 +74,6 @@ export const AiActions = ({ value, onChange, className }: Props) => {
     }
   };
 
-  // TODO (vietanhdev): Disable AI actions at the moment
-  return null;
-
   return (
     <div
       className={cn(
