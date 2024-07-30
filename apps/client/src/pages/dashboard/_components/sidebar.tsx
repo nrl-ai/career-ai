@@ -282,6 +282,25 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
           />
         ))} */}
       </div>
+      <div className="flex justify-center mt-auto">
+        {!isCollapsed && <div className="flex items-center space-x-2">
+          Career AI © 2024
+        </div>}
+        <Button
+          size="md"
+          variant="ghost"
+          className="text-gray-400"
+          onClick={() => {
+            setIsCollapsed?.(!isCollapsed);
+          }}
+        >
+          {isCollapsed ? (
+            <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
+          ) : (
+            <BsLayoutSidebarInset className="text-2xl font-normal" />
+          )}
+        </Button>
+      </div>
     </div>
   );
 };

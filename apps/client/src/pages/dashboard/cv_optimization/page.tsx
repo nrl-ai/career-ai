@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useState, useRef } from "react";
 import { CVSelector } from "../../../components/cv_selector";
-import { Button, RichInput } from "@career-ai/ui";
+import { Button } from "@career-ai/ui";
 import { Card, CardContent, CardTitle } from "@career-ai/ui";
 import { useAnalyzeResume } from "@/client/services/resume/analyze";
 import { useToast } from "@/client/hooks/use-toast";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { JDInput } from "../interview_information/_components/jd_input";
+import { InputText } from "primereact/inputtext";
+import cn from "classnames";
 
 export const CVOptimizationPage = () => {
   const { toast } = useToast();
@@ -17,6 +20,7 @@ export const CVOptimizationPage = () => {
   const { analyzeResume, loading, error, result } = useAnalyzeResume();
   const resultRef = useRef<HTMLDivElement>(null);
   const [hasResult, setHasResult] = useState(false);
+  const [position, setPosition] = useState<string>("");
 
   const handleAnalyze = async () => {
     if (!selectedCV) {
@@ -88,8 +92,35 @@ export const CVOptimizationPage = () => {
           <h1 className="font-bold text-xl">{t`Enter a job description (optional)`}</h1>
         </div>
 
+        <div className="mt-4 bg-white px-4 py-4 rounded-2xl">
+            <span className="text-base font-medium">Position</span>
+            <InputText
+              type="text"
+              placeholder="E.g: Senior Software Engineer"
+              value={position}
+              onChange={(e) => setPosition(e.target.value)}
+              pt={{
+                root: {
+                  style: {
+                    background: "#F2F2F7",
+                    borderRadius: "10px",
+                  },
+                  className: `py-2 w-full border-none text-base font-medium items-center focus:outline focus:outline-1 focus:outline-[#007AFF] focus:shadow-none mt-2`,
+                },
+              }}
+            />
+          </div>
+
         <div className="space-y-4">
-          <RichInput content={jd} onChange={setJD} />
+          <JDInput
+              id="jd-input-field"
+              position={position}
+              content={jd}
+              isActive={position.length > 0}
+              onChange={setJD}
+              language={"EN"}
+              className="bg-white text-blue-500"
+            />
           <Button onClick={handleAnalyze}>{t`Analyze Resume`}</Button>
         </div>
 

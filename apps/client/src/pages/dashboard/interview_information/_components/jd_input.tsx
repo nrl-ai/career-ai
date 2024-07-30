@@ -47,7 +47,7 @@ type JDInputProps = {
   editorClassName?: string;
   footer?: (editor: Editor) => React.ReactNode;
   isActive?: boolean;
-  position: string;
+  position?: string;
   language: string;
 } & Omit<EditorContentProps, "ref" | "editor" | "content" | "value" | "onChange" | "className">;
 
@@ -147,14 +147,14 @@ const Toolbar = ({
       </div>
 
       {/** TODO: Write API to automatically generate JD based on users input */}
-      <button
+      {position && <button
         type="button"
         disabled={isLoading || !isActive}
         className={`flex items-center gap-x-2 font-medium text-base outline outline-1 ${isActive === false ? "text-[#AEAEB2] outline-[#AEAEB2] cursor-not-allowed" : "text-blue-500 border-blue-500 transition-all duration-200 ease-in-out transform hover:bg-[#D9EBFF]"} 
           bg-white py-2 px-7 rounded-xl ${isLoading ? "pointer-events-none cursor-not-allowed" : ""}`}
         onClick={handleAIGenerateJD}
       >
-        {isLoading ? <span>Processing...</span> : <span>Gen JD</span>}
+        {isLoading ? <span>Processing...</span> : <span>Generate with AI</span>}
         {isLoading ? (
           <svg
             aria-hidden="true"
@@ -203,7 +203,7 @@ const Toolbar = ({
             </defs>
           </svg>
         )}
-      </button>
+      </button>}
     </div>
   );
 };
@@ -218,7 +218,7 @@ export const JDInput = forwardRef<Editor, JDInputProps>(
       className,
       editorClassName,
       isActive,
-      position,
+      position = "",
       language,
       ...props
     },

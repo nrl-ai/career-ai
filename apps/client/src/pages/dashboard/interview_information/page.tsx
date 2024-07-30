@@ -8,10 +8,8 @@ import { useCreateInterview } from "@/client/services/interview/create";
 import { useResumes } from "@/client/services/resume";
 import { InterviewDto, ResumeDto } from "@career-ai/dto";
 import { InputText } from "primereact/inputtext";
-import { SelectButton } from "primereact/selectbutton";
 import { Dropdown } from "primereact/dropdown";
 import { BaseButton } from "./_components/base_button";
-import { useDialog } from "@/client/stores/dialog";
 import { motion } from "framer-motion";
 import cn from "classnames";
 
