@@ -1,23 +1,7 @@
 import { t } from "@lingui/macro";
 import { OpenAI } from "openai";
-import { useOpenAiStore } from "@/client/stores/openai";
+// import { useOpenAiStore } from "@/client/stores/openai";
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "nestjs-prisma";
-
-export const openai = () => {
-  const { apiKey } = useOpenAiStore.getState();
-
-  if (!apiKey) {
-    throw new Error(
-      t`Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration.`,
-    );
-  }
-
-  return new OpenAI({
-    apiKey,
-    dangerouslyAllowBrowser: true,
-  });
-};
 
 const FIX_GRAMMAR_PROMPT = `You are an AI writing assistant specialized in writing copy for resumes.
 Do not return anything else except the text you improved. It should not begin with a newline. It should not have any prefix or suffix text.
@@ -55,9 +39,14 @@ export class LLMService {
 
     // region Improve writing
     async improveWriting(text: string) {
+        const openai = new OpenAI({
+            baseURL: process.env["LLM_BASE_URL"],
+            apiKey: process.env["LLM_API_KEY"],
+        });
+
         const prompt = IMPROVE_WRITING_PROMPT.replace("{input}", text);
 
-        const result = await openai().chat.completions.create({
+        const result = await openai.chat.completions.create({
             messages: [{ role: "user", content: prompt }],
             model: "gemini-pro",
             max_tokens: 1024,
@@ -76,9 +65,14 @@ export class LLMService {
 
     // region Fix grammar
     async fixGrammar(text: string) {
+        const openai = new OpenAI({
+            baseURL: process.env["LLM_BASE_URL"],
+            apiKey: process.env["LLM_API_KEY"],
+        });
+
         const prompt = FIX_GRAMMAR_PROMPT.replace("{input}", text);
 
-        const result = await openai().chat.completions.create({
+        const result = await openai.chat.completions.create({
             messages: [{ role: "user", content: prompt }],
             model: "gemini-pro",
             max_tokens: 1024,
@@ -98,9 +92,14 @@ export class LLMService {
 
     // region Change tone 
     async changeTone(text: string, mood: Mood) {
+        const openai = new OpenAI({
+            baseURL: process.env["LLM_BASE_URL"],
+            apiKey: process.env["LLM_API_KEY"],
+        });
+
         const prompt = CHANGE_TONE_PROMPT.replace("{mood}", mood).replace("{input}", text);
 
-        const result = await openai().chat.completions.create({
+        const result = await openai.chat.completions.create({
             messages: [{ role: "user", content: prompt }],
             model: "gemini-pro",
             max_tokens: 1024,
