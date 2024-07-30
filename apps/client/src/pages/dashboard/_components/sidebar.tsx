@@ -17,6 +17,7 @@ import {
 } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsLayoutSidebarInset } from "react-icons/bs";
+import { GoSidebarExpand } from "react-icons/go";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { PiGraduationCap } from "react-icons/pi";
 
@@ -156,7 +157,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
           <Button
             size="md"
             variant="ghost"
-            className="text-gray-400"
+            className="text-gray-500"
             onClick={() => {
               setIsCollapsed?.(!isCollapsed);
             }}
@@ -164,7 +165,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             {isCollapsed ? (
               <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
             ) : (
-              <BsLayoutSidebarInset className="text-2xl font-normal" />
+              <GoSidebarExpand className="text-2xl font-normal" />
             )}
           </Button>
         )}
@@ -281,25 +282,15 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             }}
           />
         ))} */}
+
       </div>
-      <div className="flex justify-center mt-auto">
-        {!isCollapsed && <div className="flex items-center space-x-2">
-          Career AI © 2024
-        </div>}
-        <Button
-          size="md"
-          variant="ghost"
-          className="text-gray-400"
-          onClick={() => {
-            setIsCollapsed?.(!isCollapsed);
-          }}
-        >
-          {isCollapsed ? (
-            <MdKeyboardDoubleArrowRight className="text-2xl font-normal" />
-          ) : (
-            <BsLayoutSidebarInset className="text-2xl font-normal" />
-          )}
-        </Button>
+      <div className="flex flex-col mt-auto">
+        <div className="flex flex-col justify-start mt-16">
+          <div className="space-x-2 text-left text-blue-500">
+            {isCollapsed ? "With" : "Powered By"}
+          </div>
+          <img src="/gemini.svg" alt="Gemini" className="text-left w-28" />
+        </div>
       </div>
     </div>
   );
