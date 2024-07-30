@@ -467,9 +467,9 @@ export const InterviewPage = () => {
       <div className="flex justify-between items-center">
         <span className="text-2xl font-bold">AI Mock Interview</span>
       </div>
-      <div className={`${interviews && showResult ? "flex flex-row gap-x-4" : ""}`}>
+      <div className="flex flex-row gap-x-4 justify-start items-start pt-4">
         <div
-          className={`${interviews && showResult ? "flex flex-grow" : ""} flex flex-col h-full`}
+          className="flex-grow h-auto max-w-[1200px]"
           id="ai-interview-management"
         >
           <div className="">
@@ -493,7 +493,6 @@ export const InterviewPage = () => {
                 }
               }}
               paginator={interviews ? true : false}
-
               // onRowClick={
               //   (e) => {
               //     setShowResult(true);
@@ -551,7 +550,15 @@ export const InterviewPage = () => {
             </DataTable>
           </div>
         </div>
-        {/* {interviews && showResult ? (
+        <div className="pt-4 flex-grow-0 w-[300px] h-auto bg-white rounded-2xl hidden md:flex" id="ai-interview-information">
+          <img src="/ai-interview-vertical-banner.png" alt="ai-interview-vertical-banner" className="w-[300px] h-auto flex"/>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+{/* {interviews && showResult ? (
           <div
             className="pt-4 flex-grow-0 w-[400px]"
             id="ai-interview-information"
@@ -634,7 +641,3 @@ export const InterviewPage = () => {
         ) : (
           <div></div>
         )} */}
-      </div>
-    </div>
-  );
-};
