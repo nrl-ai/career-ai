@@ -45,7 +45,7 @@ export const AiActions = ({ value, onChange, className }: Props) => {
   const { fixGrammar, result: fixResult, loading: fixLoading, error: fixError } = useFixGrammar()
   const { changeTone, result: changeResult, loading: changeLoading, error: changeError } = useChangeTone()
 
-  if (!aiEnabled) return null;
+  // if (!aiEnabled) return null;
 
   const onClick = async (action: Action, mood?: Mood) => {
     try {
