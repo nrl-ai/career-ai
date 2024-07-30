@@ -1,32 +1,21 @@
-"use client";
-
-import React, { FC, ReactNode, useState } from "react";
-import styles from "../styles/components/ui/Modal.module.scss";
-
-import * as Dialog from "@radix-ui/react-dialog";
-
-import Button, { ButtonVariant } from "./ui/Button";
+import { useDialog, useDialogStore } from "@/client/stores/dialog";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@career-ai/ui";
 import { useBoardStore } from "../store/BoardStore";
+import { KanbanTypes } from "../types";
 
-import { BoardTypes, ColumnTypes, KanbanTypes, TaskTypes } from "../types";
-import classNames from "classnames";
-
-interface WarnModalProps {
-  type: string;
-  activeBoard?: BoardTypes;
-  activeColumn?: ColumnTypes;
-  activeTask?: TaskTypes;
-  children: ReactNode;
-}
-
-const WarnModal: FC<WarnModalProps> = ({
-  children,
-  type,
-  activeBoard,
-  activeColumn,
-  activeTask,
-}) => {
+const WarnModal = () => {
+  const { isOpen: isModalOpen, close } = useDialog("warning");
   const { removeBoard, removeTask } = useBoardStore();
+  const { activeColumn, activeTask, activeBoard, type } = useDialogStore(
+    (state) => state.dialog?.payload?.item,
+  ) as any;
   const handleRemove = () => {
     if (type === KanbanTypes.Board && activeBoard) {
       removeBoard(activeBoard.id);
@@ -38,18 +27,16 @@ const WarnModal: FC<WarnModalProps> = ({
   };
 
   return (
-    <Dialog.Root defaultOpen={false}>
-      <Dialog.Trigger asChild aria-label={`Add New ${type}`}>
-        <div className={styles.CurrentBoard}>{children}</div>
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.DialogContent}>
-          <Dialog.Title className={classNames(styles.DialogTitle, styles.Warn)}>
-            Delete this {type}?
-          </Dialog.Title>
-
-          <div className={styles.ModalItem}>
+    <>
+      <Dialog open={isModalOpen} onOpenChange={close}>
+        <DialogContent closeButtonClassName="hidden">
+          <DialogHeader>
+            <DialogTitle className="flex justify-between items-center">
+              Delete this {type}?
+            </DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
+          <div>
             <p>
               {` Are you sure you want to delete the '${
                 type == KanbanTypes.Board ? activeBoard?.title : activeTask?.title
@@ -58,15 +45,22 @@ const WarnModal: FC<WarnModalProps> = ({
               reversed.`}
             </p>
           </div>
-          <Button variant={ButtonVariant.Destructive} onClick={handleRemove}>
-            Delete
-          </Button>
-          <Dialog.Close asChild>
-            <Button variant={ButtonVariant.Secondary}>Cancel</Button>
-          </Dialog.Close>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+          <div className="flex justify-end gap-2">
+            <Button variant={"error"} onClick={handleRemove}>
+              Delete
+            </Button>
+            <Button
+              variant={"secondary"}
+              onClick={() => {
+                close();
+              }}
+            >
+              Cancel
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

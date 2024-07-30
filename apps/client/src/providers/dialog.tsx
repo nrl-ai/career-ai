@@ -11,10 +11,15 @@ import { PublicationsDialog } from "../pages/builder/sidebars/left/dialogs/publi
 import { ReferencesDialog } from "../pages/builder/sidebars/left/dialogs/references";
 import { SkillsDialog } from "../pages/builder/sidebars/left/dialogs/skills";
 import { VolunteerDialog } from "../pages/builder/sidebars/left/dialogs/volunteer";
+import EditBoardModal from "../pages/dashboard/dashboard/components/EditBoardModal";
+import EditTaskModal from "../pages/dashboard/dashboard/components/EditTaskModal";
+import TaskModal from "../pages/dashboard/dashboard/components/TaskModal";
+import WarnModal from "../pages/dashboard/dashboard/components/WarnModal";
 import { ImportDialog } from "../pages/dashboard/resumes/_dialogs/import";
 import { LockDialog } from "../pages/dashboard/resumes/_dialogs/lock";
 import { ResumeDialog } from "../pages/dashboard/resumes/_dialogs/resume";
 import { TwoFactorDialog } from "../pages/dashboard/settings/_dialogs/two-factor";
+import { useDialogStore } from "../stores/dialog";
 import { useResumeStore } from "../stores/resume";
 
 type Props = {
@@ -23,6 +28,9 @@ type Props = {
 
 export const DialogProvider = ({ children }: Props) => {
   const isResumeLoaded = useResumeStore((state) => Object.keys(state.resume).length > 0);
+  const isEditTaskOpen = useDialogStore((state) => state.dialog?.payload?.id === "edit-task");
+  const isWarningOpen = useDialogStore((state) => state.dialog?.payload?.id === "warning");
+  console.log("🚀 ~ DialogProvider ~ isDialogOpen:", isEditTaskOpen);
 
   return (
     <>
@@ -33,6 +41,10 @@ export const DialogProvider = ({ children }: Props) => {
         <LockDialog />
         <ImportDialog />
         <TwoFactorDialog />
+        <EditBoardModal />
+        <TaskModal />
+        {isWarningOpen && <WarnModal />}
+        {isEditTaskOpen && <EditTaskModal />}
 
         {isResumeLoaded && (
           <>

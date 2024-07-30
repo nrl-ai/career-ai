@@ -1,17 +1,18 @@
 "use client";
 
-import DisplayBoards from "./DisplayBoards";
 import styles from "../styles/components/Header.module.scss";
-import Button, { ButtonVariant } from "./ui/Button";
+import DisplayBoards from "./DisplayBoards";
 import { PlusIcon, VerticalEllipsisIcon } from "./icons";
+import Button, { ButtonVariant } from "./ui/Button";
 
-import { useBoardStore } from "../store/BoardStore";
-import AddNewTaskModal from "./AddNewTaskModal";
+import { useDialog } from "@/client/stores/dialog";
 import classNames from "classnames";
-import Options from "./Options";
+import { useBoardStore } from "../store/BoardStore";
 import { KanbanTypes } from "../types";
+import Options from "./Options";
 
 const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
+  const { open } = useDialog("add-task");
   const { boards, activeBoardId } = useBoardStore();
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
 
@@ -20,12 +21,15 @@ const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
       <nav className={styles.Wrapper}>
         {activeBoard && activeBoard.columns.length ? (
           <div className={styles.End}>
-            <AddNewTaskModal activeBoard={activeBoard}>
-              <Button btnType="Add">
-                <PlusIcon />
-                <span className={styles.SpanText}>Add New Job</span>
-              </Button>
-            </AddNewTaskModal>
+            <Button
+              btnType="Add"
+              onClick={() => {
+                open("create");
+              }}
+            >
+              <PlusIcon />
+              <span className={styles.SpanText}>Add New Job</span>
+            </Button>
             <Options activeBoard={activeBoard} optionsType={KanbanTypes.Board} />
           </div>
         ) : (

@@ -1,16 +1,24 @@
-"use client";
-
-import React, { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import styles from "../styles/components/ui/Modal.module.scss";
-
-import * as Dialog from "@radix-ui/react-dialog";
 
 import { useBoardStore } from "../store/BoardStore";
 
-import Dropdown from "./ui/Dropdown";
 import { ColumnTypes, KanbanTypes, TaskTypes } from "../types";
 import SubtaskCheckbox from "./ui/SubtaskCheckbox";
 
+import { useDialog } from "@/client/stores/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@career-ai/ui";
 import Options from "./Options";
 
 interface ViewTaskModalProps {
@@ -20,6 +28,7 @@ interface ViewTaskModalProps {
 }
 
 const ViewTaskModal: FC<ViewTaskModalProps> = ({ children, activeTask, activeColumn }) => {
+  const { isOpen: isModalOpen, close } = useDialog("view-task");
   const { boards, activeBoardId, moveTask, toggleSubtaskCompletion } = useBoardStore();
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
   const [isOpen, setIsOpen] = useState(false);
@@ -44,27 +53,29 @@ const ViewTaskModal: FC<ViewTaskModalProps> = ({ children, activeTask, activeCol
     setSelectedDropdownValue(value);
   };
 
+  const selectItems = activeBoard ? activeBoard.columns : [];
+
   return (
-    <Dialog.Root onOpenChange={(open) => setIsOpen(open)}>
-      <Dialog.Trigger asChild aria-label="View Task">
-        <div className={styles.CurrentBoard}>{children}</div>
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.DialogContent}>
-          <div className={styles.TitleWithIcon}>
-            <Dialog.Title className={styles.DialogTitle}>{activeTask.title}</Dialog.Title>
+    <>
+      <div className={styles.CurrentBoard}>{children}</div>
+      <Dialog open={isModalOpen} onOpenChange={close}>
+        <DialogContent closeButtonClassName="hidden">
+          <DialogHeader>
+            <DialogTitle className="flex justify-between items-center">
+              <div className="max-w-[90%] overflow-hidden m-0 text-[var(--color)]">
+                {activeTask.title}
+              </div>
 
-            <Options
-              activeBoard={activeBoard!}
-              activeTask={activeTask}
-              activeColumn={activeColumn}
-              optionsType={KanbanTypes.Task}
-            />
-          </div>
-
-          <Dialog.Description>{activeTask.description}</Dialog.Description>
-          <div className={styles.ModalItem}>
+              <Options
+                activeBoard={activeBoard!}
+                activeTask={activeTask}
+                activeColumn={activeColumn}
+                optionsType={KanbanTypes.Task}
+              />
+            </DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-2">
             <label htmlFor="Subtask Number">Tasks</label>
             {activeTask.subtasks.map((subtask) => (
               <SubtaskCheckbox
@@ -77,15 +88,26 @@ const ViewTaskModal: FC<ViewTaskModalProps> = ({ children, activeTask, activeCol
               />
             ))}
           </div>
-
-          <Dropdown
-            items={activeBoard ? activeBoard.columns : []}
-            onChange={handleDropdownChange}
-            defaultValue={selectedDropdownValue}
-          />
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+          <Select
+            value={selectedDropdownValue}
+            onValueChange={(value) => setSelectedDropdownValue(value)}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {selectItems.map((column) => {
+                return (
+                  <SelectItem key={column.id} value={column.title}>
+                    {column.title}
+                  </SelectItem>
+                );
+              })}
+            </SelectContent>
+          </Select>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

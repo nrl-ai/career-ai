@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";

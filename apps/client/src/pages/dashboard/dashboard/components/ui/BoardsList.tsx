@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import { BoardIcon, HideMenuIcon } from "../icons";
-import AddNewBoardModal from "../AddNewBoardModal";
+import { useDialog } from "@/client/stores/dialog";
+import classNames from "classnames";
+import { FC } from "react";
 import { useBoardStore } from "../../store/BoardStore";
 import styles from "../../styles/components/ui/BoardsList.module.scss";
-import classNames from "classnames";
+import { BoardIcon, HideMenuIcon } from "../icons";
 
 interface BoardsListProps {
   hideSideMenu?: () => void;
@@ -12,6 +12,7 @@ interface BoardsListProps {
 const BoardsList: FC<BoardsListProps> = ({ hideSideMenu }) => {
   const { setActiveBoard } = useBoardStore();
   const boards = useBoardStore((state) => state.boards);
+  const { open } = useDialog("job-board");
 
   const activeBoardId = useBoardStore((state) => state.activeBoardId);
 
@@ -34,12 +35,15 @@ const BoardsList: FC<BoardsListProps> = ({ hideSideMenu }) => {
             </div>
           ))}
 
-          <AddNewBoardModal>
-            <button className={styles.CreateNewBoard}>
-              <BoardIcon />
-              <h2>+Create New Board</h2>
-            </button>
-          </AddNewBoardModal>
+          <button
+            className={styles.CreateNewBoard}
+            onClick={() => {
+              open("update");
+            }}
+          >
+            <BoardIcon />
+            <h2>+Create New Board</h2>
+          </button>
         </div>
       </section>
       <section className={styles.BottomSection}>

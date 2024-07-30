@@ -1,12 +1,12 @@
-import React, { FC } from "react";
+import { useDialog } from "@/client/stores/dialog";
+import { FC } from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import { useBoardStore } from "../../store/BoardStore";
 import styles from "../../styles/components/board/Column.module.scss";
 import { ColumnTypes, KanbanTypes } from "../../types";
-import Task from "./Task";
-import ViewTaskModal from "../ViewTaskModal";
 import ColorPicker from "../ColorPicker";
-import { useBoardStore } from "../../store/BoardStore";
-import AddNewTaskModal from "../AddNewTaskModal";
+import ViewTaskModal from "../ViewTaskModal";
+import Task from "./Task";
 
 interface ColumnProps {
   index: number;
@@ -14,6 +14,8 @@ interface ColumnProps {
 }
 
 const Column: FC<ColumnProps> = ({ column, index }) => {
+  const { open } = useDialog("add-task");
+  const { open: openViewTaskModal } = useDialog("view-task");
   const { boards, activeBoardId, moveTask, moveColumn } = useBoardStore();
 
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
@@ -46,15 +48,24 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                 >
                   {column.tasks.map((task, index) => (
                     <ViewTaskModal key={task.id} activeTask={task} activeColumn={column}>
-                      <button>
+                      <button
+                        onClick={() => {
+                          openViewTaskModal("create");
+                        }}
+                      >
                         <Task key={task.id} task={task} index={index} {...task} />
                       </button>
                     </ViewTaskModal>
                   ))}
                   {provided.placeholder}
                   {activeBoard && (
-                    <div className="mt-4 cursor-pointer">
-                      <AddNewTaskModal activeBoard={activeBoard}>+ New Job</AddNewTaskModal>
+                    <div
+                      className="mt-4 cursor-pointer"
+                      onClick={() => {
+                        open("create");
+                      }}
+                    >
+                      + New Job
                     </div>
                   )}
                 </div>
