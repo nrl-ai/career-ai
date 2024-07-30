@@ -14,7 +14,7 @@ export const GridView = ({ maxSize }: { maxSize?: number | undefined }) => {
   const filteredResumes = resumes && maxSize ? resumes.slice(0, maxSize) : resumes;
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 p-3">
+    <div className="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-5 2xl:grid-cols-6 p-3 max-w-[1000px]">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
         <CreateResumeCard />
       </motion.div>
