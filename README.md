@@ -28,6 +28,32 @@ pnpm run build
 bash build-and-restart.sh
 ```
 
+**How to host Gemini AI proxy server:**
+
+Prepare `litellm_config.yaml`:
+
+```yaml
+model_list:
+  - model_name: gemini-pro
+    litellm_params:
+      model: gemini/gemini-pro
+      api_key: os.environ/GEMINI_API_KEY
+      api_base: os.environ/GEMINI_API_BASE
+```
+
+Start proxy server:
+
+```sh
+docker run \
+    -d \
+    -v $(pwd)/litellm_config.yaml:/app/config.yaml \
+    -e LITELLM_MASTER_KEY=<litellm-key> \
+    -e GEMINI_API_KEY=<gemini-key> \
+    -p 4000:4000 \
+    ghcr.io/berriai/litellm:main-latest \
+    --config /app/config.yaml --detailed_debug
+```
+
 ## III. Technologies
 
 - Frontend: React, Vite, TailwindCSS, Zustand, React Query, React Router.
