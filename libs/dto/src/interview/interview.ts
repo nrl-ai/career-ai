@@ -22,6 +22,7 @@ export const interviewSchema = z.object({
   responseRate: z.number().int().default(0),
   totalScore: z.number().int().default(0),
   feedback: z.string().default(""),
+  interviewer: z.string().default("andrew")
 });
 
 export class InterviewDto extends createZodDto(interviewSchema) {}
