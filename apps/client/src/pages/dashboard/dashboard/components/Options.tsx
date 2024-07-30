@@ -35,7 +35,7 @@ const Options: FC<OptionsProps> = ({ activeBoard, optionsType, activeColumn, act
           <VerticalEllipsisIcon className={styles.Icon} />
         </button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="p-0">
+      <PopoverContent align="start" className="p-2 bg-background border-gray-300">
         {optionsType === KanbanTypes.Board ? (
           <div className="flex flex-col gap-1 p-2">
             <Button

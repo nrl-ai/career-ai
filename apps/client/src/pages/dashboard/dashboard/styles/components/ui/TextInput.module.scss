@@ -2,17 +2,13 @@
 
 .TextInput,
 .TextArea {
-  font-weight: $fw-bold;
-  font-size: $fs-res-s;
-  background: none;
+  font-size: 0.9rem;
+  background: white;
   border: 1px solid transparentColor(0.25, $mediumGrey);
   border-radius: 0.5rem;
   padding: 10px 10px 10px 5px;
   &:hover {
     border: 1px solid transparentColor(0.25, $mainColor);
-  }
-  &:focus-visible {
-    outline: 1px solid transparentColor(0.25, $mainColor);
   }
 }
 
