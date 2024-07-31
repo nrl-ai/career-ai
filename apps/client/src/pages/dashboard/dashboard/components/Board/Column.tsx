@@ -15,6 +15,7 @@ import ColorPicker from "../ColorPicker";
 import { PlusIcon } from "../icons";
 import ViewTaskModal from "../ViewTaskModal";
 import Task from "./Task";
+import { GrRotateLeft } from "react-icons/gr";
 
 interface ColumnProps {
   index: number;
@@ -67,18 +68,31 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                       <TooltipProvider>
                         <TooltipRoot>
                           <TooltipTrigger>
-                            <Button
+                            {task.resume ? <Button
                               onClick={() => {
                                 openAddCVModal("create", {
                                   id: "add-cv",
                                   item: { task, column },
                                 });
                               }}
-                              variant={"ghost"}
-                              className="mt-1 w-full"
+                              variant={"secondary"}
+                              className="text-left mt-2 mb-4 w-[180px] max-w-full h-[30px] text-xs"
                             >
-                              <PlusIcon className="pr-1 w-5 h-5" />
-                            </Button>
+                              <GrRotateLeft className="pr-1 w-4 h-4" />
+                              {String(task.resume.title).substring(0, 10)}...
+                            </Button> : <Button
+                              onClick={() => {
+                                openAddCVModal("create", {
+                                  id: "add-cv",
+                                  item: { task, column },
+                                });
+                              }}
+                              variant={"secondary"}
+                              className="mt-2 mb-4 w-[200px] h-[30px] text-xs"
+                            >
+                              <PlusIcon className="pr-1 w-3 h-3" />
+                              Add Resume
+                            </Button>}
                           </TooltipTrigger>
                           <TooltipContent>{"Add a resume"}</TooltipContent>
                         </TooltipRoot>

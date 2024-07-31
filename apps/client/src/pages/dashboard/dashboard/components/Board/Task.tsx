@@ -26,10 +26,10 @@ const Task: FC<TaskProps> = ({ task, index }) => {
             )}
           >
             <h3 className={styles.Title}>{task.title}</h3>
-            <p className={styles.SubtaskNumber}>
+            {/* <p className={styles.SubtaskNumber}>
               {completedSubtasks} of {task.subtasks.length} tasks
-            </p>
-            {task?.resume && <p className="mt-1 text-xs">Applied Resume: {task?.resume?.title}</p>}
+            </p> */}
+            {/* {task?.resume && <p className="mt-1 text-xs">Applied Resume: {task?.resume?.title}</p>} */}
           </div>
         );
       }}
