@@ -15,7 +15,7 @@ export interface ChatMessageProps {
   lng: string;
   messageIndex: number;
   messages: Message[];
-  assistantAvatar: string;
+  assistantAvatar?: string;
   userAvatar?: string;
 }
 
@@ -67,7 +67,7 @@ export function ChatMessage({
       <div
         className={cn(
           "flex-1 space-y-2 overflow-hidden px-4 py-2 rounded-xl shadow-md border",
-          message.role === "user" && " bg-gray-100 text-white",
+          message.role === "user" && " bg-gray-200 text-white",
           message.role != "user" && "border-gray-200 bg-opacity-85 bg-white text-gray-800",
         )}
       >

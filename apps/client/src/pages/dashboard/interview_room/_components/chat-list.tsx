@@ -8,7 +8,7 @@ export interface ChatList {
   messages: Message[];
   isLoading?: boolean;
   waitingForAudio?: boolean;
-  assistantAvatar: string;
+  assistantAvatar?: string;
 }
 
 export default function ChatList({

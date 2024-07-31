@@ -1,7 +1,6 @@
 import { idSchema, resumeDataSchema, defaultResumeData } from "@career-ai/schema";
 import { userSchema } from "../user";
 import { createZodDto } from "nestjs-zod/dto";
-import { interviewContentSchema } from "@career-ai/schema";
 import { z } from "nestjs-zod/z";
 
 export const interviewSchema = z.object({
@@ -9,7 +8,7 @@ export const interviewSchema = z.object({
   position: z.string(),
   type: z.enum(["techincal", "behavioral", "combination"]).default("combination"),
   jd: z.string(),
-  content: interviewContentSchema,
+  content: z.json().array().default([]),
   language: z.enum(["VN", "EN", "KR"]).default("EN"),
   createdAt: z.date().or(z.dateString()),
   updatedAt: z.date().or(z.dateString()),

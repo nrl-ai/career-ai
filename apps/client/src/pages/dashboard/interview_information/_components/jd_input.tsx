@@ -101,7 +101,7 @@ const Toolbar = ({
 
   return (
     <div className="flex w-full justify-start items-center gap-2">
-      <div className="flex lg:flex-row flex-grow-0 gap-1 outline outline-1 outline-[#C7C7CC] mt-2.5 p-1 mb-2 bg-white w-fit rounded-xl">
+      <div className="flex lg:flex-row flex-grow-0 gap-1 mt-2.5 p-1 mb-2 bg-gray-200 px-2 w-fit rounded-xl">
         <Tooltip content="Bold">
           <Toggle
             size="sm"

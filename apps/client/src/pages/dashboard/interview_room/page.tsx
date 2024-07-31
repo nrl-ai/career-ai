@@ -7,8 +7,7 @@ export const InterviewRoomPage = () => {
   const location = useLocation();
 
   const interviewInput = {
-    // language : location.state['language'],
-    // type: location.state['type'],
+    interviewId: location.state['id'],
     position: location.state['position'],
     jd: location.state['jd'],
     cv: location.state['cv'],

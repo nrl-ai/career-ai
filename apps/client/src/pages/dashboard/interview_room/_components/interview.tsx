@@ -1,5 +1,4 @@
 "use client";
-import { t } from "@lingui/macro";
 import { motion } from "framer-motion";
 import { useChat, type Message } from "ai/react";
 import cn from "classnames";
@@ -8,7 +7,6 @@ import { ChatScrollAnchor } from "./chat-scroll-anchor";
 import { useState, useEffect } from "react";
 import { FinishedMessage } from "./finished-message";
 import interviewerAvatar from "./interviewer.png";
-import EasySpeech from "easy-speech";
 import ChatPanel from "./chat-panel";
 import ChatList from "./chat-list";
 import TalkingHeadComponent from "./TalkingHeadComponent";
@@ -56,7 +54,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
     }
     append({
       role: "user",
-      content: "I am applying for position: " + state.position,
+      content: "Applying for position: " + state.position,
     })
   }, [state]);
 
@@ -65,9 +63,9 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
     initialMessages,
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${getLocalToken()}`,
     },
     body: {
+      interviewId: state.interviewId,
       cvId: selectedCV,
       interviewer: interviewer,
     },
@@ -82,23 +80,15 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
       if (content.includes("MOCK INTERVIEW ENDED")) {
         setIsFinished(true);
       } else {
-        // await EasySpeech.speak({
-        //   text: content,
-        //   pitch: 1,
-        //   rate: 1,
-        //   volume: 1,
-        // });
-        // return;
-
         // Talk with avatar
         handleSpeak(content);
       }
     },
   });
 
-  useEffect(() => {
-    EasySpeech.init({ maxTimeout: 5000, interval: 250 });
-  }, []);
+  // useEffect(() => {
+  //   EasySpeech.init({ maxTimeout: 5000, interval: 250 });
+  // }, []);
 
   const stopTTS = () => {
     if (speechSynthesisInstance) {
