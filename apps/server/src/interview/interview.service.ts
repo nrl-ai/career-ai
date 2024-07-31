@@ -1,9 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { Prisma } from "@prisma/client";
 import { PrismaService } from "nestjs-prisma";
 import OpenAI from "openai";
 import { ResumeService } from "../resume/resume.service";
-import { CreateInterviewDto, InterviewDto, InterviewQuestionDto } from "@career-ai/dto";
+import { CreateInterviewDto } from "@career-ai/dto";
 
 const openai = new OpenAI({
   baseURL: process.env["LLM_BASE_URL"],

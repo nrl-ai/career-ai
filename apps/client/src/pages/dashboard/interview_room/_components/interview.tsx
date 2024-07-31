@@ -161,9 +161,9 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
                       )}
                       {mode == "chat" ? "Whiteboard" : "Video"}
                     </Button>
-                    <div className="absolute bottom-0 left-0 right-0 top-0 rounded-2xl z-40">
+                    {mode == "chat" && <div className="absolute bottom-0 left-0 right-0 top-0 rounded-2xl z-40">
 {/* To prevent interaction with avatar */}
-                    </div>
+                    </div>}
                     <div
                       className={cn(
                         "rounded-3xl mx-auto h-[300px] w-[300px] md:w-[400px] max-w-full lg:h-[500px] lg:w-[900px]",
