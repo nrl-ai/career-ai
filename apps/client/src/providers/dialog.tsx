@@ -11,6 +11,7 @@ import { PublicationsDialog } from "../pages/builder/sidebars/left/dialogs/publi
 import { ReferencesDialog } from "../pages/builder/sidebars/left/dialogs/references";
 import { SkillsDialog } from "../pages/builder/sidebars/left/dialogs/skills";
 import { VolunteerDialog } from "../pages/builder/sidebars/left/dialogs/volunteer";
+import AddCVModal from "../pages/dashboard/dashboard/components/AddCVModal";
 import EditBoardModal from "../pages/dashboard/dashboard/components/EditBoardModal";
 import EditTaskModal from "../pages/dashboard/dashboard/components/EditTaskModal";
 import TaskModal from "../pages/dashboard/dashboard/components/TaskModal";
@@ -30,7 +31,7 @@ export const DialogProvider = ({ children }: Props) => {
   const isResumeLoaded = useResumeStore((state) => Object.keys(state.resume).length > 0);
   const isEditTaskOpen = useDialogStore((state) => state.dialog?.payload?.id === "edit-task");
   const isWarningOpen = useDialogStore((state) => state.dialog?.payload?.id === "warning");
-  console.log("🚀 ~ DialogProvider ~ isDialogOpen:", isEditTaskOpen);
+  const isAddCVOpen = useDialogStore((state) => state.dialog?.payload?.id === "add-cv");
 
   return (
     <>
@@ -43,6 +44,7 @@ export const DialogProvider = ({ children }: Props) => {
         <TwoFactorDialog />
         <EditBoardModal />
         <TaskModal />
+        {isAddCVOpen && <AddCVModal />}
         {isWarningOpen && <WarnModal />}
         {isEditTaskOpen && <EditTaskModal />}
 
