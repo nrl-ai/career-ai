@@ -1,10 +1,18 @@
 import { useDialog } from "@/client/stores/dialog";
+import {
+  Button,
+  TooltipContent,
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+} from "@career-ai/ui";
 import { FC } from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import { useBoardStore } from "../../store/BoardStore";
 import styles from "../../styles/components/board/Column.module.scss";
 import { ColumnTypes, KanbanTypes } from "../../types";
 import ColorPicker from "../ColorPicker";
+import { PlusIcon } from "../icons";
 import ViewTaskModal from "../ViewTaskModal";
 import Task from "./Task";
 
@@ -16,6 +24,7 @@ interface ColumnProps {
 const Column: FC<ColumnProps> = ({ column, index }) => {
   const { open } = useDialog("add-task");
   const { open: openViewTaskModal } = useDialog("view-task");
+  const { open: openAddCVModal } = useDialog("add-cv");
   const { boards, activeBoardId, moveTask, moveColumn } = useBoardStore();
 
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
@@ -55,6 +64,25 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                       >
                         <Task key={task.id} task={task} index={index} {...task} />
                       </button>
+                      <TooltipProvider>
+                        <TooltipRoot>
+                          <TooltipTrigger>
+                            <Button
+                              onClick={() => {
+                                openAddCVModal("create", {
+                                  id: "add-cv",
+                                  item: { task, column },
+                                });
+                              }}
+                              variant={"ghost"}
+                              className="mt-1 w-full"
+                            >
+                              <PlusIcon className="pr-1 w-5 h-5" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>{"Add a resume"}</TooltipContent>
+                        </TooltipRoot>
+                      </TooltipProvider>
                     </ViewTaskModal>
                   ))}
                   {provided.placeholder}

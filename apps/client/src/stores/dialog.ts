@@ -11,7 +11,8 @@ export type DialogName =
   | "add-task"
   | "edit-task"
   | "view-task"
-  | "warning";
+  | "warning"
+  | "add-cv";
 
 export type DialogMode = "create" | "update" | "duplicate" | "delete";
 

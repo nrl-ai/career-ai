@@ -1,3 +1,5 @@
+import { ResumeDto } from "@career-ai/dto";
+
 export interface IconProps {
   className?: string;
   onClick?: () => void;
@@ -14,6 +16,7 @@ export interface TaskTypes {
   title: string;
   description: string;
   subtasks: SubtaskTypes[];
+  resume?: ResumeDto;
 }
 
 export interface ColumnTypes {

@@ -1,8 +1,9 @@
-import { TaskTypes } from "../../types";
-import React, { FC } from "react";
+import classNames from "classnames";
+import { FC } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styles from "../../styles/components/board/Task.module.scss";
-import classNames from "classnames";
+import { TaskTypes } from "../../types";
+import { cn } from "@career-ai/utils";
 interface TaskProps extends TaskTypes {
   index: number;
   task: TaskTypes;
@@ -19,15 +20,16 @@ const Task: FC<TaskProps> = ({ task, index }) => {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            className={classNames(
-              styles.Task,
-              snapshot.isDragging ? styles.IsDragging : styles.IsSleeping,
+            className={cn(
+              classNames(styles.Task, snapshot.isDragging ? styles.IsDragging : styles.IsSleeping),
+              "p-2",
             )}
           >
             <h3 className={styles.Title}>{task.title}</h3>
             <p className={styles.SubtaskNumber}>
               {completedSubtasks} of {task.subtasks.length} tasks
             </p>
+            {task?.resume && <p className="mt-1 text-xs">Applied Resume: {task?.resume?.title}</p>}
           </div>
         );
       }}
