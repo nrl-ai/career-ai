@@ -38,6 +38,9 @@ import {
   TextAlignLeftIcon,
   ListBulletIcon,
 } from "@radix-ui/react-icons";
+import { useUpdateUser, useUser } from "@/client/services/user";
+import { useToast } from "@/client/hooks/use-toast";
+import { t } from "@lingui/macro";
 
 type JDInputProps = {
   content?: string;
@@ -85,13 +88,29 @@ const Toolbar = ({
 
   const { ai_createJd, result, loading, error } = useAiCreateJd();
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useUser();
+  const { updateUser, loading: updateUserLoading } = useUpdateUser();
+  const { toast } = useToast();
 
   const handleAIGenerateJD = async () => {
     setIsLoading(true);
     try {
-      const result = await ai_createJd({ position: position, language: language });
-      editor.chain().focus().setContent(result).run();
-      onChange?.(editor.getHTML());
+      if (user != undefined) {
+        if (user.numRequestsToday > 0) {
+          const result = await ai_createJd({ position: position, language: language });                  
+          await updateUser({
+            numRequestsToday: user.numRequestsToday - 1
+          })
+          editor.chain().focus().setContent(result).run();
+          onChange?.(editor.getHTML());
+        } else {
+          toast({
+            variant: "error",
+            title: t`Request Limit Exceeded`,
+            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+          });
+        }
+      }
     } catch (error) {
       console.error("Error generating JD: ", error);
     } finally {

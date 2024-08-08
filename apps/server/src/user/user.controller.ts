@@ -56,6 +56,8 @@ export class UserController {
         picture: updateUserDto.picture,
         username: updateUserDto.username,
         locale: updateUserDto.locale,
+        numRequestsToday: updateUserDto.numRequestsToday,
+        lastActiveDay: updateUserDto.lastActiveDay,
       });
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError && error.code === "P2002") {

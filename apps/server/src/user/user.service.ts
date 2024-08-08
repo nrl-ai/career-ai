@@ -74,6 +74,7 @@ export class UserService {
   }
 
   updateByEmail(email: string, data: Prisma.UserUpdateArgs["data"]) {
+    
     return this.prisma.user.update({ where: { email }, data });
   }
 

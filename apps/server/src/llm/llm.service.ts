@@ -2,6 +2,7 @@ import { t } from "@lingui/macro";
 import { OpenAI } from "openai";
 // import { useOpenAiStore } from "@/client/stores/openai";
 import { Injectable } from "@nestjs/common";
+import { OpenAIService } from "../openai/openai.service";
 
 const FIX_GRAMMAR_PROMPT = `You are an AI writing assistant specialized in writing copy for resumes.
 Do not return anything else except the text you improved. It should not begin with a newline. It should not have any prefix or suffix text.
@@ -35,25 +36,24 @@ type Mood = "casual" | "professional" | "confident" | "friendly";
 
 @Injectable()
 export class LLMService {
-    constructor() {}
+    constructor(
+        private readonly openai: OpenAIService,
+    ) {}
 
     // region Improve writing
     async improveWriting(text: string) {
-        const openai = new OpenAI({
-            baseURL: process.env["LLM_BASE_URL"],
-            apiKey: process.env["LLM_API_KEY"],
-        });
 
         const prompt = IMPROVE_WRITING_PROMPT.replace("{input}", text);
-
-        const result = await openai.chat.completions.create({
+        const content = {
             messages: [{ role: "user", content: prompt }],
             model: "gemini-pro",
             max_tokens: 1024,
             temperature: 0,
             stop: ['"""'],
             n: 1,
-        });
+        }
+
+        const result = await this.openai.openai(content)
 
         if (result.choices.length === 0) {
             throw new Error(t`OpenAI did not return any choices for your text.`);
@@ -65,21 +65,18 @@ export class LLMService {
 
     // region Fix grammar
     async fixGrammar(text: string) {
-        const openai = new OpenAI({
-            baseURL: process.env["LLM_BASE_URL"],
-            apiKey: process.env["LLM_API_KEY"],
-        });
-
         const prompt = FIX_GRAMMAR_PROMPT.replace("{input}", text);
 
-        const result = await openai.chat.completions.create({
+        const content = {
             messages: [{ role: "user", content: prompt }],
             model: "gemini-pro",
             max_tokens: 1024,
             temperature: 0,
             stop: ['"""'],
             n: 1,
-        });
+        }
+
+        const result = await this.openai.openai(content)
 
         if (result.choices.length === 0) {
             throw new Error(t`OpenAI did not return any choices for your text.`);
@@ -92,21 +89,18 @@ export class LLMService {
 
     // region Change tone 
     async changeTone(text: string, mood: Mood) {
-        const openai = new OpenAI({
-            baseURL: process.env["LLM_BASE_URL"],
-            apiKey: process.env["LLM_API_KEY"],
-        });
-
         const prompt = CHANGE_TONE_PROMPT.replace("{mood}", mood).replace("{input}", text);
 
-        const result = await openai.chat.completions.create({
+        const content = {
             messages: [{ role: "user", content: prompt }],
             model: "gemini-pro",
             max_tokens: 1024,
-            temperature: 0.5,
+            temperature: 0,
             stop: ['"""'],
             n: 1,
-        });
+        }
+
+        const result = await this.openai.openai(content)
 
         if (result.choices.length === 0) {
             throw new Error(t`OpenAI did not return any choices for your text.`);

@@ -152,6 +152,6 @@ export class ResumeController {
     @Body() analyzeResumeDto: unknown,
     @Resume() resume: ResumeDto,
   ) {
-    return this.resumeService.analyze(user.id, resume, analyzeResumeDto);
+    return this.resumeService.analyze(resume, analyzeResumeDto);
   }
 }

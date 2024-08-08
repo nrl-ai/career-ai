@@ -23,6 +23,8 @@ import { useChangeTone } from "../services/llm/change-tone";
 import { useFixGrammar } from "../services/llm/fix-grammar";
 import { useImproveWriting } from "../services/llm/improve-writing";
 import { useOpenAiStore } from "../stores/openai";
+import { useUser } from "../services/user";
+import { useUpdateUser } from "../services/user";
 
 type Action = "improve" | "fix" | "tone";
 type Mood = "casual" | "professional" | "confident" | "friendly";
@@ -44,7 +46,8 @@ export const AiActions = ({ value, onChange, className }: Props) => {
   const { improveWriting, result: improveResult, loading: improveLoading, error: improveError } = useImproveWriting()
   const { fixGrammar, result: fixResult, loading: fixLoading, error: fixError } = useFixGrammar()
   const { changeTone, result: changeResult, loading: changeLoading, error: changeError } = useChangeTone()
-
+  const { user } = useUser();
+  const { updateUser, loading: updateUserLoading } = useUpdateUser()
   // if (!aiEnabled) return null;
 
   const onClick = async (action: Action, mood?: Mood) => {
@@ -53,14 +56,64 @@ export const AiActions = ({ value, onChange, className }: Props) => {
 
       let result = value;
 
-      if (action === "improve") result = await improveWriting(value);
-      if (action === "fix") result = await fixGrammar(value);
+      if (action === "improve") {
+        if (user != undefined) {
+          if (user.numRequestsToday > 0) {
+            const response = await improveWriting(value);
+            
+            await updateUser({
+              numRequestsToday: user.numRequestsToday - 1
+            })
+            result = response
+          } else {
+            toast({
+              variant: "error",
+              title: t`Request Limit Exceeded`,
+              description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+            });
+          }
+        }
+      }
+      if (action === "fix") {
+        if (user != undefined) {
+          if (user.numRequestsToday > 0) {
+            const response = await fixGrammar(value);
+
+            await updateUser({
+              numRequestsToday: user.numRequestsToday - 1
+            })
+            result = response
+          } else {
+            toast({
+              variant: "error",
+              title: t`Request Limit Exceeded`,
+              description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+            });
+          }
+        }
+      }
       if (action === "tone" && mood) {
         const changeToneInput: changeToneArgs = {
           text: value,
           mood: mood
         }
-        result = await changeTone(changeToneInput);
+        if (user != undefined) {
+          if (user.numRequestsToday > 0) {
+            const response = await changeTone(changeToneInput);
+
+            await updateUser({
+              numRequestsToday: user.numRequestsToday - 1
+            })
+
+            result = response
+          } else {
+            toast({
+              variant: "error",
+              title: t`Request Limit Exceeded`,
+              description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+            });
+          }
+        }
       }
       onChange(result);
     } catch (error) {

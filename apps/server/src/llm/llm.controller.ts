@@ -2,6 +2,8 @@ import { ApiTags } from "@nestjs/swagger";
 import { Body, Controller, Post, UseGuards } from "@nestjs/common";
 import { LLMService } from "./llm.service";
 import { TwoFactorGuard } from "../auth/guards/two-factor.guard";
+import { User } from "../user/decorators/user.decorator";
+import { User as UserEntity } from "@prisma/client";
 
 @ApiTags("LLM")
 @Controller("llm")
