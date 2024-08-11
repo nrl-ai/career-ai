@@ -87,4 +87,11 @@ export class UserService {
 
     return this.prisma.user.delete({ where: { id } });
   }
+
+  async updateLLMLimit(email: string, data: Prisma.UserUpdateArgs["data"]) {
+    return await this.prisma.user.update({
+      where: { email },
+      data
+    });
+  }
 }

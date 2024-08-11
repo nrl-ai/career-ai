@@ -95,21 +95,19 @@ const Toolbar = ({
   const handleAIGenerateJD = async () => {
     setIsLoading(true);
     try {
-      if (user != undefined) {
-        if (user.numRequestsToday > 0) {
-          const result = await ai_createJd({ position: position, language: language });                  
-          await updateUser({
-            numRequestsToday: user.numRequestsToday - 1
-          })
-          editor.chain().focus().setContent(result).run();
-          onChange?.(editor.getHTML());
-        } else {
-          toast({
-            variant: "error",
-            title: t`Request Limit Exceeded`,
-            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-          });
-        }
+      const result = await ai_createJd({ position: position, language: language });
+      if (result != -1 && user != undefined) {
+        await updateUser(
+          {numRequestsToday: user.numRequestsToday - 1}
+        )
+        editor.chain().focus().setContent(result).run();
+        onChange?.(editor.getHTML());
+      } else {
+        toast({
+          variant: "error",
+          title: t`Request Limit Exceeded`,
+          description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+        });
       }
     } catch (error) {
       console.error("Error generating JD: ", error);

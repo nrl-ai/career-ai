@@ -39,10 +39,20 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
   const [waitingForAudio, setWaitingForAudio] = useState(false);
   const [mode, setMode] = useState<"chat" | "whiteboard">("chat");
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
-  const [forceFinish, setForceFinish] = useState(false);
   const interviewer = state?.interviewer || "andrew";
   const { updateUser, loading } = useUpdateUser();
   const { user } = useUser();
+
+  let forced: boolean;
+  if (user && user.numRequestsToday > 0) {
+    forced = false;
+  } else {
+    forced = true;
+  }
+
+  console.log(forced)
+
+  const [forceFinish, setForceFinish] = useState(forced);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -86,35 +96,25 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
       }
     },
     async onFinish(message) {
+
       const content = message?.content || "";
-      // Check if the interview is finished
-      if (user != undefined) {
-        if (user.numRequestsToday <= 0) {
-          toast({
-            variant: "error",
-            title: t`Request Limit Exceeded`,
-            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-          });
-          setForceFinish(true)
-        } else { 
-          updateUser({
+      
+      if (content == "-1") {
+        setForceFinish(true)
+      } else {
+        // Check if the interview is finished
+        if (content.includes("MOCK INTERVIEW ENDED")) {
+          setIsFinished(true);
+        } else {
+          // Talk with avatar
+          handleSpeak(content);
+        }
+
+        // Update number of requests
+        if (user) {
+          await updateUser({
             numRequestsToday: user.numRequestsToday - 1
           })
-          
-          if (content.includes("MOCK INTERVIEW ENDED")) {
-            setIsFinished(true);
-          } else {
-            // await EasySpeech.speak({
-            //   text: content,
-            //   pitch: 1,
-            //   rate: 1,
-            //   volume: 1,
-            // });
-            // return;
-    
-            // Talk with avatar
-            handleSpeak(content);
-          }
         }
       }
     },
@@ -156,9 +156,9 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
 
   return (
     <div className="w-full max-w-[1600px] pt-4">
-      <Dialog header="Request Limit Exceeded" visible={forceFinish} style={{ width: '50vw' }} onHide={() => {if (!forceFinish) return; setForceFinish(false); }}
+      <Dialog header="Request Limit Exceeded" visible={forceFinish} style={{ width: '50vw' }} onHide={() => {if (!forceFinish) return; setForceFinish(false); }} blockScroll draggable={false}
         pt={{
-          headerIcons: {onClick: navigate("/dashboard")}
+          closeButton: {onClick: () => {navigate('/dashboard/interview')}}
         }}>
         <p className="m-0">
           You have reached the maximum number of requests allowed for today. Please try again tomorrow.

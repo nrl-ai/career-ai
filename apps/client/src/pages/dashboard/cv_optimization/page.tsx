@@ -42,21 +42,19 @@ export const CVOptimizationPage = () => {
     }
 
     // Analyze the resume
-    if (user != undefined) {
-      if (user.numRequestsToday > 0) {
-        await analyzeResume({ id: selectedCV, jd: jd as string });
-        
-        await updateUser({
-          numRequestsToday: user.numRequestsToday - 1
-        })
-      } else {
-        toast({
-          variant: "error",
-          title: t`Request Limit Exceeded`,
-          description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-        });
-      }
+    const result = await analyzeResume({ id: selectedCV, jd: jd as string });
+    if (result != -1 && user != undefined) {
+      await updateUser({
+        numRequestsToday: user.numRequestsToday - 1
+      })
+    } else {
+      toast({
+        variant: "error",
+        title: t`Request Limit Exceeded`,
+        description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+      });
     }
+    
     setHasResult(true);
 
     // Scroll to the result

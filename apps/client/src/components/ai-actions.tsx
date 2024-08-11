@@ -57,39 +57,36 @@ export const AiActions = ({ value, onChange, className }: Props) => {
       let result = value;
 
       if (action === "improve") {
-        if (user != undefined) {
-          if (user.numRequestsToday > 0) {
-            const response = await improveWriting(value);
-            
-            await updateUser({
-              numRequestsToday: user.numRequestsToday - 1
-            })
-            result = response
-          } else {
-            toast({
-              variant: "error",
-              title: t`Request Limit Exceeded`,
-              description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-            });
-          }
+        const response = await improveWriting(value);
+        if (response != -1 && user != undefined) {
+          await updateUser({
+            numRequestsToday: user.numRequestsToday - 1
+          })
+
+          result = response
+        } else {
+          toast({
+            variant: "error",
+            title: t`Request Limit Exceeded`,
+            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+          });
         }
       }
       if (action === "fix") {
-        if (user != undefined) {
-          if (user.numRequestsToday > 0) {
-            const response = await fixGrammar(value);
+        const response = await fixGrammar(value);
 
-            await updateUser({
-              numRequestsToday: user.numRequestsToday - 1
-            })
-            result = response
-          } else {
-            toast({
-              variant: "error",
-              title: t`Request Limit Exceeded`,
-              description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-            });
-          }
+        if (response != -1 && user != undefined) {
+          await updateUser({
+            numRequestsToday: user.numRequestsToday - 1
+          })
+
+          result = response
+        } else {
+          toast({
+            variant: "error",
+            title: t`Request Limit Exceeded`,
+            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+          });
         }
       }
       if (action === "tone" && mood) {
@@ -97,22 +94,22 @@ export const AiActions = ({ value, onChange, className }: Props) => {
           text: value,
           mood: mood
         }
-        if (user != undefined) {
-          if (user.numRequestsToday > 0) {
-            const response = await changeTone(changeToneInput);
+        
+        const response = await changeTone(changeToneInput);
 
-            await updateUser({
-              numRequestsToday: user.numRequestsToday - 1
-            })
+        if (response != -1 && user != undefined) {
 
-            result = response
-          } else {
-            toast({
-              variant: "error",
-              title: t`Request Limit Exceeded`,
-              description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-            });
-          }
+          await updateUser({
+            numRequestsToday: user.numRequestsToday - 1
+          })
+
+          result = response
+        } else {
+          toast({
+            variant: "error",
+            title: t`Request Limit Exceeded`,
+            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+          });
         }
       }
       onChange(result);

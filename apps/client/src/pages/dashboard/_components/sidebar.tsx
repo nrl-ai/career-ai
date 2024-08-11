@@ -29,6 +29,7 @@ import { useToast } from "@/client/hooks/use-toast";
 import { Link, useLocation } from "react-router-dom";
 import { Card } from "primereact/card";
 import { useEffect, useState } from "react";
+import { useUpdateLLMLimit } from "@/client/services/user";
 
 type SidebarItem = {
   path: string;
@@ -88,27 +89,16 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
   const { toast } = useToast();
   const { user } = useUser();
   const [ requests, setRequests ] = useState(0);
-  const { updateUser, loading } = useUpdateUser();
+  const { updateLLMLimit, loading, error } = useUpdateLLMLimit();
   
-  // refresh requests for the next day
+  // TODO: refresh requests for the next day
   const today = new Date()
   const lastActiveDay = new Date(user?.lastActiveDay as string)
 
-  const formatDate = (date) => {
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
-    const year = date.getFullYear();
-
-    return `${year}/${month}/${day}`;
-  };
-
   useEffect(() => {
-    if (formatDate(today) != formatDate(lastActiveDay)) {
-      updateUser({
-        numRequestsToday: 200, 
-        lastActiveDay: today,
-      })
-    }
+    updateLLMLimit(
+      {today, lastActiveDay}
+    )
   }, [])
   // end here
 
