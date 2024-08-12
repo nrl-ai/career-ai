@@ -97,7 +97,7 @@ export class UserController {
       return `${year}/${month}/${day}`;
     };
 
-    if (formatDate(today) == formatDate(last)) {
+    if (formatDate(today) != formatDate(last)) {
       return await this.userService.updateLLMLimit(
         email, {
           numRequestsToday: 200,
