@@ -12,6 +12,7 @@ import remarkGfm from "remark-gfm";
 import { JDInput } from "../interview_information/_components/jd_input";
 import { InputText } from "primereact/inputtext";
 import cn from "classnames";
+import { useUpdateUser, useUser } from "@/client/services/user";
 
 export const CVOptimizationPage = () => {
   const { toast } = useToast();
@@ -21,6 +22,8 @@ export const CVOptimizationPage = () => {
   const resultRef = useRef<HTMLDivElement>(null);
   const [hasResult, setHasResult] = useState(false);
   const [position, setPosition] = useState<string>("");
+  const  { user } = useUser();
+  const {updateUser, loading: updateUserLoading} = useUpdateUser();
 
   const handleAnalyze = async () => {
     if (!selectedCV) {
@@ -39,7 +42,19 @@ export const CVOptimizationPage = () => {
     }
 
     // Analyze the resume
-    await analyzeResume({ id: selectedCV, jd: jd as string });
+    const result = await analyzeResume({ id: selectedCV, jd: jd as string });
+    if (result != -1 && user != undefined) {
+      await updateUser({
+        numRequestsToday: user.numRequestsToday - 1
+      })
+    } else {
+      toast({
+        variant: "error",
+        title: t`Request Limit Exceeded`,
+        description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+      });
+    }
+    
     setHasResult(true);
 
     // Scroll to the result

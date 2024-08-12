@@ -74,6 +74,7 @@ export class UserService {
   }
 
   updateByEmail(email: string, data: Prisma.UserUpdateArgs["data"]) {
+    
     return this.prisma.user.update({ where: { email }, data });
   }
 
@@ -85,5 +86,12 @@ export class UserService {
     await this.storageService.deleteFolder(id);
 
     return this.prisma.user.delete({ where: { id } });
+  }
+
+  async updateLLMLimit(email: string, data: Prisma.UserUpdateArgs["data"]) {
+    return await this.prisma.user.update({
+      where: { email },
+      data
+    });
   }
 }

@@ -8,6 +8,8 @@ export const updateUserSchema = userSchema.partial().pick({
   username: true,
   email: true,
   picture: true,
+  numRequestsToday: true,
+  lastActiveDay: true,
 });
 
 export class UpdateUserDto extends createZodDto(updateUserSchema) {}

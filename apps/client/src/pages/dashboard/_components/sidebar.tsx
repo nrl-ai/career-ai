@@ -24,9 +24,12 @@ import { PiGraduationCap } from "react-icons/pi";
 import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
-import { useUser } from "@/client/services/user";
+import { useUpdateUser, useUser } from "@/client/services/user";
 import { useToast } from "@/client/hooks/use-toast";
 import { Link, useLocation } from "react-router-dom";
+import { Card } from "primereact/card";
+import { useEffect, useState } from "react";
+import { useUpdateLLMLimit } from "@/client/services/user";
 
 type SidebarItem = {
   path: string;
@@ -85,6 +88,25 @@ const iconStyle = { color: "#6B94F9" };
 export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
   const { toast } = useToast();
   const { user } = useUser();
+  const [ requests, setRequests ] = useState(0);
+  const { updateLLMLimit, loading, error } = useUpdateLLMLimit();
+  
+  // TODO: refresh requests for the next day
+  const today = new Date()
+  const lastActiveDay = new Date(user?.lastActiveDay as string)
+
+  useEffect(() => {
+    updateLLMLimit(
+      {today, lastActiveDay}
+    )
+  }, [])
+  // end here
+
+  if (user != null) {
+    useEffect(() => {
+      setRequests(user.numRequestsToday)
+    }, [user])
+  }
 
   const topItems: SidebarItem[] = [
     {
@@ -284,6 +306,21 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
         ))} */}
 
       </div>
+
+      {/** Count LLM api requests remaining */}
+      {
+      !isCollapsed ?
+        (<div id="count-llm-requests">
+          <Card>
+            <p className="">LLM requests remaining: <span>{requests}</span></p>
+          </Card>
+        </div>) :
+        (<div></div>)
+      }
+
+      
+      {/** End here */}
+
       <div className="flex flex-col mt-auto">
         <div className="flex flex-col justify-start mt-16">
           <div className="space-x-2 text-left text-blue-500">

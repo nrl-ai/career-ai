@@ -22,6 +22,7 @@ import { InterviewsModule } from "./interview/interview.module";
 import { JobApplicationsModule } from "./job_applications/job_applications.module";
 import { VoiceModule } from "./voice/voice.module";
 import { LLMModule } from "./llm/llm.module";
+import { OpenAIModule } from "./openai/openai.module";
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { LLMModule } from "./llm/llm.module";
 
     InterviewsModule,
     LLMModule,
+    OpenAIModule,
 
     // Static Assets
     ServeStaticModule.forRoot({

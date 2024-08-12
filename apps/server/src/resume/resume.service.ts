@@ -15,6 +15,7 @@ import { PrinterService } from "@/server/printer/printer.service";
 import { StorageService } from "../storage/storage.service";
 
 import OpenAI from "openai";
+import { OpenAIService } from "../openai/openai.service";
 
 const openai = new OpenAI({
   baseURL: process.env["LLM_BASE_URL"],
@@ -69,22 +70,13 @@ The result should be in Markdown format (replace Score with a score from 0 to 10
 `,
 };
 
-export const queryCVAnalyze = async (language: keyof CVReviewPrompt, cv: string, jd: string) => {
-  const text = "Chúng tôi gặp lỗi khi phân tích CV của bạn. Vui lòng thử lại.";
-  const prompt = PROMPT[language].replace("{cv}", cv).replace("{jd}", jd);
-  const result = await openai.chat.completions.create({
-    messages: [{ role: "system", content: prompt }],
-    model: "gemini-pro",
-  });
-  return result.choices[0].message.content ?? text;
-};
-
 @Injectable()
 export class ResumeService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly printerService: PrinterService,
     private readonly storageService: StorageService,
+    private readonly openai: OpenAIService,
   ) {}
 
   async create(userId: string, createResumeDto: CreateResumeDto) {
@@ -225,13 +217,22 @@ export class ResumeService {
     return this.printerService.printPreview(resume);
   }
 
-  analyze(userId: string, resume: ResumeDto, analyzeResumeDto: any) {
+  async analyze(resume: ResumeDto, analyzeResumeDto: any) {
     let language = analyzeResumeDto?.language || "en";
     if (!["vi", "en"].includes(language)) {
       language = "en";
     }
     const cv = JSON.stringify(resume.data);
     const jd = analyzeResumeDto?.jd || "";
-    return queryCVAnalyze(language as keyof CVReviewPrompt, cv, jd);
+
+    const text = "Chúng tôi gặp lỗi khi phân tích CV của bạn. Vui lòng thử lại.";
+    const prompt = PROMPT[language as keyof CVReviewPrompt].replace("{cv}", cv).replace("{jd}", jd);
+    const content = {
+      messages: [{ role: "system", content: prompt }],
+      model: "gemini-pro",
+    }
+    const result = await this.openai.openai(content);
+
+    return result.choices[0].message.content ?? text;
   }
 }

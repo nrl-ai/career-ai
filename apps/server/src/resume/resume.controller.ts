@@ -147,11 +147,16 @@ export class ResumeController {
   @Post(":id/analyze")
   @UseGuards(TwoFactorGuard, ResumeGuard)
   ai_analyze(
-    @User() user: UserEntity,
+    @User("numRequestsToday") numRequestsToday: number,
     @Param("id") id: string,
     @Body() analyzeResumeDto: unknown,
     @Resume() resume: ResumeDto,
   ) {
-    return this.resumeService.analyze(user.id, resume, analyzeResumeDto);
+
+    if (numRequestsToday <= 0) {
+      return -1;
+    }
+    
+    return this.resumeService.analyze(resume, analyzeResumeDto);
   }
 }
