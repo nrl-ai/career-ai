@@ -82,11 +82,14 @@ export class UserController {
 
   @Patch("update-llm-limit")
   @UseGuards(TwoFactorGuard) 
-  async updateLLMLitmit(@User("email") email: string, @Body() data: any) {
+  async updateLLMLitmit(@User("email") email: string, @User('lastActiveDay') lastActiveDay: string) {
     
+    const today = new Date()
+    const last = new Date(lastActiveDay)
+
     const formatDate = (date: any) => {
       const x = new Date(date)
-      console.log(x)
+
       const day = String(x.getDate()).padStart(2, "0");
       const month = String(x.getMonth() + 1).padStart(2, "0"); // Months are zero-based
       const year = x.getFullYear();
@@ -94,18 +97,18 @@ export class UserController {
       return `${year}/${month}/${day}`;
     };
 
-    if (formatDate(data.today) != formatDate(data.lastActiveDay)) {
+    if (formatDate(today) == formatDate(last)) {
       return await this.userService.updateLLMLimit(
         email, {
           numRequestsToday: 200,
-          lastActiveDay: data.today,
+          lastActiveDay: today,
         }
       )
     }
 
     return await this.userService.updateLLMLimit(
       email, {
-        lastActiveDay: data.today,
+        lastActiveDay: today,
       }
     );
   }

@@ -96,9 +96,7 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
   const lastActiveDay = new Date(user?.lastActiveDay as string)
 
   useEffect(() => {
-    updateLLMLimit(
-      {today, lastActiveDay}
-    )
+    updateLLMLimit()
   }, [])
   // end here
 

@@ -57,7 +57,7 @@ export const AiActions = ({ value, onChange, className }: Props) => {
       let result = value;
 
       if (action === "improve") {
-        const response = await improveWriting(value);
+       const response = await improveWriting(value);
         if (response != -1 && user != undefined) {
           await updateUser({
             numRequestsToday: user.numRequestsToday - 1
