@@ -8,7 +8,6 @@ import { Helmet } from "react-helmet-async";
 import { Link, LoaderFunction, redirect, useLoaderData } from "react-router-dom";
 
 import { Icon } from "@/client/components/icon";
-// import { ThemeSwitch } from "@/client/components/theme-switch";
 import { queryClient } from "@/client/libs/query-client";
 import { findResumeByUsernameSlug, usePrintResume } from "@/client/services/resume";
 
@@ -103,8 +102,6 @@ export const PublicResumePage = () => {
             {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
             <span>{t`Download PDF`}</span>
           </Button>
-
-          {/* <ThemeSwitch /> */}
         </div>
       </div>
     </div>

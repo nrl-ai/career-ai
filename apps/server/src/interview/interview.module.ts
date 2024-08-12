@@ -7,10 +7,10 @@ import { StorageModule } from "../storage/storage.module";
 import { InterviewsController } from "./interview.controller";
 import { InterviewsService } from "./interview.service";
 import { ResumeModule } from "../resume/resume.module";
-import { OpenAIModule } from "../openai/openai.module";
+import { LLMCallModule } from "../llmcall/llmcall.module";
 
 @Module({
-  imports: [AuthModule, PrinterModule, StorageModule, ResumeModule, OpenAIModule],
+  imports: [AuthModule, PrinterModule, StorageModule, ResumeModule, LLMCallModule],
   controllers: [InterviewsController],
   providers: [InterviewsService],
   exports: [InterviewsService],

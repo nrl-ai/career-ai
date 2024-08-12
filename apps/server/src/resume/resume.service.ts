@@ -15,7 +15,7 @@ import { PrinterService } from "@/server/printer/printer.service";
 import { StorageService } from "../storage/storage.service";
 
 import OpenAI from "openai";
-import { OpenAIService } from "../openai/openai.service";
+import { LLMCallService } from "../llmcall/llmcall.service";
 
 const openai = new OpenAI({
   baseURL: process.env["LLM_BASE_URL"],
@@ -76,7 +76,7 @@ export class ResumeService {
     private readonly prisma: PrismaService,
     private readonly printerService: PrinterService,
     private readonly storageService: StorageService,
-    private readonly openai: OpenAIService,
+    private readonly openai: LLMCallService,
   ) {}
 
   async create(userId: string, createResumeDto: CreateResumeDto) {
@@ -231,7 +231,7 @@ export class ResumeService {
       messages: [{ role: "system", content: prompt }],
       model: "gemini-pro",
     }
-    const result = await this.openai.openai(content);
+    const result = await this.openai.query(content);
 
     return result.choices[0].message.content ?? text;
   }

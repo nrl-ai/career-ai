@@ -6,10 +6,10 @@ import { PrinterModule } from "@/server/printer/printer.module";
 import { StorageModule } from "../storage/storage.module";
 import { ResumeController } from "./resume.controller";
 import { ResumeService } from "./resume.service";
-import { OpenAIModule } from "../openai/openai.module";
+import { LLMCallModule } from "../llmcall/llmcall.module";
 
 @Module({
-  imports: [AuthModule, PrinterModule, StorageModule, OpenAIModule],
+  imports: [AuthModule, PrinterModule, StorageModule, LLMCallModule],
   controllers: [ResumeController],
   providers: [ResumeService],
   exports: [ResumeService],

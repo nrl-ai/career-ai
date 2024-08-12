@@ -1,14 +1,16 @@
 import { Injectable } from "@nestjs/common";
 import { OpenAI } from "openai";
-import { UserService } from "../user/user.service";
 
-@Injectable() 
-export class OpenAIService {
+@Injectable()
+export class LLMCallService {
     constructor(
-    ) {}
+    ) { }
 
-    async openai(content: any) {
+    async query(content: any) {
 
+        // Here we use OpenAI as the common interface.
+        // Other LLM Services will be integrated with LiteLLM's unified interface.
+        // https://www.litellm.ai/
         const openai = new OpenAI({
             baseURL: process.env["LLM_BASE_URL"],
             apiKey: process.env["LLM_API_KEY"],
