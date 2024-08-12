@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Copyright } from "@/client/components/copyright";
 import { LocaleSwitch } from "@/client/components/locale-switch";
 import { Logo } from "@/client/components/logo";
-// import { ThemeSwitch } from "@/client/components/theme-switch";
 
 export const Footer = () => (
   <footer className="bg-background">

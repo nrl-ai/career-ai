@@ -83,14 +83,13 @@ export class UserController {
   @Patch("update-llm-limit")
   @UseGuards(TwoFactorGuard) 
   async updateLLMLitmit(@User("email") email: string, @Body() data: any) {
-    
+
     const formatDate = (date: any) => {
       const x = new Date(date)
-      console.log(x)
       const day = String(x.getDate()).padStart(2, "0");
       const month = String(x.getMonth() + 1).padStart(2, "0"); // Months are zero-based
       const year = x.getFullYear();
-  
+
       return `${year}/${month}/${day}`;
     };
 

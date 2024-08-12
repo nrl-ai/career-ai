@@ -5,7 +5,6 @@ import { Link, matchRoutes, Outlet, useLocation } from "react-router-dom";
 
 import { LocaleSwitch } from "@/client/components/locale-switch";
 import { Icon } from "@/client/components/icon";
-// import { ThemeSwitch } from "@/client/components/theme-switch";
 import { useAuthProviders } from "@/client/services/auth/providers";
 
 import { SocialAuth } from "./_components/social-auth";
@@ -33,7 +32,6 @@ export const AuthLayout = () => {
 
           <div className="right-0 space-x-2 text-right lg:absolute lg:p-12 lg:text-center">
             <LocaleSwitch />
-            {/* <ThemeSwitch /> */}
           </div>
         </div>
 

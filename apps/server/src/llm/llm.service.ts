@@ -1,8 +1,6 @@
 import { t } from "@lingui/macro";
-import { OpenAI } from "openai";
-// import { useOpenAiStore } from "@/client/stores/openai";
 import { Injectable } from "@nestjs/common";
-import { OpenAIService } from "../openai/openai.service";
+import { LLMCallService } from "../llmcall/llmcall.service";
 
 const FIX_GRAMMAR_PROMPT = `You are an AI writing assistant specialized in writing copy for resumes.
 Do not return anything else except the text you improved. It should not begin with a newline. It should not have any prefix or suffix text.
@@ -37,7 +35,7 @@ type Mood = "casual" | "professional" | "confident" | "friendly";
 @Injectable()
 export class LLMService {
     constructor(
-        private readonly openai: OpenAIService,
+        private readonly openai: LLMCallService,
     ) {}
 
     // region Improve writing
@@ -53,7 +51,7 @@ export class LLMService {
             n: 1,
         }
 
-        const result = await this.openai.openai(content)
+        const result = await this.openai.query(content)
 
         if (result.choices.length === 0) {
             throw new Error(t`OpenAI did not return any choices for your text.`);
@@ -76,7 +74,7 @@ export class LLMService {
             n: 1,
         }
 
-        const result = await this.openai.openai(content)
+        const result = await this.openai.query(content)
 
         if (result.choices.length === 0) {
             throw new Error(t`OpenAI did not return any choices for your text.`);
@@ -87,7 +85,7 @@ export class LLMService {
 
     // endregion
 
-    // region Change tone 
+    // region Change tone
     async changeTone(text: string, mood: Mood) {
         const prompt = CHANGE_TONE_PROMPT.replace("{mood}", mood).replace("{input}", text);
 
@@ -100,7 +98,7 @@ export class LLMService {
             n: 1,
         }
 
-        const result = await this.openai.openai(content)
+        const result = await this.openai.query(content)
 
         if (result.choices.length === 0) {
             throw new Error(t`OpenAI did not return any choices for your text.`);

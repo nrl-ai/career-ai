@@ -2,7 +2,6 @@ import * as React from "react";
 import { type UseChatHelpers } from "ai/react";
 
 import { PromptForm } from "./prompt-form";
-// import { ButtonScrollToBottom } from "@/components/button-scroll-to-bottom";
 
 export interface ChatPanelProps
   extends Pick<
@@ -27,7 +26,6 @@ export default function ChatPanel({
 }: ChatPanelProps) {
   return (
     <div className="w-full dark:from-background/10 dark:from-10% dark:to-background/80">
-      {/* <ButtonScrollToBottom /> */}
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div className={"mb-2 " + (messages.length > 0 ? "" : " hidden")}>
           <PromptForm

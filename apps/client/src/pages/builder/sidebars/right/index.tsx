@@ -3,7 +3,6 @@ import { ScrollArea, Separator } from "@career-ai/ui";
 import { useRef } from "react";
 
 import { Copyright } from "@/client/components/copyright";
-// import { ThemeSwitch } from "@/client/components/theme-switch";
 
 import { ExportSection } from "./sections/export";
 import { LayoutSection } from "./sections/layout";
@@ -126,7 +125,6 @@ export const RightSidebar = () => {
           />
         </div>
 
-        {/* <ThemeSwitch size={20} /> */}
       </div>
     </div>
   );
