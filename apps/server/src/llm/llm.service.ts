@@ -34,77 +34,92 @@ type Mood = "casual" | "professional" | "confident" | "friendly";
 
 @Injectable()
 export class LLMService {
-    constructor(
-        private readonly openai: LLMCallService,
-    ) {}
+  constructor(private readonly openai: LLMCallService) {}
 
-    // region Improve writing
-    async improveWriting(text: string) {
+  // region Improve writing
+  async improveWriting(text: string, userId: string) {
+    const model = await this.openai.getModelForUser(userId);
+    const prompt = IMPROVE_WRITING_PROMPT.replace("{input}", text);
+    const content = {
+      messages: [{ role: "user", content: prompt }],
+      model,
+      max_tokens: 1024,
+      stop: ['"""'],
+      n: 1,
+    };
 
-        const prompt = IMPROVE_WRITING_PROMPT.replace("{input}", text);
-        const content = {
-            messages: [{ role: "user", content: prompt }],
-            model: "gemini-pro",
-            max_tokens: 1024,
-            temperature: 0,
-            stop: ['"""'],
-            n: 1,
-        }
+    try {
+      const result = await this.openai.query(content, userId);
 
-        const result = await this.openai.query(content)
+      if (result.choices.length === 0) {
+        throw new Error(t`OpenAI did not return any choices for your text.`);
+      }
 
-        if (result.choices.length === 0) {
-            throw new Error(t`OpenAI did not return any choices for your text.`);
-        }
-
-        return result.choices[0].message.content ?? text;
+      return result.choices[0].message.content ?? text;
+    } catch (error) {
+      // LLMCallService already converts OpenAI errors to appropriate HTTP exceptions
+      // Just re-throw to let the controller handle it
+      throw error;
     }
-    // endregion
+  }
+  // endregion
 
-    // region Fix grammar
-    async fixGrammar(text: string) {
-        const prompt = FIX_GRAMMAR_PROMPT.replace("{input}", text);
+  // region Fix grammar
+  async fixGrammar(text: string, userId: string) {
+    const model = await this.openai.getModelForUser(userId);
+    const prompt = FIX_GRAMMAR_PROMPT.replace("{input}", text);
 
-        const content = {
-            messages: [{ role: "user", content: prompt }],
-            model: "gemini-pro",
-            max_tokens: 1024,
-            temperature: 0,
-            stop: ['"""'],
-            n: 1,
-        }
+    const content = {
+      messages: [{ role: "user", content: prompt }],
+      model,
+      max_tokens: 1024,
+      stop: ['"""'],
+      n: 1,
+    };
 
-        const result = await this.openai.query(content)
+    try {
+      const result = await this.openai.query(content, userId);
 
-        if (result.choices.length === 0) {
-            throw new Error(t`OpenAI did not return any choices for your text.`);
-        }
+      if (result.choices.length === 0) {
+        throw new Error(t`OpenAI did not return any choices for your text.`);
+      }
 
-        return result.choices[0].message.content ?? text;
+      return result.choices[0].message.content ?? text;
+    } catch (error) {
+      // LLMCallService already converts OpenAI errors to appropriate HTTP exceptions
+      // Just re-throw to let the controller handle it
+      throw error;
     }
+  }
 
-    // endregion
+  // endregion
 
-    // region Change tone
-    async changeTone(text: string, mood: Mood) {
-        const prompt = CHANGE_TONE_PROMPT.replace("{mood}", mood).replace("{input}", text);
+  // region Change tone
+  async changeTone(text: string, mood: Mood, userId: string) {
+    const model = await this.openai.getModelForUser(userId);
+    const prompt = CHANGE_TONE_PROMPT.replace("{mood}", mood).replace("{input}", text);
 
-        const content = {
-            messages: [{ role: "user", content: prompt }],
-            model: "gemini-pro",
-            max_tokens: 1024,
-            temperature: 0,
-            stop: ['"""'],
-            n: 1,
-        }
+    const content = {
+      messages: [{ role: "user", content: prompt }],
+      model,
+      max_tokens: 1024,
+      stop: ['"""'],
+      n: 1,
+    };
 
-        const result = await this.openai.query(content)
+    try {
+      const result = await this.openai.query(content, userId);
 
-        if (result.choices.length === 0) {
-            throw new Error(t`OpenAI did not return any choices for your text.`);
-        }
+      if (result.choices.length === 0) {
+        throw new Error(t`OpenAI did not return any choices for your text.`);
+      }
 
-        return result.choices[0].message.content ?? text;
+      return result.choices[0].message.content ?? text;
+    } catch (error) {
+      // LLMCallService already converts OpenAI errors to appropriate HTTP exceptions
+      // Just re-throw to let the controller handle it
+      throw error;
     }
-    // endregion
+  }
+  // endregion
 }

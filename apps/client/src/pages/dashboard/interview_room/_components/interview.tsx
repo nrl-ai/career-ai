@@ -18,10 +18,9 @@ import { Excalidraw } from "@excalidraw/excalidraw";
 import { Button, ScrollArea } from "@career-ai/ui";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsPersonVideo, BsRecord2 } from "react-icons/bs";
-import { useUpdateUser, useUser } from "@/client/services/user";
+import { useUser } from "@/client/services/user";
 import { useToast } from "@/client/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import { Dialog } from "primereact/dialog";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
@@ -40,19 +39,8 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
   const [mode, setMode] = useState<"chat" | "whiteboard">("chat");
   const [selectedCV, setSelectedCV] = useState<string | null>(null);
   const interviewer = state?.interviewer || "andrew";
-  const { updateUser, loading } = useUpdateUser();
   const { user } = useUser();
-
-  let forced: boolean;
-  if (user && user.numRequestsToday > 0) {
-    forced = false;
-  } else {
-    forced = true;
-  }
-
-  console.log(forced)
-
-  const [forceFinish, setForceFinish] = useState(forced);
+  const [forceFinish, setForceFinish] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -76,7 +64,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
     append({
       role: "user",
       content: "I am applying for position: " + state.position,
-    })
+    });
   }, [state]);
 
   const { messages, append, reload, stop, isLoading, input, setInput } = useChat({
@@ -96,11 +84,10 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
       }
     },
     async onFinish(message) {
-
       const content = message?.content || "";
-      
+
       if (content == "-1") {
-        setForceFinish(true)
+        setForceFinish(true);
       } else {
         // Check if the interview is finished
         if (content.includes("MOCK INTERVIEW ENDED")) {
@@ -110,12 +97,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
           handleSpeak(content);
         }
 
-        // Update number of requests
-        if (user) {
-          await updateUser({
-            numRequestsToday: user.numRequestsToday - 1
-          })
-        }
+        // Request completed successfully
       }
     },
   });
@@ -156,16 +138,13 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
 
   return (
     <div className="w-full max-w-[1600px] pt-4">
-      <Dialog header="Request Limit Exceeded" visible={forceFinish} style={{ width: '50vw' }} onHide={() => {if (!forceFinish) return; setForceFinish(false); }} blockScroll draggable={false}
-        pt={{
-          closeButton: {onClick: () => {navigate('/dashboard/interview')}}
-        }}>
-        <p className="m-0">
-          You have reached the maximum number of requests allowed for today. Please try again tomorrow.
-        </p>
-      </Dialog>
       {!messages.length ? (
-        <SetupScreen append={append} lng={lng} selectedCV={selectedCV} setSelectedCV={setSelectedCV} />
+        <SetupScreen
+          append={append}
+          lng={lng}
+          selectedCV={selectedCV}
+          setSelectedCV={setSelectedCV}
+        />
       ) : (
         <>
           <div className="flex items-center justify-between mt-4 mb-4">
@@ -204,7 +183,7 @@ export function InterviewUI({ initialMessages, className, lng, state }: ChatProp
                       {mode == "chat" ? "Whiteboard" : "Video"}
                     </Button>
                     <div className="absolute bottom-0 left-0 right-0 top-0 rounded-2xl z-40">
-{/* To prevent interaction with avatar */}
+                      {/* To prevent interaction with avatar */}
                     </div>
                     <div
                       className={cn(

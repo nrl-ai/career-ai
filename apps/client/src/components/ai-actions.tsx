@@ -24,7 +24,7 @@ import { useFixGrammar } from "../services/llm/fix-grammar";
 import { useImproveWriting } from "../services/llm/improve-writing";
 import { useOpenAiStore } from "../stores/openai";
 import { useUser } from "../services/user";
-import { useUpdateUser } from "../services/user";
+import { useAISettingsStatus } from "../services/ai-settings";
 
 type Action = "improve" | "fix" | "tone";
 type Mood = "casual" | "professional" | "confident" | "friendly";
@@ -32,7 +32,7 @@ type Mood = "casual" | "professional" | "confident" | "friendly";
 type changeToneArgs = {
   text: string;
   mood: Mood;
-}
+};
 
 type Props = {
   value: string;
@@ -43,12 +43,24 @@ type Props = {
 export const AiActions = ({ value, onChange, className }: Props) => {
   const [loading, setLoading] = useState<Action | false>(false);
   const aiEnabled = useOpenAiStore((state) => !!state.apiKey);
-  const { improveWriting, result: improveResult, loading: improveLoading, error: improveError } = useImproveWriting()
-  const { fixGrammar, result: fixResult, loading: fixLoading, error: fixError } = useFixGrammar()
-  const { changeTone, result: changeResult, loading: changeLoading, error: changeError } = useChangeTone()
+  const { isConfigured } = useAISettingsStatus();
+  const { improveWriting } = useImproveWriting();
+  const { fixGrammar } = useFixGrammar();
+  const { changeTone } = useChangeTone();
   const { user } = useUser();
-  const { updateUser, loading: updateUserLoading } = useUpdateUser()
-  // if (!aiEnabled) return null;
+
+  // Show warning if AI is not configured
+  if (!isConfigured) {
+    return (
+      <div className={cn("rounded-lg border border-orange-200 bg-orange-50 p-3", className)}>
+        <p className="text-sm text-orange-800">
+          <strong>{t`AI Configuration Required`}</strong>
+          <br />
+          {t`Configure your API keys in Settings to use AI writing assistance.`}
+        </p>
+      </div>
+    );
+  }
 
   const onClick = async (action: Action, mood?: Mood) => {
     try {
@@ -57,60 +69,21 @@ export const AiActions = ({ value, onChange, className }: Props) => {
       let result = value;
 
       if (action === "improve") {
-       const response = await improveWriting(value);
-        if (response != -1 && user != undefined) {
-          await updateUser({
-            numRequestsToday: user.numRequestsToday - 1
-          })
-
-          result = response
-        } else {
-          toast({
-            variant: "error",
-            title: t`Request Limit Exceeded`,
-            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-          });
-        }
+        const response = await improveWriting(value);
+        result = response;
       }
       if (action === "fix") {
         const response = await fixGrammar(value);
-
-        if (response != -1 && user != undefined) {
-          await updateUser({
-            numRequestsToday: user.numRequestsToday - 1
-          })
-
-          result = response
-        } else {
-          toast({
-            variant: "error",
-            title: t`Request Limit Exceeded`,
-            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-          });
-        }
+        result = response;
       }
       if (action === "tone" && mood) {
         const changeToneInput: changeToneArgs = {
           text: value,
-          mood: mood
-        }
-        
+          mood: mood,
+        };
+
         const response = await changeTone(changeToneInput);
-
-        if (response != -1 && user != undefined) {
-
-          await updateUser({
-            numRequestsToday: user.numRequestsToday - 1
-          })
-
-          result = response
-        } else {
-          toast({
-            variant: "error",
-            title: t`Request Limit Exceeded`,
-            description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
-          });
-        }
+        result = response;
       }
       onChange(result);
     } catch (error) {

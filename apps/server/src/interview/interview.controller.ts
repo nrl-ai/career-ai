@@ -57,29 +57,30 @@ export class InterviewsController {
 
   @Post("/createJd")
   @UseGuards(TwoFactorGuard)
-  ai_createJd(@User("numRequestsToday") numRequestsToday: number, @Body("position") position: string, @Body("language") language: string) {
-
-    if (numRequestsToday <= 0) {
-      return -1;
-    }
-
-    return this.interviewsService.createJd(position, language);
+  ai_createJd(
+    @User() user: UserEntity,
+    @Body("position") position: string,
+    @Body("language") language: string,
+  ) {
+    return this.interviewsService.createJd(position, language, user.id);
   }
 
   @Post("/create-interview-answer")
   @UseGuards(TwoFactorGuard)
-  ai_createInterviewAnswer(@User("numRequestsToday") numRequestsToday: number, @User() user: UserEntity, @Body() data: any) {
+  ai_createInterviewAnswer(@User() user: UserEntity, @Body() data: any) {
     const interviewId = data.interviewId;
     const cvId = data.cvId;
     const messages = data.messages;
     const forceFinish = data.forceFinish;
     const interviewer = data.interviewer;
 
-    if (numRequestsToday <= 0) {
-      return -1;
-    }
-
-    return this.interviewsService.generateInterviewAnswer(user, interviewId, messages, forceFinish, cvId, interviewer);
+    return this.interviewsService.generateInterviewAnswer(
+      user,
+      interviewId,
+      messages,
+      forceFinish,
+      cvId,
+      interviewer,
+    );
   }
-
 }

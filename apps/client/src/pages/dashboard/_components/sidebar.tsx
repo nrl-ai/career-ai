@@ -24,25 +24,24 @@ import { PiGraduationCap } from "react-icons/pi";
 import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
 import { UserOptions } from "@/client/components/user-options";
-import { useUpdateUser, useUser } from "@/client/services/user";
+import { useUser } from "@/client/services/user";
 import { useToast } from "@/client/hooks/use-toast";
 import { Link, useLocation } from "react-router-dom";
-import { Card } from "primereact/card";
-import { useEffect, useState } from "react";
-import { useUpdateLLMLimit } from "@/client/services/user";
+import { useAISettingsStatus } from "@/client/services/ai-settings";
 
 type SidebarItem = {
   path: string;
   name: string;
   icon: React.ReactNode;
   isCollapsed?: boolean;
+  highlight?: boolean;
 };
 
 type SidebarItemProps = SidebarItem & {
   onClick?: () => void;
 };
 
-const SidebarItem = ({ path, name, icon, onClick, isCollapsed }: SidebarItemProps) => {
+const SidebarItem = ({ path, name, icon, onClick, isCollapsed, highlight }: SidebarItemProps) => {
   const isActive = useLocation().pathname === path;
 
   return (
@@ -55,6 +54,7 @@ const SidebarItem = ({ path, name, icon, onClick, isCollapsed }: SidebarItemProp
         isActive && "pointer-events-none bg-blue-100 text-secondary-foreground",
         !isCollapsed && "px-3",
         isCollapsed && "px-1",
+        highlight && !isActive && "bg-orange-50 border border-orange-200 hover:bg-orange-100",
       )}
       onClick={onClick}
     >
@@ -64,12 +64,26 @@ const SidebarItem = ({ path, name, icon, onClick, isCollapsed }: SidebarItemProp
             "text-xl",
             isActive && "text-blue-500",
             isCollapsed ? "block mx-auto" : "mr-3",
+            highlight && !isActive && "text-orange-500",
           )}
         >
           {icon}
         </div>
         {!isCollapsed && (
-          <span className={cn("font-normal", isActive && "font-bold text-blue-500")}>{name}</span>
+          <span
+            className={cn(
+              "font-normal",
+              isActive && "font-bold text-blue-500",
+              highlight && !isActive && "font-medium text-orange-600",
+            )}
+          >
+            {name}
+          </span>
+        )}
+        {!isCollapsed && highlight && !isActive && (
+          <div className="ml-auto">
+            <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+          </div>
         )}
       </Link>
     </Button>
@@ -88,23 +102,7 @@ const iconStyle = { color: "#6B94F9" };
 export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: SidebarProps) => {
   const { toast } = useToast();
   const { user } = useUser();
-  const [ requests, setRequests ] = useState(0);
-  const { updateLLMLimit, loading, error } = useUpdateLLMLimit();
-  
-  // TODO: refresh requests for the next day
-  const today = new Date()
-  const lastActiveDay = new Date(user?.lastActiveDay as string)
-
-  useEffect(() => {
-    updateLLMLimit()
-  }, [])
-  // end here
-
-  if (user != null) {
-    useEffect(() => {
-      setRequests(user.numRequestsToday)
-    }, [user])
-  }
+  const { isConfigured: isAIConfigured } = useAISettingsStatus();
 
   const topItems: SidebarItem[] = [
     {
@@ -125,15 +123,16 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
       name: t`Check & Optimize Resume`,
       icon: <IoCheckmarkDoneCircleOutline style={iconStyle} />,
     },
-    // {
-    //   path: "/dashboard/interview-room",
-    //   name: t`Mock Interview - Simple`,
-    //   icon: <IoPersonOutline style={iconStyle} />,
-    // },
     {
       path: "/dashboard/interview",
       name: t`Mock Interview`,
       icon: <IoTodayOutline style={iconStyle} />,
+    },
+    {
+      path: "/dashboard/settings",
+      name: t`Settings`,
+      icon: <IoSettingsOutline style={iconStyle} />,
+      highlight: !isAIConfigured,
     },
   ];
 
@@ -258,73 +257,14 @@ export const Sidebar = ({ isOpen, setOpen, isCollapsed, setIsCollapsed }: Sideba
             onClick={() => setOpen?.(false)}
           />
         ))}
-
-        {/* <Separator className="opacity-100" /> */}
-
-        {/* <h2
-          className={cn(
-            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            isCollapsed && "text-center",
-          )}
-        >
-          {isCollapsed ? "Library" : "News & Community"}
-        </h2>
-        {libraryItems.map((item) => (
-          <SidebarItem
-            isCollapsed={isCollapsed}
-            {...item}
-            key={item.path}
-            onClick={() => setOpen?.(false)}
-          />
-        ))} */}
-
-        {/* <Separator className="opacity-100" /> */}
-
-        {/* <h2
-          className={cn(
-            "mb-2 mt-4 text-xs font-normal uppercase text-gray-400",
-            isCollapsed && "text-center",
-          )}
-        >
-          {isCollapsed ? "Tools" : "Calculators"}
-        </h2>
-        {toolItems.map((item) => (
-          <SidebarItem
-            isCollapsed={isCollapsed}
-            {...item}
-            key={item.path}
-            onClick={() => {
-              toast({
-                variant: "warning",
-                title: t`This feature is under development.`,
-                description: t`We are developing this feature. Please come back soon!`,
-              });
-            }}
-          />
-        ))} */}
-
       </div>
-
-      {/** Count LLM api requests remaining */}
-      {
-      !isCollapsed ?
-        (<div id="count-llm-requests">
-          <Card>
-            <p className="">LLM requests remaining: <span>{requests}</span></p>
-          </Card>
-        </div>) :
-        (<div></div>)
-      }
-
-      
-      {/** End here */}
 
       <div className="flex flex-col mt-auto">
         <div className="flex flex-col justify-start mt-16">
           <div className="space-x-2 text-left text-blue-500">
-            {isCollapsed ? "With" : "Powered By"}
+            {isCollapsed ? "By" : "Developed by"}
           </div>
-          <img src="/gemini.svg" alt="Gemini" className="text-left w-28" />
+          <div className="text-left text-gray-600 font-medium">Neural Research Lab</div>
         </div>
       </div>
     </div>

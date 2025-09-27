@@ -30,11 +30,11 @@ export default defineConfig({
     rollupOptions: {
       external: [/^react.*/, "react-hook-form", "use-breakpoint", "usehooks-ts"],
       onwarn(warning, defaultHandler) {
-        if (warning.code === 'SOURCEMAP_ERROR') {
-          return
+        if (warning.code === "SOURCEMAP_ERROR") {
+          return;
         }
 
-        defaultHandler(warning)
+        defaultHandler(warning);
       },
     },
   },

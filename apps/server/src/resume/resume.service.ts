@@ -217,7 +217,7 @@ export class ResumeService {
     return this.printerService.printPreview(resume);
   }
 
-  async analyze(resume: ResumeDto, analyzeResumeDto: any) {
+  async analyze(resume: ResumeDto, analyzeResumeDto: any, userId: string) {
     let language = analyzeResumeDto?.language || "en";
     if (!["vi", "en"].includes(language)) {
       language = "en";
@@ -225,14 +225,24 @@ export class ResumeService {
     const cv = JSON.stringify(resume.data);
     const jd = analyzeResumeDto?.jd || "";
 
-    const text = "Chúng tôi gặp lỗi khi phân tích CV của bạn. Vui lòng thử lại.";
-    const prompt = PROMPT[language as keyof CVReviewPrompt].replace("{cv}", cv).replace("{jd}", jd);
-    const content = {
-      messages: [{ role: "system", content: prompt }],
-      model: "gemini-pro",
-    }
-    const result = await this.openai.query(content);
+    const fallbackText = "We encountered an error analyzing your resume. Please try again.";
 
-    return result.choices[0].message.content ?? text;
+    try {
+      const prompt = PROMPT[language as keyof CVReviewPrompt]
+        .replace("{cv}", cv)
+        .replace("{jd}", jd);
+      const model = await this.openai.getModelForUser(userId);
+      const content = {
+        messages: [{ role: "system", content: prompt }],
+        model,
+      };
+      const result = await this.openai.query(content, userId);
+
+      return result.choices[0].message.content ?? fallbackText;
+    } catch (error) {
+      // LLMCallService already converts OpenAI errors to appropriate HTTP exceptions
+      // Just re-throw to let the controller handle it
+      throw error;
+    }
   }
 }

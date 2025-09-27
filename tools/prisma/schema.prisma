@@ -48,6 +48,7 @@ model User {
   jobApplications  Json @default("[]")
   lastActiveDay    DateTime @default(now())
   numRequestsToday Int      @default(200)
+  aiSettings       AISettings?
 }
 
 model Secrets {
@@ -104,7 +105,7 @@ model Interviews {
   language  Language @default(EN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  model     String   @default("gemini-pro-0125")
+  model     String   @default("gpt-5")
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   cv        Json     @default("{}")
@@ -117,4 +118,19 @@ model Interviews {
 
   @@unique([userId, id])
   @@index(fields: [userId])
+}
+
+model AISettings {
+  id                String   @id @default(cuid())
+  llmApiKey         String?
+  llmBaseUrl        String   @default("https://api.openai.com/v1")
+  llmModel          String   @default("gpt-5")
+  llmProvider       String   @default("openai")
+  elevenLabsApiKey  String?
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([userId, id])
 }

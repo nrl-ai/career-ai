@@ -4,6 +4,7 @@ import { useState } from "react";
 import WaveIcon from "./wave-icon";
 import { blobToBase64 } from "./blob-to-base64";
 import { startRecording, stopRecording, convertToWav } from "./libs-microphone";
+import { axios } from "@/client/libs/axios";
 
 const Microphone = ({
   onNewText,
@@ -16,24 +17,20 @@ const Microphone = ({
 }) => {
   const onNewRecordedBase64 = async (base64data: string | null) => {
     try {
-      const response = await fetch(`/api/voice/speech-to-text`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: `Bearer ${getLocalToken()}`,
-        },
-        body: JSON.stringify({
-          audio: base64data,
-        }),
-      }).then((res) => res.json());
-      const { text } = response;
+      // Use the smart speech-to-text endpoint that automatically chooses Whisper or fallback
+      const response = await axios.post("/voice/speech-to-text", {
+        audio: base64data,
+      });
+
+      const { text } = response.data;
       if (!text) {
         onNewText("...");
         return;
       }
       onNewText(text);
     } catch (error) {
-      // console.log(error);
+      console.error("Speech recognition failed:", error);
+      onNewText("Speech recognition failed");
     }
   };
 

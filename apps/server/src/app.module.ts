@@ -3,7 +3,7 @@ import path from "node:path";
 import { HttpException, Module } from "@nestjs/common";
 import { APP_INTERCEPTOR, APP_PIPE } from "@nestjs/core";
 import { ServeStaticModule } from "@nestjs/serve-static";
-import { RavenInterceptor, RavenModule } from "nest-raven";
+// import { RavenInterceptor, RavenModule } from "nest-raven";
 import { ZodValidationPipe } from "nestjs-zod";
 
 import { AuthModule } from "./auth/auth.module";
@@ -23,6 +23,7 @@ import { JobApplicationsModule } from "./job_applications/job_applications.modul
 import { VoiceModule } from "./voice/voice.module";
 import { LLMModule } from "./llm/llm.module";
 import { LLMCallModule } from "./llmcall/llmcall.module";
+import { AISettingsModule } from "./ai-settings/ai-settings.module";
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import { LLMCallModule } from "./llmcall/llmcall.module";
     ConfigModule,
     DatabaseModule,
     MailModule,
-    RavenModule,
+    // RavenModule, // Temporarily disabled due to compatibility issues
     HealthModule,
 
     // Feature Modules
@@ -46,6 +47,7 @@ import { LLMCallModule } from "./llmcall/llmcall.module";
     InterviewsModule,
     LLMModule,
     LLMCallModule,
+    AISettingsModule,
 
     // Static Assets
     ServeStaticModule.forRoot({
@@ -65,18 +67,19 @@ import { LLMCallModule } from "./llmcall/llmcall.module";
       provide: APP_PIPE,
       useClass: ZodValidationPipe,
     },
-    {
-      provide: APP_INTERCEPTOR,
-      useValue: new RavenInterceptor({
-        filters: [
-          // Filter all HttpException with status code <= 500
-          {
-            type: HttpException,
-            filter: (exception: HttpException) => exception.getStatus() < 500,
-          },
-        ],
-      }),
-    },
+    // Temporarily disabled Sentry/Raven interceptor due to compatibility issues
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useValue: new RavenInterceptor({
+    //     filters: [
+    //       // Filter all HttpException with status code <= 500
+    //       {
+    //         type: HttpException,
+    //         filter: (exception: HttpException) => exception.getStatus() < 500,
+    //       },
+    //     ],
+    //   }),
+    // },
   ],
 })
 export class AppModule {}

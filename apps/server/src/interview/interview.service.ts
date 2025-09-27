@@ -24,13 +24,12 @@ The job description should be concise and not exceed 100 words.
 `,
 };
 
-
 @Injectable()
 export class InterviewsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly resumeService: ResumeService,
-    private readonly openai: LLMCallService, 
+    private readonly openai: LLMCallService,
   ) {}
 
   async fetchAll(userId: string) {
@@ -56,24 +55,41 @@ export class InterviewsService {
     });
   }
 
-  async createJd(position: string, language: string) {
+  async createJd(position: string, language: string, userId: string) {
     if (!["vn", "en"].includes(language.toLowerCase())) {
       language = "en";
     }
-    const text = "Chúng tôi gặp lỗi tạo JD. Vui lòng thử lại.";
-    const prompt = CREATEJDPROMPT[language.toLowerCase() as keyof CreateJDPrompt].replace("{position}", position);
-    const content = {
-      model: "gemini-pro",
-      messages: [{ role: "system", content: prompt }],
-      temperature: 0.7,
-      stream: false,
-    }
-    const result = await this.openai.query(content)
+    const fallbackText = "We encountered an error creating the job description. Please try again.";
 
-    return result.choices[0].message.content ?? text;
+    try {
+      const prompt = CREATEJDPROMPT[language.toLowerCase() as keyof CreateJDPrompt].replace(
+        "{position}",
+        position,
+      );
+      const model = await this.openai.getModelForUser(userId);
+      const content = {
+        model,
+        messages: [{ role: "system", content: prompt }],
+        stream: false,
+      };
+      const result = await this.openai.query(content, userId);
+
+      return result.choices[0].message.content ?? fallbackText;
+    } catch (error) {
+      // LLMCallService already converts OpenAI errors to appropriate HTTP exceptions
+      // Just re-throw to let the controller handle it
+      throw error;
+    }
   }
 
-  async generateInterviewAnswer(user: any, interviewId: string, messages: any, forceFinish = false, cvId: string = "", interviewer="andrew") {
+  async generateInterviewAnswer(
+    user: any,
+    interviewId: string,
+    messages: any,
+    forceFinish = false,
+    cvId: string = "",
+    interviewer = "andrew",
+  ) {
     let resumeDetails = "";
     if (cvId) {
       const resume = await this.resumeService.findOne(cvId, user.id);
@@ -92,7 +108,7 @@ export class InterviewsService {
     let step = Math.floor(messages.length / 2);
     if (forceFinish === undefined) {
       forceFinish = false;
-    } 
+    }
     if (messages === undefined) {
       messages = [];
     }
@@ -100,7 +116,7 @@ export class InterviewsService {
     if (step >= NUM_STEPS || forceFinish) {
       const prompt = {
         content:
-        `"Act like an interviewer. ${intro}. Evaluate following dialogues and give feedback to the candidate with a score from 0 to 10 and give a reason for the score. Give warnings if users use other languages than English. Format of the feedback should be: \n\n**MOCK INTERVIEW ENDED.**\n\n- **Score:** <the score here>/10.0. \n\n- **Comments:** <comments about the candidate experience>.\nYou can give some advice to the candidate.` +
+          `"Act like an interviewer. ${intro}. Evaluate following dialogues and give feedback to the candidate with a score from 0 to 10 and give a reason for the score. Give warnings if users use other languages than English. Format of the feedback should be: \n\n**MOCK INTERVIEW ENDED.**\n\n- **Score:** <the score here>/10.0. \n\n- **Comments:** <comments about the candidate experience>.\nYou can give some advice to the candidate.` +
           HACK_SHIELD_PROMPT,
         role: "system",
       };
@@ -117,16 +133,16 @@ export class InterviewsService {
       messagesWithPrompt.push({
         content: reFormatedMessage,
         role: "user",
-      } as OpenAI.Chat.Completions.ChatCompletionMessageParam); 
+      } as OpenAI.Chat.Completions.ChatCompletionMessageParam);
 
+      const model = await this.openai.getModelForUser(user.id);
       const content = {
-        model: "gemini-pro",
+        model,
         messages: messagesWithPrompt,
-        temperature: 0.7,
         stream: false,
-      }
+      };
 
-      const res = await this.openai.query(content)
+      const res = await this.openai.query(content, user.id);
       const finalResponse = res.choices[0].message.content;
 
       await this.prisma.interviews.update({
@@ -155,24 +171,26 @@ export class InterviewsService {
         The candidate's Resume:
         ${resumeDetails}
 
-        `
-         +
-        HACK_SHIELD_PROMPT,
+        ` + HACK_SHIELD_PROMPT,
       role: "system",
     };
     let messagesWithPrompt = [prompt, ...messages];
 
+    const model = await this.openai.getModelForUser(user.id);
     const content = {
-      model: "gemini-pro",
+      model,
       messages: messagesWithPrompt,
-      temperature: 0.7,
       stream: false,
+    };
+
+    try {
+      const res = await this.openai.query(content, user.id);
+      const finalResponse = res.choices[0].message.content;
+      return finalResponse;
+    } catch (error) {
+      // LLMCallService already converts OpenAI errors to appropriate HTTP exceptions
+      // Just re-throw to let the controller handle it
+      throw error;
     }
-
-    const res = await this.openai.query(content)
-
-    const finalResponse = res.choices[0].message.content;
-
-    return finalResponse;
   }
 }

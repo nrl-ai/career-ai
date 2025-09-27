@@ -32,12 +32,14 @@ CareerAI transforms your job search experience with powerful AI-driven tools:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/nrl-ai/career-ai.git
    cd career-ai
    ```
 
 2. **Install dependencies and build**
+
    ```bash
    npm install -g pnpm
    pnpm install
@@ -45,9 +47,11 @@ CareerAI transforms your job search experience with powerful AI-driven tools:
    ```
 
 3. **Configure environment**
+
    ```bash
    cp .env.example .env
-   # Edit .env with your configuration
+   # Edit .env with your database, OAuth, and infrastructure configuration
+   # Note: AI API keys are configured through the application Settings UI
    ```
 
 4. **Start the application**
@@ -67,45 +71,30 @@ Key environment variables to configure in your `.env` file:
 # Database
 DATABASE_URL="postgresql://user:password@localhost:5432/careerai"
 
-# OAuth
+# OAuth (Optional)
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 GITHUB_CLIENT_ID="your-github-client-id"
 GITHUB_CLIENT_SECRET="your-github-client-secret"
 
-# AI Services
-OPENAI_API_KEY="your-openai-key"
-GEMINI_API_KEY="your-gemini-key"
+# Authentication
+ACCESS_TOKEN_SECRET="your-access-token-secret"
+REFRESH_TOKEN_SECRET="your-refresh-token-secret"
 ```
 
-### AI Proxy Setup (Optional)
+### AI Services Configuration
 
-For Gemini AI integration, you can set up a proxy server:
+**Important:** AI API keys are now configured through the application Settings UI for enhanced security:
 
-1. **Create `litellm_config.yaml`**
-   ```yaml
-   model_list:
-     - model_name: gemini-pro
-       litellm_params:
-         model: gemini/gemini-pro
-         api_key: os.environ/GEMINI_API_KEY
-         api_base: os.environ/GEMINI_API_BASE
-   ```
+- **OpenAI API Key** - Used for LLM (ChatGPT) and Speech-to-Text services
+- **ElevenLabs API Key** - Used for Text-to-Speech functionality
 
-2. **Start the proxy server**
-   ```bash
-   docker run -d \
-     -v $(pwd)/litellm_config.yaml:/app/config.yaml \
-     -e LITELLM_MASTER_KEY=<your-litellm-key> \
-     -e GEMINI_API_KEY=<your-gemini-key> \
-     -p 4000:4000 \
-     ghcr.io/berriai/litellm:main-latest \
-     --config /app/config.yaml --detailed_debug
-   ```
+After deployment, navigate to **Settings > AI Configuration** to configure these services.
 
 ## 🏗️ Tech Stack
 
 ### Frontend
+
 - **React 18** - Modern UI library with hooks
 - **Vite** - Fast build tool and dev server
 - **TailwindCSS** - Utility-first CSS framework
@@ -114,6 +103,7 @@ For Gemini AI integration, you can set up a proxy server:
 - **React Router** - Client-side routing
 
 ### Backend
+
 - **NestJS** - Progressive Node.js framework
 - **Prisma** - Next-generation ORM
 - **PostgreSQL** - Robust relational database
@@ -121,12 +111,13 @@ For Gemini AI integration, you can set up a proxy server:
 - **Chrome (Browserless)** - Headless browser for PDF generation
 
 ### AI & Integrations
-- **Google Gemini** - Advanced AI language model
-- **OpenAI ChatGPT** - Conversational AI
-- **Azure APIs** - Cloud AI services
+
+- **OpenAI ChatGPT** - Conversational AI and Speech-to-Text
+- **ElevenLabs** - Text-to-Speech synthesis
 - **OAuth 2.0** - Secure authentication
 
 ### DevOps
+
 - **Docker & Docker Compose** - Containerization
 - **GitHub Actions** - CI/CD pipeline
 - **ESLint & Prettier** - Code quality tools
@@ -142,16 +133,19 @@ For Gemini AI integration, you can set up a proxy server:
 ### Common Issues
 
 **PDF Download Not Working**
+
 - Ensure the Chrome container has internet access
 - Try disabling UFW on the host machine: `sudo ufw disable`
 - Check Docker network configuration
 
 **Build Failures**
+
 - Clear node modules: `rm -rf node_modules && pnpm install`
 - Update dependencies: `pnpm update`
 - Check Node.js version compatibility
 
 **Database Connection Issues**
+
 - Verify PostgreSQL is running
 - Check DATABASE_URL in `.env`
 - Ensure database exists and migrations are applied
@@ -175,6 +169,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🌟 Support
 
 If you find CareerAI helpful, please:
+
 - ⭐ Star this repository
 - 🐛 Report bugs in [Issues](https://github.com/nrl-ai/career-ai/issues)
 - 💡 Suggest features in [Discussions](https://github.com/nrl-ai/career-ai/discussions)

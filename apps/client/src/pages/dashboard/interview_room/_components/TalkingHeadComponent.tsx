@@ -22,7 +22,7 @@ interface AvatarOptions {
   cameraY: number;
 }
 
-const TalkingHeadComponent = ({ actor="andrew", headRef = useRef<TalkingHead | null>(null) }) => {
+const TalkingHeadComponent = ({ actor = "andrew", headRef = useRef<TalkingHead | null>(null) }) => {
   const avatarRef = useRef<HTMLDivElement>(null);
   const [avatarLoaded, setAvatarLoaded] = useState(false);
 

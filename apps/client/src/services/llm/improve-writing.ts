@@ -3,9 +3,9 @@ import { useMutation } from "@tanstack/react-query";
 import { axios } from "@/client/libs/axios";
 
 export const improveWriting = async (text: string) => {
-  const response = await axios.post(`/llm/improve-writing`, {text});
+  const response = await axios.post(`/llm/improve-writing`, { text });
   return response.data;
-}
+};
 
 export const useImproveWriting = () => {
   const {
@@ -18,4 +18,4 @@ export const useImproveWriting = () => {
   });
 
   return { improveWriting: improveWritingFn, loading, error, result };
-}
+};

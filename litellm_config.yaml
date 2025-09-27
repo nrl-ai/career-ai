@@ -1,6 +1,0 @@
-model_list:
-  - model_name: gemini-pro
-    litellm_params:
-      model: gemini/gemini-pro
-      api_key: os.environ/GEMINI_API_KEY
-      api_base: os.environ/GEMINI_API_BASE

@@ -6,9 +6,11 @@ import { axios } from "@/client/libs/axios";
 import { queryClient } from "@/client/libs/query-client";
 
 export const deleteInterview = async (data: string) => {
-  const response = await axios.delete<InterviewDto, AxiosResponse<InterviewDto>, DeleteInterviewDto>(
-    `/interview/${data}`,
-  );
+  const response = await axios.delete<
+    InterviewDto,
+    AxiosResponse<InterviewDto>,
+    DeleteInterviewDto
+  >(`/interview/${data}`);
 
   return response.data;
 };

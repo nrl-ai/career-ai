@@ -70,13 +70,7 @@ services:
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-google_client_secret}
       GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-https://www.careerai.me/api/auth/google/callback}
 
-      # LLM API
-      LLM_API_KEY: ${LLM_API_KEY:-LLM_API_KEY}
-      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.example.com}
-
-      # Google STT
-      GOOGLE_APPLICATION_CREDENTIALS_JSON: ${GOOGLE_APPLICATION_CREDENTIALS_JSON:-{}}
-      GOOGLE_TTS_API_KEY: ${GOOGLE_TTS_API_KEY:-google_tts_key}
+      # Note: AI API keys (OpenAI for LLM/STT, ElevenLabs for TTS) are configured in app Settings
     labels:
       - traefik.enable=true
       - traefik.http.routers.app.rule=Host(`www.careerai.me`)

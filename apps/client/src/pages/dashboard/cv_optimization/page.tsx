@@ -22,8 +22,8 @@ export const CVOptimizationPage = () => {
   const resultRef = useRef<HTMLDivElement>(null);
   const [hasResult, setHasResult] = useState(false);
   const [position, setPosition] = useState<string>("");
-  const  { user } = useUser();
-  const {updateUser, loading: updateUserLoading} = useUpdateUser();
+  const { user } = useUser();
+  const { updateUser, loading: updateUserLoading } = useUpdateUser();
 
   const handleAnalyze = async () => {
     if (!selectedCV) {
@@ -42,20 +42,16 @@ export const CVOptimizationPage = () => {
     }
 
     // Analyze the resume
-    const result = await analyzeResume({ id: selectedCV, jd: jd as string });
-    if (result != -1 && user != undefined) {
-      await updateUser({
-        numRequestsToday: user.numRequestsToday - 1
-      })
-    } else {
+    try {
+      const result = await analyzeResume({ id: selectedCV, jd: jd as string });
+      setHasResult(true);
+    } catch (error) {
       toast({
         variant: "error",
-        title: t`Request Limit Exceeded`,
-        description: t`You have reached the maximum number of requests allowed for today. Please try again tomorrow.`,
+        title: t`Error analyzing resume`,
+        description: (error as Error).message,
       });
     }
-    
-    setHasResult(true);
 
     // Scroll to the result
     setTimeout(() => {
@@ -108,39 +104,39 @@ export const CVOptimizationPage = () => {
         </div>
 
         <div className="mt-4 bg-white px-4 py-4 rounded-2xl">
-            <span className="text-base font-medium">Position</span>
-            <InputText
-              type="text"
-              placeholder="E.g: Senior Software Engineer"
-              value={position}
-              onChange={(e) => setPosition(e.target.value)}
-              pt={{
-                root: {
-                  style: {
-                    background: "#F2F2F7",
-                    borderRadius: "10px",
-                  },
-                  className: `py-2 w-full border-none text-base font-medium items-center focus:outline focus:outline-1 focus:outline-[#007AFF] focus:shadow-none mt-2`,
+          <span className="text-base font-medium">Position</span>
+          <InputText
+            type="text"
+            placeholder="E.g: Senior Software Engineer"
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+            pt={{
+              root: {
+                style: {
+                  background: "#F2F2F7",
+                  borderRadius: "10px",
                 },
-              }}
-            />
-          </div>
+                className: `py-2 w-full border-none text-base font-medium items-center focus:outline focus:outline-1 focus:outline-[#007AFF] focus:shadow-none mt-2`,
+              },
+            }}
+          />
+        </div>
 
         <div className="space-y-4">
           <JDInput
-              id="jd-input-field"
-              position={position}
-              content={jd}
-              isActive={position.length > 0}
-              onChange={setJD}
-              language={"EN"}
-              className="bg-white text-blue-500"
-            />
+            id="jd-input-field"
+            position={position}
+            content={jd}
+            isActive={position.length > 0}
+            onChange={setJD}
+            language={"EN"}
+            className="bg-white text-blue-500"
+          />
           <Button onClick={handleAnalyze}>{t`Analyze Resume`}</Button>
         </div>
 
         {selectedCV && loading && (
-          <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8">
+          <Card className="space-y-4 border-orange-500 border-dashed border-[1px] p-4 bg-orange-100 mt-8 mb-8">
             <CardContent className="space-y-2">
               <CardTitle>{t`Analyzing CV`}</CardTitle>
               <div>{t`Please wait a moment. Your CV is being analyzed...`}</div>
@@ -149,7 +145,7 @@ export const CVOptimizationPage = () => {
         )}
 
         {selectedCV && error && (
-          <Card className="space-y-4 border-red-500 border-dashed border-[1px] p-4 bg-red-100 mt-8">
+          <Card className="space-y-4 border-red-500 border-dashed border-[1px] p-4 bg-red-100 mt-8 mb-8">
             <CardContent className="space-y-2">
               <div>{t`Error when analyzing CV:`}</div>
               <div>{error.message}</div>
@@ -160,7 +156,7 @@ export const CVOptimizationPage = () => {
         {hasResult && selectedCV && result && (
           <Card
             ref={resultRef}
-            className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result"
+            className="space-y-4 border-blue-500 border-dashed border-[1px] p-4 bg-blue-100 mt-4 cv-review-result mb-8"
           >
             <CardContent className="space-y-2 list-disc">
               <CardTitle>{t`ANALYSIS RESULT:`}</CardTitle>

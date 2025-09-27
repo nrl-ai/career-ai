@@ -10,7 +10,7 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
     "./node_modules/primereact/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
-    './node_modules/preline/dist/*.js',
+    "./node_modules/preline/dist/*.js",
   ],
   theme: {
     container: {
@@ -28,5 +28,5 @@ module.exports = {
       maven: ['"Maven Pro"', "sans-serif"],
     },
   },
-  plugins: [require("flowbite/plugin"), require('preline/plugin')],
+  plugins: [require("flowbite/plugin"), require("preline/plugin")],
 };

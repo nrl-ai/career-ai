@@ -12,7 +12,7 @@ export const interviewSchema = z.object({
   language: z.enum(["VN", "EN", "KR"]).default("EN"),
   createdAt: z.date().or(z.dateString()),
   updatedAt: z.date().or(z.dateString()),
-  model: z.string().default("gemini-pro-0125"),
+  model: z.string().default("gpt-5"),
   userId: idSchema,
   user: userSchema,
   cv: resumeDataSchema.default(defaultResumeData),
@@ -21,7 +21,7 @@ export const interviewSchema = z.object({
   responseRate: z.number().int().default(0),
   totalScore: z.number().int().default(0),
   feedback: z.string().default(""),
-  interviewer: z.string().default("andrew")
+  interviewer: z.string().default("andrew"),
 });
 
 export class InterviewDto extends createZodDto(interviewSchema) {}

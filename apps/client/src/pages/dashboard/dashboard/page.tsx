@@ -44,15 +44,19 @@ export const DashboardPage = () => {
           <GridView maxSize={2} />
         </main>
 
-      <a href="/dashboard/interview" className="flex items-center justify-between pt-4">
-      <motion.div
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <img src="/ai-interview-banner.png" alt="Interview with AI" className="w-full max-w-[1000px] rounded-2xl" />
-      </motion.div>
-      </a>
+        <a href="/dashboard/interview" className="flex items-center justify-between pt-4">
+          <motion.div
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <img
+              src="/ai-interview-banner.png"
+              alt="Interview with AI"
+              className="w-full max-w-[1000px] rounded-2xl"
+            />
+          </motion.div>
+        </a>
 
         <div className="flex items-center justify-between pt-4">
           <motion.h1

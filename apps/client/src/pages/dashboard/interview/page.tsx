@@ -9,10 +9,9 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
 import { useDeleteInterview } from "@/client/services/interview/delete";
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import cn from "classnames";
 import InterviewReview from "./_components/interview_review";
-
 
 const renderHeader = (globalFilterValue, onGlobalFilterChange, handleClick) => {
   return (
@@ -227,7 +226,7 @@ const renderEmptyMessage = (handleClick) => {
 
 export const InterviewPage = () => {
   const navigate = useNavigate();
-  const [globalFilterValue, setGlobalFilterValue] = useState('');
+  const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [showResult, setShowResult] = useState<boolean>(false);
   const [selectedRowData, setSelectedRowData] = useState<DataTableValue | null>(null);
   const [filters, setFilters] = useState({
@@ -243,12 +242,11 @@ export const InterviewPage = () => {
     const value = e.target.value;
     let _filters = { ...filters };
 
-    _filters['global'].value = value;
+    _filters["global"].value = value;
 
     setFilters(_filters);
     setGlobalFilterValue(value);
   };
-
 
   const dateBodyTemplate = (rowData) => {
     return (
@@ -263,8 +261,8 @@ export const InterviewPage = () => {
       <div className="pointer-events-none">
         <span className="text-[#191919] font-medium text-base">{rowData.position}</span>
       </div>
-    )
-  }
+    );
+  };
 
   const ColumnItems = [
     {
@@ -291,7 +289,9 @@ export const InterviewPage = () => {
       body: (rowData) => {
         return (
           <div className="pointer-events-none">
-            <span className="text-[#8E8E93] font-medium text-base">{rowData.interviewer == "andrew" ? "Andrew - CEO" : "Lily - HR Manager"}</span>
+            <span className="text-[#8E8E93] font-medium text-base">
+              {rowData.interviewer == "andrew" ? "Andrew - CEO" : "Lily - HR Manager"}
+            </span>
           </div>
         );
       },
@@ -302,13 +302,20 @@ export const InterviewPage = () => {
       width: "20%",
       body: (rowData) => {
         return (
-          <button className={cn("flex items-center justify-center w-[160px] h-full bg-gray-200 rounded-lg py-2", ((!rowData.content || Object.keys(rowData.content).length === 0) ? "cursor-not-allowed text-gray-400" : "text-gray-800"))}
+          <button
+            className={cn(
+              "flex items-center justify-center w-[160px] h-full bg-gray-200 rounded-lg py-2",
+              !rowData.content || Object.keys(rowData.content).length === 0
+                ? "cursor-not-allowed text-gray-400"
+                : "text-gray-800",
+            )}
             disabled={!rowData.content}
             onClick={() => {
               if (!rowData.content || Object.keys(rowData.content).length === 0) return;
               setSelectedRowData(rowData);
               setShowResult(true);
-            }}>
+            }}
+          >
             Review
           </button>
         );
@@ -354,21 +361,26 @@ export const InterviewPage = () => {
 
   return (
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
-      {showResult && <InterviewReview data={selectedRowData as any} isOpen={showResult} setIsOpen={setShowResult} />}
-      <ConfirmDialog pt={{
-        content: { style: { display: "flex", alignItems: "center" } },
-        acceptButton: {
-          root: { className: "bg-[#FF3B30] hover:bg-[#DE3D34] border-none" }
-        }
-      }} />
+      {showResult && (
+        <InterviewReview
+          data={selectedRowData as any}
+          isOpen={showResult}
+          setIsOpen={setShowResult}
+        />
+      )}
+      <ConfirmDialog
+        pt={{
+          content: { style: { display: "flex", alignItems: "center" } },
+          acceptButton: {
+            root: { className: "bg-[#FF3B30] hover:bg-[#DE3D34] border-none" },
+          },
+        }}
+      />
       <div className="flex justify-between items-center">
         <span className="text-2xl font-bold">AI Mock Interview</span>
       </div>
       <div className="flex flex-row gap-x-4 justify-start items-start pt-4">
-        <div
-          className="flex-grow h-auto max-w-[1200px]"
-          id="ai-interview-management"
-        >
+        <div className="flex-grow h-auto max-w-[1200px]" id="ai-interview-management">
           <div className="">
             <DataTable
               rows={8}
@@ -386,7 +398,7 @@ export const InterviewPage = () => {
               selection={selectedRowData}
               onSelectionChange={(e) => {
                 if (e.value != null) {
-                  setSelectedRowData(e.value)
+                  setSelectedRowData(e.value);
                 }
               }}
               paginator={interviews ? true : false}
@@ -423,8 +435,15 @@ export const InterviewPage = () => {
             </DataTable>
           </div>
         </div>
-        <div className="pt-4 flex-grow-0 w-[300px] h-auto bg-white rounded-2xl hidden md:flex" id="ai-interview-information">
-          <img src="/ai-interview-vertical-banner.png" alt="ai-interview-vertical-banner" className="w-[300px] h-auto flex" />
+        <div
+          className="pt-4 flex-grow-0 w-[300px] h-auto bg-white rounded-2xl hidden md:flex"
+          id="ai-interview-information"
+        >
+          <img
+            src="/ai-interview-vertical-banner.png"
+            alt="ai-interview-vertical-banner"
+            className="w-[300px] h-auto flex"
+          />
         </div>
       </div>
     </div>

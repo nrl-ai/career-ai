@@ -11,49 +11,97 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator,
 } from "@career-ai/ui";
 import { cn } from "@career-ai/utils";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useEffect } from "react";
 
-import { useOpenAiStore } from "@/client/stores/openai";
+import { useAISettings, useAISettingsStatus } from "@/client/services/ai-settings";
 
 const formSchema = z.object({
-  apiKey: z
-    .string()
-    // eslint-disable-next-line lingui/t-call-in-function
-    .regex(/^sk-.+$/, t`That doesn't look like a valid OpenAI API key.`)
-    .default(""),
+  llmApiKey: z.string().optional(),
+  llmBaseUrl: z.string().url().default("https://api.openai.com/v1"),
+  llmModel: z.string().default("gpt-5"),
+  llmProvider: z.enum(["openai", "azure", "anthropic", "custom"]).default("openai"),
+  elevenLabsApiKey: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-export const OpenAISettings = () => {
-  const { apiKey, setApiKey } = useOpenAiStore();
-  const isEnabled = !!apiKey;
+export const AISettings = () => {
+  const { settings, updateSettings, deleteSettings, loading } = useAISettings();
+  const { hasLlmApiKey, hasElevenLabsApiKey, isConfigured } = useAISettingsStatus();
+  const isEnabled = isConfigured;
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { apiKey: apiKey ?? "" },
+    defaultValues: {
+      llmApiKey: "",
+      llmBaseUrl: "https://api.openai.com/v1",
+      llmModel: "gpt-5",
+      llmProvider: "openai",
+      elevenLabsApiKey: "",
+    },
   });
 
-  const onSubmit = ({ apiKey }: FormValues) => {
-    setApiKey(apiKey);
+  useEffect(() => {
+    if (settings) {
+      form.reset({
+        llmApiKey: settings.llmApiKey || "",
+        llmBaseUrl: settings.llmBaseUrl,
+        llmModel: settings.llmModel,
+        llmProvider: settings.llmProvider as "openai" | "azure" | "anthropic" | "custom",
+        elevenLabsApiKey: settings.elevenLabsApiKey || "",
+      });
+    }
+  }, [settings, form]);
+
+  const onSubmit = async (data: FormValues) => {
+    await updateSettings(data);
+    form.reset(data);
   };
 
-  const onRemove = () => {
-    setApiKey(null);
-    form.reset({ apiKey: "" });
+  const onRemove = async () => {
+    await deleteSettings();
+    form.reset({
+      llmApiKey: "",
+      llmBaseUrl: "https://api.openai.com/v1",
+      llmModel: "gpt-5",
+      llmProvider: "openai",
+      elevenLabsApiKey: "",
+    });
   };
 
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-2xl font-bold leading-relaxed tracking-tight">{t`OpenAI Integration`}</h3>
+        <h3 className="text-2xl font-bold leading-relaxed tracking-tight">{t`AI Configuration`}</h3>
         <p className="leading-relaxed opacity-75">
-          {t`You can make use of the OpenAI API to help you generate content, or improve your writing while composing your resume.`}
+          {t`Configure your preferred AI providers, models, and API settings. These settings will be used across all AI features in CareerAI including LLM, STT, and TTS services.`}
         </p>
       </div>
+
+      {!isConfigured && (
+        <Alert variant="error">
+          <div className="prose prose-sm max-w-full">
+            <p className="font-semibold">{t`AI Configuration Required`}</p>
+            <p>
+              {t`You must configure at least one API key to use AI features in CareerAI. Without proper configuration, features like resume optimization, interview practice, and AI writing assistance will not be available.`}
+            </p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>{t`Configure OpenAI API key for LLM features (resume analysis, interview questions, writing assistance)`}</li>
+              <li>{t`Configure ElevenLabs API key for high-quality text-to-speech in interviews`}</li>
+            </ul>
+          </div>
+        </Alert>
+      )}
 
       <div className="prose prose-sm prose-zinc max-w-full dark:prose-invert">
         <p>
@@ -74,37 +122,135 @@ export const OpenAISettings = () => {
       </div>
 
       <Form {...form}>
-        <form className="grid gap-6 sm:grid-cols-2" onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="grid gap-6" onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <FormField
+              name="llmProvider"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t`Provider`}</FormLabel>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder={t`Select provider`} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="openai">OpenAI</SelectItem>
+                        <SelectItem value="azure">Azure OpenAI</SelectItem>
+                        <SelectItem value="anthropic">Anthropic</SelectItem>
+                        <SelectItem value="custom">Custom</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              name="llmModel"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t`Model`}</FormLabel>
+                  <FormControl>
+                    <Input placeholder="gpt-5" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
           <FormField
-            name="apiKey"
+            name="llmBaseUrl"
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t`API Key`}</FormLabel>
+                <FormLabel>{t`Base URL`}</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="sk-..." {...field} disabled={isEnabled} />
+                  <Input placeholder="https://api.openai.com/v1" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          <div
-            className={cn(
-              "flex items-center space-x-2 self-end sm:col-start-2",
-              !!form.formState.errors.apiKey && "self-center",
+          <FormField
+            name="llmApiKey"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2">
+                  {t`LLM API Key`}
+                  {hasLlmApiKey && (
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      {t`Configured`}
+                    </span>
+                  )}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder={
+                      hasLlmApiKey ? t`API key is configured (enter new key to update)` : "sk-..."
+                    }
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
-          >
-            <Button type="submit" disabled={isEnabled || !form.formState.isDirty}>
-              {!isEnabled && <LockSimpleOpen className="mr-2" />}
-              {isEnabled && <LockSimple className="mr-2" />}
-              {isEnabled ? t`Stored` : t`Store Locally`}
+          />
+
+          <Separator className="my-6" />
+
+          <div className="space-y-2">
+            <h4 className="text-lg font-semibold">{t`Voice Services`}</h4>
+            <p className="text-sm text-gray-600">
+              {t`Configure ElevenLabs for high-quality text-to-speech functionality.`}
+            </p>
+          </div>
+
+          <FormField
+            name="elevenLabsApiKey"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2">
+                  {t`ElevenLabs API Key`}
+                  {hasElevenLabsApiKey && (
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      {t`Configured`}
+                    </span>
+                  )}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder={
+                      hasElevenLabsApiKey
+                        ? t`API key is configured (enter new key to update)`
+                        : "xi-..."
+                    }
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="flex items-center space-x-2">
+            <Button type="submit" disabled={loading}>
+              {loading ? t`Saving...` : t`Save Configuration`}
             </Button>
 
             {isEnabled && (
-              <Button type="reset" variant="ghost" onClick={onRemove}>
+              <Button type="button" variant="ghost" onClick={onRemove} disabled={loading}>
                 <TrashSimple className="mr-2" />
-                {t`Forget`}
+                {t`Reset to Default`}
               </Button>
             )}
           </div>

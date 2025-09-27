@@ -7,38 +7,27 @@ import { User } from "../user/decorators/user.decorator";
 @ApiTags("LLM")
 @Controller("llm")
 export class LLMController {
-    constructor(private readonly llmService: LLMService) { }
+  constructor(private readonly llmService: LLMService) {}
 
-    @Post("/improve-writing")
-    @UseGuards(TwoFactorGuard)
-    async improveWriting(@User("numRequestsToday") numRequestsToday: number, @Body('text') text: string) {
+  @Post("/improve-writing")
+  @UseGuards(TwoFactorGuard)
+  async improveWriting(@User() user: any, @Body("text") text: string) {
+    return await this.llmService.improveWriting(text, user.id);
+  }
 
-        if (numRequestsToday <= 0) {
-            return -1;
-        }
+  @Post("/fix-grammar")
+  @UseGuards(TwoFactorGuard)
+  async fixGrammar(@User() user: any, @Body("text") text: string) {
+    return await this.llmService.fixGrammar(text, user.id);
+  }
 
-        return await this.llmService.improveWriting(text);
-    }
-
-    @Post("/fix-grammar")
-    @UseGuards(TwoFactorGuard)
-    async fixGrammar(@User("numRequestsToday") numRequestsToday: number, @Body('text') text: string) {
-
-        if (numRequestsToday <= 0) {
-            return -1;
-        }
-
-        return await this.llmService.fixGrammar(text);
-    }
-
-    @Post("/change-tone")
-    @UseGuards(TwoFactorGuard)
-    async changeTone(@User("numRequestsToday") numRequestsToday: number, @Body('text') text: string, @Body('mood') mood: "casual" | "professional" | "confident" | "friendly") {
-
-        if (numRequestsToday <= 0) {
-            return -1;
-        }
-
-        return await this.llmService.changeTone(text, mood);
-    }
+  @Post("/change-tone")
+  @UseGuards(TwoFactorGuard)
+  async changeTone(
+    @User() user: any,
+    @Body("text") text: string,
+    @Body("mood") mood: "casual" | "professional" | "confident" | "friendly",
+  ) {
+    return await this.llmService.changeTone(text, mood, user.id);
+  }
 }

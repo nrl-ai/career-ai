@@ -34,13 +34,16 @@ export const InterviewInformationPage = () => {
     setPosition(positionsOptions[0]);
   }, []);
   const [interviewer, setInterviewer] = useState<string>("andrew");
-  const interviewerOptions = [{
-    id: "andrew",
-    title: "Andrew - CEO",
-  }, {
-    id: "lily",
-    title: "Lily - HR Manager",
-  }];
+  const interviewerOptions = [
+    {
+      id: "andrew",
+      title: "Andrew - CEO",
+    },
+    {
+      id: "lily",
+      title: "Lily - HR Manager",
+    },
+  ];
 
   const selectedCVDetailed = selectedCV ? resumes?.find((cv) => cv.id === selectedCV) : null;
   const { createInterview, loading: createLoading } = useCreateInterview();
@@ -122,16 +125,16 @@ export const InterviewInformationPage = () => {
     <div className="h-full w-full p-0 pt-4 flex flex-col bg-[#f2f2f7]">
       {/** TODO: Back to the previous router */}
       <div className="flex items-center gap-x-2">
-        <span className="font-medium text-base text-[#AEAEB2] cursor-default">AI Mocking Interview</span>
+        <span className="font-medium text-base text-[#AEAEB2] cursor-default">
+          AI Mocking Interview
+        </span>
         <i className="pi pi-chevron-right text-[#AEAEB2] cursor-default"></i>
         <span className="font-medium text-base cursor-default">New interview</span>
       </div>
 
       <div className="text-2xl font-semibold my-2">New interview</div>
 
-      <div
-        className="gap-x-2 h-fit flex flex-col lg:flex-row mt-2"
-      >
+      <div className="gap-x-2 h-fit flex flex-col lg:flex-row mt-2">
         <div className="flex-grow rounded-xl bg-white p-6 mb-2">
           <span className="font-semibold text-xl">Applying position</span>
           <div className="gap-x-3 mt-[18px]">
@@ -226,7 +229,7 @@ export const InterviewInformationPage = () => {
                 }}
               />
             </div>
-          </div> 
+          </div>
 
           <div className="mt-4">
             <span className="text-base font-medium">Position</span>
@@ -252,8 +255,8 @@ export const InterviewInformationPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className={cn("inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
-
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
 
                     { "bg-gradient-to-br from-blue-500 to-blue-600": option === position },
                     { "bg-[#bababa]": option !== position },
@@ -275,10 +278,13 @@ export const InterviewInformationPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className={cn("inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white bg-gradient-to-br  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold0 px-3 py-3 mt-1 mr-1 cursor-default",
 
-
-                    { "bg-gradient-to-br from-blue-500 to-blue-600": interviewerOption.id === interviewer },
+                    {
+                      "bg-gradient-to-br from-blue-500 to-blue-600":
+                        interviewerOption.id === interviewer,
+                    },
                     { "bg-[#bababa]": interviewerOption.id !== interviewer },
                   )}
                   onClick={() => setInterviewer(interviewerOption.id)}

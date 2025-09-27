@@ -19,7 +19,7 @@ import { resumeDataSchema } from "@career-ai/schema";
 import { ErrorMessage } from "@career-ai/utils";
 import { zodToJsonSchema } from "zod-to-json-schema";
 
-import { User } from "@/server/user/decorators/user.decorator";
+import { User } from "../user/decorators/user.decorator";
 
 import { OptionalGuard } from "../auth/guards/optional.guard";
 import { TwoFactorGuard } from "../auth/guards/two-factor.guard";
@@ -147,16 +147,11 @@ export class ResumeController {
   @Post(":id/analyze")
   @UseGuards(TwoFactorGuard, ResumeGuard)
   ai_analyze(
-    @User("numRequestsToday") numRequestsToday: number,
+    @User() user: UserEntity,
     @Param("id") id: string,
     @Body() analyzeResumeDto: unknown,
     @Resume() resume: ResumeDto,
   ) {
-
-    if (numRequestsToday <= 0) {
-      return -1;
-    }
-    
-    return this.resumeService.analyze(resume, analyzeResumeDto);
+    return this.resumeService.analyze(resume, analyzeResumeDto, user.id);
   }
 }

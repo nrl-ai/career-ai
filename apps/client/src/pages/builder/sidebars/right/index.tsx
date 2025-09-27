@@ -124,7 +124,6 @@ export const RightSidebar = () => {
             }}
           />
         </div>
-
       </div>
     </div>
   );
