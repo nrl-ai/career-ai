@@ -1,0 +1,3 @@
+@function transparentColor($alpha, $color) {
+  @return rgba(red($color), green($color), blue($color), $alpha);
+}

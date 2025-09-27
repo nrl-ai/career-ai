@@ -1,0 +1,39 @@
+@use "../../abstracts/index" as *;
+
+.Task {
+  margin-top: 10px;
+  width: 210px;
+  min-height: 88px;
+  max-height: 160px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 4px 6px 0px rgba(54, 78, 126, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 250px;
+
+  .Title {
+    overflow: hidden;
+
+    margin-left: 6%;
+    width: 90%;
+    color: var(--color);
+  }
+
+  .SubtaskNumber {
+    margin-left: 6%;
+    @include ts-body-m;
+  }
+}
+
+.Task.IsDragging {
+  box-shadow: 0px 4px 6px 0px rgba(54, 78, 126, 0.15);
+}
+
+.IsDragging {
+  .Title {
+    color: $mainColorHover;
+  }
+}

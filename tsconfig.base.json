@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": false,
+    "declaration": false,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/artboard/*": ["apps/artboard/src/*"],
+      "@/client/*": ["apps/client/src/*"],
+      "@/server/*": ["apps/server/src/*"],
+      "@career-ai/dto": ["libs/dto/src/index.ts"],
+      "@career-ai/hooks": ["libs/hooks/src/index.ts"],
+      "@career-ai/parser": ["libs/parser/src/index.ts"],
+      "@career-ai/schema": ["libs/schema/src/index.ts"],
+      "@career-ai/ui": ["libs/ui/src/index.ts"],
+      "@career-ai/utils": ["libs/utils/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "tmp", ".nx"]
+}

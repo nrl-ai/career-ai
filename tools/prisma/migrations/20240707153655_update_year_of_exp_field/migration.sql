@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Interviews" ALTER COLUMN "yearOfExp" DROP DEFAULT,
+ALTER COLUMN "yearOfExp" SET DATA TYPE TEXT;

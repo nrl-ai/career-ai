@@ -1,0 +1,2 @@
+RuleID,Commit,File,SymlinkFile,Secret,Match,StartLine,EndLine,StartColumn,EndColumn,Author,Message,Date,Email,Fingerprint,Tags
+linkedin-client-id,ff372d2363b0135e3de7cb56f86310a33dcd2b74,libs/parser/src/linkedin/index.ts,,linkedInSchema,"LinkedIn, linkedInSchema ",47,47,11,35,Viet-Anh Nguyen,Init code,2024-06-20T14:01:53Z,vietanh.dev@gmail.com,ff372d2363b0135e3de7cb56f86310a33dcd2b74:libs/parser/src/linkedin/index.ts:linkedin-client-id:47,

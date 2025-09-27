@@ -1,0 +1,23 @@
+@import url("./_tailwind.css");
+@import url("./_colors.css");
+@import url("./_theme.css");
+@import url("./_fonts.css");
+@import url("./_navbar.scss");
+@import "primeicons/primeicons.css";
+@import "@radix-ui/themes/styles.css";
+
+* {
+  @apply border-border/50;
+}
+
+.cv-review-result ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  list-style: disc outside none;
+}
+
+.cv-review-result ul li {
+  margin-left: 2em;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}

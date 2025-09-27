@@ -1,0 +1,64 @@
+import { cn } from "@career-ai/utils";
+import { SidebarSimple } from "@phosphor-icons/react";
+import { Button, Sheet, SheetClose, SheetContent, SheetTrigger } from "@career-ai/ui";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+
+import { Sidebar } from "./_components/sidebar";
+
+export const DashboardLayout = () => {
+  const [open, setOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  return (
+    <div className="h-screen">
+      <div className="sticky top-0 z-50 flex items-center justify-between p-4 pb-0 lg:hidden bg-white">
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button size="icon" variant="ghost" className="bg-background mb-4">
+              <SidebarSimple />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent showClose={false} side="left" className="focus-visible:outline-none">
+            <SheetClose asChild className="absolute left-4 top-4">
+              <Button size="icon" variant="ghost">
+                <SidebarSimple />
+              </Button>
+            </SheetClose>
+
+            <Sidebar isOpen={open} setOpen={setOpen} isCollapsed={false} />
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      <motion.div
+        initial={{ x: -300 }}
+        animate={{ x: 0 }}
+        className={cn("hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col", {
+          "lg:w-[300px]": !isCollapsed,
+          "lg:w-[80px]": isCollapsed,
+        })}
+      >
+        <div
+          className={cn(
+            "h-full rounded border-r-[2px] border-r-[#E6E6E6] bg-white",
+            !isCollapsed && "p-4",
+          )}
+        >
+          <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+        </div>
+      </motion.div>
+
+      <main
+        className={cn("h-full pb-24 mx-6 my-4 lg:mx-8", {
+          "lg:pl-[300px]": !isCollapsed,
+          "lg:pl-[80px]": isCollapsed,
+        })}
+      >
+        <Outlet />
+      </main>
+    </div>
+  );
+};

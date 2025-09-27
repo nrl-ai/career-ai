@@ -1,0 +1,162 @@
+services:
+  # Database (Postgres)
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - careerai_network
+
+  # Storage (for image uploads)
+  minio:
+    image: minio/minio
+    restart: unless-stopped
+    command: server /data
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ROOT_USER: ${STORAGE_ACCESS_KEY:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${STORAGE_SECRET_KEY:-minioadmin}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.storage.rule=Host(`storage.careerai.me`)
+      - traefik.http.routers.storage.entrypoints=websecure
+      - traefik.http.routers.storage.tls.certresolver=letsencrypt
+      - traefik.http.services.storage.loadbalancer.server.port=9000
+    networks:
+      - careerai_network
+
+  # Chrome Browser (for printing and previews)
+  chrome:
+    image: ghcr.io/browserless/chromium
+    restart: unless-stopped
+    environment:
+      CONCURRENT: 10
+      TOKEN: ${CHROME_TOKEN:-chrome_token}
+      EXIT_ON_HEALTH_FAILURE: true
+      PRE_REQUEST_HEALTH_CHECK: true
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.printer.rule=Host(`printer.careerai.me`)
+      - traefik.http.routers.printer.entrypoints=websecure
+      - traefik.http.routers.printer.tls.certresolver=letsencrypt
+      - traefik.http.services.printer.loadbalancer.server.port=3000
+    networks:
+      - careerai_network
+
+  app:
+    image: vietanhdev/career-ai:latest
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - minio
+      - chrome
+    environment:
+      # -- Environment Variables --
+      PORT: ${PORT:-3000}
+      NODE_ENV: ${NODE_ENV:-production}
+
+      # -- URLs --
+      PUBLIC_URL: ${PUBLIC_URL:-https://www.careerai.me}
+      STORAGE_URL: ${STORAGE_URL:-https://storage.careerai.me/default}
+
+      # -- Printer (Chrome) --
+      CHROME_TOKEN: ${CHROME_TOKEN:-chrome_token}
+      CHROME_URL: ${CHROME_URL:-wss://printer.careerai.me}
+
+      # -- Database (Postgres) --
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/postgres}
+
+      # -- Auth --
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-secret_key}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-secret_key}
+
+      # -- Emails --
+      MAIL_FROM: ${MAIL_FROM}
+      # SMTP_URL: smtp://user:pass@smtp:587 # Optional
+
+      # -- Storage (Minio) --
+      STORAGE_ENDPOINT: ${STORAGE_ENDPOINT:-minio}
+      STORAGE_PORT: ${STORAGE_PORT:-9000}
+      STORAGE_REGION: ${STORAGE_REGION:-default}
+      STORAGE_BUCKET: ${STORAGE_BUCKET:-default}
+      STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY:-miniouser}
+      STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY:-miniouser}
+      STORAGE_USE_SSL: ${STORAGE_USE_SSL:-false}
+      STORAGE_SKIP_BUCKET_CHECK: ${STORAGE_SKIP_BUCKET_CHECK:-false}
+
+      # -- Feature Flags (Optional) --
+      DISABLE_SIGNUPS: ${DISABLE_SIGNUPS:-false}
+      DISABLE_EMAIL_AUTH: ${DISABLE_EMAIL_AUTH:-false}
+
+      # -- GitHub (Optional) --
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-github_client_id}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-github_client_secret}
+      GITHUB_CALLBACK_URL: ${GITHUB_CALLBACK_URL:-https://www.careerai.me/api/auth/github/callback}
+
+      # -- Google (Optional) --
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-google_client_id}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-google_client_secret}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-https://www.careerai.me/api/auth/google/callback}
+
+      # LLM API
+      LLM_API_KEY: ${LLM_API_KEY:-LLM_API_KEY}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.example.com}
+
+      # Google STT
+      GOOGLE_APPLICATION_CREDENTIALS_JSON: ${GOOGLE_APPLICATION_CREDENTIALS_JSON:-{}}
+      GOOGLE_TTS_API_KEY: ${GOOGLE_TTS_API_KEY:-google_tts_key}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.app.rule=Host(`www.careerai.me`)
+      - traefik.http.routers.app.entrypoints=websecure
+      - traefik.http.routers.app.tls.certresolver=letsencrypt
+      - traefik.http.services.app.loadbalancer.server.port=3000
+    networks:
+      - careerai_network
+
+  traefik:
+    image: traefik:latest
+    command:
+      - --api=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.email=noreply@careerai.me
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+
+      # Let's Encrypt Staging Server (for testing)
+      # - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-v02.api.letsencrypt.org/directory
+
+      # Redirect all HTTP requests to HTTPS
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - letsencrypt_data:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - careerai_network
+
+volumes:
+  minio_data:
+  postgres_data:
+  letsencrypt_data:
+
+networks:
+  careerai_network:
